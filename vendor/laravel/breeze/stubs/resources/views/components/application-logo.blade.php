@@ -1,0 +1,1 @@
+<img src="{{URL::asset('template/images/logo.png')}}" alt="">
