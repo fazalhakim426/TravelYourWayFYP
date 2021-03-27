@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notification;
 class RegistrationNotificaton extends Notification
 {
     use Queueable;
-//fazal 3rd commit 
+
     /**
      * Create a new notification instance.
      *
