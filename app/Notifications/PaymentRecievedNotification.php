@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notification;
 class PaymentRecievedNotification extends Notification
 {
     use Queueable;
-
+//main 2 updated
     /**
      * Create a new notification instance.
      *
