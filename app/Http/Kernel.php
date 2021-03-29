@@ -31,7 +31,6 @@ class Kernel extends HttpKernel
     protected $middlewareGroups = [
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
-            \App\Http\Middleware\isAdmin::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
@@ -66,6 +65,10 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin' => \App\Http\Middleware\isAdmin::class,
         'address' => \App\Http\Middleware\Address::class,
+        'membership' => \App\Http\Middleware\Membership::class,
+        'customer' => \App\Http\Middleware\Customer::class,
+        'agent' => \App\Http\Middleware\Agent::class,
+        'superagent' => \App\Http\Middleware\SuperAgent::class,
         
     ];
 }

@@ -4,8 +4,9 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+
 use Auth;
-class isAdmin
+class Agent
 {
     /**
      * Handle an incoming request.
@@ -17,15 +18,12 @@ class isAdmin
     public function handle(Request $request, Closure $next)
     {
         $user=Auth::user();
-        if($user->email=="hakimfazal426@gmailw.com"||$user->email=="niazm1225@gmail.com")
+        if($user->membership=="Agent")
         {
-            return redirect('admindashboard');
+            return redirect('/agentdashboard');
         }
         else{
             return redirect('/dashboard');
         }
-    
-
     }
-
 }

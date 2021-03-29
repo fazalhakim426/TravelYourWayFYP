@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\api\CountryAPIController;
 use App\Http\Controllers\api\AllApplyAPIController;
+use App\Http\Controllers\api\Login;
+use App\Http\Controllers\api\Agent;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +30,13 @@ Route::apiResources([
 ]); 
 
 Route::get('/AllApplies/{id}/applied',[AllApplyAPIController::class,'applied']);
+
+
+Route::get('/getAgent',[Agent::class,'getAgent']);
+
+
+
+Route::post('/login', [Login::class, 'login']);
+
+
+Route::post('/register', [Login::class, 'register']);

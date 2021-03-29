@@ -16,5 +16,6 @@ class VerifyCsrfToken extends Middleware
         'http://localhost:8000/api/countries',
         'http://localhost:8000/api/AllApplies',
         'http://localhost:8000/api/AllApplies.update',
+        'http://127.0.0.1:8000/api/register',
     ];
 }

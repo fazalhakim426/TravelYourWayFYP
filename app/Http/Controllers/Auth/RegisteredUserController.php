@@ -62,11 +62,10 @@ class RegisteredUserController extends Controller
         $request->validate([            
             'name' => 'required|string|min:3|max:25',
             'phone_number' => 'required|string|min:10|max:15',
-            'street' => 'required|string|min:2|max:130',
             'city' => 'required|string|min:2|max:30',
             'country' => 'required|string|min:2|max:30',
             'state' => 'required|string|min:2|max:20',
-            'zip' => 'required|string|min:2|max:20',
+            'membership' => 'required',
             
         ]);
 
@@ -75,11 +74,10 @@ class RegisteredUserController extends Controller
        ->update([
         'phone_number' => $request->phone_number,
         'name' => $request->name,
-        'street' => $request->street,
         'city' => $request->city,
         'state' => $request->state,
         'country' => $request->country,
-        'zip' => $request->zip,
+        'membership' => $request->membership,
         ]);
 
         return redirect('/dashboard');

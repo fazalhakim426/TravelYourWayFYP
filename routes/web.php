@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,26 +21,17 @@ Route::get('/', function () {
 
 
 Route::get('/dashboard', function () {
+    $visas=DB::table('visas')->where('user_id','=',Auth::user()->id)->get();
     
-    $email=Auth::user()->email;
-    if($email=="hakimfazal426@gmail.com"||$email=="niazm1225@gmail.com")
-    {
-        
-        $visas=DB::table('visas')->get();
-        
-        return view('admindashboard.dashboard')->with('visas',$visas)->with('i',1);
+    return view('userdashboard.dashboard')->with('visas',$visas)->with('i',0);
 
-    }
-    else
-     {
-        $visas=DB::table('visas')->where('user_id','=',Auth::user()->id)->get();
-        
-        return view('userdashboard.dashboard')->with('visas',$visas)->with('i',0);;
+})->middleware(['auth'])->middleware('verified')->middleware('membership')->middleware('address')->name('dashboard');
 
-     }
 
-   })->middleware(['auth'])->middleware('verified')->middleware('address')->name('dashboard');
 
-require __DIR__.'/userweb.php';
+
+require __DIR__.'/customerweb.php';
+require __DIR__.'/agentweb.php';
+require __DIR__.'/supreagentweb.php';
 require __DIR__.'/auth.php';
 require __DIR__.'/adminweb.php';

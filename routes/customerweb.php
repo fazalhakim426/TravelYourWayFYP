@@ -18,11 +18,29 @@ Route::middleware(['auth'])->group(function () {
 
     
     Route::middleware(['verified'])->group(function () {
+
+        Route::get('/customerdashboard', function () {
+    
+
+            $visas=DB::table('visas')->where('user_id','=',Auth::user()->id)->get();
+            
+            return view('userdashboard.dashboard')->with('visas',$visas)->with('i',0);;
+        
+        })->middleware('address')->middleware('membership')->name('dashboard');
+        
+        
+
+        
+
+        Route::middleware(['customer'])->group(function(){
+
+    
         
         // Route::get('/immigrationvisa0',function(){
         //     return view('userdashboard.immigration_apply.immigration_visa_step_0');
         // });
         
+//mange agent
 
         Route::resources([
             'visas' => VisaController::class,
@@ -92,5 +110,6 @@ Route::post('/update5',[VisaController::class,'update5'])->name('update5');
         return view('userdashboard.immigration_apply.immigration_visa_step_5');
     });
 
+});
 });
 });

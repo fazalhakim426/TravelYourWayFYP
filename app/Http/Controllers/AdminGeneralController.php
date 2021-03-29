@@ -7,9 +7,14 @@ use Illuminate\Http\Request;
 
 class AdminGeneralController extends Controller
 {
+    public function index(){
+        $visas=DB::table('visas')->get();
+        return view('admindashboard.dashboard')->with('visas',$visas)->with('i',1);
+
+    }
+    
     public function manage($type){
          $visas=Visa::where('type',$type)->get();
-
          return view('admindashboard.dashboard')->with('visas',$visas);
     }
     public function edit0(Request $request)
@@ -18,7 +23,6 @@ class AdminGeneralController extends Controller
         //dd($visa);
         $countries=DB::table('countries')->get();
         return view('admindashboard.visa_update.immigration_visa_step_0')->with('visa',$visa)->with('countries',$countries);
-  
     } 
        
     public function edit1(Request $request)

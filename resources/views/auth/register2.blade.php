@@ -30,10 +30,10 @@
      <p class="text-red-500">{{$message}}</p>
      @enderror
 </div>
-
+     
           
 
-               <div class="mt-2">
+                <div class="mt-2">
                     <x-label for="street" :value="__('Address')" />
                      <input id="street" value="{{old('street')==null?Auth::user()->street:old('street')}}"  class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" type="text" name="street" placeholder="Street No 1" />
                     @error('street')
@@ -41,6 +41,7 @@
                     @enderror
                
                 </div>
+             
                 <div class="mt-2">
                     <label class="hidden text-sm block text-gray-600" for="address">City</label>
                     <input id="city" value="{{old('city')==null?Auth::user()->city:old('city')}}"  class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" type="text" name="city" placeholder="city " />
@@ -68,6 +69,25 @@
                     @error('zip')
                     <p class="text-red-500">{{$message}}</p>
                     @enderror
+               
+                </div>
+                <div class="mt-2">
+                    <x-label for="membership" :value="__('Membership')" />
+                     <select id="membership"   class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"  name="membership"  >
+                    
+                     @if((old('membership')==null?Auth::user()->membership:old('membership'))!="")
+                     <option>
+                         {{old('membership')==null?Auth::user()->membership:old('membership')}}
+                     </option>
+                     @endif
+                     <option>Customer</option>
+                     <option>Agent</option>
+                     <option>Super Agent</option>
+                 
+                     </select>
+                     @error('membership')
+                     <p class="text-red-500">{{$message}}</p>
+                     @enderror
                
                 </div>
 

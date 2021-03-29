@@ -16,8 +16,9 @@ use App\Http\Controllers\HotelController;
 use App\Http\Controllers\AdminGeneralController;
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['verified'])->group(function () {
+        Route::middleware(['admin'])->group(function () {
 
-
+Route::get('admindashboard',[AdminGeneralController::class,'index']);
     
         Route::post('applycharges',[PaymentController::class,'applycharges'])->name('applycharges');
 
@@ -38,6 +39,7 @@ Route::post('/adminvisaupdate2',[AdminGeneralController::class,'update2'])->name
 Route::post('/adminvisaupdate3',[AdminGeneralController::class,'update3'])->name('adminvisaupdate3');
 Route::post('/adminvisaupdate4',[AdminGeneralController::class,'update4'])->name('adminvisaupdate4');
 Route::post('/adminvisaupdate5',[AdminGeneralController::class,'update5'])->name('adminvisaupdate5');
+
       
 Route::resources([
     'countries' => CountryController::class,
@@ -63,7 +65,7 @@ Route::get('hoteledit',[HotelController::class,'destroy']);
 
     Route::get('/manageummrah',function(){      
         return view('admindashboard.management.ummrah');
-    }); 
+    });
 Route::get('manage/{type}',[AdminGeneralController::class,'manage']);
    
     // Route::get('/manageticket',function(){      
@@ -89,5 +91,6 @@ Route::get('manage/{type}',[AdminGeneralController::class,'manage']);
     //     return view('userdashboard.apply.immigration_visa_step_5');
     // });
 
+});
 });
 });
