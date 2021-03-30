@@ -32,6 +32,8 @@ class Membership
         }
         elseif($user->membership=='Super Agent'){
             return redirect('superagentdashboard');
+        }  elseif($user->phone_number==null){
+            return redirect('register2');
         }
         else{
             return redirect('/');

@@ -24,7 +24,7 @@ class CountryAPIController extends Controller
     public function store(Request $request)
     {
         
-          return $request['name'];
+        return $request['name'];
         $country=new Country();
         $cname=$request->name;
         $country->country=$cname;

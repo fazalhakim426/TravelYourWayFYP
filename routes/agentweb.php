@@ -25,7 +25,7 @@ Route::middleware(['auth'])->group(function () {
             $visas=DB::table('visas')->where('user_id','=',Auth::user()->id)->get();    
             return view('agent.dashboard')->with('visas',$visas)->with('i',0);;
 
-        })->middleware('membership')->name('agentdashboard');
+        })->name('agentdashboard');
 
 
         Route::middleware(['agent'])->group(function(){

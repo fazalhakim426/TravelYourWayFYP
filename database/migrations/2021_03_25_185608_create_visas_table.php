@@ -18,16 +18,19 @@ class CreateVisasTable extends Migration
             //first tyre customer to agent
             //second tyre agent to super agent
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('agent_id');
+            $table->unsignedBigInteger('agent_id')->nullable();
             $table->string('status');
-            //
+       
             $table->string('visa_apply_country');
             $table->string('type');  //visit immigration hajj ummrah
             $table->string('days')->nullable();
-            $table->string('arrival_date')->nullable();
-            $table->string('departure_airport');
-            $table->string('arrival_airport');
+               //personal information
+            $table->string('date_of_birth')->nullable();
+            $table->string('first_name')->nullable();
+            $table->string('last_name')->nullable();
+            $table->string('gender')->nullable();
              //contact information
+            $table->string('country')->nullable();
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('work_phone')->nullable();
@@ -35,7 +38,8 @@ class CreateVisasTable extends Migration
             //agent field
             $table->string('charges')->nullable();
             $table->string('comments')->nullable();
-            $table->unsignedBigInteger('super_agent_id');//asign by agent//show passenger details and passport details            
+            $table->unsignedBigInteger('super_agent_id')->nullable();
+            //asign by agent//show passenger details and passport details            
         });
     }
 

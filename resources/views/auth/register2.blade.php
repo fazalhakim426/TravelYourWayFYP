@@ -7,16 +7,28 @@
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </x-slot>
-        <auth-validation-errors/>
-<h1>dkljfdskl</h1>
         <!-- Validation Errors -->
        
 
         <form method="POST" action="{{ route('register2') }}">
             @csrf
 
+  
+
 
 <!--  phone number -->
+<div class="mt-14">
+    <div class="flex justify-center -mt-8">
+    </div>
+
+    <div style="border: 1px solid #DDD;">
+        <img src="https://i.imgur.com/8Km9tLL.jpg" type='file' class="rounded-full border-solid border-white border-2 -mt-3">		
+    
+        <img src="icon.png"/>
+        <input style="border: none;"/>
+    </div>
+</div>
+
 <div class="mt-4">
     <x-label for="name" :value="__('Name')" />
 
@@ -35,7 +47,7 @@
           
 
                 <div class="mt-2">
-                    <x-label for="country" :value="__('Address')" />
+                    <x-label for="country" :value="__('Country')" />
                     <input id="country" value="{{old('country')==null?Auth::user()->country:old('country')}}"  class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" type="text" name="country" placeholder="country" />
                     @error('country')
                     <p class="text-red-500">{{$message}}</p>

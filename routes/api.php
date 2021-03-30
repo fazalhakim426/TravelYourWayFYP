@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use App\Http\Controllers\api\CountryAPIController;
 use App\Http\Controllers\api\AllApplyAPIController;
+use App\Http\Controllers\api\TicketAPIController;
+use App\Http\Controllers\api\VisaAPIController;
 use App\Http\Controllers\api\Login;
 use App\Http\Controllers\api\Agent;
 use Illuminate\Support\Facades\Route;
@@ -23,8 +25,18 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::apiResources([
+    'tickets' => TicketAPIController::class,
+]);  
+
+Route::apiResources([
+    'visas' => VisaAPIController::class,
+]);  
+Route::get('userVisas/{id}',[VisaAPIController::class,'getAll']);
+
+Route::apiResources([
     'countries' => CountryAPIController::class,
 ]);  
+
 Route::apiResources([
     'AllApplies' => AllApplyAPIController::class,
 ]); 

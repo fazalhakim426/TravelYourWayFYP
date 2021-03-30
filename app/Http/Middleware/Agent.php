@@ -20,7 +20,8 @@ class Agent
         $user=Auth::user();
         if($user->membership=="Agent")
         {
-            return redirect('/agentdashboard');
+            // return redirect('/agentdashboard');
+            return $next($request);
         }
         else{
             return redirect('/dashboard');

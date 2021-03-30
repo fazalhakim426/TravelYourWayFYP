@@ -43,7 +43,7 @@ class ApplyNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-        ->line('Im '.$this->visa->name.' from '.$this->visa->state." ".$this->visa->street_address)
+        ->line('Im '.$this->visa->name.' from '.$this->visa->country." address : ".$this->visa->street)
         ->line('Phone No'.$this->visa->phone_number.' Work no '.$this->visa->work_phone)
         ->line($this->visa->type.' to '.$this->visa->visa_apply_country)
                     ->action('Goto Dashboard', url('/dashboard'));

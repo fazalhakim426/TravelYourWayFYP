@@ -19,7 +19,7 @@ class SuperAgent
         $user=Auth::user();
         if($user->membership=="Super Agent")
         {
-            return redirect('superagentdashboard');
+            return $next($request);
         }
         else{
             return redirect('/dashboard');

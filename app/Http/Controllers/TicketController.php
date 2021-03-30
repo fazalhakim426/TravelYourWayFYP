@@ -14,7 +14,9 @@ class TicketController extends Controller
      */
     public function index()
     {
-        //
+        $visa=DB::table('tickets')->where('user_id','=',Auth::user()->id)->where('status','=','incomplete')->first();
+      
+        return view('customer.visa.trip_details')->with('visa',$visa)->with('type',null);
     }
 
     /**

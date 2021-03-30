@@ -13,7 +13,7 @@ class PersonalInformationRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,13 +24,10 @@ class PersonalInformationRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'=>'required',
-            'email'=>'required',
-            'country_of_birth'=>'required',
-            'family_name'=>'required',
-            'marital_status'=>'required',
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'date_of_birth'=>'required',
             'gender'=>'required',
-            'number_of_people'=>'required',
         ];
     }
 }

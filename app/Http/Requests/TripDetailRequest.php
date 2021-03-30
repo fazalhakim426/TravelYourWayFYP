@@ -13,7 +13,7 @@ class TripDetailRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,9 @@ class TripDetailRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'type'=>'required',     
+            'visa_apply_country'=>'required',   
+            'days'=>'required',       
         ];
     }
 }
