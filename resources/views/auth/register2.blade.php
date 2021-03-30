@@ -7,7 +7,8 @@
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
             </a>
         </x-slot>
-
+        <auth-validation-errors/>
+<h1>dkljfdskl</h1>
         <!-- Validation Errors -->
        
 
@@ -34,43 +35,30 @@
           
 
                 <div class="mt-2">
-                    <x-label for="street" :value="__('Address')" />
-                     <input id="street" value="{{old('street')==null?Auth::user()->street:old('street')}}"  class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" type="text" name="street" placeholder="Street No 1" />
-                    @error('street')
+                    <x-label for="country" :value="__('Address')" />
+                    <input id="country" value="{{old('country')==null?Auth::user()->country:old('country')}}"  class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" type="text" name="country" placeholder="country" />
+                    @error('country')
                     <p class="text-red-500">{{$message}}</p>
                     @enderror
                
                 </div>
              
                 <div class="mt-2">
-                    <label class="hidden text-sm block text-gray-600" for="address">City</label>
+                    <x-label for="city" :value="__('City')" />
                     <input id="city" value="{{old('city')==null?Auth::user()->city:old('city')}}"  class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" type="text" name="city" placeholder="city " />
                     @error('city')
                     <p class="text-red-500">{{$message}}</p>
                     @enderror
                 </div>
                 <div class="mt-2">
-                    <label class="hidden text-sm block text-gray-600" for="state">City</label>
+                    <x-label for="state" :value="__('State')" />
                     <input id="state" value="{{old('state')==null?Auth::user()->state:old('state')}}"  class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" type="text" name="state" placeholder="state" />
                     @error('state')
                     <p class="text-red-500">{{$message}}</p>
                     @enderror
                 </div>
-                <div class="inline-block mt-2 w-1/2 pr-1">
-                    <label class="hidden block text-sm text-gray-600" for="cus_email">Country</label>
-                    <input id="country" value="{{old('country')==null?Auth::user()->country:old('country')}}"  class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" type="text" name="country" placeholder="country" />
-                    @error('country')
-                    <p class="text-red-500">{{$message}}</p>
-                    @enderror    
-                </div>
-                <div class="inline-block mt-2 -mx-1 pl-1 w-1/2">
-                    <label class="hidden block text-sm text-gray-600" for="cus_email">Zip</label>
-                    <input id="zip" value="{{old('zip')==null?Auth::user()->zip:old('zip')}}"  class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded" type="text" name="zip" placeholder="12970" />
-                    @error('zip')
-                    <p class="text-red-500">{{$message}}</p>
-                    @enderror
+              
                
-                </div>
                 <div class="mt-2">
                     <x-label for="membership" :value="__('Membership')" />
                      <select id="membership"   class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"  name="membership"  >

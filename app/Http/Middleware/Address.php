@@ -17,7 +17,7 @@ class Address
     public function handle(Request $request, Closure $next)
     {
        
-        if (Auth::user()->street==null||Auth::user()->phone_number==null) {
+        if (Auth::user()->phone_number==null) {
             return redirect('/register2');
         }
         return $next($request);
