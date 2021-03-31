@@ -170,7 +170,7 @@ class Mailable implements MailableContract, Renderable
      */
     public function send($mailer)
     {
-        return $this->withLocale($this->locale, function () use ($mailer) {
+        $this->withLocale($this->locale, function () use ($mailer) {
             Container::getInstance()->call([$this, 'build']);
 
             $mailer = $mailer instanceof MailFactory
@@ -937,11 +937,15 @@ class Mailable implements MailableContract, Renderable
                 $view = $this->buildView(), $this->buildViewData()
             );
 
-            $text = $view['text'] ?? '';
+            if (is_array($view) && isset($view[1])) {
+                $text = $view[1];
+            }
+
+            $text = $text ?? $view['text'] ?? '';
 
             if (! empty($text) && ! $text instanceof Htmlable) {
                 $text = Container::getInstance()->make('mailer')->render(
-                    $view['text'], $this->buildViewData()
+                    $text, $this->buildViewData()
                 );
             }
 

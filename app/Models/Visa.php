@@ -36,11 +36,22 @@ class Visa extends Model
 
     ];
 
-
+    protected $attributes = [
+        'status' => "Incomplete",
+    ];
     public function setTypeAttribute($value)
     {
         $this->attributes['type'] = ucfirst($value);
     }
 
-   
+    public function payment()
+    {
+        return $this->hasOne(Payment::class,'visa_id');
+    }
+
+    public function review()
+    {
+        return $this->hasMany(VisaReview::class,'visa_id');
+    }
+
 }

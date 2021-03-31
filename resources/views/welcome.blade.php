@@ -101,7 +101,7 @@
    
    </div></a>
    
-   <a href="apply/Ticket">
+   <a href="/tickets">
    <div class="relative w-40 h-40 m-5 ">
  
        <!-- <i class="fas fa-bezier-curve fa-3x mx-auto text-white"></i> -->
@@ -112,13 +112,13 @@
    
    </div>
 
-<a href="apply/Ummrah">
+<a href="/apply/Ummrah">
    <div class="relative w-40 h-40 m-5 ">
        <img class="w-24 h-24 mx-auto" src="{{URL::asset('/admin-master/dist/images/direction/hajj.png')}}" />
      <p class="mx-2 py-2 border-b-2 text-center text-gray-700 font-semibold uppercase">Ummrah<br>Registration</p>
    
    </div></a>
-   <a href="visas">
+   <a href="/apply/Visit">
    <div class="relative w-40 h-40 m-5 ">
   
        <!-- <i class="fas fa-bezier-curve fa-3x mx-auto text-white"></i> -->

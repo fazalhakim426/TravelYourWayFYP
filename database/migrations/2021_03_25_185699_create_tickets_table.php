@@ -30,6 +30,7 @@ class CreateTicketsTable extends Migration
             $table->string('departure_airport')->nullable();
             $table->string('arrival_airport')->nullable();
             $table->string('departure_date')->nullable();
+            
             $table->string('class')->nullable();  //  business, first class ,  economy class 
             $table->string('journey_type')->nullable();  //signle round multi
            

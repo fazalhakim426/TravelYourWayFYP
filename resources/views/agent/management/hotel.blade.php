@@ -15,7 +15,7 @@
 
 <body>
 
-@include('admindashboard.layout.adminnavigation')
+@include('agent.layout.navigation')
 
             <!--Main-->
             <main class="bg-white-300 flex-1 p-3 overflow-hidden">
@@ -243,13 +243,10 @@
                             Country
                         </label>
                         
-                        <select name='country' value="old('country')" class="border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                        <input name='country'  class="border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                             id="grid-state">
 
-                                            @foreach($countries as $country)
-                                                    <option>{{$country->country}}</option>
-                                                    @endforeach
-                                    </select>
+                                         
                         <p class="text-red-500 text-xs italic">Please fill out this field.</p>
                     </div>
                     <div class="w-full md:w-1/2 px-3">

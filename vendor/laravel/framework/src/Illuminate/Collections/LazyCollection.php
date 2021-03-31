@@ -5,6 +5,7 @@ namespace Illuminate\Support;
 use ArrayIterator;
 use Closure;
 use DateTimeInterface;
+use Generator;
 use Illuminate\Support\Traits\EnumeratesValues;
 use Illuminate\Support\Traits\Macroable;
 use IteratorAggregate;
@@ -29,7 +30,7 @@ class LazyCollection implements Enumerable
      */
     public function __construct($source = null)
     {
-        if ($source instanceof Closure || $source instanceof self) {
+        if ($source instanceof Closure || $source instanceof Generator || $source instanceof self) {
             $this->source = $source;
         } elseif (is_null($source)) {
             $this->source = static::empty();
@@ -547,13 +548,23 @@ class LazyCollection implements Enumerable
     }
 
     /**
-     * Determine if the items is empty or not.
+     * Determine if the items are empty or not.
      *
      * @return bool
      */
     public function isEmpty()
     {
         return ! $this->getIterator()->valid();
+    }
+
+    /**
+     * Determine if the collection contains a single item.
+     *
+     * @return bool
+     */
+    public function containsOneItem()
+    {
+        return $this->take(2)->count() === 1;
     }
 
     /**
@@ -828,24 +839,6 @@ class LazyCollection implements Enumerable
     }
 
     /**
-     * Reduce the collection to a single value.
-     *
-     * @param  callable  $callback
-     * @param  mixed  $initial
-     * @return mixed
-     */
-    public function reduce(callable $callback, $initial = null)
-    {
-        $result = $initial;
-
-        foreach ($this as $value) {
-            $result = $callback($result, $value);
-        }
-
-        return $result;
-    }
-
-    /**
      * Replace the collection items with the given items.
      *
      * @param  mixed  $items
@@ -1079,7 +1072,7 @@ class LazyCollection implements Enumerable
         return new static(function () use ($callback) {
             $iterator = $this->getIterator();
 
-            $chunk = new Collection();
+            $chunk = new Collection;
 
             if ($iterator->valid()) {
                 $chunk[$iterator->key()] = $iterator->current();
@@ -1091,7 +1084,7 @@ class LazyCollection implements Enumerable
                 if (! $callback($iterator->current(), $iterator->key(), $chunk)) {
                     yield new static($chunk);
 
-                    $chunk = new Collection();
+                    $chunk = new Collection;
                 }
 
                 $chunk[$iterator->key()] = $iterator->current();
@@ -1372,6 +1365,10 @@ class LazyCollection implements Enumerable
      */
     protected function makeIterator($source)
     {
+        if ($source instanceof Generator) {
+            return $source;
+        }
+
         if ($source instanceof IteratorAggregate) {
             return $source->getIterator();
         }

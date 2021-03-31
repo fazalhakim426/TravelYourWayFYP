@@ -70,9 +70,8 @@
                             <div class="p-3">
 
 
-<!-- begin apply for visa -->
 
-@if($visa==null)
+@if($ticket==null)
 
            @include('customer.ticket.airline_new_form')                
 @else
@@ -111,7 +110,6 @@
 </div>
 
 <script src="{{URL::asset('admin-master/main.js')}}"></script>
-<script src="{{URL::asset('admin-master/type_handler.js')}}"></script>
 </body>
 
 </html>

@@ -16,15 +16,16 @@ class Ticket extends Model
         'agent_id',
         'status',
         'booking_source',
-        'journey_type',  //signle round multi
+      
         'issuing_airline',
 
-
+        'journey_type',  //signle round multi
         'ticket_apply_country',
         'departure_airport',
         'arrival_airport',
         'departure_date',
-        'class',  //  business, first class ,  economy class 
+        'class',
+          //  business, first class ,  economy class 
        
           //agent field
         
@@ -37,4 +38,11 @@ class Ticket extends Model
 
     ];
 
+    public function passengers(){
+        return $this->hasMany(TicketPassenger::class);
+    }
+    public function payment()
+    {
+        return $this->hasOne(Payment::class,'ticket_id');
+    }
 }

@@ -18,7 +18,7 @@ class CountryController extends Controller
     public function index()
     {
         $countries=Country::get();
-        return view('admindashboard.management.settings')->with('countries',$countries);
+        return view('agent.management.settings')->with('countries',$countries);
     }
     
 

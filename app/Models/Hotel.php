@@ -13,4 +13,11 @@ class Hotel extends Model
         'hotel_name',
         'charges_per_day',
     ];
+
+   
+
+    public function payment()
+    {
+        return $this->hasOne(Payment::class,'hotel_id');
+    }
 }

@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\TicketPassenger;
 use Illuminate\Http\Request;
-
+use App\Models\Ticket;
+use App\Http\Requests\PassengerRequest;
 class TicketPassengerController extends Controller
 {
     /**
@@ -33,13 +34,16 @@ class TicketPassengerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PassengerRequest $request)
     {
-        //
+        $ticket=Ticket::find($request->ticket_id);
+        $passenger=new TicketPassenger($request->all());
+        $ticket->passengers()->save($passenger);
+        return back();
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified res    urce.
      *
      * @param  \App\Models\TicketPassenger  $ticketPassenger
      * @return \Illuminate\Http\Response
@@ -78,8 +82,9 @@ class TicketPassengerController extends Controller
      * @param  \App\Models\TicketPassenger  $ticketPassenger
      * @return \Illuminate\Http\Response
      */
-    public function destroy(TicketPassenger $ticketPassenger)
+    public function destroy($id)
     {
-        //
+        TicketPassenger::destroy($id);
+        return back();
     }
 }

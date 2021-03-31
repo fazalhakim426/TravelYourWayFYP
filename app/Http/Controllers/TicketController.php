@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
+use App\Models\User;
+use App\Models\TicketPassenger;
 use Illuminate\Http\Request;
 use App\Http\Requests\AirlineRequest;
+use App\Http\Requests\TicketTripDetailRequest;
 use DB,Auth;
 class TicketController extends Controller
 {
@@ -15,17 +18,26 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $visa=Ticket::where('user_id','=',Auth::user()->id)->where('status','=','Incomplete')->first();
-        return view('customer.ticket.airline')->with('visa',$visa)->with('type',null);
+        $ticket=Ticket::where('user_id','=',Auth::user()->id)->where('status','=','Incomplete')->first();
+        return view('customer.ticket.airline')->with('ticket',$ticket);
     }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function ticketIncomplete(AirlineRequest $request)
     {
-        //
+
+        $ticket=Ticket::where('id',$request->id)->first();
+       
+           $ticket->fill($request->all())->save();
+        return redirect('/ticketTripDetailIndex');//goto ticketTripDetailIndex
+    }
+    public function ticketTripDetailIndex(){
+        $ticket=Ticket::where('user_id','=',Auth::user()->id)->where('status','=','Incomplete')->first();
+
+        return view('customer.ticket.trip_detail')->with('ticket',$ticket);
     }
 
     /**
@@ -38,15 +50,19 @@ class TicketController extends Controller
     {
         $request['user_id']=Auth::user()->id;
         $request['status']="Incomplete";
-        if(Ticket::create($request->all(),['status'=>"submitted"]))
+        $t=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('status','=','incomplete')->first();
+        if($t==null){
+        if(Ticket::create($request->all()))
         {
-            return 1;
+            return redirect('/ticketTripDetailIndex');
         }
         else
         {
-            return 2;
+            return "Data Not Saving";
         }
-        dd($request);
+
+    }
+    return redirect('/ticketTripDetailIndex');
     }
 
     /**
@@ -55,9 +71,20 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function show(Ticket $ticket)
+    public function ticketTripDetailStore(TicketTripDetailRequest $request)
     {
-        //
+        $ticket=Ticket::where('id',$request->id)->first();
+        $ticket->fill($request->all())->save();
+     return redirect('/ticketPassengerIndex');//goto ticketTripDetailIndex
+    }
+
+
+
+    public function ticketPassengerIndex(){
+        // $ticket=Ticket::where('user_id','=',Auth::user()->id)->where('status','=','Incomplete')->first();
+        $ticket=Auth::user()->ticket()->where('status','=','Incomplete')->first();
+        $ps=$ticket->passengers()->get();
+        return view('customer.ticket.passenger')->with('ps',$ps)->with('ticket',$ticket);
     }
 
     /**
@@ -66,10 +93,23 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function edit(Ticket $ticket)
+    public function ticketSelectAgent(Request $request)
     {
-        //
+        $t= Ticket::where('id', $request->id)->first();
+       
+        return view('customer.ticket.agent')->with('ticket',$t)->with('agents',User::where('membership','Agent')->get());
     }
+
+    public function ticketStoreAgent(Request $request)
+    {
+        Ticket::where('id', $request->id)->update([
+            'agent_id'=>$request->agent_id,
+        ]);       
+        
+        return redirect('/customerdashboard');
+    }
+
+    
 
     /**
      * Update the specified resource in storage.
@@ -91,6 +131,6 @@ class TicketController extends Controller
      */
     public function destroy(Ticket $ticket)
     {
-        //
+        dd($ticket);
     }
 }

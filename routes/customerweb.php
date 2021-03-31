@@ -14,18 +14,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VisaController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\TicketPassengerController;
+
 
 Route::middleware(['auth'])->group(function () {
 
     
     Route::middleware(['verified'])->group(function () {
 
-        Route::get('/customerdashboard', function () {
-            $visas=DB::table('visas')->where('user_id','=',Auth::user()->id)->get();
-            return view('customer.dashboard')->with('visas',$visas);
-        
-        })->middleware('address')->middleware('customer')->name('dashboard');
-        
+   
         
 
         
@@ -33,6 +30,12 @@ Route::middleware(['auth'])->group(function () {
         Route::middleware(['customer'])->group(function(){
         
 //mange agent
+Route::get('/customerdashboard', function () {
+    $visas=DB::table('visas')->where('user_id','=',Auth::user()->id)->get();
+    $tickets=DB::table('tickets')->where('user_id','=',Auth::user()->id)->get();
+    return view('customer.dashboard')->with('visas',$visas)->with('tickets',$tickets);
+
+})->middleware('address')->name('dashboard');
 
        
 
@@ -59,7 +62,16 @@ Route::get('/personalInformationIndex',[VisaController::class,'personalInformati
 Route::post('/personalInformationStore',[VisaController::class,'personalInformationStore'])->name('personalInformationStore');
     
 Route::post('/storeupdate',[VisaController::class,'storeupdate'])->name('storeupdate');
+Route::post('/ticketIncomplete',[TicketController::class,'ticketIncomplete'])->name('ticketIncomplete');
+Route::get('/ticketTripDetailIndex',[TicketController::class,'ticketTripDetailIndex']);
+Route::post('/ticketTripDetailStore',[TicketController::class,'ticketTripDetailStore'])->name('ticketTripDetailStore');
 
+Route::get('/ticketPassengerIndex',[TicketController::class,'ticketPassengerIndex']);
+//adding passenger 
+Route::get('destroyPassenger/{id}',[TicketPassengerController::class,'destroy']);
+Route::post('/addTicketPassenger',[TicketPassengerController::class,'store'])->name('addTicketPassenger');
+Route::post('/ticketSelectAgent',[TicketController::class,'ticketSelectAgent'])->name('ticketSelectAgent');
+Route::post('/ticketStoreAgent',[TicketController::class,'ticketStoreAgent'])->name('ticketStoreAgent');
 
 //passenger
 Route::get('/agentIndex',[VisaController::class,'agentIndex']);

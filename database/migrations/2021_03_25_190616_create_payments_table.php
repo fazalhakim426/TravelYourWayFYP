@@ -16,6 +16,8 @@ class CreatePaymentsTable extends Migration
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('visa_id');
+            $table->unsignedBigInteger('ticket_id');
+            $table->unsignedBigInteger('hotel_id');
             $table->double('charges', 8, 2);
         });
     }

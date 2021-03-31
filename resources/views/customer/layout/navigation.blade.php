@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     
-                    <li class="border-t mt-2 border-light-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/visas')) bg-white @endif @if((Request::url() === URL::to('/').'/personalInformationIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/contactInformationIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/agentIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit3')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit4')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit5')) bg-white @endif @if((Request::url() === URL::to('/').'/create1')) bg-white @endif ">
+                    <li class="border-t mt-2 border-light-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/visas')) bg-white @endif @if((Request::url() === URL::to('/').'/personalInformationIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/contactInformationIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/agentIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/apply/Hajj')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit4')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit5')) bg-white @endif @if((Request::url() === URL::to('/').'/apply/Ummrah')) bg-white @endif ">
                         <a   href="/visas"
                            class="mx-4   hover:font-normal text-sm text-nav-item no-underline">
                            Visa Apply
@@ -59,7 +59,7 @@
                     </li>
 
 
-                    <li class="border-t mt-2 border-light-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/tickets')) bg-white @endif @if((Request::url() === URL::to('/').'/edit0')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit1')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit2')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit3')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit4')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit5')) bg-white @endif @if((Request::url() === URL::to('/').'/create1')) bg-white @endif ">
+                    <li class="border-t mt-2 border-light-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/tickets')) bg-white @endif @if((Request::url() === URL::to('/').'/ticketTripDetailIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit1')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit2')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit3')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit4')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit5')) bg-white @endif @if((Request::url() === URL::to('/').'/create1')) bg-white @endif ">
                         <a   href="/tickets"
                            class="mx-4   hover:font-normal text-sm text-nav-item no-underline">
                            Ticket Apply
@@ -68,13 +68,13 @@
                     </li>
 
                     
-                    <li class="border-t mt-2 border-light-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/mangeagent')) bg-white @endif @if((Request::url() === URL::to('/').'/edit0')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit1')) bg-white @endif"  >
+                    {{-- <li class="border-t mt-2 border-light-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/mangeagent')) bg-white @endif @if((Request::url() === URL::to('/').'/edit0')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit1')) bg-white @endif"  >
                         <a   href="/manage/agents"
                            class="mx-4   hover:font-sans text-sm text-nav-item no-underline">
                            Manage Agent
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>
-                    </li>
+                    </li> --}}
 <!-- 
                             <li class="border-t border-light-border w-full h-full px-2 py-3 @if(Request::url() === URL::to('/').'/ummrahs') bg-white @endif">
                                 <a  href="ummrahs"  

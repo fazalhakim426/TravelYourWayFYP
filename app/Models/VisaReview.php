@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class VisaReview extends Model
 {
     use HasFactory;
+    
 }

@@ -16,6 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      *
      * @var array
      */
+    protected $table='users';
     protected $fillable = [
         'name',
         'email',
@@ -24,10 +25,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'phone_number',
         'membership',
     ];
-
+    protected $attributes = [
+        'membership' => 'Customer',
+    ];
     /**
      * The attributes that should be hidden for arrays.
-     *
+     *  s
      * @var array
      */
     protected $hidden = [
@@ -35,6 +38,17 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
+    public function ticket()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+    
+    public function visa()
+    {
+        return $this->hasMany(Visa::class);
+    }
+    
+  
     /**
      * The attributes that should be cast to native types.
      *

@@ -24,7 +24,12 @@ class PassengerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'title'=>'required',
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'date_of_birth'=>'required',
+            'passport_number'=>'required',
+            'nationality'=>'required',
         ];
     }
 }

@@ -16,7 +16,7 @@ class HotelController extends Controller
     {
         $hotels=Hotel::get();
         $countries=DB::table('countries')->get();
-        return view('admindashboard.management.hotel')->with('hotels',$hotels)->with('countries',$countries);
+        return view('agent.management.hotel')->with('hotels',$hotels)->with('countries',$countries);
     }
 
     /**

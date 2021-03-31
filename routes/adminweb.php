@@ -46,10 +46,7 @@ Route::resources([
     'posts' => CountryController::class,
 ]);  
 //hotel    
-Route::resources([
-    'hotels' => HotelController::class,
-    'posts' => HotelController::class,
-]);
+
 Route::get('hoteledit',[HotelController::class,'destroy']);
         // Route::get('countryedit',[CountryController::class,'edit'])
 

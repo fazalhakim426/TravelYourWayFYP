@@ -35,25 +35,27 @@
                         <ul class="list-reset flex border-b">
      <div class="md:flex">
   
-  <li class="mr-1">
+        <li class="mr-1">
+          
+            <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold" href="/tickets">Airline</a>
+            </li>
       
-    <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold" href="/visas">Trip Details</a>
-    </li>
-
-<li class="-mb-px mr-1 ">
-     <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold" href="/personalInformationIndex">Personal Information</a>
-  
-</li>
-<li class="mr-1 ">
-    <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold" href="/contactInformationIndex">Contact Information</a>
-     
-     
-   </li>
-   <li class="mr-1 ">
-    <a class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-dark font-semibold" href="#">Select Agent</a>
-     
-     
-   </li>
+        <li class="-mb-px mr-1 ">
+             <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold"  href="/personalInformationIndex">Trip Detail</a>
+          
+        </li>
+      
+        <li class="mr-1 ">
+          <!-- <a class="bg-white inline-block py-2 px-4 text-grey-light font-semibold" href="#">Tab</a> -->
+          <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold"  href="#">Passenger Details</a>
+          
+          
+        </li>
+        <li class="mr-1">
+          <a class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-dark font-semibold" href="#">Select Agent</a>
+         
+        </li>
+      
       
 
 
@@ -80,9 +82,9 @@
                                         <img class="w-40 h-40 md:w-80  md:h-80  lg:w-100 lg:h-100  xl:w-120 lg:h-120  2xl:w-140 2xl:h-140 "  src="https://i.imgur.com/8Km9tLL.jpg" />
                                         </div>
                                         <div class="flex ">
-                                            <form method='post' action="{{route('selectAgent')}}" class="px-1">
+                                            <form method='post' action="{{route('ticketStoreAgent')}}" class="px-1">
                                                 @csrf   
-                                            <input type=hidden name='id' value="{{$visa->id}}">
+                                            <input type=hidden name='id' value="{{$ticket->id}}">
                                             <input type=hidden name='agent_id' value="{{$agent->id}}">
                                            <button type='submit' class="text-blue-500" >select</button>
                                         

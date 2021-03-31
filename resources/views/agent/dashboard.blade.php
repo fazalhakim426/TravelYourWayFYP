@@ -15,7 +15,7 @@
 
 <body>
 <!--Container -->
-@include('agent.layout.adminnavigation')
+@include('agent.layout.navigation')
 <!--Main-->
             <main class="bg-white-300 flex-1 p-3 overflow-hidden">
 
@@ -107,11 +107,13 @@
                                               <table class="table text-grey-darkest">
                                        <thead class="bg-grey-dark text-white text-normal">
                                       <tr>
-                                        <th class="border w-1/10 px-4 py-2">No#</th>
-                                        <th class="border w-1/8 px-4 py-2">Daparture</th>
-                                        <th class="border w-1/8 px-4 py-2">Type</th>
-                                        <th class="border w-1/6 px-4 py-2">Contact#</th>
-                                        <th class="border w-1/4 px-4 py-2">Request Payment</th>
+
+                                        <th class="border w-1/8 px-4 py-2">index</th>
+                                        <th class="border w-1/8 px-4 py-2">Name</th>
+                                        <th class="border w-1/8 px-4 py-2">Address</th>
+                                        <th class="border w-1/8 px-4 py-2">Visa Country</th>
+                                        <th class="border w-1/6 px-4 py-2">passport#</th>
+                                        <th class="border w-1/7 px-4 py-2">Request Payment</th>
                                         <th class="border w-1/7 px-4 py-2">Order Status</th>
                                         <th class="border w-1/5 px-4 py-2">Actions</th>
                                       </tr>
@@ -127,14 +129,25 @@
                                       <tr>
                                       <td class="border px-4 py-2">{{$i++}}</td>
                                       <td class="border px-4 py-2">
-                                      From {{ $visa->departure_airport}}<br>Members:{{$visa->number_of_people}} </td>
+                                        {{$visa->title." ".$visa->first_name." ".$visa->last_name}}
+                                        </td>
+    
+                                         <td class="border px-4 py-2 center">
+                                           {{$visa->street." ".$visa->phone_number}}
+                                      
+                                         </td>
+                                           <td class="border px-4 py-2 center">
+                                           {{ $visa->type=="Hajj"|| $visa->type=="Ummrah"?"":$visa->visa_apply_country}}<br>
+                                           
+                                           {{$visa->type}}
+                                       </td>
+                                            <td class="border">
+                                            {{$visa->passport_number}}
+    
+                                            </td>
 
-                                      </td>
-                                        <td class="border px-4 py-2">
-                                        {{ $visa->type=="Hajj"|| $visa->type=="Ummrah"?"":$visa->visa_apply_country}}<br>{{$visa->type}}</td>
-
-                                            <td class="border px-4 py-2">{{$visa->name}}<br>from: {{$visa->city}}<br>{{$visa->phone_number}}<br>{{$visa->work_phone}}</td>
-                                            <td class="border px-4 py-2">
+                                      
+                                      <td class="border px-4 py-2">
                                             <form action="{{route('applycharges')}}" method="post">
                                             @csrf
                                             <input name='id' value="{{$visa->id}}" type=hidden>
@@ -216,16 +229,24 @@
                                      
                                      <tr>
                                      <td class="border px-4 py-2">{{$i++}}</td>
-                                     <td class="border px-4 py-2">
-                                     From {{ $visa->departure_airport}}<br>Members:{{$visa->number_of_people}} </td>
-
-                                     </td>
                                        <td class="border px-4 py-2">
-                                       {{ $visa->type=="Hajj"|| $visa->type=="Ummrah"?"":$visa->visa_apply_country}}<br>{{$visa->type}}</td>
+                                    {{$visa->title." ".$visa->first_name." ".$visa->last_name}}
+                                    </td>
 
-                                           <td class="border px-4 py-2">{{$visa->name}}<br>from: {{$visa->city}}<br>{{$visa->phone_number}}<br>{{$visa->work_phone}}</td>
-                                           <td class="border px-4 py-2">
-                                           <form action="{{route('applycharges')}}" method="post">
+                                     <td class="border px-4 py-2 center">
+                                       {{$visa->street." ".$visa->phone_number}}
+                                  
+                                     </td>
+                                       <td class="border px-4 py-2 center">
+                                       {{ $visa->type=="Hajj"|| $visa->type=="Ummrah"?"":$visa->visa_apply_country}}<br>
+                                       
+                                       {{$visa->type}}
+                                   </td>
+                                        <td class="border">
+                                        {{$visa->passport_number}}
+
+                                        </td>
+                                         <form action="{{route('applycharges')}}" method="post">
                                            @csrf
                                            <input name='id' value="{{$visa->id}}" type=hidden>
                                            <input name='charges'  value="{{$visa->charges}}"
@@ -323,16 +344,22 @@
                                      <tr>
                                      <td class="border px-4 py-2">{{$i++}}</td>
                                      <td class="border px-4 py-2">
-                                     From {{ $visa->departure_airport}}<br>Members:{{$visa->number_of_people}} </td>
-
-                                     </td>
-                                    
-                                    </td>
-                                    <td class="border px-4 py-2">
-                                    {{ $visa->type=="Hajj"|| $visa->type=="Ummrah"?"":$visa->visa_apply_country}}<br>{{$visa->type}}</td>
-
-                                        <td class="border px-4 py-2">{{$visa->name}}<br>from: {{$visa->city}}<br>{{$visa->phone_number}}<br>{{$visa->work_phone}}</td>
-                                     
+                                        {{$visa->title." ".$visa->first_name." ".$visa->last_name}}
+                                        </td>
+    
+                                         <td class="border px-4 py-2 center">
+                                           {{$visa->street." ".$visa->phone_number}}
+                                      
+                                         </td>
+                                           <td class="border px-4 py-2 center">
+                                           {{ $visa->type=="Hajj"|| $visa->type=="Ummrah"?"":$visa->visa_apply_country}}<br>
+                                           
+                                           {{$visa->type}}
+                                       </td>
+                                            <td class="border">
+                                            {{$visa->passport_number}}
+    
+                                            </td>
                                      <td class="border px-4 py-2"> <i class="fas fa-check text-green-500 mx-2"></i> {{ $visa->charges}} PKR
                                       
                                         @if($visa->charges&&$visa->status=='Paid')
@@ -419,14 +446,24 @@
                                      <tr>
                                      <td class="border px-4 py-2">{{$i++}}</td>
                                      <td class="border px-4 py-2">
-                                     From {{ $visa->departure_airport}}<br>Members:{{$visa->number_of_people}} </td>
-
-                                     </td>
-                                       <td class="border px-4 py-2">
-                                       {{ $visa->type=="Hajj"|| $visa->type=="Ummrah"?"":$visa->visa_apply_country}}<br>{{$visa->type}}</td>
-
-                                           <td class="border px-4 py-2">{{$visa->name}}<br>from: {{$visa->city}}<br>{{$visa->phone_number}}<br>{{$visa->work_phone}}</td>
-                                           <td class="border px-4 py-2">
+                                        {{$visa->title." ".$visa->first_name." ".$visa->last_name}}
+                                        </td>
+    
+                                         <td class="border px-4 py-2 center">
+                                           {{$visa->street." ".$visa->phone_number}}
+                                      
+                                         </td>
+                                           <td class="border px-4 py-2 center">
+                                           {{ $visa->type=="Hajj"|| $visa->type=="Ummrah"?"":$visa->visa_apply_country}}<br>
+                                           
+                                           {{$visa->type}}
+                                       </td>
+                                            <td class="border">
+                                            {{$visa->passport_number}}
+    
+                                            </td>
+                                            
+                                            <td class="border px-4 py-2">
                                             <i class="fas fa-times text-red-500 mx-2">{{ $visa->charges}} PKR</i>
                                      
                                        </td>
@@ -525,17 +562,23 @@
                                      <tr>
                                      <td class="border px-4 py-2">{{$i++}}</td>
                                      <td class="border px-4 py-2">
-                                     From {{ $visa->departure_airport}}<br>Members:{{$visa->number_of_people}} </td>
-
-                                     </td>
-                                    
-                                    </td>
-                                    <td class="border px-4 py-2">
-                                    {{ $visa->type=="Hajj"|| $visa->type=="Ummrah"?"":$visa->visa_apply_country}}<br>{{$visa->type}}</td>
-
-                                        <td class="border px-4 py-2">{{$visa->name}}<br>from: {{$visa->city}}<br>{{$visa->phone_number}}<br>{{$visa->work_phone}}</td>
-                                     
-                                     <td class="border px-4 py-2"> <i class="fas fa-check text-green-500 mx-2"></i> {{ $visa->charges}} PKR</td>
+                                        {{$visa->title." ".$visa->first_name." ".$visa->last_name}}
+                                        </td>
+    
+                                         <td class="border px-4 py-2 center">
+                                           {{$visa->street." ".$visa->phone_number}}
+                                      
+                                         </td>
+                                           <td class="border px-4 py-2 center">
+                                           {{ $visa->type=="Hajj"|| $visa->type=="Ummrah"?"":$visa->visa_apply_country}}<br>
+                                           
+                                           {{$visa->type}}
+                                       </td>
+                                            <td class="border">
+                                            {{$visa->passport_number}}
+    
+                                            </td>
+                                             <td class="border px-4 py-2"> <i class="fas fa-check text-green-500 mx-2"></i> {{ $visa->charges}} PKR</td>
                                       </td>
                                            <td class="border px-4 py-2">
                                            <button class="bg-green-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg">
