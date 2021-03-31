@@ -142,7 +142,6 @@ class VisaController extends Controller
            Visa::where('id',$request->id)->update([
                'street'=> $request['street'],
                'email'=>$request['email'],
-               'country'=>$request['country'],
                'phone_number'=>$request['phone_number'],
                'work_phone'=>$request['work_phone'],
               ]);
@@ -161,7 +160,8 @@ class VisaController extends Controller
     public function personalInformationStore(PersonalInformationRequest $request)
     {
            Visa::where('id',$request->id)->update([
-               'first_name'=> $request['first_name'],
+                'title'=> $request['title'],
+                  'passport_number'=> $request['passport_number'],
                'last_name'=>$request['last_name'],
                'gender'=>$request['gender'],
                'date_of_birth'=>$request['date_of_birth'],

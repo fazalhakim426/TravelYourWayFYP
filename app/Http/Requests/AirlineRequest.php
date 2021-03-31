@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TripDetialRequest extends FormRequest
+class AirlineRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -13,7 +13,7 @@ class TripDetialRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class TripDetialRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'booking_source'=>'required',
+            'issuing_airline'=>'required',
         ];
     }
 }

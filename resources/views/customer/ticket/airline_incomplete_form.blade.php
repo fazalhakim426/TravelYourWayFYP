@@ -1,19 +1,20 @@
-<form method="POST"   action="{{ route('visas.store') }}">
+<form method="POST"   action="{{ route('storeupdate') }}">
     @csrf
 
     <div class="flex flex-wrap -mx-3 mb-6">
-                                <div  id='visaapplycountry' class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                    <label class="block uppercase tracking-wide text-grey-darker  mb-1"
+                                <div id='visaapplycountry' class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
                                            for="grid-state">
-                                            Visa Apply Country
+                                        Visa Apply Country
                                     </label>
                                     <div class="relative">
                                         <select name='visa_apply_country' class="border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                                                id="grid-state">
-                                                @if(old('visa_apply_country')!=null)
-                                                <option>{{ old('visa_apply_country') }}</option>
-                                                @endif
+                                                id="grid-state"
                                                 
+                                                >
+                                                
+                                                <option>{{ old('visa_apply_country')==null? $visa->visa_apply_country:old('visa_apply_country') }}</option>
+                                         
                                             <option>India</option>
                                             <option>pakisatan</option>
                                             <option>america</option>
@@ -30,32 +31,34 @@
                                                       
 
                                
+                               
                             </div>
 
-                            
+                            <input name=id type=hidden value="{{$visa->id }}">
 
 
                     <div class="flex flex-wrap -mx-3 mb-6">
                                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                    <label class="block uppercase tracking-wide text-grey-darker  mb-1"
+                                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
                                            for="grid-state">
                                         Type
                                     </label>
                                     <div class="relative">
                                         <select id=type name='type' onchange="myFunction(this.value)" class="border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                                 id="grid-state">
-                                                @if(old('type'))
-                                                <option>{{ old('type')}}</option>
-                                                @endif
+                                                <option value="{{ old('type')==null?$visa->type:old('type') }}">{{ old('type')==null?$visa->type:old('type') }}</option>
+                                               
                                                 @if((Request::url()==URL::to('/').'/apply/Ummrah')||(Request::url()==URL::to('/').'/apply/Hajj'))
                                              
-                                                <option>{{$type}}</option>
-                                                @endif
-                                           
-                                            <option >Immigration</option>
-                                                <option  >Ummrah</option>
-                                            <option >Hajj</option>
-                                            <option  >Visit</option>
+                                             <option>{{$type}}</option>
+                                             @endif
+                                             <option>{{$type}}</option>
+                                <option value='Immigration'>Immigration</option>
+                                <option  value='Ummrah'>Ummrah</option>
+                                <option value='Hajj'>Hajj</option>
+                                <option  value='Visit'>Visit</option>
+                                
+                                      
                                         </select>
                                         @error('type')
                                            <label class="text-red-500 text-xs italic"
@@ -77,14 +80,14 @@
 
                                
                                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 " >
-                                    <label class="block uppercase tracking-wide text-gray-700  mb-1"
+                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
                                            for="grid-first-name">
                                       Number of Days you want to stay
                                     </label>
                                     <input name='days' 
                                      class="appearance-none @error('days') border-red-500 @enderror block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 border-yellow-500   leading-tight focus:outline-none focus:bg-white-500"
-                                           value="{{old('days')}}"
-                                           type="number" placeholder="Days"/>
+                                           value="{{  old('days')==null?$visa->days:old('days') }}"
+                                           type="number" placeholder="Days">
 
                                     @error('days')
                                     <p class="text-red-500 text-xs italic">{{$message}}</p>
@@ -93,34 +96,6 @@
                             </div>
                              
 
-
-
-
-
-
-
-
-
-                            <div class="flex flex-wrap -mx-3 mb-6">
-                              
-
-
-
-                             
-                                
-                   
-
-                                
-                            </div>
-                     <div class="flex flex-wrap -mx-3 mb-6">
-                                
-
-                            </div>
-                  
-
-
-
-                      
 
                                 <div class="inline-flex">
                                      <a href="/dashboard">

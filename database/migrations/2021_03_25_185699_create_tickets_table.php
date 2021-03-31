@@ -18,18 +18,20 @@ class CreateTicketsTable extends Migration
 
             
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('agent_id');
+            $table->unsignedBigInteger('agent_id')->nullable();;
             
+            $table->string('status');
+            //airline
             $table->string('booking_source');
-            $table->string('journey_type');  //signle round multi
             $table->string('issuing_airline');
 
-
-            $table->string('ticket_apply_country');
-            $table->string('departure_airport');
-            $table->string('arrival_airport');
-            $table->string('departure_date');
-            $table->string('class');  //  business, first class ,  economy class 
+//trip detial
+            $table->string('ticket_apply_country')->nullable();
+            $table->string('departure_airport')->nullable();
+            $table->string('arrival_airport')->nullable();
+            $table->string('departure_date')->nullable();
+            $table->string('class')->nullable();  //  business, first class ,  economy class 
+            $table->string('journey_type')->nullable();  //signle round multi
            
               //agent field
             
@@ -37,7 +39,7 @@ class CreateTicketsTable extends Migration
               $table->string('base_fare')->nullable();
               $table->string('discount')->nullable();
               $table->string('total_payable')->nullable();
-              $table->unsignedBigInteger('super_agent_id');//asign by agent//show passenger details and passport details
+              $table->unsignedBigInteger('super_agent_id')->nullable();//asign by agent//show passenger details and passport details
   
             $table->timestamps();
         });

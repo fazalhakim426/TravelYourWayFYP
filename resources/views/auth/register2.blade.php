@@ -21,13 +21,7 @@
     <div class="flex justify-center -mt-8">
     </div>
 
-    <div style="border: 1px solid #DDD;">
-        <img src="https://i.imgur.com/8Km9tLL.jpg" type='file' class="rounded-full border-solid border-white border-2 -mt-3">		
-    
-        <img src="icon.png"/>
-        <input style="border: none;"/>
-    </div>
-</div>
+ 
 
 <div class="mt-4">
     <x-label for="name" :value="__('Name')" />

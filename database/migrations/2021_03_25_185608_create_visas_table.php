@@ -29,8 +29,9 @@ class CreateVisasTable extends Migration
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('gender')->nullable();
+            $table->string('title')->nullable();
+            $table->string('passport_number')->nullable();
              //contact information
-            $table->string('country')->nullable();
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('work_phone')->nullable();

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class PersonalInformationRequest extends FormRequest
+class TicketTripDetialRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,12 +24,15 @@ class PersonalInformationRequest extends FormRequest
     public function rules()
     {
         return [
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'date_of_birth'=>'required',
-            'gender'=>'required',
-            'title'=>'required',
-            'passport_number'=>'required',
+          
+
+        'journey_type'=>'required',  //signle round multi
+        'ticket_apply_country'=>'required',
+        'departure_airport'=>'required',
+        'arrival_airport'=>'required',
+        'departure_date'=>'required',
+        'class'=>'required',  //  business, first class ,  economy class 
+       
         ];
     }
 }

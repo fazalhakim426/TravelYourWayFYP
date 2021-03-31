@@ -77,19 +77,7 @@
                                     <div class="flex flex-wrap -mx-3 mb-6">
                                         
                                         <div class="w-full md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-gray-700  mb-1"
-                                                   for="grid-last-name">
-                                                Title
-                                            </label>
-                                            <input name="title"  value="{{old('title')==null?($visa->title=null?"Mr":"Mr"):old('first_name')}}"  class="appearance-none block w-full bg-gray-200 @error('first_name')  border-red-500 @enderror text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight border-yellow-500   leading-tight focus:outline-none focus:bg-white-500 focus:bg-white-500 focus:border-gray-600"
-                                                   id="grid-last-name" type="text" placeholder="Mr">
-                                                   @error('title')
-                                                   <p class="text-red-500 text-xs italic">{{$message}}</p>
-                                                   @enderror
-                                        </div> 
-
-                                        <div class="w-full md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-gray-700  mb-1"
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
                                                    for="grid-last-name">
                                                 First_name
                                             </label>
@@ -102,24 +90,13 @@
 
 
                                         <div class="w-full md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-gray-700  mb-1"
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
                                                    for="grid-last-name">
                                                 Last Name
                                             </label>
                                             <input name="last_name"  value="{{old('last_name')==null?($visa->last_name=null?"Pakistan":"Pakistan"):old('last_name')}}"  class="appearance-none block w-full bg-gray-200 @error('last_name')  border-red-500 @enderror text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight border-yellow-500   leading-tight focus:outline-none focus:bg-white-500 focus:bg-white-500 focus:border-gray-600"
                                                    id="grid-last-name" type="text" placeholder="Pakistan">
                                                    @error('last_name')
-                                                   <p class="text-red-500 text-xs italic">{{$message}}</p>
-                                                   @enderror
-                                        </div>
-                                        <div class="w-full md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-gray-700  mb-1"
-                                                   for="grid-last-name">
-                                                Passport Number
-                                            </label>
-                                            <input name="passport_number"  value="{{old('passport_number')==null?($visa->passport_number):old('passport_number')}}"  class="appearance-none block w-full bg-gray-200 @error('last_name')  border-red-500 @enderror text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight border-yellow-500   leading-tight focus:outline-none focus:bg-white-500 focus:bg-white-500 focus:border-gray-600"
-                                                   id="grid-last-name" type="text" placeholder="Passport Number">
-                                                   @error('passport_number')
                                                    <p class="text-red-500 text-xs italic">{{$message}}</p>
                                                    @enderror
                                         </div>
@@ -132,7 +109,7 @@
                                     <div class="flex flex-wrap -mx-3 mb-6">
                                         
                                         <div class="w-full md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-gray-700  mb-1"
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
                                                    for="grid-last-name">
                                                    Date Of Birth
                                             </label>
@@ -145,7 +122,7 @@
 
 
                                         <div class="w-full md:w-1/2 px-3">
-                                            <label class="block uppercase tracking-wide text-gray-700  mb-1"
+                                            <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
                                                    for="grid-last-name">
                                                    Gender
                                                 </label>

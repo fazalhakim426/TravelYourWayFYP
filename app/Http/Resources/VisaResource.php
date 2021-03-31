@@ -26,6 +26,8 @@ class VisaResource extends JsonResource
             'type'=>$this->type,  //visit immigration hajj ummrah
             'days'=>$this->days,
     //personal information
+            'passport_number'=>$this->date_of_birth,
+            'title'=>$this->first_name,
             'date_of_birth'=>$this->date_of_birth,
             'first_name'=>$this->first_name,
             'last_name'=>$this->last_name,

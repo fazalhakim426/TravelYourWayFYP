@@ -3,7 +3,7 @@
 
     <div class="flex flex-wrap -mx-3 mb-6">
                                 <div id='visaapplycountry' class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
+                                    <label class="block uppercase tracking-wide text-grey-darker  mb-1"
                                            for="grid-state">
                                         Visa Apply Country
                                     </label>
@@ -39,7 +39,7 @@
 
                     <div class="flex flex-wrap -mx-3 mb-6">
                                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
+                                    <label class="block uppercase tracking-wide text-grey-darker  mb-1"
                                            for="grid-state">
                                         Type
                                     </label>
@@ -80,7 +80,7 @@
 
                                
                                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0 " >
-                                    <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1"
+                                    <label class="block uppercase tracking-wide text-gray-700  mb-1"
                                            for="grid-first-name">
                                       Number of Days you want to stay
                                     </label>

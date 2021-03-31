@@ -18,12 +18,13 @@ class Visa extends Model
         'type',  //visit immigration hajj ummrah
         'days',
 //personal information
+        'title',
+        'passport_number',
         'date_of_birth',
         'first_name',
         'last_name',
         'gender',
 //contact informaiton
-        'country',
         'email',
         'phone_number',
         'work_phone',

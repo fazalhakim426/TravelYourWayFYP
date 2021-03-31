@@ -26,10 +26,13 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::apiResources([
     'tickets' => TicketAPIController::class,
+    'post'=>TicketAPIController::class,
 ]);  
+Route::get('userTickets/{id}',[VisaAPIController::class,'getAll']);
 
 Route::apiResources([
     'visas' => VisaAPIController::class,
+    'post'=>VisaAPIController::class,
 ]);  
 Route::get('userVisas/{id}',[VisaAPIController::class,'getAll']);
 

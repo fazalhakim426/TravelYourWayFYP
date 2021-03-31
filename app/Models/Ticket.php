@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use Laravel\Passport\HasApiTokens;
 class Ticket extends Model
 {
     use HasFactory,HasApiTokens;
@@ -14,7 +14,7 @@ class Ticket extends Model
           
         'user_id',
         'agent_id',
-        
+        'status',
         'booking_source',
         'journey_type',  //signle round multi
         'issuing_airline',

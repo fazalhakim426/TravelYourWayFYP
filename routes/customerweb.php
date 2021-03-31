@@ -31,12 +31,6 @@ Route::middleware(['auth'])->group(function () {
         
 
         Route::middleware(['customer'])->group(function(){
-
-    
-        
-        // Route::get('/immigrationvisa0',function(){
-        //     return view('userdashboard.immigration_apply.immigration_visa_step_0');
-        // });
         
 //mange agent
 

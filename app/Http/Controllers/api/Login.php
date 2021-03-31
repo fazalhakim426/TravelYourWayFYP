@@ -23,7 +23,7 @@ class Login extends Controller
   
       if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
           $user = Auth::user();
-         $user->likes=explode(',',$user->likes);
+        //  $user->likes=explode(',',$user->likes);
           return response()->json([
             'success' => true,
             'user' => $user

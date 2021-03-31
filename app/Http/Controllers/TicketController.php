@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Ticket;
 use Illuminate\Http\Request;
-
+use App\Http\Requests\AirlineRequest;
+use DB,Auth;
 class TicketController extends Controller
 {
     /**
@@ -14,11 +15,9 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $visa=DB::table('tickets')->where('user_id','=',Auth::user()->id)->where('status','=','incomplete')->first();
-      
-        return view('customer.visa.trip_details')->with('visa',$visa)->with('type',null);
+        $visa=Ticket::where('user_id','=',Auth::user()->id)->where('status','=','Incomplete')->first();
+        return view('customer.ticket.airline')->with('visa',$visa)->with('type',null);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -35,9 +34,19 @@ class TicketController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AirlineRequest $request)
     {
-        //
+        $request['user_id']=Auth::user()->id;
+        $request['status']="Incomplete";
+        if(Ticket::create($request->all(),['status'=>"submitted"]))
+        {
+            return 1;
+        }
+        else
+        {
+            return 2;
+        }
+        dd($request);
     }
 
     /**
