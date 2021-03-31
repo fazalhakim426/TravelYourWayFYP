@@ -104,7 +104,8 @@ class TicketController extends Controller
     {
         Ticket::where('id', $request->id)->update([
             'agent_id'=>$request->agent_id,
-        ]);       
+            'status'=>"Submitted",
+        ]);
         
         return redirect('/customerdashboard');
     }

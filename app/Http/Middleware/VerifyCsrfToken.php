@@ -20,5 +20,7 @@ class VerifyCsrfToken extends Middleware
         'http://127.0.0.1:8000/api/tickets',
         'http://127.0.0.1:8000/api/visas',
         'http://127.0.0.1:8000/api/visas/{id}/edit',
+        'http://127.0.0.1:8000/api/store_ticket',
+        
     ];
 }
