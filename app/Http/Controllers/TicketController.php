@@ -119,7 +119,10 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Ticket $ticket)
+    public function show($id)
+    {
+        dd($id);
+    } public function update(Request $request, Ticket $ticket)
     {
         //
     }
@@ -130,8 +133,11 @@ class TicketController extends Controller
      * @param  \App\Models\Ticket  $ticket
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Ticket $ticket)
+    public function destroy($id)
     {
-        dd($ticket);
+       
+        Ticket::destroy($id);
+            
+            return back();
     }
 }

@@ -131,9 +131,9 @@
                                                         @if(old('ticket_apply_country')==null? $ticket->ticket_apply_country:old('ticket_apply_country'))
                                                         <option>{{ old('ticket_apply_country')==null? $ticket->ticket_apply_country:old('ticket_apply_country') }}</option>
                                                         @endif
-                                                    <option>a</option>
-                                                    <option>s</option>
-                                                    <option>d</option>
+                                                    <option>afghanistan</option>
+                                                    <option>china</option>
+                                                    <option>pakistan</option>
                                                 </select>
                                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-grey-darker">
                                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -157,9 +157,11 @@
                                                         @if(old('departure_airport')==null? $ticket->departure_airport:old('departure_airport'))
                                                         <option>{{ old('departure_airport')==null? $ticket->departure_airport:old('departure_airport') }}</option>
                                                         @endif
-                                                    <option>a</option>
-                                                    <option>s</option>
-                                                    <option>d</option>
+                                                        <option >Pakistan International Airlines</option>
+                                                        <option  >Airblue</option>
+                                                    <option >Askari Aviation</option>
+                                                    <option >Shaheen Airline</option>
+                                                    <option >SereneAir</option>
                                                 </select>
                                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-grey-darker">
                                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -185,9 +187,11 @@
                                                         @if(old('arrival_airport')==null? $ticket->arrival_airport:old('arrival_airport'))
                                                         <option>{{ old('arrival_airport')==null? $ticket->arrival_airport:old('arrival_airport') }}</option>
                                                         @endif
-                                                    <option>a</option>
-                                                    <option>s</option>
-                                                    <option>d</option>
+                                                        <option >Pakistan International Airlines</option>
+                                                        <option  >Airblue</option>
+                                                    <option >Askari Aviation</option>
+                                                    <option >Shaheen Airline</option>
+                                                    <option >SereneAir</option>
                                                 </select>
                                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-grey-darker">
                                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"

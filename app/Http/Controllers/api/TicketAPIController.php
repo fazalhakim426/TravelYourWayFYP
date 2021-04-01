@@ -29,8 +29,8 @@ class TicketAPIController extends Controller
          'departure_airport'=>'required',    
          'arrival_airport'=>'required',    
          'departure_date'=>'required',    
-         'class'=>'required',    
-         'issuing_airline'=>'required',    
+         'class'=>'required',  
+         'agent_id'=>'required',    
          
          
      ]);
@@ -60,9 +60,7 @@ class TicketAPIController extends Controller
                  'message' => " Some Error",
                ], 200);
          }
- 
- 
- 
+
          
     }
  
@@ -73,7 +71,7 @@ class TicketAPIController extends Controller
     {
     
      $validator = Validator::make($request->all(), [
-        'booking_source'=>'required',     
+          'booking_source'=>'required',     
          'user_id'=>'required',     
          'journey_type'=>'required',   
          'issuing_airline'=>'required',    
@@ -129,7 +127,8 @@ class TicketAPIController extends Controller
         'date_of_birth'=>'required',
         'passport_number'=>'required',
         'nationality'=>'required',    
-        'pax_type'=>'required',    
+        'pax_type'=>'required',       
+        'ticket_id'=>'required',    
         
     ]);
     

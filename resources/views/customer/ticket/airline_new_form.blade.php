@@ -16,11 +16,11 @@
             <div class="relative">
                 <select id=type name='issuing_airline'  class="border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
                         id="grid-state">
-                   
-                   
-                    <option >A</option>
-                        <option  >B</option>
-                    <option >C</option>
+                        <option >Pakistan International Airlines</option>
+                        <option  >Airblue</option>
+                    <option >Askari Aviation</option>
+                    <option >Shaheen Airline</option>
+                    <option >SereneAir</option>
                 </select>
                 @error('issuing_airline')
                    <label class="text-red-500 text-xs italic"
@@ -51,11 +51,14 @@
             <div class="relative">
                 <select id=type name='booking_source'  class="border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
                         id="grid-state">
+                        <option >Pakistan International Airlines</option>
+                        <option  >Airblue</option>
+                    <option >Askari Aviation</option>
+                    <option >Shaheen Airline</option>
+                    <option >SereneAir</option>
                    
-                   
-                    <option >a</option>
-                        <option  >b</option>
-                    <option >c</option>
+    
+
                 </select>
                 @error('booking_source')
                    <label class="text-red-500 text-xs italic"

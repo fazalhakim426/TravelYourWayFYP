@@ -20,7 +20,7 @@ class Membership
 
         $user=Auth::user();
         // dd($email);
-        if($user->email=="hakimfazal426@gmailw.com"||$user->email=="niazm1225@gmail.com")
+        if($user->membership=='Admin')
         {
             return redirect('admindashboard');
         }
@@ -32,11 +32,12 @@ class Membership
         }
         elseif($user->membership=='Super Agent'){
             return redirect('superagentdashboard');
-        }  elseif($user->phone_number==null){
+        }
+        elseif($user->phone_number==null){
             return redirect('register2');
         }
         else{
-            return redirect('/');
+            return 'Invalid Response';
         }
     }
 }

@@ -16,15 +16,16 @@ class isAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        $user=Auth::user();
-        if($user->email=="hakimfazal426@gmailw.com"||$user->email=="niazm1225@gmail.com")
-        {
-            return redirect('admindashboard');
-        }
-        else{
-            return redirect('/dashboard');
-        }
-    
+        // $user=Auth::user();
+        // dd($user);
+        // if($user->email=="hakimfazal426@gmail.com")
+        // {
+        //     return redirect('admindashboard');
+        // }
+        // else{
+        //     return redirect('/dashboard');
+        // }
+        return $next($request);
 
     }
 

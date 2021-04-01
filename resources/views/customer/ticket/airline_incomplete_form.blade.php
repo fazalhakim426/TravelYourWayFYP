@@ -13,9 +13,13 @@
                         
                         <option>{{ old('issuing_airline')==null? $ticket->issuing_airline:old('issuing_airline') }}</option>
                  
-                    <option>a</option>
-                    <option>s</option>
-                    <option>d</option>
+                        <option >Pakistan International Airlines</option>
+                        <option  >Airblue</option>
+                    <option >Askari Aviation</option>
+                    <option >Shaheen Airline</option>
+                    <option >SereneAir</option>
+                   
+    
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-grey-darker">
                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -39,9 +43,13 @@
                         
                         <option>{{ old('booking_source')==null? $ticket->booking_source:old('booking_source') }}</option>
                  
-                    <option>a</option>
-                    <option>s</option>
-                    <option>d</option>
+                        <option >Pakistan International Airlines</option>
+                        <option  >Airblue</option>
+                    <option >Askari Aviation</option>
+                    <option >Shaheen Airline</option>
+                    <option >SereneAir</option>
+                   
+    
                 </select>
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-grey-darker">
                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"

@@ -179,11 +179,11 @@
                                            </td>
                                            
                                            <td class="border px-4 py-2">
-                                               <a  href="edit0?id={{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                               <a  href="visas/{{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                                                        <i class="fas fa-eye"></i></a>
                                                       
 
-                                               <a  href="edit0?id={{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                               <a  href="visas/{{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                                                        <i class="fas fa-edit"></i></a>
                                                      
 
@@ -313,15 +313,15 @@
                                            </td>
                                            
                                            <td class="border px-4 py-2">
-                                               <a  href="edit0?id={{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                               <a  href="tickets/{{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                                                        <i class="fas fa-eye"></i></a>
                                                       
 
-                                               <a  href="edit0?id={{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                               <a  href="tickets/{{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                                                        <i class="fas fa-edit"></i></a>
                                                      
 
-                                                       <form method="POST" action="{{route('visas.destroy', $visa->id) }}"  >
+                                                       <form method="POST" action="{{route('tickets.destroy', $visa->id) }}"  >
                                                        @method('DELETE')
                                                      @csrf
                                                <button  type="submit" onclick="return confirm('Are you sure?')" class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">

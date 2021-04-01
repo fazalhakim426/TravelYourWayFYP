@@ -176,7 +176,7 @@ class VisaController extends Controller
         $agents=User::where('membership','Agent')->get();
         $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('status','=','incomplete')->first();
         return view('customer.visa.agent')->with('visa',$visa)->with('agents',$agents);
-    } 
+    }
 
     public function selectAgent(Request $request)
     {   
@@ -206,7 +206,7 @@ class VisaController extends Controller
      */
     public function show($id)
     {
-        //
+       return 'updating pending';
     }
 
     /**
