@@ -36,7 +36,7 @@
                     <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
                         <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
                             <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b items-center " style="background: #edf2f7">
-                               Please provide your Trip Detail so that we can  book for your desire arrival_airport.
+                               Please provide your Trip Detail.
                            </div>
                             <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b">
   

@@ -8,7 +8,7 @@
                     <i class="fas fa-bars pr-2 text-white" onclick="sidebarToggle()"></i>
                     
                     <a href="/" class="text-white">
-                  Agent
+                  Home
                   </a>
                 </div>
 
