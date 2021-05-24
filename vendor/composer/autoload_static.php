@@ -668,7 +668,6 @@ class ComposerStaticInit49d4d90d74ca2aa45d48aeac0b1cbb68
         'App\\Models\\TicketPassenger' => __DIR__ . '/../..' . '/app/Models/TicketPassenger.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\Visa' => __DIR__ . '/../..' . '/app/Models/Visa.php',
-        'App\\Models\\VisaPassenger' => __DIR__ . '/../..' . '/app/Models/VisaPassenger.php',
         'App\\Models\\VisaReview' => __DIR__ . '/../..' . '/app/Models/VisaReview.php',
         'App\\Notifications\\ApplyNotification' => __DIR__ . '/../..' . '/app/Notifications/ApplyNotification.php',
         'App\\Notifications\\PaymentRecievedNotification' => __DIR__ . '/../..' . '/app/Notifications/PaymentRecievedNotification.php',

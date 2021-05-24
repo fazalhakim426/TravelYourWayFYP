@@ -185,7 +185,7 @@
                                         </tr>
 
                                         
-                                      @endif
+                                       @endif
                                       @endforeach
                                     </tbody>
                                 </table>
@@ -209,13 +209,14 @@
                                              <table class="table text-grey-darkest">
                                       <thead class="bg-grey-dark text-white text-normal">
                                       <tr>
-                                       <th class="border w-1/10 px-4 py-2">No#</th>
-                                       <th class="border w-1/8 px-4 py-2">Daparture</th>
-                                       <th class="border w-1/8 px-4 py-2">Type</th>
-                                       <th class="border w-1/6 px-4 py-2">Contact#</th>
-                                       <th class="border w-1/4 px-4 py-2">Update Payment</th>
-                                       <th class="border w-1/7 px-4 py-2">Order Status</th>
-                                       <th class="border w-1/5 px-4 py-2">Actions</th>
+                                        <th class="border w-1/8 px-4 py-2">index</th>
+                                        <th class="border w-1/8 px-4 py-2">Name</th>
+                                        <th class="border w-1/8 px-4 py-2">Address</th>
+                                        <th class="border w-1/8 px-4 py-2">Visa Country</th>
+                                        <th class="border w-1/6 px-4 py-2">passport#</th>
+                                        <th class="border w-1/7 px-4 py-2">Request Payment</th>
+                                        <th class="border w-1/7 px-4 py-2">Order Status</th>
+                                        <th class="border w-1/5 px-4 py-2">Actions</th>
                                      </tr>
                                    </thead>
                                    <tbody>
@@ -241,24 +242,25 @@
                                        {{ $visa->type=="Hajj"|| $visa->type=="Ummrah"?"":$visa->visa_apply_country}}<br>
                                        
                                        {{$visa->type}}
-                                   </td>
+                                         </td>
                                         <td class="border">
-                                        {{$visa->passport_number}}
+                                           {{$visa->passport_number}}
 
-                                        </td>
+                                          </td>
+                                        <td>
                                          <form action="{{route('applycharges')}}" method="post">
                                            @csrf
                                            <input name='id' value="{{$visa->id}}" type=hidden>
                                            <input name='charges'  value="{{$visa->charges}}"
-                                class="appearance-none @error('charges') border-red-500 @enderror block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 border-yellow-500   leading-tight focus:outline-none focus:bg-white-500"
-                                      id="charges" value="{{old('charges')}}"
-                                      type="number" placeholder="Charges PKR">
-                                      </form>
+                                                  class="appearance-none @error('charges') border-red-500 @enderror block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 border-yellow-500   leading-tight focus:outline-none focus:bg-white-500"
+                                               id="charges" value="{{old('charges')}}"
+                                             type="number" placeholder="Charges PKR">
+                                              </form>
                                      
                                        </td>
                                            <td class="border px-4 py-2">
                                            <button class="bg-yellow-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg">
-                                          {{ $visa->status}}<br> {{ $visa->charges}} PKR
+                                                  {{ $visa->status}}<br> {{ $visa->charges}} PKR
                                            </button>
 
 
@@ -323,13 +325,13 @@
                                              <table class="table text-grey-darkest">
                                       <thead class="bg-grey-dark text-white text-normal">
                                       <tr>
-                                       <th class="border w-1/10 px-4 py-2">No#</th>
-                                       <th class="border w-1/8 px-4 py-2">Daparture</th>
-                                       <th class="border w-1/8 px-4 py-2">Type</th>
-                                       <th class="border w-1/6 px-4 py-2">Contact#</th>
-                                       <th class="border w-1/4 px-4 py-2">Paid</th>
-                                       <th class="border w-1/7 px-4 py-2">Order Status</th>
-                                       {{-- <th class="border w-1/5 px-4 py-2">Actions</th> --}}
+                                        <th class="border w-1/8 px-4 py-2">index</th>
+                                        <th class="border w-1/8 px-4 py-2">Name</th>
+                                        <th class="border w-1/8 px-4 py-2">Address</th>
+                                        <th class="border w-1/8 px-4 py-2">Visa Country</th>
+                                        <th class="border w-1/6 px-4 py-2">passport#</th>
+                                        <th class="border w-1/7 px-4 py-2">Paid</th>
+                                        <th class="border w-1/7 px-4 py-2">Order Status</th>
                                      </tr>
                                    </thead>
                                    <tbody>
@@ -360,6 +362,7 @@
                                             {{$visa->passport_number}}
     
                                             </td>
+
                                      <td class="border px-4 py-2"> <i class="fas fa-check text-green-500 mx-2"></i> {{ $visa->charges}} PKR
                                       
                                         @if($visa->charges&&$visa->status=='Paid')
@@ -376,17 +379,18 @@
                                            </button>
 
 
-                                           </td>
-                                           
-                                           {{-- <td class="border px-4 py-2">
-                           
-                                                       <a  href="/adminvisaaccomplish?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
-                                                       <i class="fas fa-times bg-red-700"></i></a>
-                                                     
+                           @if($visa->super_agent_id==null)
+                                            <form action="{{route('visa_assign_super_agent')}}" method="post">
+                                              @csrf
+                                              <input name='id' value="{{$visa->id}}" type=hidden>
+                                              <button name='charges' value='Super Agent'
+                                              class="bg-blue-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg"
+                                                 >Assign Super Agent</button>
+                                                 </form>
 
-                                                       
+                                                      @endif 
                                                
-                                           </td> --}}
+                                           </td>
 
                                            
                                        </tr>
@@ -425,13 +429,14 @@
                                              <table class="table text-grey-darkest">
                                       <thead class="bg-grey-dark text-white text-normal">
                                       <tr>
-                                       <th class="border w-1/10 px-4 py-2">No#</th>
-                                       <th class="border w-1/8 px-4 py-2">Daparture</th>
-                                       <th class="border w-1/8 px-4 py-2">Type</th>
-                                       <th class="border w-1/6 px-4 py-2">Contact#</th>
-                                       <th class="border w-1/4 px-4 py-2">Update Payment</th>
-                                       <th class="border w-1/7 px-4 py-2">Order Status</th>
-                                       <th class="border w-1/5 px-4 py-2">Actions</th>
+                                       <th class="border w-1/8 px-4 py-2">index</th>
+                                        <th class="border w-1/8 px-4 py-2">Name</th>
+                                        <th class="border w-1/8 px-4 py-2">Address</th>
+                                        <th class="border w-1/8 px-4 py-2">Visa Country</th>
+                                        <th class="border w-1/6 px-4 py-2">passport#</th>
+                                        <th class="border w-1/7 px-4 py-2">Request Payment</th>
+                                        <th class="border w-1/7 px-4 py-2">Order Status</th>
+                                        <th class="border w-1/5 px-4 py-2">Actions</th>
                                      </tr>
                                    </thead>
                                    <tbody>
@@ -541,12 +546,13 @@
                                              <table class="table text-grey-darkest">
                                       <thead class="bg-grey-dark text-white text-normal">
                                       <tr>
-                                       <th class="border w-1/10 px-4 py-2">No#</th>
-                                       <th class="border w-1/8 px-4 py-2">Daparture</th>
-                                       <th class="border w-1/8 px-4 py-2">Type</th>
-                                       <th class="border w-1/6 px-4 py-2">Contact#</th>
-                                       <th class="border w-1/4 px-4 py-2">Done</th>
-                                       <th class="border w-1/7 px-4 py-2">Order Status</th>
+                                        <th class="border w-1/8 px-4 py-2">index</th>
+                                        <th class="border w-1/8 px-4 py-2">Name</th>
+                                        <th class="border w-1/8 px-4 py-2">Address</th>
+                                        <th class="border w-1/8 px-4 py-2">Visa Country</th>
+                                        <th class="border w-1/6 px-4 py-2">passport#</th>
+                                        <th class="border w-1/7 px-4 py-2">Done</th>
+                                        <th class="border w-1/7 px-4 py-2">Order Status</th>
                                        {{-- <th class="border w-1/5 px-4 py-2">Actions</th> --}}
                                      </tr>
                                    </thead>

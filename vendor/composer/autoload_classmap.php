@@ -81,7 +81,6 @@ return array(
     'App\\Models\\TicketPassenger' => $baseDir . '/app/Models/TicketPassenger.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\Visa' => $baseDir . '/app/Models/Visa.php',
-    'App\\Models\\VisaPassenger' => $baseDir . '/app/Models/VisaPassenger.php',
     'App\\Models\\VisaReview' => $baseDir . '/app/Models/VisaReview.php',
     'App\\Notifications\\ApplyNotification' => $baseDir . '/app/Notifications/ApplyNotification.php',
     'App\\Notifications\\PaymentRecievedNotification' => $baseDir . '/app/Notifications/PaymentRecievedNotification.php',

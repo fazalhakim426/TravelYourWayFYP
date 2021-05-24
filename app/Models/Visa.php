@@ -48,10 +48,18 @@ class Visa extends Model
     {
         return $this->hasOne(Payment::class,'visa_id');
     }
+    
+    public function super_agent()
+    {
+        return $this->belongsTo(User::class, 'super_agent_id');
+
+    }
+    
 
     public function review()
     {
         return $this->hasMany(VisaReview::class,'visa_id');
     }
+    
 
 }

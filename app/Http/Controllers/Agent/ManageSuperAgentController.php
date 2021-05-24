@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Agent;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Visa;
 class ManageSuperAgentController extends Controller
 {
     /**
@@ -35,9 +36,24 @@ class ManageSuperAgentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function assign_to_visa(Request $request)
     {
-        //
+
+        $super_agents=User::where('membership','Super Agent')->get();
+
+        return view('agent.visa_assign_super_agent')->with('super_agents',$super_agents)->with('visa_id',$request->id);
+  
+    }
+
+    public function assign_to_visa_store(Request $request)
+    {
+
+        $visa=Visa::find($request->visa_id);
+
+        $visa->super_agent_id=$request->super_agent_id;
+        $visa->save();
+        return redirect('/agentdashboard');
+  
     }
 
     /**

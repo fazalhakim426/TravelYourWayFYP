@@ -21,29 +21,19 @@ Route::middleware(['auth'])->group(function () {
 
     
     Route::middleware(['verified'])->group(function () {
+        Route::middleware(['agent'])->group(function(){  
 
-
-
-
-        Route::middleware(['agent'])->group(function(){
-            
-
-            
         Route::get('/agentdashboard', function () {
-            $visas=DB::table('visas')->where('agent_id','=',Auth::user()->id)->get();    
+
+            $visas=DB::table('visas')->where('agent_id','=',Auth::user()->id)->orderBy('status')->get();    
             return view('agent.dashboard')->with('visas',$visas)->with('i',0);;
+              })->name('agentdashboard'); 
 
-        })->name('agentdashboard');
-
-
-
-        
-            Route::resources([
-                'ticketnotifications' => TicketNotificationController::class,
-                'posts' => TicketNotificationController::class,
+              Route::resources([
+                 'ticketnotifications' => TicketNotificationController::class,
+                 'posts' => TicketNotificationController::class,
             ]);  
-    
-            
+                
             Route::resources([
                 'mangaesuperagents' => ManageSuperAgentController::class,
                 'posts' => ManageSuperAgentController::class,
@@ -53,7 +43,10 @@ Route::middleware(['auth'])->group(function () {
                 'hotels' => HotelController::class,
                 'posts' => HotelController::class,
             ]);
-
-});
-});
-});
+            Route::post('visa_assign_super_agent',[ManageSuperAgentController::class,'assign_to_visa'])->name('visa_assign_super_agent');
+             
+            Route::post('visa_assign_super_agent_store',[ManageSuperAgentController::class,'assign_to_visa_store'])->name('visa_assign_super_agent_store');
+                         
+            });
+    });
+    });

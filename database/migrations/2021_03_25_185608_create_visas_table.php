@@ -15,8 +15,6 @@ class CreateVisasTable extends Migration
     {
         Schema::create('visas', function (Blueprint $table) {
             $table->id();
-            //first tyre customer to agent
-            //second tyre agent to super agent
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('agent_id')->nullable();
             $table->string('status');
@@ -24,7 +22,6 @@ class CreateVisasTable extends Migration
             $table->string('visa_apply_country');
             $table->string('type');  //visit immigration hajj ummrah
             $table->string('days')->nullable();
-               //personal information
             $table->string('date_of_birth')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();

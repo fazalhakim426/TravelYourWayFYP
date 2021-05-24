@@ -26,6 +26,7 @@ Route::middleware(['superagent'])->group(function(){
  
     Route::get('/superagentdashboard', function () {
         $visas=DB::table('visas')->where('super_agent_id','=',Auth::user()->id)->get();    
+        
         return view('super_agent.dashboard')->with('visas',$visas)->with('i',0);;
     })->middleware('address')->name('superagentdashboard');
 
