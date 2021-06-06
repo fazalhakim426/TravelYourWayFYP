@@ -25,27 +25,39 @@
                                       <thead class="bg-grey-dark text-white text-normal">
                                       <tr>
                                         
-                                        <th class="border w-1/8 px-4 py-2">Agent</th>
-                                        <th class="border w-1/8 px-4 py-2">Name</th>
-                                        <th class="border w-1/8 px-4 py-2">Address</th>
-                                        <th class="border w-1/8 px-4 py-2">Visa Country</th>
-                                        <th class="border w-1/6 px-4 py-2">passport#</th>
-                                        <th class="border w-1/7 px-4 py-2">Request Payment</th>
-                                        <th class="border w-1/7 px-4 py-2">Order Status</th>
+                                        <th class="border w-1/2 px-4 py-2">Agent</th>
+                                        <th class="border w-1/2 px-4 py-2">Name</th>
+                                        <th class="border w-1/2 px-4 py-2">Address</th>
+                                        <th class="border w-1/2 px-4 py-2">Visa Country</th>
+                                        <th class="border w-1/2 px-4 py-2">Type</th>
+                                        <th class="border w-1/4 px-4 py-2">passport#</th>
+                                        <th class="border w-1/1 px-4 py-2">Order Status</th>
                                        
                                        {{-- <th class="border w-1/5 px-4 py-2">Actions</th> --}}
                                      </tr>
                                    </thead>
                                    <tbody>
-                                   @foreach($visas as $visa)
+                                     {{-- {{dd()}} --}}
+                                   @foreach($user->userable->paid_visas as $visa)
                                  
-                                      @if($visa->status=="Paid")
                                  
                      
                                      
                                      <tr>
                                        
-<td>33</td>
+                                          <td class="border px-4 py-2">
+                                            <img class="h-auto w-full mx-auto"  id="imgFileUpload" alt="Select File" title="Select File" style="cursor: pointer" 
+                                            src="{{asset('profile_images/'.$visa->agent->user->profile_image)}}"
+                                            alt="">
+                                          </td>
+        
+                                             <td class="border px-4 py-2 center">
+                                               {{$visa->agent->user->name}}
+                                          
+                                             </td>
+
+
+
                                      <td class="border px-4 py-2">
                                         {{$visa->title." ".$visa->first_name." ".$visa->last_name}}
                                         </td>
@@ -66,21 +78,13 @@
                                      <td class="border px-4 py-2"> <i class="fas fa-check text-green-500 mx-2"></i> {{ $visa->charges}} PKR
                                       
                                         @if($visa->charges&&$visa->status=='Paid')
-                                        <br>
                                         <a href='done/{{$visa->id}}' class="m-55  bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
                                            Mark Done
                                         </a>
                                         @endif
 
                                     </td>
-                                           <td class="border px-4 py-2">
-                                           <button class="bg-green-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg">
-                                          {{ $visa->status}}
-                                           </button>
-
-
-                                           </td>
-                                           
+                                         
                                            {{-- <td class="border px-4 py-2">
                            
                                                        <a  href="/adminvisaaccomplish?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
@@ -95,7 +99,6 @@
                                        </tr>
 
                                        
-                                     @endif
                                      @endforeach
 
 

@@ -19,7 +19,7 @@ class SuperAgentController extends Controller
      */
     public function index()
     {
-        $data['visas']=DB::table('visas')->get();    
+     
         $data['sub_active']='Dashboard';
         $data['user']=Auth::user();
         return view('super_agent.dashboard')->with($data);
@@ -134,5 +134,43 @@ class SuperAgentController extends Controller
     public function destroy(SuperAgent $superAgent)
     {
         //
+    }
+
+
+    
+    public function getImmigration()
+    {
+    // $data['visas']=Visa::where('agent_id','=',Auth::user()->userable_id)->orderBy('status')->get(); 
+    // dd($data);
+    $data['user'] =Auth::user();
+    $data['sub_active'] ='Immigration';
+    $data['i'] =0;
+    return view('super_agent.visa_type',$data); 
+    }
+    public function getHajjs()
+    {
+    // $data['visas']=Visa::where('agent_id','=',Auth::user()->userable_id)->orderBy('status')->get(); 
+    // dd($data);
+    $data['user'] =Auth::user();
+    $data['sub_active'] ='Hajj';
+    $data['i'] =0;
+    return view('super_agent.visa_type',$data); 
+    }
+    public function getUmmrahs()
+    {
+    // $data['visas']=Visa::where('agent_id','=',Auth::user()->userable_id)->orderBy('status')->get(); 
+    // dd($data);
+    $data['user'] =Auth::user();
+    $data['sub_active'] ='Ummrah';
+    $data['i'] =0;
+    return view('super_agent.visa_type',$data); 
+    }
+    public function getVisits()
+    {
+  
+    $data['user'] =Auth::user();
+    $data['sub_active'] ='Visit';
+    $data['i'] =0;
+    return view('super_agent.visa_type',$data); 
     }
 }

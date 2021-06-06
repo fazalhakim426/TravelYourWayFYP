@@ -37,16 +37,16 @@
           
           
           
-          <a href="/super-agent/visas">
+          <a href="/super-agent/immigrations">
              
             <div class="relative w-40 h-40 ">
-               @if ($sub_active=='Visa')
-                 <img class="w-24 h-24 mx-auto" src="{{URL::asset('/icon/active/visa.png')}}" />
-                 <p class="mx-2 py-2 text-center text-indigo-600 font-semibold uppercase " >Visa</p>
+               @if ($sub_active=='Immigration')
+                 <img class="w-24 h-24 mx-auto" src="{{URL::asset('/icon/active/immigration.png')}}" />
+                 <p class="mx-2 py-2 text-center text-indigo-600 font-semibold uppercase " >Immigrations</p>
                 
                @else 
-                 <img class="w-24 h-24 mx-auto" src="{{URL::asset('/icon/inactive/visa.png')}}" />
-                 <p class="mx-2 py-2 text-center text-gray-700 font-semibold uppercase " >Visa</p>
+                 <img class="w-24 h-24 mx-auto" src="{{URL::asset('/icon/inactive/immigration.png')}}" />
+                 <p class="mx-2 py-2 text-center text-gray-700 font-semibold uppercase " >Immigrations</p>
                @endif
              
                

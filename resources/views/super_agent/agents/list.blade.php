@@ -22,8 +22,8 @@
 
                                        <div style="float: right">
                                              <button data-modal='centeredFormModal' value='{{Auth::user()->userable->id}}' onclick="function1(this)"
-                                        class=" modal-trigger bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                                        Add Agent
+                                        class=" modal-trigger bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+                                        Add New
                                       </button>
                                        </div>
                                      
@@ -157,7 +157,7 @@
                   Email 
               </label>
               <input  name="email" 
-              class="block w-full  text-blue-400 border  rounded py-3 px-4 "
+              class="block w-full  text-indigo-400 border  rounded py-3 px-4 "
               id="grid-city" type="email" placeholder="33/33/1987">
               
           </div>

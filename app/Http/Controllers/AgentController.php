@@ -89,8 +89,7 @@ class AgentController extends Controller
     }
     public function getVisits()
     {
-    // $data['visas']=Visa::where('agent_id','=',Auth::user()->userable_id)->orderBy('status')->get(); 
-    // dd($data);
+  
     $data['user'] =Auth::user();
     $data['sub_active'] ='Visit';
     $data['i'] =0;
