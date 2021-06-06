@@ -18,26 +18,37 @@ class Membership
     {
         // return $next($request);
 
-        $user=Auth::user();
-        // dd($email);
-        if($user->membership=='Admin')
+        $user=Auth::user()->userable;
+        if($user==null)
         {
-            return redirect('admindashboard');
+            return redirect('/register2');
         }
-        elseif($user->membership=='Customer'){
-            return redirect('customerdashboard');
-        }
-        elseif($user->membership=='Agent'){
-            return redirect('agentdashboard');
-        }
-        elseif($user->membership=='Super Agent'){
-            return redirect('superagentdashboard');
-        }
-        elseif($user->phone_number==null){
-            return redirect('register2');
+        $memberclass=get_class($user);
+        if($memberclass=="App\Models\SuperAgent")
+        {
+            
+            return redirect('super-agent/dashboard');
         }
         else{
-            return 'Invalid Response';
+            if($memberclass=="App\Models\Customer")
+        {
+           
+            return redirect('/customer/dashboard');
         }
+        else{
+            if($memberclass=="App\Models\Agent")
+        {
+            return redirect('agent/dashboard');
+        }
+        else{
+            return redirect('/');
+        }
+        }
+
+        }
+
+        return redirect('/');
+
+     
     }
 }

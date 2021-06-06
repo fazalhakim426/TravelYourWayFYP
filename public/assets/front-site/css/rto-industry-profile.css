@@ -1,0 +1,387 @@
+  .main-eligible {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
+  .main-num-std {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
+
+
+  .num-std {
+    background-color: #00a1ff1f;
+    width: 85%;
+    border-radius: 0 10px 10px 10px;
+    margin-bottom: 15px;
+    background-image: url(../../front-site/img/back.png);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+  
+  .num-std > label {
+    background: orange;
+    color: #FFF;
+    font-size: 13px;
+    padding: 5px;
+    /* width: 85%; */
+    border-bottom: 2px solid #FFF;
+    width: 75%;
+  }
+  
+  .num-std > span {
+    font-weight: bold;
+    font-size: 48px;
+    color: #00008bdb;
+    text-align: center;
+    width: 80%;
+  }
+  
+  .food-tm > ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 3px;
+    margin-bottom: 0;
+  }
+  
+  .food-tm > ul li {
+    font-size: 13px;
+  }
+  
+  .yellow-container .eligible {
+    text-align: center;
+    color: #ffb100;
+  }
+  
+  .profile-data {
+    font-size: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  
+  .profile-data > div {
+    display: grid;
+    grid-template-columns: 30% 70%;
+  }
+  
+  .profile-data > div > i {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #00008bdb;
+  }
+  .profile-data > div > span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #00008bdb;
+  }
+  
+  .profile-data .dot-blue {
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+    background-color: #007bff;
+    border-radius: 50%;
+    display: inline-block;
+  }    
+  
+  .btn.buttons {
+    border-radius: 0;
+    color: #FFFFFF;
+    outline: none;
+  }
+  
+  .cart {
+    background: #8080800d;
+    padding: 15px;
+  }
+  
+  .label {
+      font-weight: bold;
+      font-size: 13px;
+  }
+  
+  .info span {
+      font-size: 13px;
+  }
+  
+  label.heading {
+      font-weight: bold;
+      font-size: 16px;
+  }
+  
+  .blue-text {
+      color: #00008bdb;
+      font-weight: bold;
+      font-size: 16px;
+  }
+  
+  .login {
+    padding: 15px;
+  }
+  
+  .login i {
+    position: relative;
+    bottom: 7px;
+    color: #00008bdb;
+  
+  }
+  .login span {
+    position: relative;
+    bottom: 7px;
+    color: #00008bdb;
+  
+  }
+  
+  .login span:last-child {
+      font-size: 11px;
+    display: block;
+  }
+  
+  .login-inner {
+    display: inline-block;
+    color: rgb(0 0 139 / 86%);
+  }
+  
+  .users span {
+    font-weight: bold;
+    font-size: 24px;
+    color: #00008bdb;
+  }
+  
+  .yellow-container {
+    background: #ffff0038;
+    border-radius: 15px;
+    padding: 15px;
+  }
+  
+  .action-icons {
+      color: #808080;
+  }
+  
+  .action-icons:hover {
+    text-decoration: none;
+  }
+  
+  .edit i {
+    margin-right: 7px;
+    color: rgb(255 165 0) ;
+    border-bottom: 1px solid;
+    padding-bottom: 5px;
+  }
+  
+  .block i {
+     margin-right: 7px;
+    color: rgb(255 165 0) ; 
+  }
+
+  .edit span {
+    margin-right: 7px;
+    color: rgb(255 165 0) ;
+    border-bottom: 1px solid;
+    padding-bottom: 5px;
+  }
+  
+  .block span {
+     margin-right: 7px;
+    color: rgb(255 165 0) ; 
+  }
+  
+  .icons-clr {
+      color: rgb(255 165 0) !important;
+      margin-right: 5px;
+  }
+  
+  .buttons {
+    margin: 5px 0;
+  }
+  
+  
+  .form-container { 
+    margin-bottom: 15px;
+  }
+  
+  .info span {
+      color: #808080;
+  }
+  
+  .form-container .assessment-link {
+      color: #808080;
+      font-size: 13px;
+      text-decoration: none;     
+  }
+  
+  .form-container .assessment-link:hover {
+      color: darkslategrey;
+  }
+  
+  .form-container .form-check-label {
+    font-size: 13px;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .form-check-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 25px;
+    background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .form-check-label:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .form-check-label input:checked ~ .checkmark {
+    background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .form-check-label input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .form-check-label .checkmark:after {
+      left: 9px;
+      top: 1px;
+      width: 7px;
+      height: 13px;
+      border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  .units {
+      display: flex;
+  }
+  
+  .units .unit-text {
+      color: #ffb100;
+      font-size: 13px;
+      flex: 2;
+  }
+  
+  .units .form-container {
+      flex: 10;
+  }
+  
+  .users {
+    margin: 15px 0;
+  }
+  
+  .users i {
+      font-size: 36px;
+  }
+  .users span {
+    font-size: 36px;
+}
+  
+  .users span {
+      font-weight: bold;
+      font-size: 24px;
+      color: #00008bdb;
+      vertical-align: text-bottom;
+  }
+  
+  .text-gray {
+    color: #aaa;
+  }
+  
+  div.h4 {
+    line-height: 1rem;
+  }
+  .action-buttons-mob {
+    display: none;
+  }
+
+  .card-body {
+    padding: 0.5rem;
+  }
+
+  .login > span {
+    font-size: 24px;
+  }
+  
+  .profile-data > div > span {
+    font-size: 24px;
+  }
+
+  .profile-data .login-inner > span:nth-child(2) {
+    font-size: 11px;
+  }
+
+  @media only screen and (max-width: 1199px) {
+    .num-std {
+      width: 100%;
+    }  
+  }
+
+  @media only screen and (min-width: 769px) {
+    .food-tm {
+      padding: 0 5px;
+    }
+  }
+
+  @media only screen and (max-width: 575px) {
+    .action-buttons-mob {
+      display: block;
+    } 
+  
+    .action-buttons-mob .buttons {
+      font-size: 13px;
+    }  
+  
+    .action-buttons {
+      display: none;
+    }  
+
+    .yellow-container {
+        margin-top: 15px;
+    }    
+    .num-std {
+        margin: 0 auto;
+    }    
+  }
+
+
+  @media only screen and (max-width:320px) {
+    .food-tm > ul {
+        padding: 0 15px;
+    }
+  }
+
+  

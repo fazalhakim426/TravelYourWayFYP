@@ -38,12 +38,14 @@ Route::post('/register', [RegisteredUserController::class, 'store'])
            ->middleware('guest');
            
 Route::post('/register2', [RegisteredUserController::class, 'store2'])
-                           ->middleware('auth')
                            ->name('register2');
 
+Route::get('/delete-membership', [RegisteredUserController::class, 'deleteMembership'])
+                           ->middleware('auth')
+                           ->name('/delete-membership');
 Route::get('/login', [AuthenticatedSessionController::class, 'create'])
-                ->middleware('guest')
-                ->name('login');
+                                           ->middleware('guest')
+                                           ->name('login');
 
 Route::post('/login', [AuthenticatedSessionController::class, 'store'])
                 ->middleware('guest');

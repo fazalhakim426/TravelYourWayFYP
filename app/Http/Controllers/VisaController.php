@@ -1,27 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use  App\Http\Controllers;
 use  App\Http\Controllers\ExtraMethods;
-use  App\Http\Controllers\ExtraMethds;
 use Auth,DB;
 use Illuminate\Http\Request;
 use App\Http\Requests\TripDetailRequest;
 use App\Http\Requests\ContactInformationRequest;
 use App\Http\Requests\PersonalInformationRequest;
-
+use App\Models\Agent;
 use App\Models\Country;
 use App\Models\Visa;
 use App\Models\User;
 use App\Notifications\ApplyNotification;
 class VisaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+  
     public function index()
     {
         $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('status','=','Incomplete')->first();
@@ -173,20 +166,27 @@ class VisaController extends Controller
 //step 3 started
     public function agentIndex()
     {
-        $agents=User::where('membership','Agent')->get();
+        // $agents=User::where('membership','Agent')->get();
+        $agents=Agent::all();
         $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('status','=','incomplete')->first();
+        
         return view('customer.visa.agent')->with('visa',$visa)->with('agents',$agents);
     }
 
     public function selectAgent(Request $request)
-    {   
-        $agent=User::where('membership','Agent')->where('id',$request->agent_id)->first();
-
+    {
+        // dd($request->all());
+        
+        $agent=Agent::find($request->agent_id);
+        // dd($agent->user);
+        // User::where('membership','Agent')->where('id',$request->agent_id)->first();
+        
         $visa=Visa::where('id',$request->id)->update([
             'agent_id'=>$request['agent_id'],
             'status'=>'Submitted',
         ]);
-        $agent->notify(new ApplyNotification(Visa::find($request->id)));
+        
+        $agent->user->notify(new ApplyNotification(Visa::find($request->id)));
         return redirect('/dashboard');
     }
     
@@ -204,8 +204,13 @@ class VisaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Visa $visa)
     {
+
+            //    dd($visa);
+               $visa->update(['status'=>'Incomplete']);
+               return redirect('/customer/visas');
+
        return 'updating pending';
     }
 

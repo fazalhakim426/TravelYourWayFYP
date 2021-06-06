@@ -1,0 +1,402 @@
+.white {
+    color: #FFF;
+  }
+  
+  .font-13 {
+    font-size: 13px;
+  }
+  
+  .font-16 {
+  font-size: 16px;
+  }
+  
+  .main-eligible {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  }
+  
+  .clock {
+  background-color: rgb(0 161 255 / 22%);
+  border-radius: 0 10px 10px 10px;
+  margin-bottom: 5px;
+  display: grid;
+  grid-template-columns: 30% 70%;		  
+  }
+  
+  .clock > div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  }
+  
+  .clock .fa-clock {
+    font-size: 65px;
+    /* margin-bottom: 15px; */
+    margin: auto 0 auto 0;
+  }
+  
+  .clock label {
+  background: orange;
+  color: #FFF;
+  font-size: 13px;
+  padding: 5px;
+  }
+  
+  #currentTime {
+    font-size: 30px;
+    color: #FFF;
+    font-weight: 500;
+  }
+  
+  .num-std {
+  border: 2px solid #00a1ff1f;
+  border-radius: 0 10px 10px 10px;
+  margin-bottom: 15px;
+  }
+  
+  /* .num-std > label {
+  background: orange;
+  color: #FFF;
+  font-size: 13px;
+  padding: 5px;
+  border-bottom: 2px solid #FFF;
+  } */
+  
+  .num-std > label .student-txt {
+    padding: 5px;
+    display: block;
+    background: orange;
+    color: #FFF;
+    font-size: 13px;
+  }
+
+  .num-std > label .bottom-orange {
+      border: 2px solid orange;
+      display: block;
+      margin-top: 2px;
+  }
+
+
+  .num-std > span {
+  font-weight: bold;
+  font-size: 48px;
+  color: #00008bdb;
+  text-align: center;
+  }
+  
+  .yellow-container .eligible {
+  text-align: center;
+  color: #ffb100;
+  }
+  
+  .profile-data {
+  font-size: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  }
+  
+  .profile-data > div {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  }
+  
+  .profile-data > div > i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #00008bdb;
+  }
+  
+  .profile-data .dot-blue {
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+  background-color: #007bff;
+  border-radius: 50%;
+  display: inline-block;
+  }    
+  
+  .btn.buttons {
+  border-radius: 0;
+  color: #FFFFFF;
+  outline: none;
+  }
+  
+  .cart {
+  background: #8080800d;
+  padding: 15px;
+  }
+  
+  .label {
+    font-weight: bold;
+    font-size: 13px;
+  }
+  
+  .info span {
+    font-size: 13px;
+  }
+  
+  label.heading {
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .blue-text {
+    color: #00008bdb;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  
+  .login {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .login i {
+  position: relative;
+  bottom: 7px;
+  color: #00008bdb;
+  
+  }
+  
+  .login span:last-child {
+    font-size: 11px;
+  display: block;
+  }
+  
+  .login-inner {
+  display: inline-block;
+  }
+  
+  .user {
+  text-align: center;
+  }
+  
+  .user span {
+  font-weight: bold;
+  font-size: 24px;
+  }
+  
+  .yellow-container {
+  background: #ffff0038;
+  border-radius: 15px;
+  padding: 15px;
+  }
+  
+  .action-icons {
+    color: #808080;
+  }
+  
+  .action-icons:hover {
+  text-decoration: none;
+  }
+  
+  .edit i {
+  margin-right: 7px;
+  color: #ffb1009c;
+  border-bottom: 1px solid;
+  padding-bottom: 5px;
+  }
+  
+  .block i {
+   margin-right: 7px;
+  color: #ffb1009c; 
+  }
+  
+  .icons-clr {
+    color: #ffb1009c;
+    margin-right: 5px;
+  }
+  
+  .buttons {
+  margin: 5px 0;
+  }
+  
+  
+  .form-container { 
+  margin-bottom: 15px;
+  }
+  
+  .info span {
+    color: #808080;
+  }
+  
+  .form-container .asseent-link {
+    color: #808080;
+    font-size: 13px;
+    text-decoration: none;     
+  }
+  
+  .form-container .asseent-link:hover {
+    color: darkslategrey;
+  }
+  
+  .form-container .form-check-label {
+  font-size: 13px;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .form-check-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 20px;
+  width: 25px;
+  background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .form-check-label:hover input ~ .checkmark {
+  background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .form-check-label input:checked ~ .checkmark {
+  background-color: #2196F3;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .form-check-label input:checked ~ .checkmark:after {
+  display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .form-check-label .checkmark:after {
+    left: 9px;
+    top: 1px;
+    width: 7px;
+    height: 13px;
+    border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+  }
+  
+  .units {
+    display: flex;
+  }
+  
+  .units .unit-text {
+    color: #ffb100;
+    font-size: 13px;
+    flex: 2;
+  }
+  
+  .units .form-container {
+    flex: 10;
+  }
+  
+  .text-gray {
+  color: #aaa;
+  }
+  
+  div.h4 {
+  line-height: 1rem;
+  }
+  
+  .main-num-std {
+  display: flex;
+    flex-direction: column;
+    /* justify-content: space-between; */
+  }
+  
+  .main-num-std-inner {
+    padding: 5px 5px 0 5px;
+  
+  }
+
+  .line-18 {
+    line-height: 18px;
+  }
+  
+  .left-side-block {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .font-500 {
+  font-weight: 500;
+  }
+  
+  .num-std > label {
+    width: 56%;
+  }
+
+  @media only screen and (max-width: 1199px) {
+   .num-std > label {
+      width: 80%;
+    }
+
+    .num-std > label .student-txt {
+      font-size: 12px;
+    }
+  }  
+
+  .breadcrumb {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  .breadcrumb .alert-danger {
+    width: 70%;
+    text-align: center;
+    /* margin-right: 10%; */
+  }
+
+  @media only screen and (max-width: 575px) {
+    .main-num-std-inner {
+        padding: 15px;
+    }
+
+    .num-std > label {
+      width: 70%;
+    }
+
+    .breadcrumb {
+      justify-content: space-evenly;
+    }
+
+    .breadcrumb h1 {
+      font-size: 18px;
+    }
+
+    .breadcrumb .alert-danger {
+      width: unset;
+      margin-right: 0;
+      font-size: 12px;
+      padding: 8px;  
+    }
+  }

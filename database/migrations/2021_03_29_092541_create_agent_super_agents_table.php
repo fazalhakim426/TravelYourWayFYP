@@ -15,7 +15,19 @@ class CreateAgentSuperAgentsTable extends Migration
     {
         Schema::create('agent_super_agents', function (Blueprint $table) {
             $table->id();
-            $table->boolean('approve');
+            
+            $table->string('user_id');
+            
+            $table->string('status')->nullable();
+            $table->string('a')->nullable();
+            $table->string('b')->nullable();
+            $table->string('c')->nullable();
+            $table->string('d')->nullable();
+            $table->string('e')->nullable();
+            //status decription 
+            // 1. request sent
+            // 2. request accepted
+
             $table->unsignedBigInteger('agent_id');
             $table->unsignedBigInteger('super_agent_id');
             $table->timestamps();

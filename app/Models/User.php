@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable implements MustVerifyEmail
+// class User extends Authenticatable implements MustVerifyEmail
+class User extends Authenticatable
 {
     use HasFactory, Notifiable;
     
@@ -23,11 +24,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'password',
         'address',
         'phone_number',
-        'membership',
+        'userable_id',
+        'userable_type',
     ];
-    protected $attributes = [
-        'membership' => 'Customer',
-    ];
+    // protected $attributes = [
+    //     'membership' => 'Customer',
+    // ];
     /**
      * The attributes that should be hidden for arrays.
      *  s
@@ -42,6 +44,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(Ticket::class);
     }
+    
     
     public function visa()
     {
@@ -58,8 +61,12 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    public function setMembershipAttribute($value)
+ 
+
+    public function userable()
     {
-        $this->attributes['membership'] = ucfirst($value);
+        return $this->morphTo();
     }
+   
+
 }

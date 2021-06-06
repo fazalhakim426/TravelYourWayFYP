@@ -74,10 +74,10 @@
 
 
 @foreach($agents as $agent)
-<a class=" cursor-pointer rounded p-1 mx-1 text-blue-500" href="showUser/{{$agent->id}}">
-                                       <div class="border border-gray-300 lg:border-gray-300 bg-grey-lightest bg-opacity-5 rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
+                       {{-- <a class=" cursor-pointer rounded p-1 mx-1 text-blue-500" href="showUser/{{$agent->id}}"> show </a> --}}
+                                       <div class="m-15 border border-gray-300 lg:border-gray-300 bg-grey-lightest bg-opacity-5 rounded-b lg:rounded-b-none lg:rounded-r flex flex-col justify-between leading-normal">
                                         <div class="mb-2">
-                                        <img class="w-40 h-40 md:w-80  md:h-80  lg:w-100 lg:h-100  xl:w-120 lg:h-120  2xl:w-140 2xl:h-140 "  src="https://i.imgur.com/8Km9tLL.jpg" />
+                                        <img class="w-40 h-40 md:w-80  md:h-80  lg:w-100 lg:h-100  xl:w-120 lg:h-120  2xl:w-140 2xl:h-140 "  src="{{asset('/profile_images/'.$agent->user->profile_image)}}" />
                                         </div>
                                         <div class="flex ">
                                             <form method='post' action="{{route('selectAgent')}}" class="px-1">
@@ -88,7 +88,7 @@
                                         
                                         </form>
                                         <div class="">
-                                            <p class="text-black ">{{ $agent->name}}</p>
+                                            <p class="text-black ">{{ $agent->user->name}}</p>
                                             <div  >
                                                 
                                            
@@ -96,7 +96,7 @@
                                                 </div >
                                         </div>
                                         </div>
-                                    </a>
+                                  
                                       
                                     </div>
                               

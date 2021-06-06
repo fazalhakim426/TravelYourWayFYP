@@ -1,0 +1,425 @@
+.btn.buttons {
+    border-radius: 0;
+    color: #FFFFFF;
+    outline: none;
+}
+
+.cart {
+    background: #8080800d;
+    padding: 15px;
+}
+
+.label {
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.info1 span {
+    font-size: 13px;
+}
+
+label.heading {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.blue-text {
+    color: #032539;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.login {
+  padding: 13px;
+}
+
+.login i {
+  position: relative;
+  bottom: 7px;
+}
+.login .fa-user-lock{
+  position: relative;
+  bottom: 7px;
+}
+.login .fa-thumbs-up{
+    position: relative;
+    bottom: 7px;
+  }
+
+.login span:last-child {
+    font-size: 11px;
+	display: block;
+}
+
+.login-inner {
+  display: inline-block;
+}
+
+.user span {
+  font-weight: bold;
+  font-size: 24px;
+  color: #032539;
+}
+
+.yellow-container {
+	background: #ffff0038;
+	border-radius: 15px;
+	padding: 15px;
+}
+
+.action-icons {
+    color: #808080;
+}
+
+.action-icons:hover {
+	text-decoration: none;
+}
+
+.edit i {
+  margin-right: 7px;
+  color: #ffb1009c;
+  border-bottom: 1px solid;
+  padding-bottom: 5px;
+}
+
+.block i {
+   margin-right: 7px;
+  color: #ffb1009c; 
+}
+
+.icons-clr {
+    color:rgb(249, 157, 35) !important;
+    margin-right: 5px;
+}
+
+.buttons {
+  margin: 5px 0;
+}
+
+
+.form-container { 
+	margin-bottom: 15px;
+}
+
+.info1 span {
+    color: #808080 ;
+}
+.info1 label {
+    color: rgb(71, 64, 79) ;
+}
+
+.form-container .assessment-link {
+    color: #808080;
+    font-size: 13px;
+    text-decoration: none;     
+}
+
+.form-container .assessment-link:hover {
+    color: darkslategrey;
+}
+
+.form-container .form-check-label {
+  font-size: 13px;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.form-check-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* height: 100%; */
+  width: 25px;
+  background-color: #eee;
+  height: 20px;
+    margin: 2px 0;
+}
+
+/* On mouse-over, add a grey background color */
+.form-check-label:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.form-check-label input:checked ~ .checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.form-check-label input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.form-check-label .checkmark:after {
+    left: 9px;
+    top: 1px;
+    width: 7px;
+    height: 13px;
+    border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+}
+
+.units {
+    display: flex;
+}
+
+.units .unit-text {
+    color: #ffb100;
+    font-size: 13px;
+    flex: 2;
+}
+
+.units .form-container {
+    flex: 10;
+}
+
+.users {
+	margin: 15px 0;
+}
+
+.users i {
+    font-size: 36px;
+}
+
+.users span {
+    font-weight: bold;
+    font-size: 24px;
+    color: #032539;
+    /* vertical-align: text-bottom; */
+}
+
+.progess-hours {
+    margin-top: 25px;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+
+.progess-hours div {
+	color: #808080;
+    font-size: 13px;
+    margin: 0 5px;    
+}
+
+.progess-hours .dot-yellow {
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+    background-color: #ffb1009c;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    top: 2px;    
+}
+
+.progess-hours .dot-blue {
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;    
+    background-color: #007bff;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+}
+
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+
+.progress1 {
+  width: 150px;
+  height: 150px;
+  background: none;
+  position: relative;
+}
+
+.progress1::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 23px solid #007bff;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress1>span {
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  z-index: 1;
+}
+
+.progress1 .progress-left {
+  left: 0;
+}
+
+.progress1 .progress-bar {
+  width: 100%;
+  height: 100%;
+  background: none;
+  border-width: 23px;
+  border-style: solid;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.progress1 .progress-left .progress-bar {
+  left: 100%;
+  border-top-right-radius: 80px;
+  border-bottom-right-radius: 80px;
+  border-left: 0;
+  -webkit-transform-origin: center left;
+  transform-origin: center left;
+}
+
+.progress1 .progress-right {
+  right: 0;
+}
+
+.progress1 .progress-right .progress-bar {
+  left: -100%;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  border-right: 0;
+  -webkit-transform-origin: center right;
+  transform-origin: center right;
+}
+
+.progress1 .progress-value {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/*
+*
+* ==========================================
+* FOR DEMO PURPOSE
+* ==========================================
+*
+*/
+
+.rounded-lg {
+  border-radius: 1rem;
+}
+
+.text-gray {
+  color: #aaa;
+}
+
+div.h4 {
+  line-height: 1rem;
+}
+
+
+
+.action-buttons-mob {
+    display: none;
+  }
+  
+  .Units-box {  
+    display: grid;
+    grid-template-columns: 40% 60%
+  }  
+  
+  .Units-box .login {
+    padding: 0;
+    margin: 25px 0;
+  }
+  
+  @media only screen and (max-width: 575px) {
+    .Units-box {  
+      display: grid;
+      grid-template-columns: 100%;
+    }
+    .Units-box .login {
+        
+        text-align: center;
+      }
+  
+    .action-buttons-mob {
+      display: block;
+    } 
+  
+    .action-buttons-mob .buttons {
+      font-size: 13px;
+    }  
+  
+    .action-buttons {
+      display: none;
+    }  
+  }
+
+  #testing2{
+    font-size: 22px !important;
+  }
+
+
+  .profile-data > div:first-child {
+    /* display: grid;
+    grid-template-columns: 15% 85%; */
+    display: flex;
+      align-items: center;
+    margin: 13px 0;
+  
+  }
+  
+  .profile-data > div:first-child p {
+    margin: 0;
+  }
+  
+  .profile-data > div:last-child {
+    display: flex;
+  }
+  
+  .profile-data > div:last-child h6 {
+  font-weight: bold;
+  }
+  .profile-data .dot-blue {
+    height: 15px;
+    width: 15px;
+    margin-right: 5px;
+    background-color: rgb(32 66 129);
+    border-radius: 50%;
+    display: inline-block;
+  }  
+
+/* Subadmin Dashboard Styling */
+

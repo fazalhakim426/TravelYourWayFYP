@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 12">
+  <defs>
+    <style>
+      .cls-1, .cls-3 {
+        fill: none;
+      }
+
+      .cls-1 {
+        stroke: #77909d;
+      }
+
+      .cls-2 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="Symbol_5_3" data-name="Symbol 5 – 3" transform="translate(-1396 -116)">
+    <g id="Rectangle_15" data-name="Rectangle 15" class="cls-1" transform="translate(1396 116)">
+      <rect class="cls-2" width="18" height="2"/>
+      <rect class="cls-3" x="0.5" y="0.5" width="17" height="1"/>
+    </g>
+    <g id="Rectangle_16" data-name="Rectangle 16" class="cls-1" transform="translate(1399 121)">
+      <rect class="cls-2" width="12" height="2"/>
+      <rect class="cls-3" x="0.5" y="0.5" width="11" height="1"/>
+    </g>
+    <g id="Rectangle_17" data-name="Rectangle 17" class="cls-1" transform="translate(1403 126)">
+      <rect class="cls-2" width="4" height="2"/>
+      <rect class="cls-3" x="0.5" y="0.5" width="3" height="1"/>
+    </g>
+  </g>
+</svg>

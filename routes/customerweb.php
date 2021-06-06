@@ -1,13 +1,7 @@
 <?php
 
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationNotificationController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\VerifyEmailController;
+
+use App\Http\Controllers\CustomerController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -18,41 +12,37 @@ use App\Http\Controllers\TicketPassengerController;
 
 
 Route::middleware(['auth'])->group(function () {
-
-    
     Route::middleware(['verified'])->group(function () {
+  Route::middleware(['address'])->group(function(){
+ Route::middleware(['customer'])->group(function(){
+Route::prefix('customer')->group(function(){
 
-   
+    Route::get('/dashboard',[CustomerController::class,'index'])->name('dashboard');
+
+ Route::resources([
+            'visas' => VisaController::class,
+            'posts' => VisaController::class,
+        ]);
+           
+        Route::resources([
+            'tickets' => TicketController::class,
+            'posts' => TicketController::class,
+        ]);
+
         
-
-        
-
-        Route::middleware(['customer'])->group(function(){
-        
-//mange agent
-Route::get('/customerdashboard', function () {
-    $visas=DB::table('visas')->where('user_id','=',Auth::user()->id)->get();
-    $tickets=DB::table('tickets')->where('user_id','=',Auth::user()->id)->get();
-    return view('customer.dashboard')->with('visas',$visas)->with('tickets',$tickets);
-
-})->middleware('address')->name('dashboard');
-
-       
-
         Route::get('apply/{type}',[VisaController::class,'index2']);
 
         Route::get('payments/{charges}',[PaymentController::class,'pay']);
         Route::get('done/{charges}',[PaymentController::class,'done']);
 
+
         
-        Route::resources([
-            'visas' => VisaController::class,
-            'posts' => VisaController::class,
-        ]);   
-        Route::resources([
-            'tickets' => TicketController::class,
-            'posts' => TicketController::class,
-        ]);
+});
+//mange agent
+   
+
+        
+        
         //Contact Information 
             Route::get('/contactInformationIndex',[VisaController::class,'contactInformationIndex']);
             Route::post('/contactInformationStore',[VisaController::class,'contactInformationStore'])->name('contactInformationStore');
@@ -119,6 +109,7 @@ Route::post('/selectAgent',[VisaController::class,'selectAgent'])->name('selectA
     //         return view('userdashboard.immigration_apply.immigration_visa_step_5');
     //     });
 
+});
 });
 });
 });
