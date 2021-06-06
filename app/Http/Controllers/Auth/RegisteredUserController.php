@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Agent;
+use App\Models\Customer;
+use App\Models\SuperAgent;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Registered;
@@ -24,7 +27,11 @@ class RegisteredUserController extends Controller
     }
 
     public function create2(){
-        return view('auth.register2');
+       
+           $data['user']=Auth::user();
+      
+         
+        return view('auth.register2',$data);
     }
     /**
      * Handle an incoming registration request.
@@ -42,6 +49,7 @@ class RegisteredUserController extends Controller
             'password' => 'required|string|confirmed|min:8',
         ]);
 
+        
         Auth::login($user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -58,31 +66,71 @@ class RegisteredUserController extends Controller
 
     public function store2(Request $request)
     {
-        // dd($request);
+        $user = Auth::user();
        
+        if($request->profile_image){
+            $request->validate([
+                'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+            $imageName =time().'.'.$request->profile_image->extension();  
+     
+        $request->profile_image->move(public_path('profile_images'), $imageName);
+       
+        User::where('email',$user->email)->update([
+        'profile_image'=>$imageName,
+        ]);
+      
+        }
+        
         $request->validate([            
             'name' => 'required|string|min:3|max:25',
             'phone_number' => 'required|string|min:10|max:15',
             'city' => 'required|string|min:2|max:30',
             'country' => 'required|string|min:2|max:30',
             'state' => 'required|string|min:2|max:20',
-            'membership' => 'required',
-            
         ]);
-
-        // $userprofile = Auth::user();
-        User::where('email', Auth::user()->email)
-       ->update([
+        
+        User::where('email',$user->email)->update([
         'phone_number' => $request->phone_number,
         'name' => $request->name,
         'city' => $request->city,
         'state' => $request->state,
         'country' => $request->country,
-        'membership' => $request->membership,
         ]);
+        
+        if($user->userable==null){
+           
+            if($request->membership=="Super Agent")
+            {
+                $super_agent=SuperAgent::create(['user_id'=>$user->id]);
+              
+                $super_agent->user()->save($user);
+    
+            }
+            else if($request->membership=="Agent")
+            {
+                
+                $agent=Agent::create(['user_id'=>$user->id]);
+              
+                $agent->user()->save($user);
 
+            }
+            else
+            {
+
+                $customer=Customer::create(['user_id'=>$user->id]);
+              
+                $customer->user()->save($user);
+            }
+        }
+        
+
+       
         return redirect('/dashboard');
-    }
+       
+
+}
 
     public function storeGoogleUser(){
         try {
@@ -139,5 +187,10 @@ class RegisteredUserController extends Controller
         // return 'error';
         return redirect()->to('/');
     }
+    }
+    public function deleteMembership()
+    {
+        Auth::user()->userable()->delete();
+        return redirect()->back();
     }
 }

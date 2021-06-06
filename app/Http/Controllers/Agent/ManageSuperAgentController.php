@@ -13,6 +13,7 @@ class ManageSuperAgentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
         $super_agents=User::where('membership','Super Agent')->get();

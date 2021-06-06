@@ -2,6 +2,29 @@
  * Font Awesome Free 5.2.0 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
  */
+
+ table th
+ {
+     background-color: #3F495E;
+ }
+:root {
+   --main-color: #4a76a8;
+}
+
+.bg-main-color {
+   background-color: var(--main-color);
+}
+
+.text-main-color {
+   color: var(--main-color);
+}
+
+.border-main-color {
+   border-color: var(--main-color);
+}
+
+
+
 .fa,
 .fas,
 .far,

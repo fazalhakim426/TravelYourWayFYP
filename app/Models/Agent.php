@@ -4,34 +4,50 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\SuperAgent;
 class Agent extends Model
 {
     use HasFactory;
-    protected $table='users';
+
+    public $table='agents';
+
     protected $fillable = [
-        'name',
-        'email',
-        'password',
-        'address',
-        'phone_number',
-        'membership',
+        'id',
+        'user_id',
+        'super_agent_id'
     ];
-    protected $attributes = [
-        'membership' => 'Customer',
-    ];
-    public function ticket()
+
+        public function user()
     {
-        return $this->hasMany(Ticket::class);
+        return $this->morphOne(User::class, 'userable');
+    }
+
+    
+     public function visas()
+     {
+         return $this->hasMany(Visa::class);
+     }
+
+
+    public function super_agent(){
+        // dd($this);
+        return $this->belongsTo(SuperAgent::class,'super_agent_id','id');
     }
     
-    public function visa()
-    {
-        return $this->hasMany(Visa::class);
-    } 
+    // public function super_agents()
+    // {
+    //     return $this->belongsToMany(SuperAgent::class,'agent_super_agents');
+    // }
 
-    public function hotel()
-    {
-        return $this->hasMany(Hotel::class);
-    }
+    //     public function pending_super_agent()
+    //     {
+    //         return $this->belongsToMany(SuperAgent::class,'agent_super_agents')
+    //         ->wherePivot('status',1);
+    //     }
+
+    //     public function my_super_agent()
+    //     {
+    //         return $this->belongsToMany(SuperAgent::class,'agent_super_agents')
+    //         ->wherePivot('status',2);;
+    //    }
 }

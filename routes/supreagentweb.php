@@ -1,34 +1,44 @@
 <?php
-
-use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\ConfirmablePasswordController;
-use App\Http\Controllers\Auth\EmailVerificationRequestController;
-use App\Http\Controllers\Auth\EmailVerificationPromptController;
-use App\Http\Controllers\Auth\NewPasswordController;
-use App\Http\Controllers\Auth\PasswordResetLinkController;
-use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\SuperAgent\TicketRequestController;
 use App\Http\Controllers\SuperAgent\ManageAgentController;
-use App\Http\Controllers\HotelController;
-
-use App\Http\Controllers\VisaController;
-use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\SuperAgentController;
+use Illuminate\Support\Facades\DB;
 
 Route::middleware(['auth'])->group(function () {
 Route::middleware(['verified'])->group(function () {
 
 Route::middleware(['superagent'])->group(function(){
     
- 
-    Route::get('/superagentdashboard', function () {
-        $visas=DB::table('visas')->where('super_agent_id','=',Auth::user()->id)->get();    
-        
-        return view('super_agent.dashboard')->with('visas',$visas)->with('i',0);;
-    })->middleware('address')->name('superagentdashboard');
+ Route::prefix('super-agent')
+ ->group(function () {
+
+
+     Route::get(
+         '/dashboard',
+         [SuperAgentController::class,'index']
+        );
+    Route::get(
+        '/agents'
+        ,[SuperAgentController::class,'get_agents']
+        );
+
+    Route::post(
+        '/add_agent'
+        ,[SuperAgentController::class,'add_agent']
+        )->name('add_agent');
+       
+    
+    Route::get(
+        '/delete-agent/{agent}'
+        ,[SuperAgentController::class,'delete_agent']
+        )->name('delete-agent');
+           
+                
+ });
+
 
     
    

@@ -13,7 +13,7 @@
                 </div>
 
                 <div class="p-1 flex flex-row items-center">
-                <a href="#" onclick="profileToggle()" class="text-white p-2 no-underline hidden md:block lg:block"> AoA : {{ Auth::user()->name }}</a>
+                <a href="#" onclick="profileToggle()" class="text-white p-2 no-underline hidden md:block lg:block"> Username: {{ Auth::user()->name }}</a>
                     <div id="ProfileDropDown" class="rounded hidden shadow-md bg-white absolute pin-t mt-12 mr-1 pin-r">
                         <ul class="list-reset">
                           <li><a href="/register2" class="no-underline px-4 py-2 block text-black hover:bg-grey-light">My account</a></li>
@@ -41,17 +41,17 @@
             <aside id="sidebar" class="bg-side-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block">
 
                 <ul class="list-reset flex flex-col">
-                    <li class=" w-full h-full py-3 px-2 border-b border-light-border @if(Request::url() === URL::to('/').'/customerdashboard') bg-white @endif">
+                    <li class=" w-full h-full py-3 px-2 border-b border-light-border @if(Request::url() === URL::to('/').'/customer/dashboard') bg-white @endif">
                     
-                        <a href="/customerdashboard"  class="  hover:font-normal text-sm text-nav-item no-underline">
+                        <a href="/customer/dashboard"  class="  hover:font-normal text-sm text-nav-item no-underline">
                             <i class="fas fa-tachometer-alt float-left mx-2"></i>
                             Dashboard
                             <span><i class="fas fa-angle-right float-right"></i></span>
                         </a>
                     </li>
                     
-                    <li class="border-t mt-2 border-light-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/visas')) bg-white @endif @if((Request::url() === URL::to('/').'/personalInformationIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/contactInformationIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/agentIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/apply/Hajj')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit4')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit5')) bg-white @endif @if((Request::url() === URL::to('/').'/apply/Ummrah')) bg-white @endif ">
-                        <a   href="/visas"
+                    <li class="border-t mt-2 border-light-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/customer/visas')) bg-white @endif @if((Request::url() === URL::to('/').'/personalInformationIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/contactInformationIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/agentIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/apply/Hajj')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit4')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit5')) bg-white @endif @if((Request::url() === URL::to('/').'/apply/Ummrah')) bg-white @endif ">
+                        <a   href="/customer/visas"
                            class="mx-4   hover:font-normal text-sm text-nav-item no-underline">
                            Visa Apply
                             <span><i class="fa fa-angle-right float-right"></i></span>
@@ -59,40 +59,18 @@
                     </li>
 
 
-                    <li class="border-t mt-2 border-light-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/tickets')) bg-white @endif @if((Request::url() === URL::to('/').'/ticketTripDetailIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit1')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit2')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit3')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit4')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit5')) bg-white @endif @if((Request::url() === URL::to('/').'/create1')) bg-white @endif ">
-                        <a   href="/tickets"
+                    <li class="border-t mt-2 border-light-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/customer/tickets')) bg-white @endif @if((Request::url() === URL::to('/').'/ticketTripDetailIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit1')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit2')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit3')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit4')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit5')) bg-white @endif @if((Request::url() === URL::to('/').'/create1')) bg-white @endif ">
+                        <a   href="/customer/tickets"
                            class="mx-4   hover:font-normal text-sm text-nav-item no-underline">
                            Ticket Apply
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>            
                     </li>
 
-                    
-                    {{-- <li class="border-t mt-2 border-light-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/mangeagent')) bg-white @endif @if((Request::url() === URL::to('/').'/edit0')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit1')) bg-white @endif"  >
-                        <a   href="/manage/agents"
-                           class="mx-4   hover:font-sans text-sm text-nav-item no-underline">
-                           Manage Agent
-                            <span><i class="fa fa-angle-right float-right"></i></span>
-                        </a>
-                    </li> --}}
-<!-- 
-                            <li class="border-t border-light-border w-full h-full px-2 py-3 @if(Request::url() === URL::to('/').'/ummrahs') bg-white @endif">
-                                <a  href="ummrahs"  
-                                   class="mx-4   hover:font-normal text-sm text-nav-item no-underline">
-                                    Ummrah
-                                    <span><i class="fa fa-angle-right float-right"></i></span>
-                                </a>
-                            </li>
-                            <li class="border-t border-light-border w-full h-full px-2 py-3 @if(Request::url() === URL::to('/').'/hajjs') bg-white @endif">
-                                <a  href="/hajjs"
-                                   class="mx-4   hover:font-normal text-sm text-nav-item no-underline">
-                                    Hajj
-                                    <span><i class="fa fa-angle-right float-right"></i></span>
-                                </a>
-                            </li> -->
+                  
 
-                            <li class="border-t border-light-border w-full h-full px-2 py-3 @if(Request::url() === URL::to('/').'/hotelreservations') bg-white @endif" >
-                                <a  href="/hotelreservations"
+                            <li class="border-t border-light-border w-full h-full px-2 py-3 @if(Request::url() === URL::to('/').'/customer/hotelreservations') bg-white @endif" >
+                                <a  href="/customer/hotelreservations"
                                    class="mx-4   hover:font-normal text-sm text-nav-item no-underline">
                                     Hotel Reservation
                                     <span><i class="fa fa-angle-right float-right"></i></span>

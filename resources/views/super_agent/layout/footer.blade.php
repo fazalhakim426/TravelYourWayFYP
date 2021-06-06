@@ -1,0 +1,1 @@
+<div class="flex flex-1 mx-auto">&copy; My Design</div>

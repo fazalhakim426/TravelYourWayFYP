@@ -10,7 +10,6 @@ class AdminGeneralController extends Controller
     public function index(){
         $visas=DB::table('visas')->get();
         return view('admindashboard.dashboard')->with('visas',$visas)->with('i',1);
-
     }
     
     public function manage($type){

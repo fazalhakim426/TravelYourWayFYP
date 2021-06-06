@@ -65,29 +65,6 @@ Route::get('hoteledit',[HotelController::class,'destroy']);
     });
 Route::get('manage/{type}',[AdminGeneralController::class,'manage']);
    
-    // Route::get('/manageticket',function(){      
-    //     return view('admindashboard.management.ticket');
-    // }); 
-
-
-
-    // Route::get('/immigrationvisa2',function(){
-    //     return view('userdashboard.apply.immigration_visa_step_2');
-    // });
-
-    // Route::get('/immigrationvisa3',function(){
-    //     return view('userdashboard.apply.immigration_visa_step_3');
-    // });
-    // Route::get('/immigrationvisa4',function(){
-    //     return view('userdashboard.apply.immigration_visa_step_4');
-    // });
-    // Route::get('/immigrationvisa0',function(){
-    //     return view('userdashboard.apply.immigration_visa_step_0');
-    // });
-    // Route::get('/immigrationvisa5',function(){
-    //     return view('userdashboard.apply.immigration_visa_step_5');
-    // });
-
 });
 });
 });

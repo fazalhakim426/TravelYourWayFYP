@@ -16,13 +16,13 @@ class Customer
      */
     public function handle(Request $request, Closure $next)
     {
-        $user=Auth::user();
-        if($user->membership=="Customer")
+        $user=Auth::user()->userable;
+        if(get_class($user)=="App\Models\Customer")
         {
             return $next($request);
         }
         else{
-            return redirect('/dashboard');
+            return redirect('/customer/dashboard');
         }
     }
 }

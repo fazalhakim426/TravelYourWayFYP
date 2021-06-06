@@ -1,0 +1,285 @@
+
+	.student-dashboard .custom-file {
+    position: relative;
+    width: unset;
+    height: unset;
+    text-align: center;
+}
+
+.student-dashboard .heading {
+    font-weight: 500;
+    line-height: 15px;
+}
+
+.student-dashboard .custom-file-input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    cursor: pointer;
+}
+
+.student-dashboard .fa-folder-plus {
+    font-size: 95px;
+    color: #fa991c;
+}
+
+.student-dashboard .action .icon {
+    border: 1px solid #000;
+    padding: 5px 10px;
+	transition: .3s ease;
+	cursor: pointer;
+}
+
+.student-dashboard .fa-check:hover,
+.student-dashboard .fa-check:focus {
+	background: green;
+}
+
+.student-dashboard .fa-times:hover,
+.student-dashboard .fa-times:focus {
+    background: #bd2130;
+}
+
+.student-dashboard .fa-comment-alt:hover,
+.student-dashboard .fa-comment-alt:focus {
+	background: #ffa500f5;
+}
+
+.student-dashboard .user-textarea {
+    border: 1px solid #000;
+    min-height: 85px;
+    max-height: 85px;
+    overflow: auto;
+    transition: .3s ease;
+}
+
+.student-dashboard .assessed-date {
+    font-size: 13px;
+}
+
+.student-dashboard .form-control {
+    border: 1px solid #000;
+    border-radius: 0;
+    /* width: 85%;
+    margin-left: 2%; */
+    transition: .3s ease;
+}
+
+.student-dashboard .form-control:focus,
+.student-dashboard .user-textarea:focus {
+	box-shadow: none;
+    font-size: 13px;	
+}
+
+.student-dashboard .user-textarea:focus {
+    background: #5894ff7a;
+}
+
+.student-dashboard label {
+    background: #032539;
+    color: #FFF;
+    padding: 2px 5px;
+    font-weight: 500;
+    font-size: 13px;
+}
+
+.student-dashboard .rto-control-1 {
+	height: 40%;
+}
+
+.student-dashboard .rto-control-2 {
+    /* height: 57%; */
+}
+
+
+.student-dashboard .data-container {
+    width: 100%;
+    height: 100%;
+    margin-left: -30px;
+    padding: 8px 8px 8px 35px;
+}
+
+.student-dashboard .student-ol {
+	padding-left: 70px;
+}
+
+.student-dashboard li:nth-child(odd) .data-container {
+    background-color: #fdf5f5;
+}
+
+::marker {
+    font-weight: 500;
+}
+
+
+
+.cook-main .active-btn {
+    border: 2px solid #000;
+    font-weight: 500;
+    width: 198px;
+    padding: 5px;
+    text-align: center;
+    transition: .3s ease;
+}
+
+.cook-main .active-btn:hover,
+.cook-main .active-btn:active{
+    background: green;
+    color: #FFF !important;
+}
+
+.activegreen{
+    background: green;
+}
+.activered{
+    background: #bd2130;
+}
+.activeyellow{
+    background: #ffa500f5;
+}
+
+
+
+.cook-main .updated-date {
+    font-size: 13px;
+}
+
+.cook-main .caption-txt {
+    font-size: 13px;
+}
+
+.cook-main .cook-content {
+    /* border-bottom: 1px solid #000; */
+    padding: 55px 0;
+    margin: 0;
+}
+
+.cook-main .fa-arrow-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    background: #fa991c;
+    color: #FFF;
+    width: 40px;
+    height: 40px;
+    font-size: 24px;
+    border-radius: 50px;
+}
+
+.cook-main .action-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
+@media only screen and (min-width: 992px) {
+    .folder-description{
+        padding: 0 25px !important;
+    }
+}
+
+
+@media only screen and (max-width: 575px) {
+    .student-dashboard .student-ol {
+        padding-left: 0;
+    }
+
+    .student-dashboard .data-container {
+        margin-left: 0;
+    }
+}
+
+
+/* admin side */
+
+.upolad-file-section {
+    border: 2px dotted;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.upolad-file-section label {
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    color: #000;
+}
+
+.upolad-file-section .upload-btn {
+    background: #032539;
+    color: #FFF!important;
+    width: 185px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 8px 0;
+}
+
+/* .upolad-file-section .form-control-file {
+    border: 2px dotted;
+    width: unset;
+    padding: 5px;
+    margin-bottom: 35px;
+    text-transform: capitalize;
+    overflow: hidden;
+    font-weight: 700;
+} */
+
+.upolad-file-section .form-control-file::-webkit-file-upload-button {
+    display: none;
+}
+
+.upolad-file-section .form-control-file::before {
+    content: 'Choose Fiile';
+    font-weight: 700;
+    display: inline-block;
+    border: 2px solid;
+    width: 125px;
+    text-align: center;
+    margin-right: 15px;
+}
+
+.upolad-file-section .form-control-file:focus {
+    outline: none;
+}
+
+.upolad-file-section .upload-input-group {
+    margin-bottom: 35px;
+}
+
+.upolad-file-section .form-control-file {
+    border: 2px dotted;
+    padding: 5px;			
+    text-transform: capitalize;
+    overflow: hidden;
+    width: unset;
+}
+
+.upolad-file-section .btn-upload {
+    margin-left: 10px;
+}
+
+@media only screen and (max-width: 991px) {
+    .upolad-file-section label {
+        font-size: 17px;
+    }
+
+    .upolad-file-section .form-control-file {
+        margin-bottom: 25px;
+        font-size: 13px;
+    }
+
+    .upolad-file-section .upload-btn {
+        font-size: 13px;
+    }
+    .upolad-file-section .upload-input-group {
+        margin-bottom: 25px;
+    }
+}
+
+

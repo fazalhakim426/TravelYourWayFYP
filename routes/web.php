@@ -1,9 +1,10 @@
 <?php
 
+use App\Models\Agent as ModelsAgent;
 use Illuminate\Support\Facades\Route;
 use App\Models\Visa;
 use App\Models\User;
-use App\Models\Ticket;
+use App\Models\Agent;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,9 @@ use App\Models\Ticket;
 */
 
 Route::get('/', function () {
+    // dd(Agent::get());
+
+
 //     $posts = User::withCount('visa')->get();
    
 
@@ -38,8 +42,10 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     $visas=DB::table('visas')->where('user_id','=',Auth::user()->id)->get();
+
     return view('userdashboard.dashboard')->with('visas',$visas)->with('i',0);
-})->middleware(['auth'])->middleware('verified')->middleware('membership')->middleware('address')->name('dashboard');
+
+})->middleware(['auth'])->middleware('verified')->middleware('address')->middleware('membership')->name('dashboard');
 
 
 
@@ -47,5 +53,6 @@ Route::get('/dashboard', function () {
 require __DIR__.'/customerweb.php';
 require __DIR__.'/agentweb.php';
 require __DIR__.'/supreagentweb.php';
+
 require __DIR__.'/auth.php';
 require __DIR__.'/adminweb.php';

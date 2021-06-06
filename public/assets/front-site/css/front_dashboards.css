@@ -1,0 +1,1418 @@
+/* RTO Dashboard Styling */
+
+button:focus {
+  outline: none;
+}
+
+.btn-orange {
+  background: #fa991c;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  margin-top: 15px;
+  padding: 8px;
+}
+
+.btn-orange:hover {
+  background: #e69809;
+}
+
+.white {
+  color: #FFF;
+}
+
+.font-13 {
+  font-size: 13px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.main-eligible {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.clock {
+  background-color: #00a1ff1f;
+  border-radius: 0 10px 10px 10px;
+  margin-bottom: 15px;
+  display: grid;
+  grid-template-columns: 30% 70%;
+}
+
+.clock>div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.clock .fa-clock {
+  font-size: 48px;
+  margin: auto 0 auto 0;
+}
+
+.clock label {
+  background: #fa991c;
+  color: #FFF;
+  font-size: 13px;
+  padding: 5px;
+}
+
+#currentTime {
+  font-size: 30px;
+  color: #FFF;
+  font-weight: 500;
+}
+
+.num-std {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid #00a1ff1f;
+  border-radius: 0 10px 10px 10px;
+  margin-bottom: 15px;
+}
+
+.num-std>label{
+  width: 74%;
+}
+
+.num-std>label .student-txt {
+  padding: 5px;
+  display: block;
+  background: #fa991c;
+  color: #FFF;
+  font-size: 13px;
+}
+
+.num-std>label .bottom-orange {
+  border: 2px solid #fa991c;
+  display: block;
+  margin-top: 3px;
+}
+
+.num-std>span {
+  font-weight: bold;
+  font-size: 48px;
+  color: #043049;
+  text-align: center;
+}
+
+.yellow-container .eligible {
+  text-align: center;
+  color: #ffb100;
+}
+
+.profile-data {
+  font-size: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.profile-data>div {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+.profile-data>div>i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #043049;
+}
+
+.profile-data .dot-blue {
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+  background-color: #007bff;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.btn.buttons {
+  border-radius: 0;
+  color: #FFFFFF;
+  outline: none;
+}
+
+.cart {
+  background: #8080800d;
+  padding: 15px;
+}
+
+.label {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.info span {
+  font-size: 13px;
+}
+
+label.heading {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.blue-text {
+  color: #032b43;
+  font-weight: bold;
+}
+
+.login {
+  padding: 10px;
+}
+
+
+
+.login span:last-child {
+  font-size: 11px;
+  display: block;
+}
+
+.login-inner {
+  display: inline-block;
+}
+
+.user span {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.yellow-container {
+  background: #ffff0038;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.action-icons {
+  color: #808080;
+}
+
+.action-icons:hover {
+  text-decoration: none;
+}
+
+.edit i {
+  margin-right: 7px;
+  color: #ffb1009c;
+  border-bottom: 1px solid;
+  padding-bottom: 5px;
+}
+
+.block i {
+  margin-right: 7px;
+  color: #ffb1009c;
+}
+
+.icons-clr {
+  color: #ffb1009c;
+  margin-right: 5px;
+}
+
+.buttons {
+  margin: 5px 0;
+}
+
+.form-container {
+  margin-bottom: 15px;
+}
+
+.form-container .asseent-link {
+  color: #808080;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.form-container .asseent-link:hover {
+  color: darkslategrey;
+}
+
+.form-container .form-check-label {
+  font-size: 13px;
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+
+.form-check-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 25px;
+  background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+
+.form-check-label:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+
+.form-check-label input:checked~.checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+
+.form-check-label input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+
+.form-check-label .checkmark:after {
+  left: 9px;
+  top: 1px;
+  width: 7px;
+  height: 13px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.units {
+  display: flex;
+}
+
+.units .unit-text {
+  color: #ffb100;
+  font-size: 13px;
+  flex: 2;
+}
+
+.units .form-container {
+  flex: 10;
+}
+
+.text-gray {
+  color: #aaa;
+}
+
+div.h4 {
+  line-height: 1rem;
+}
+
+.main-num-std {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-num-std-inner {
+  padding: 5px;
+}
+
+.font-500 {
+  font-weight: 500;
+}
+
+.asset-1 {
+  background-image: url(../img/asset-1.png);
+  background-size: 40% 100%;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.asset-2 {
+  background-image: url(../img/asset-2.png);
+  background-size: 40% 100%;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.asset-3 {
+  background-image: url(../img/asset-3.png);
+  background-size: 25% 100%;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.asset-4 {
+  background-image: url(../img/asset-4.png);
+  background-size: 40% 100%;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.asset-5 {
+  background-image: url(../img/asset-5.png);
+  background-size: 30% 100%;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.asset-6 {
+  background-image: url(../img/asset-6.png);
+  background-size: 30% 100%;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.user-img>img {
+  min-height: 155px;
+  max-height: 155px;
+  object-fit: fill;
+  border-radius: 5px;
+}
+
+.clndr {
+  width: 100%;
+  justify-content: center;
+}
+
+.clndr-inner {
+  flex-direction: column;
+}
+
+.clndr-inner .clr-orange, .clndr-inner .clr-purple {
+  font-size: 30px;
+}
+
+.clr-orange {
+  color: #fa991c;
+}
+
+.clr-purple {
+  color: #043049;
+}
+
+.font-9 {
+  font-size: 9px;
+}
+
+.apoint-dt, .apoint-tm {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.apoint-dt>span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: #043049;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+
+
+.fa.orange {
+  color: #fa991c;
+}
+
+.btn-download {
+  width: 100%;
+  background: #808080c2;
+  border: none;
+  padding: 5px 0;
+  color: #FFF;
+  margin: 15px 0;
+}
+
+.btn-download:hover {
+  background: #808080;
+}
+
+.work-flow {
+  background: #00a1ff1f;
+  padding: 5px;
+  min-height: 190px;
+}
+
+.work-flow img {
+  height: 125px;
+  max-height: 125px;
+  object-fit: cover;
+}
+
+@media only screen and (min-width: 768px) {
+  .info-container-inner {
+    width: 70%;
+  }
+  .info-container-inner:nth-child(2) {
+    width: 30%;
+  }
+}
+
+/*                         End                      */
+
+/*                Industry Dashboard Styling            */
+
+button:focus {
+  outline: none;
+}
+
+.btn-purple {
+  background: #043049;
+  font-weight: 500;
+  color: #FFF;
+  border: none;
+  outline: none;
+  padding: 8px;
+  width: 50%;
+}
+
+.btn-orange {
+  background: #fa991c;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  margin-top: 15px;
+  padding: 8px;
+}
+
+.btn-orange:hover {
+  background: #e69809;
+}
+
+.white {
+  color: #FFF;
+}
+
+.font-13 {
+  font-size: 13px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.main-eligible {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+
+
+
+.clock>div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.clock .fa-clock {
+  font-size: 48px;
+  margin: auto 0 auto 0;
+}
+
+.clock label {
+  background: #fa991c;
+  color: #FFF;
+  font-size: 13px;
+  padding: 5px;
+}
+
+#currentTime {
+  font-size: 30px;
+  color: #FFF;
+  font-weight: 500;
+}
+
+.num-std {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid #00a1ff1f;
+  border-radius: 0 10px 10px 10px;
+  margin-bottom: 15px;
+}
+
+.num-std>label .student-txt {
+  padding: 5px;
+  display: block;
+  background: #fa991c;
+  color: #FFF;
+  font-size: 13px;
+}
+
+.num-std>label .bottom-orange {
+  border: 2px solid #fa991c;
+  display: block;
+  margin-top: 3px;
+}
+
+.num-std>span {
+  font-weight: bold;
+  font-size: 48px;
+  color: #043049;
+  text-align: center;
+}
+
+.yellow-container .eligible {
+  text-align: center;
+  color: #ffb100;
+}
+
+.profile-data {
+  font-size: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.profile-data>div {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+.profile-data>div>i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #043049;
+}
+
+.profile-data .dot-blue {
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+  background-color: #007bff;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.btn.buttons {
+  border-radius: 0;
+  color: #FFFFFF;
+  outline: none;
+}
+
+.cart {
+  background: #8080800d;
+  padding: 15px;
+}
+
+.label {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.info span {
+  font-size: 13px;
+}
+
+label.heading {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+
+
+.login {
+  padding: 10px;
+}
+
+.login .fa {
+  position: relative;
+  bottom: 7px;
+  color: #043049;
+}
+
+.login span:last-child {
+  font-size: 11px;
+  display: block;
+}
+
+.login-inner {
+  display: inline-block;
+}
+
+.user span {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.yellow-container {
+  background: #ffff0038;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.action-icons {
+  color: #808080;
+}
+
+.action-icons:hover {
+  text-decoration: none;
+}
+
+.edit i {
+  margin-right: 7px;
+  color: #ffb1009c;
+  border-bottom: 1px solid;
+  padding-bottom: 5px;
+}
+
+.block i {
+  margin-right: 7px;
+  color: #ffb1009c;
+}
+
+.icons-clr {
+  color: #ffb1009c;
+  margin-right: 5px;
+}
+
+.buttons {
+  margin: 5px 0;
+}
+
+.form-container {
+  margin-bottom: 15px;
+}
+
+.form-container .asseent-link {
+  color: #808080;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.form-container .asseent-link:hover {
+  color: darkslategrey;
+}
+
+.form-container .form-check-label {
+  font-size: 13px;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+
+.form-check-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+
+
+
+/* On mouse-over, add a grey background color */
+
+.form-check-label:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+
+.form-check-label input:checked~.checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+
+.form-check-label input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+
+.form-check-label .checkmark:after {
+  left: 9px;
+  top: 1px;
+  width: 7px;
+  height: 13px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.units {
+  display: flex;
+}
+
+.units .unit-text {
+  color: #ffb100;
+  font-size: 13px;
+  flex: 2;
+}
+
+.units .form-container {
+  flex: 10;
+}
+
+.text-gray {
+  color: #aaa;
+}
+
+div.h4 {
+  line-height: 1rem;
+}
+
+.main-num-std {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-num-std-inner {
+  padding: 5px;
+}
+
+.font-500 {
+  font-weight: 500;
+}
+
+.asset-6 {
+  background-image: url(../img/asset-6.png);
+  background-size: 30% 100%;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.clndr {
+  width: 100%;
+  justify-content: center;
+}
+
+.clndr-inner {
+  flex-direction: column;
+}
+
+.clndr-inner .clr-orange, .clndr-inner .clr-purple {
+  font-size: 30px;
+}
+
+.clr-purple {
+  color: #043049;
+}
+
+.font-9 {
+  font-size: 9px;
+}
+
+.apoint-dt, .apoint-tm {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.apoint-dt>span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: #043049;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.apoint-tm>span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: #fa991c;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.fa.orange {
+  color: #fa991c;
+}
+
+.work-flow {
+  background: #00a1ff1f;
+  padding: 5px;
+}
+
+.work-flow img {
+  height: 125px;
+  max-height: 125px;
+  object-fit: cover;
+}
+
+.qualified-fast img {
+  object-fit: cover;
+}
+
+@media only screen and (min-width: 768px) {
+  .info-container-inner {
+    width: 70%;
+  }
+  .info-container-inner:nth-child(2) {
+    width: 30%;
+  }
+}
+
+/*              Student Dashboard Styling            */
+
+button:focus {
+  outline: none;
+}
+
+.btn-purple {
+  background: #043049;
+  font-weight: 500;
+  color: #FFF;
+  border: none;
+  outline: none;
+  margin-top: 15px;
+  padding: 8px;
+  transition: .3s ease;
+}
+
+.btn-purple:hover {
+  font-size: 15px;
+  color: #FFF;
+}
+
+.btn-orange {
+  background: #fa991c;
+  font-weight: 500;
+  border: none;
+  outline: none;
+  margin-top: 15px;
+  padding: 8px;
+}
+
+.btn-orange:hover {
+  background: #e69809;
+}
+
+.white {
+  color: #FFF;
+}
+
+.font-13 {
+  font-size: 13px;
+}
+
+.font-16 {
+  font-size: 16px;
+}
+
+.main-eligible {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+
+
+.clock>div:first-child {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.clock .fa-clock {
+  font-size: 48px;
+  margin: auto 0 auto 0;
+}
+
+.clock label {
+  background: #fa991c;
+  color: #FFF;
+  font-size: 13px;
+  padding: 5px;
+}
+
+#currentTime {
+  font-size: 30px;
+  color: #FFF;
+  font-weight: 500;
+}
+
+.num-std {
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid #00a1ff1f;
+  border-radius: 0 10px 10px 10px;
+  margin-bottom: 15px;
+}
+
+.num-std>label .student-txt {
+  padding: 5px;
+  display: block;
+  background: #fa991c;
+  color: #FFF;
+  font-size: 13px;
+}
+
+.num-std>label .bottom-orange {
+  border: 2px solid #fa991c;
+  display: block;
+  margin-top: 3px;
+}
+
+.num-std>span {
+  font-weight: bold;
+  font-size: 48px;
+  color: #043049;
+  text-align: center;
+}
+
+.yellow-container .eligible {
+  text-align: center;
+  color: #ffb100;
+}
+
+.profile-data {
+  font-size: 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.profile-data>div {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+.profile-data>div>i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #043049;
+}
+
+.profile-data .dot-blue {
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+  background-color: #007bff;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.btn.buttons {
+  border-radius: 0;
+  color: #FFFFFF;
+  outline: none;
+}
+
+.cart {
+  background: #8080800d;
+  padding: 15px;
+}
+
+.label {
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.info span {
+  font-size: 13px;
+}
+
+label.heading {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+
+
+.login {
+  padding: 10px;
+}
+
+
+
+.login span:last-child {
+  font-size: 11px;
+  display: block;
+}
+
+.login-inner {
+  display: inline-block;
+}
+
+.user span {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.yellow-container {
+  background: #ffff0038;
+  border-radius: 15px;
+  padding: 15px;
+}
+
+.action-icons {
+  color: #808080;
+}
+
+.action-icons:hover {
+  text-decoration: none;
+}
+
+.edit i {
+  margin-right: 7px;
+  color: #ffb1009c;
+  border-bottom: 1px solid;
+  padding-bottom: 5px;
+}
+
+.block i {
+  margin-right: 7px;
+  color: #ffb1009c;
+}
+
+.icons-clr {
+  color: #ffb1009c;
+  margin-right: 5px;
+}
+
+.buttons {
+  margin: 5px 0;
+}
+
+.form-container {
+  margin-bottom: 15px;
+}
+
+.form-container .asseent-link {
+  color: #808080;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+.form-container .asseent-link:hover {
+  color: darkslategrey;
+}
+
+.form-container .form-check-label {
+  font-size: 13px;
+  display: block;
+  position: relative;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+
+.form-check-label input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+
+
+
+/* On mouse-over, add a grey background color */
+
+.form-check-label:hover input~.checkmark {
+  background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+
+.form-check-label input:checked~.checkmark {
+  background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+
+.form-check-label input:checked~.checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+
+.form-check-label .checkmark:after {
+  left: 9px;
+  top: 1px;
+  width: 7px;
+  height: 13px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+
+.units {
+  display: flex;
+}
+
+.units .unit-text {
+  color: #ffb100;
+  font-size: 13px;
+  flex: 2;
+}
+
+.units .form-container {
+  flex: 10;
+}
+
+.text-gray {
+  color: #aaa;
+}
+
+div.h4 {
+  line-height: 1rem;
+}
+
+.main-num-std {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.main-num-std-inner {
+  padding: 5px;
+}
+
+.font-500 {
+  font-weight: 500;
+}
+
+.asset-1 {
+  background-image: url(../img/asset-1.png);
+  background-size: 40% 100%;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.asset-2 {
+  background-image: url(../img/asset-2.png);
+  background-size: 40% 100%;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.asset-3 {
+  background-image: url(../img/asset-3.png);
+  background-size: 25% 100%;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.asset-4 {
+  background-image: url(../img/asset-4.png);
+  background-size: 40% 100%;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.asset-5 {
+  background-image: url(../img/asset-5.png);
+  background-size: 30% 100%;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.asset-6 {
+  background-image: url(../img/asset-6.png);
+  background-size: 30% 100%;
+  background-position: 100%;
+  background-repeat: no-repeat;
+}
+
+.clndr {
+  width: 100%;
+  justify-content: center;
+}
+
+.clndr-inner {
+  flex-direction: column;
+}
+
+.clndr-inner .clr-orange, .clndr-inner .clr-purple {
+  font-size: 30px;
+}
+
+.clr-purple {
+  color: #043049;
+}
+
+.font-9 {
+  font-size: 9px;
+}
+
+.progress--circle:after {
+  content: '';
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background-color: #63B8FF;
+}
+
+.progress--circle.progress--60:after {
+  background-image: linear-gradient(-54deg, #fa991c 50%, transparent 50%, transparent), linear-gradient(270deg, #fa991c 50%, #043049 50%, #043049);
+}
+
+.progress__number {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  line-height: 1;
+  margin-top: -0.75rem;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}
+
+.progress--circle {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background-color: #ddd;
+}
+
+.progress--circle:before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.apoint-dt, .apoint-tm {
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 15px;
+}
+
+.apoint-dt>span {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background: #043049;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+
+
+.fa.orange {
+  color: #fa991c;
+}
+@media only screen and (max-width: 991px) {
+  .slider.slider-nav {
+    height: 475px!important;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .info-container-inner {
+    width: 70%;
+  }
+  .info-container-inner:nth-child(2) {
+    width: 30%;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  .slider-container {
+    padding: 5px;
+  }
+}
+
+/*slick slider*/
+.slider-nav {
+  position: relative;
+}
+
+.slider-nav .slick-prev {
+  z-index: 1;
+  position: absolute;
+  left: 5px;
+}
+.slider-nav .slick-next {
+  z-index: 1;
+  position: absolute;
+  right: 5px;    
+}
+
+.slider-nav .slick-prev:before {
+  filter: drop-shadow(2px 4px 6px black);
+}
+
+.slider-nav .slick-next:before {
+    filter: drop-shadow(2px 4px 6px black);
+}
+
+.slider-nav .slick-dots li button:before {
+  font-size: 13px;
+}
+
+.slider-nav .slick-dots li button:hover:before, 
+.slider-nav .slick-dots li button:focus:before {
+  color: rgb(18, 37, 61);
+  opacity: 1;
+}
+/*slick slider*/

@@ -21,12 +21,15 @@ function profileToggle() {
 /**
  * ### Modals ###
  */
-
+function function1($this) {
+    document.getElementById('super_agent_id').value=$this.value;
+}
 function toggleModal(action, elem_trigger)
 {
     elem_trigger.addEventListener('click', function () {
         if (action == 'add') {
             let modal_id = this.dataset.modal;
+
             document.getElementById(`${modal_id}`).classList.add('modal-is-open');
         } else {
             // Automaticlly get the opned modal ID
