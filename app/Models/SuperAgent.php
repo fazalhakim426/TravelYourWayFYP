@@ -21,6 +21,17 @@ class SuperAgent extends Model
         return $this->morphOne(User::class, 'userable');
     }
 
+    public function paid_visas()
+    {
+        
+        return $this->hasMany(Visa::class,'super_agent_id','id')->where('status','Paid');
+    }
+    public function visas()
+    {
+        
+        return $this->hasMany(Visa::class,'super_agent_id','id');
+    }
+
   
     public function agents()
     {

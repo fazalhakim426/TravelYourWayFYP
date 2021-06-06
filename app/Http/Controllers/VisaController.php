@@ -178,11 +178,13 @@ class VisaController extends Controller
         // dd($request->all());
         
         $agent=Agent::find($request->agent_id);
+        $super_agent=$agent->super_agent;
         // dd($agent->user);
         // User::where('membership','Agent')->where('id',$request->agent_id)->first();
         
         $visa=Visa::where('id',$request->id)->update([
-            'agent_id'=>$request['agent_id'],
+            'agent_id'=>$agent->id,
+            'super_agent_id'=>$super_agent->id,
             'status'=>'Submitted',
         ]);
         
@@ -211,7 +213,6 @@ class VisaController extends Controller
                $visa->update(['status'=>'Incomplete']);
                return redirect('/customer/visas');
 
-       return 'updating pending';
     }
 
     /**

@@ -39,6 +39,10 @@ class Visa extends Model
     protected $attributes = [
         'status' => "Incomplete",
     ];
+
+    public function agent(){
+        return $this->belongsTo(Agent::class);
+    }
     public function setTypeAttribute($value)
     {
         $this->attributes['type'] = ucfirst($value);

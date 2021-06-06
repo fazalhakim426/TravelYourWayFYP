@@ -3,7 +3,7 @@ use Illuminate\Support\Facades\Route;
 
 
 use App\Http\Controllers\SuperAgent\TicketRequestController;
-use App\Http\Controllers\SuperAgent\ManageAgentController;
+use App\Http\Controllers\SuperAgent\ManageSuperAgentController;
 use App\Http\Controllers\SuperAgentController;
 use Illuminate\Support\Facades\DB;
 
@@ -37,6 +37,32 @@ Route::middleware(['superagent'])->group(function(){
         )->name('delete-agent');
            
                 
+             //visa
+             Route::get(
+                '/immigrations',
+                [SuperAgentController::class,'getImmigration']
+                   );
+    
+            //visa
+            Route::get(
+                '/ummrahs',
+                [SuperAgentController::class,'getUmmrahs']
+                   );
+    
+            //visa
+            Route::get(
+                '/hajjs',
+                [SuperAgentController::class,'getHajjs']
+                   );
+    
+            //visa
+            Route::get(
+                '/visits',
+                [SuperAgentController::class,'getVisits']
+                   );
+    
+    
+        
  });
 
 
@@ -49,8 +75,8 @@ Route::middleware(['superagent'])->group(function(){
 
     
     Route::resources([
-        'mangaeagents' => ManageAgentController::class,
-        'posts' => ManageSAgentController::class,
+        'mangaeagents' => ManageSuperAgentController::class,
+        'posts' => ManageSSuperAgentController::class,
     ]);  
 
     // Route::resources([

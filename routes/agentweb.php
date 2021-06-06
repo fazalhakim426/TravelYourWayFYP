@@ -21,15 +21,7 @@ Route::middleware(['auth'])->group(function () {
             '/dashboard'
             ,[AgentController::class,'index']
             )->name('/agent/dashboard'); 
-        Route::get(
-            '/all_super_agents',
-            [AgentController::class,'getAllSuperAgents']
-            )->name('all_super_agents');
 
-        Route::post(
-            '/add_super_agent',
-            [AgentController::class,'addSuperAgents'
-            ])->name('add_super_agent');
         //visa
         Route::get(
             '/immigrations',
@@ -84,6 +76,6 @@ Route::middleware(['auth'])->group(function () {
                      
             
 
-            
+
             });
     });
