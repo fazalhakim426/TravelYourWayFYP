@@ -46,8 +46,47 @@ Route::middleware(['auth'])->group(function () {
             [AgentController::class,'getVisits']
                );
 
+        Route::post(
+            'ticket-apply-charges',
+            [AgentController::class,'ticket_applay_charges']
+                )->name('ticket-apply-charges');
+    
+         Route::post(
+             'applycharges'
+             ,[AgentController::class,'applycharges']
+             )->name('applycharges');
 
     
+
+
+        Route::get(
+                'tickets'
+                ,[AgentController::class,'tickets']
+             );
+
+
+
+
+
+             
+        Route::get(
+            'visa_cancel'
+        ,[AgentController::class,'cancel_visa']);
+       
+        Route::get(
+            'ticket_cancel'
+        ,[AgentController::class,'cancel_ticket']);
+       
+
+        Route::get(
+            'visa_revoke',
+            [AgentController::class,'revoke_visa']
+        );
+       
+        Route::get(
+            'visa_ticket',
+            [AgentController::class,'revoke_ticket']
+        );
         });
 
 

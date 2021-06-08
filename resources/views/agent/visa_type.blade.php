@@ -78,7 +78,7 @@ type="number" placeholder="Charges PKR">
 
       <a  href="/adminvisaedit0?id={{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
               <i class="fas fa-edit"></i></a>
-              <a  href="/adminvisacancel?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
+              <a  href="/visa_cancel?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
                   <i class="fas fa-times bg-red-700"></i></a>
             
 
@@ -169,7 +169,7 @@ type="number" placeholder="Charges PKR">
              <a  href="/adminvisaedit0?id={{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
              <i class="fas fa-edit"></i></a>
 
-             <a  href="/adminvisacancel?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
+             <a  href="/visa_cancel?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
              <i class="fas fa-times bg-red-700"></i></a>
            
 
@@ -340,7 +340,7 @@ type="number" placeholder="Charges PKR">
 <tbody>
 
 <span class="hidden"> {{$i=1}} </span>
-@foreach($user->userable->visas()->where('type',$sub_active)->where('status','Paid')->get() as $visa)
+@foreach($user->userable->visas()->where('type',$sub_active)->where('status','Cancel')->get() as $visa)
 
 
 
@@ -385,7 +385,7 @@ type="number" placeholder="Charges PKR">
              <a  href="/adminvisaedit0?id={{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
              <i class="fas fa-edit"></i></a>
 
-             <a  href="/adminvisarevoke?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
+             <a  href="/visa_revoke?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
              <i class="fas fa-undo bg-red-700"></i></a>
            
 

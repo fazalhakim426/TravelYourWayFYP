@@ -76,13 +76,13 @@
                      
 
                           <tr>
-                            <th class="border w-1/6 px-4 py-2">Title</th>
-                            <th class="border w-1/6 px-4 py-2">First Name</th>
-                            <th class="border w-1/6 px-4 py-2">Last Nmae</th>
-                            <th class="border w-1/6 px-4 py-2">DOB</th>
-                            <th class="border w-1/6 px-4 py-2">Passport #</th>
-                            <th class="border w-1/6 px-4 py-2">Nationality</th>
-                            <th class="border w-1/6 px-4 py-2">
+                            <th class="bg-white border w-1/6 px-4 py-2">Title</th>
+                            <th class="bg-white border w-1/6 px-4 py-2">First Name</th>
+                            <th class="bg-white border w-1/6 px-4 py-2">Last Nmae</th>
+                            <th class="bg-white border w-1/6 px-4 py-2">DOB</th>
+                            <th class="bg-white border w-1/6 px-4 py-2">Passport #</th>
+                            <th class="bg-white border w-1/6 px-4 py-2">Nationality</th>
+                            <th class="bg-white border w-1/6 px-4 py-2">
                             
                                 <button data-modal='centeredFormModal'
                                 class="modal-trigger bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">

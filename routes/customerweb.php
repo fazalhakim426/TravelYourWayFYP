@@ -32,8 +32,45 @@ Route::prefix('customer')->group(function(){
         
         Route::get('apply/{type}',[VisaController::class,'index2']);
 
-        Route::get('payments/{charges}',[PaymentController::class,'pay']);
-        Route::get('done/{charges}',[PaymentController::class,'done']);
+        Route::get('visa_payments/{charges}',[CustomerController::class,'pay_visa_charges']);
+        Route::get('done_visa/{charges}',[CustomerController::class,'done_visa']);
+
+
+        Route::get(
+            'ticket_payments/{charges}',
+            [CustomerController::class,'pay_ticket_charges']
+                  );
+
+        Route::get(
+        'done_ticket/{charges}'
+        ,[CustomerController::class,'done_ticket']
+    
+        );
+
+
+
+             
+        Route::get(
+            'visa_cancel'
+        ,[AgentController::class,'cancel_visa']);
+       
+        Route::get(
+            'ticket_cancel'
+        ,[AgentController::class,'cancel_visa']);
+       
+
+        Route::get(
+            'visa_revoke',
+            [AgentController::class,'revoke_visa']
+        );
+       
+        Route::get(
+            'visa_ticket',
+            [AgentController::class,'revoke_ticket']
+        );
+       
+
+       
 
 
         
@@ -42,6 +79,7 @@ Route::prefix('customer')->group(function(){
    
 
         
+Route::middleware(['customer'])->group(function(){
         
         //Contact Information 
             Route::get('/contactInformationIndex',[VisaController::class,'contactInformationIndex']);
@@ -108,6 +146,8 @@ Route::post('/selectAgent',[VisaController::class,'selectAgent'])->name('selectA
     //     Route::get('/visas5',function(){
     //         return view('userdashboard.immigration_apply.immigration_visa_step_5');
     //     });
+
+});
 
 });
 });

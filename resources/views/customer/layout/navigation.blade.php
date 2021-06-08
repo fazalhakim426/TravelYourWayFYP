@@ -38,30 +38,30 @@
 
         <div class="flex flex-1">
             <!--Sidebar-->
-            <aside id="sidebar" class="bg-side-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block">
+            <aside id="sidebar" class="bg-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block">
 
                 <ul class="list-reset flex flex-col">
-                    <li class=" w-full h-full py-3 px-2 border-b border-light-border @if(Request::url() === URL::to('/').'/customer/dashboard') bg-white @endif">
+                    <li class=" w-full h-full py-3 px-2 border-b border-light-border @if(Request::url() === URL::to('/').'/customer/dashboard') bg-gray-600 @endif">
                     
-                        <a href="/customer/dashboard"  class="  hover:font-normal text-sm text-nav-item no-underline">
+                        <a href="/customer/dashboard"  class="hover:font-normal text-sm text-white no-underline">
                             <i class="fas fa-tachometer-alt float-left mx-2"></i>
                             Dashboard
                             <span><i class="fas fa-angle-right float-right"></i></span>
                         </a>
                     </li>
                     
-                    <li class="border-t mt-2 border-light-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/customer/visas')) bg-white @endif @if((Request::url() === URL::to('/').'/personalInformationIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/contactInformationIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/agentIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/apply/Hajj')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit4')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit5')) bg-white @endif @if((Request::url() === URL::to('/').'/apply/Ummrah')) bg-white @endif ">
+                    <li class="border-t  border-black-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/customer/visas'))  bg-gray-600  @endif @if((Request::url() === URL::to('/').'/personalInformationIndex'))  bg-gray-600  @endif  @if((Request::url() === URL::to('/').'/contactInformationIndex'))  bg-gray-600  @endif  @if((Request::url() === URL::to('/').'/agentIndex'))  bg-gray-600  @endif  @if((Request::url() === URL::to('/').'/apply/Hajj'))  bg-gray-600  @endif  @if((Request::url() === URL::to('/').'/edit4'))  bg-gray-600  @endif  @if((Request::url() === URL::to('/').'/edit5'))  bg-gray-600  @endif @if((Request::url() === URL::to('/').'/apply/Ummrah'))  bg-gray-600  @endif ">
                         <a   href="/customer/visas"
-                           class="mx-4   hover:font-normal text-sm text-nav-item no-underline">
+                           class="mx-4   hover:font-normal text-sm text-white no-underline">
                            Visa Apply
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>            
                     </li>
 
 
-                    <li class="border-t mt-2 border-light-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/customer/tickets')) bg-white @endif @if((Request::url() === URL::to('/').'/ticketTripDetailIndex')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit1')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit2')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit3')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit4')) bg-white @endif  @if((Request::url() === URL::to('/').'/edit5')) bg-white @endif @if((Request::url() === URL::to('/').'/create1')) bg-white @endif ">
+                    <li class="border-t  border-light-border w-full h-full px-2 py-3 @if((Request::url() === URL::to('/').'/customer/tickets'))  bg-gray-600  @endif @if((Request::url() === URL::to('/').'/ticketTripDetailIndex'))  bg-gray-600  @endif  @if((Request::url() === URL::to('/').'/edit1'))  bg-gray-600  @endif  @if((Request::url() === URL::to('/').'/edit2'))  bg-gray-600  @endif  @if((Request::url() === URL::to('/').'/edit3'))  bg-gray-600  @endif  @if((Request::url() === URL::to('/').'/edit4'))  bg-gray-600  @endif  @if((Request::url() === URL::to('/').'/edit5'))  bg-gray-600  @endif @if((Request::url() === URL::to('/').'/create1'))  bg-gray-600  @endif ">
                         <a   href="/customer/tickets"
-                           class="mx-4   hover:font-normal text-sm text-nav-item no-underline">
+                           class="mx-4   hover:font-normal text-sm text-white no-underline">
                            Ticket Apply
                             <span><i class="fa fa-angle-right float-right"></i></span>
                         </a>            
@@ -69,9 +69,9 @@
 
                   
 
-                            <li class="border-t border-light-border w-full h-full px-2 py-3 @if(Request::url() === URL::to('/').'/customer/hotelreservations') bg-white @endif" >
+                            <li class="border-t border-light-border w-full h-full px-2 py-3 @if(Request::url() === URL::to('/').'/customer/hotelreservations')  bg-gray-600  @endif" >
                                 <a  href="/customer/hotelreservations"
-                                   class="mx-4   hover:font-normal text-sm text-nav-item no-underline">
+                                   class="mx-4   hover:font-normal text-sm text-white no-underline">
                                     Hotel Reservation
                                     <span><i class="fa fa-angle-right float-right"></i></span>
                                 </a>

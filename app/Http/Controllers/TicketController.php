@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ticket;
-use App\Models\User;
-use App\Models\TicketPassenger;
 use Illuminate\Http\Request;
 use App\Http\Requests\AirlineRequest;
 use App\Http\Requests\TicketTripDetailRequest;
 use App\Models\Agent;
-use DB,Auth;
+use App\Notifications\TicketNotification;
+use Auth;
 class TicketController extends Controller
 {
     /**
@@ -109,10 +108,15 @@ class TicketController extends Controller
 
     public function ticketStoreAgent(Request $request)
     {
-        Ticket::where('id', $request->id)->update([
-            'agent_id'=>$request->agent_id,
+        $agent=Agent::find($request->agent_id);
+        
+        $ticket=Ticket::where('id', $request->id)->update([
+            'agent_id'=>$agent->id,
+            'super_agent_id'=>$agent->super_agent->id,
             'status'=>"Submitted",
         ]);
+        $agent->user->notify(new TicketNotification());
+        
         
         return redirect('/customer/dashboard');
     }
@@ -129,7 +133,8 @@ class TicketController extends Controller
     public function show($id)
     {
         dd($id);
-    } public function update(Request $request, Ticket $ticket)
+    } 
+    public function update(Request $request, Ticket $ticket)
     {
         //
     }
