@@ -2,46 +2,47 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\AgentSuperAgent;
-use App\Models\SuperAgent;
+use App\Models\Ticket;
+use App\Models\User;
 use App\Models\Visa;
+use App\Notifications\SendPaymentNotification;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AgentController extends Controller
 {
-    // public function getAllSuperAgents()
-    // {
-    //     $data['user']=Auth::user();
-    //     $data['sub_active']='All Super Agents';
-
-    //     foreach(SuperAgent::get() as $index=>$agent)
-    //     {
-    //         $data['agents'][$index] = $agent->user;
-    //     }
-    //     return view('agent.all_super_agent',$data);
 
 
-    // }
-    
-    // public function getMySuperAgents()
-    // {
 
-    //     $data['user']=Auth::user();
-    //     $agent=$data['user']->userable;
+    public function applycharges(Request $request){
+        User::find($request->user_id)->notify(new SendPaymentNotification);
+        $request->validate(
+            [
+                'charges'=>'required|numeric|gt:1000',
+            ]
+            );
+       
+        Visa::where('id',$request->id)->update([
+            'status'=>"Payment Request",
+            'charges'=>$request->charges,
+        ]);
+        return back();
+    }
 
-    //     $data['sub_active']='My Super Agents';
-    //     // dd($agent->super_agents );
-    //     // foreach($agent->super_agents as $index=>$agent)
-    //     // {
-    //     //     $data['agents'][$index] = $agent->user;
-    //     // }
-    //     return view('agent.my_super_agent',$data);
-
-
-     
-    // }
-
+    public function ticket_applay_charges(Request $request){
+        User::find($request->user_id)->notify(new SendPaymentNotification);
+        $request->validate(
+            [
+                'total_payable'=>'required|numeric|gt:1000',
+            ]
+            );
+       
+        Ticket::where('id',$request->id)->update([
+            'status'=>"Payment Request",
+            'total_payable'=>$request->total_payable,
+        ]);
+        return back();
+    }
     public function addSuperAgents(Request $r)
     {
 
@@ -56,17 +57,15 @@ class AgentController extends Controller
     $data['visas']=Visa::where('agent_id','=',Auth::user()->userable_id)->orderBy('status')->get(); 
     $data['user'] =Auth::user();
     $data['sub_active'] ='Dashboard';
-    $data['i'] =0;
     return view('agent.dashboard',$data); 
     }
 
     public function getImmigration()
     {
-    // $data['visas']=Visa::where('agent_id','=',Auth::user()->userable_id)->orderBy('status')->get(); 
-    // dd($data);
+
     $data['user'] =Auth::user();
     $data['sub_active'] ='Immigration';
-    $data['i'] =0;
+
     return view('agent.visa_type',$data); 
     }
     public function getHajjs()
@@ -75,7 +74,7 @@ class AgentController extends Controller
     // dd($data);
     $data['user'] =Auth::user();
     $data['sub_active'] ='Hajj';
-    $data['i'] =0;
+   
     return view('agent.visa_type',$data); 
     }
     public function getUmmrahs()
@@ -84,7 +83,7 @@ class AgentController extends Controller
     // dd($data);
     $data['user'] =Auth::user();
     $data['sub_active'] ='Ummrah';
-    $data['i'] =0;
+   
     return view('agent.visa_type',$data); 
     }
     public function getVisits()
@@ -92,7 +91,58 @@ class AgentController extends Controller
   
     $data['user'] =Auth::user();
     $data['sub_active'] ='Visit';
-    $data['i'] =0;
+   
     return view('agent.visa_type',$data); 
+    }    
+    
+    public function tickets()
+    {
+  
+    $data['user'] =Auth::user();
+    $data['sub_active'] ='Ticket';
+   
+    return view('agent.ticket_type',$data); 
     }
+
+
+
+    public function cancel_visa(Request $request)
+    {
+        $visa=Visa::where('id',$request->id)->update([
+              'status'=>"Cancel",
+              'charges'=>""
+        ]);
+        
+        return back();
+    }
+    public function revoke_visa(Request $request)
+    {
+        $visa=Visa::where('id',$request->id)->update([
+            'status'=>"Submitted",
+            'charges'=>""
+        ]);
+        
+        return back();
+    }
+
+
+    public function cancel_ticket(Request $request)
+    {
+        Ticket::where('id',$request->id)->update([
+              'status'=>"Cancel",
+              'total_payable'=>""
+        ]);
+        
+        return back();
+    }
+    public function revoke_ticket(Request $request)
+    {
+        Ticket::where('id',$request->id)->update([
+            'status'=>"Submitted",
+            'total_payable'=>""
+        ]);
+        
+        return back();
+    }
+
 }

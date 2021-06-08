@@ -20,12 +20,9 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('admindashboard',[AdminGeneralController::class,'index']);
     
-        Route::post('applycharges',[PaymentController::class,'applycharges'])->name('applycharges');
-
+        
         Route::delete('adminvisadestroy',[AdminGeneralController::class,'destroy'])->name('adminvisadestroy');
         
-        Route::get('adminvisacancel',[AdminGeneralController::class,'cancel']);
-        Route::get('adminvisarevoke',[AdminGeneralController::class,'revoke']);
         Route::get('adminvisaedit0',[AdminGeneralController::class,'edit0']);
         Route::get('adminvisaedit1',[AdminGeneralController::class,'edit1']);
         Route::get('adminvisaedit2',[AdminGeneralController::class,'edit2']);

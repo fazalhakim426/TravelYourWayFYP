@@ -23,10 +23,16 @@ class Agent extends Model
     }
 
     
-     public function visas()
-     {
-         return $this->hasMany(Visa::class);
-     }
+    public function visas()
+    {
+        return $this->hasMany(Visa::class);
+    }
+
+    
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
+    }
 
 
     public function super_agent(){

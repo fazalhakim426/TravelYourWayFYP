@@ -246,23 +246,5 @@ class AdminGeneralController extends Controller
 
     }
 
-    public function cancel(Request $request)
-    {
-        $visa=Visa::where('id',$request->id)->update([
-              'status'=>"Cancel",
-              'charges'=>""
-        ]);
-        
-        return back();
-    }
-    public function revoke(Request $request)
-    {
-        $visa=Visa::where('id',$request->id)->update([
-            'status'=>"Submitted",
-            'charges'=>""
-        ]);
-        
-        return back();
-    }
 
 }

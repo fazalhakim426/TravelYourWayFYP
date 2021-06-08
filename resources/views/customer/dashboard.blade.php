@@ -24,10 +24,11 @@
                     <div class="shadow-lg bg-red-vibrant border-l-8 hover:bg-red-vibrant-dark border-red-vibrant-dark mb-2 p-2 md:w-1/4 mx-2">
                             <div class="p-4 flex flex-col">
                                 <a href="#" class="no-underline text-white text-2xl">
-                                    1
+                                    {{count($visas->where('status','Incompleted'))}}
+                                    
                                 </a>
                                 <a href="#" class="no-underline text-white text-lg">
-                                    Not Submitted
+                                    Incomplete
                                 </a>
                             </div>
                         </div>
@@ -36,7 +37,8 @@
                         <div class="shadow-lg bg-red-vibrant border-l-8 hover:bg-red-vibrant-dark border-red-vibrant-dark mb-2 p-2 md:w-1/4 mx-2">
                             <div class="p-4 flex flex-col">
                                 <a href="#" class="no-underline text-white text-2xl">
-                                    1
+                                    {{count($visas->where('status','Cancelled'))}}
+                                    
                                 </a>
                                 <a href="#" class="no-underline text-white text-lg">
                                     Total Cancelled 
@@ -48,10 +50,11 @@
 
 
 
-                        <div class="shadow bg-info border-l-8 hover:bg-info-dark border-info-dark mb-2 p-2 md:w-1/4 mx-2">
+                        <div class="shadow bg-info   border-l-8 hover:bg-info-dark border-info-dark mb-2 p-2 md:w-1/4 mx-2">
                             <div class="p-4 flex flex-col">
                                 <a href="#" class="no-underline text-white text-2xl">
-                                    1
+                                    {{count($visas->where('status','Submitted'))}}
+                                    
                                 </a>
                                 <a href="#" class="no-underline text-white text-lg">
                                     Total Submitted
@@ -62,7 +65,8 @@
                         <div class="shadow bg-warning border-l-8 hover:bg-warning-dark border-warning-dark mb-2 p-2 md:w-1/4 mx-2">
                             <div class="p-4 flex flex-col">
                                 <a href="#" class="no-underline text-white text-2xl">
-                                    1
+                                    {{count($visas->where('status','Inprogress'))}}
+                                    
                                 </a>
                                 <a href="#" class="no-underline text-white text-lg">
                                     Total In Progress
@@ -73,7 +77,8 @@
                         <div class="shadow bg-success border-l-8 hover:bg-success-dark border-success-dark mb-2 p-2 md:w-1/4 mx-2">
                             <div class="p-4 flex flex-col">
                                 <a href="#" class="no-underline text-white text-2xl">
-                                    1
+                                    {{count($visas->where('status','Done'))}}
+                                    
                                 </a>
                                 <a href="#" class="no-underline text-white text-lg">
                                     Total Done
@@ -146,14 +151,14 @@
                                          
                                            <td class="border px-4 py-2">{{$visa->charges==null?'Pending':$visa->charges}}
                                                @if($visa->charges&&$visa->status=='Payment Request')
-                                               <a href='payments/{{$visa->id}}' class="bg-green-500 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                               <a href='visa_payments/{{$visa->id}}' class="bg-green-500 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
                                                    Pay
                                                </a>
                                                @elseif($visa->charges&&$visa->status=='Paid')
-                                               <a href='done/{{$visa->id}}' class="bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                               <a href='done_visa/{{$visa->id}}' class="bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
                                                   Done
                                                </a> @elseif($visa->charges&&$visa->status=='Done')
-                                               <a href='done/{{$visa->id}}' class="bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                               <a href='done_visa/{{$visa->id}}' class="bg-blue-700 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
                                                   Review
                                                </a>
                                                @endif
@@ -255,8 +260,7 @@
         
                                    @foreach($tickets as $visa)
                                    @if($visa->status!=null)     
-<tr>
-
+                                     <tr>
 
                                      <td class="border px-4 py-2">
                                     {{$visa->journey_type   }}
@@ -280,17 +284,20 @@
                                          
                                            <td class="border px-4 py-2">{{$visa->total_payable==null?'Pending':$visa->total_payable}}
                                                @if($visa->total_payable&&$visa->status=='Payment Request')
-                                               <a href='payments/{{$visa->id}}' class="bg-green-500 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                               <a href='ticket_payments/{{$visa->id}}' class="bg-green-500 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
                                                    Pay
                                                </a>
                                                @elseif($visa->total_payable&&$visa->status=='Paid')
-                                               <a href='done/{{$visa->id}}' class="bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                               <a href='done_ticket/{{$visa->id}}' class="bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
                                                   Done
-                                               </a> @elseif($visa->total_payable&&$visa->status=='Done')
-                                               <a href='done/{{$visa->id}}' class="bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                               </a>
+                                                @elseif($visa->total_payable&&$visa->status=='Done')
+                                               <a href='done_ticket/{{$visa->id}}' class="bg-blue-700 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
                                                   Review
                                                </a>
                                                @endif
+
+                                               
                                                </td>
                                            <td class="border px-4 py-2">
                                                @if($visa->status=="Paid")

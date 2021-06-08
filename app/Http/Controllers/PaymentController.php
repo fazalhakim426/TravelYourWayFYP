@@ -19,36 +19,9 @@ class PaymentController extends Controller
         //
     } 
     
-    public function applycharges(Request $request){
-        User::find($request->user_id)->notify(new SendPaymentNotification);
-        $request->validate(
-            [
-                'charges'=>'required|numeric|gt:1000',
-            ]
-            );
-       
-        Visa::where('id',$request->id)->update([
-            'status'=>"Payment Request",
-            'charges'=>$request->charges,
-        ]);
-        return back();
-    }
+
     
-    public function pay($id)//temparoy payment
-    {
-        Visa::where('id',$id)->update([
-            'status'=>"Paid"
-        ]);
-        return back();
-        //
-    } public function done($id)//temparoy payment
-    {
-        Visa::where('id',$id)->update([
-            'status'=>"Done"
-        ]);
-        return back();
-        //
-    }
+
 
     /**
      * Show the form for creating a new resource.

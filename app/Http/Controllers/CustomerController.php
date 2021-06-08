@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Customer;
+use App\Models\Ticket;
+use App\Models\Visa;
 use Illuminate\Http\Request;
 use DB,Auth;
 class CustomerController extends Controller
@@ -16,69 +18,44 @@ class CustomerController extends Controller
     
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+ 
+
+
+
+    public function pay_visa_charges($id)//temparoy payment
     {
+        Visa::where('id',$id)->update([
+            'status'=>"Paid"
+        ]);
+        return back();
+        //
+    } 
+    
+    public function done_visa($id)//temparoy payment
+    {
+        Visa::where('id',$id)->update([
+            'status'=>"Done"
+        ]);
+        return back();
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Customer $customer)
+    public function pay_ticket_charges($id)//temparoy payment
     {
+        Ticket::where('id',$id)->update([
+            'status'=>"Paid"
+        ]);
+        return back();
         //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Customer $customer)
+    } 
+    
+    public function done_ticket($id)//temparoy payment
     {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Customer $customer)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Customer  $customer
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Customer $customer)
-    {
+        Ticket::where('id',$id)->update([
+            'status'=>"Done"
+        ]);
+        return back();
         //
     }
 }
