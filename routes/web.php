@@ -20,7 +20,7 @@ use App\Models\Agent;
 Route::get('/', function () {
     // dd(Agent::get());
 
-
+//niaz khan new commit
 //     $posts = User::withCount('visa')->get();
    
 
