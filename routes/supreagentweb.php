@@ -1,11 +1,10 @@
 <?php
+
+use App\Http\Controllers\Agent\ManageSuperAgentController;
+use App\Http\Controllers\HotelController;
 use Illuminate\Support\Facades\Route;
-
-
 use App\Http\Controllers\SuperAgent\TicketRequestController;
-use App\Http\Controllers\SuperAgent\ManageSuperAgentController;
 use App\Http\Controllers\SuperAgentController;
-use Illuminate\Support\Facades\DB;
 
 Route::middleware(['auth'])->group(function () {
 Route::middleware(['verified'])->group(function () {
@@ -62,6 +61,13 @@ Route::middleware(['superagent'])->group(function(){
                    );
     
     
+
+                   
+    Route::resources([
+        'hotels' => HotelController::class,
+        'posts' => HotelController::class,
+    ]);
+
         
  });
 
@@ -79,10 +85,6 @@ Route::middleware(['superagent'])->group(function(){
         'posts' => ManageSSuperAgentController::class,
     ]);  
 
-    // Route::resources([
-    //     'hotels' => HotelController::class,
-    //     'posts' => HotelController::class,
-    // ]);
 
 
 

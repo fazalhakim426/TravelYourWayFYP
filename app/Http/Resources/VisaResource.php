@@ -41,7 +41,9 @@ class VisaResource extends JsonResource
     //agent field
             'charges'=>$this->charges,
             'comments'=>$this->comments,
-            'super_agent_id'=>$this->super_agent_id,//asign
+            'agent_name'=>$this->agent->user->name,//asign
+            'agent_email'=>$this->agent->user->email,//asign
+            'agent_phone'=>$this->agent->user->phone_number,//asign
 
         ];
     }

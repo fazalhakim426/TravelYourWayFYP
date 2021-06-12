@@ -9,6 +9,16 @@ class Payment extends Model
 {
     use HasFactory;
 
-
-
+    protected $fillable = [
+        'charges',
+        'paymentable',
+        'payment_id',
+        'charges',
+        'paymentable',
+        'payment_id',
+    ];
+    public function paymentable()
+    {
+        return $this->morphTo();
+    }
 }
