@@ -71,12 +71,12 @@
 
 
 
-@if($ticket==null)
+                @if($ticket==null)
 
-           @include('customer.ticket.airline_new_form')                
-@else
-            @include('customer.ticket.airline_incomplete_form')   
-@endif
+                    @include('customer.ticket.airline_new_form')                
+                @else
+                    @include('customer.ticket.airline_incomplete_form')   
+                @endif
 
                                   
                                 </div>

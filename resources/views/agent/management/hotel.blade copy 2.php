@@ -2,39 +2,55 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-      <!-- CSS only -->
-   @include('super_agent.layout.head')
+    <meta charset="utf-8">
+    <meta name="csrf-token" content="content">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Laravel Dependent AJAX Dropdown Tutorial</title>
+
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+
 <body>
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <h2 class="mb-4">Laravel AJAX Dependent Country State City Dropdown Example</h2>
+                <form>
+                    <div class="form-group mb-3">
+                        <select  id="country-dd" class="form-control">
+                            <option value="">Select Country</option>
+                            @foreach ($countries as $data)
+                            <option value="{{$data->id}}">
+                                {{$data->name}}
+                            </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group mb-3">
+                        <select id="state-dd" class="form-control">
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <select id="city-dd" class="form-control">
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-    @include('super_agent.layout.side_nav')
-<!--Main-->
-            <main class="bg-white-300 flex-1 p-3 overflow-hidden">
-              @include('super_agent.layout.top_nav')
-              
-                @yield('super_agent')
-              {{-- @include('super_agent.nav') --}}
-             {{-- {{dd(33)}} --}}
-    
-    </main>
-    <!--/Main-->
-</div>
-<!--Footer-->
-
-<footer class="bg-grey-darkest text-white p-2">
-  @include('super_agent.layout.footer')  
-</footer>
-<!--/footer-->
-
-</div>
-
-</div>
-<script src="{{URL::asset('admin-master/main.js')}}"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-$(document).ready(function () {
+        alert('script');
+
+        $(document).ready(function () {
+            alert('ready');
+
             $('#country-dd').on('change', function () {
+                alert(33);
                 var idCountry = this.value;
                 $("#state-dd").html('');
                 $.ajax({
@@ -78,8 +94,6 @@ $(document).ready(function () {
         });
 
     </script>
-
-
 </body>
 
 </html>

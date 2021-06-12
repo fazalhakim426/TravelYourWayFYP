@@ -18,7 +18,6 @@ class CreateVisasTable extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('agent_id')->nullable();
             $table->string('status');
-       
             $table->string('visa_apply_country');
             $table->string('type');  //visit immigration hajj ummrah
             $table->string('days')->nullable();

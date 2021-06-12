@@ -48,10 +48,7 @@ class Visa extends Model
         $this->attributes['type'] = ucfirst($value);
     }
 
-    public function payment()
-    {
-        return $this->hasOne(Payment::class,'visa_id');
-    }
+
     
     public function super_agent()
     {
@@ -60,10 +57,14 @@ class Visa extends Model
     }
     
 
-    public function review()
+    public function payment()
     {
-        return $this->hasMany(VisaReview::class,'visa_id');
+        return $this->marhpOne(Payment::class,'paymentable');
     }
-    
+   
+    public function reviews()
+    {
+        return $this->marhpMany(Review::class,'reviewable');
+    }
 
 }

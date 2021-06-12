@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateHotelReviewsTable extends Migration
+class CreateImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreateHotelReviewsTable extends Migration
      */
     public function up()
     {
-        Schema::create('hotel_reviews', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('hotel_id');
-            $table->string('comments');
-            $table->enum('rating', [1,2,3,4,5]);
+            $table->string('image')->nullable();
+            $table->string('imageable_id')->nullable();
+            $table->string('imageable_type')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -28,6 +29,6 @@ class CreateHotelReviewsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hotel_reviews');
+        Schema::dropIfExists('images');
     }
 }

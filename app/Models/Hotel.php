@@ -11,13 +11,22 @@ class Hotel extends Model
     protected $fillable = [
         'country',
         'hotel_name',
-        'charges_per_day',
+        'state_id',
+        'country_id',
+        'country_id',
     ];
+
+
 
    
 
-    public function payment()
+    public function images()
     {
-        return $this->hasOne(Payment::class,'hotel_id');
+        return $this->marphMany(Image::class,'imageable');
+    }
+
+    public function rooms()
+    {
+        return $this->hasMany(Room::class);
     }
 }
