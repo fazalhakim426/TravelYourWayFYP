@@ -136,7 +136,6 @@
              </div>
           </div>
           <!-- Modal content -->
-       
           <form method="POST"   action="add_agent">
            @csrf
            <div class="flex flex-wrap -mx-3 mb-2">

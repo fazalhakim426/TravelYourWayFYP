@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TicketPassenger;
+use App\Models\Passenger;
 use Illuminate\Http\Request;
 use App\Models\Ticket;
 use App\Http\Requests\PassengerRequest;
-class TicketPassengerController extends Controller
+class PassengerController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -34,10 +34,10 @@ class TicketPassengerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(PassengerRequest $request)
+    public function store_ticket_passenger(PassengerRequest $request)
     {
         $ticket=Ticket::find($request->ticket_id);
-        $passenger=new TicketPassenger($request->all());
+        $passenger=new Passenger($request->all());
         $ticket->passengers()->save($passenger);
         return back();
     }
@@ -45,10 +45,10 @@ class TicketPassengerController extends Controller
     /**
      * Display the specified res    urce.
      *
-     * @param  \App\Models\TicketPassenger  $ticketPassenger
+     * @param  \App\Models\Passenger  $Passenger
      * @return \Illuminate\Http\Response
      */
-    public function show(TicketPassenger $ticketPassenger)
+    public function show(Passenger $Passenger)
     {
         //
     }
@@ -56,10 +56,10 @@ class TicketPassengerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\TicketPassenger  $ticketPassenger
+     * @param  \App\Models\Passenger  $Passenger
      * @return \Illuminate\Http\Response
      */
-    public function edit(TicketPassenger $ticketPassenger)
+    public function edit(Passenger $Passenger)
     {
         //
     }
@@ -68,10 +68,10 @@ class TicketPassengerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\TicketPassenger  $ticketPassenger
+     * @param  \App\Models\Passenger  $Passenger
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, TicketPassenger $ticketPassenger)
+    public function update(Request $request, Passenger $Passenger)
     {
         //
     }
@@ -79,12 +79,12 @@ class TicketPassengerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\TicketPassenger  $ticketPassenger
+     * @param  \App\Models\Passenger  $Passenger
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy_ticket_passenger($id)
     {
-        TicketPassenger::destroy($id);
+        Passenger::destroy($id);
         return back();
     }
 }

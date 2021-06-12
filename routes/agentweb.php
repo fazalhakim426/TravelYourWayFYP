@@ -104,10 +104,10 @@ Route::middleware(['auth'])->group(function () {
                 'posts' => ManageSuperAgentController::class,
             ]);  
     
-            Route::resources([
-                'hotels' => HotelController::class,
-                'posts' => HotelController::class,
-            ]);
+            // Route::resources([
+            //     'hotels' => HotelController::class,
+            //     'posts' => HotelController::class,
+            // ]);
 
             Route::post('visa_assign_super_agent',[ManageSuperAgentController::class,'assign_to_visa'])->name('visa_assign_super_agent');
              

@@ -39,10 +39,17 @@ class Ticket extends Model
     ];
 
     public function passengers(){
-        return $this->hasMany(TicketPassenger::class);
+        return $this->hasMany(Passenger::class);
     }
+
     public function payment()
     {
-        return $this->hasOne(Payment::class,'ticket_id');
+        return $this->marhpOne(Payment::class,'paymentable');
     }
+   
+    public function reviews()
+    {
+        return $this->marhpMany(Review::class,'reviewable');
+    }
+
 }

@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\VisaReview;
+use App\Models\Passenger;
+use App\Models\Review;
 use Illuminate\Http\Request;
 
-class VisaReviewController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +42,10 @@ class VisaReviewController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\VisaReview  $visaReview
+     * @param  \App\Models\Review  $Review
      * @return \Illuminate\Http\Response
      */
-    public function show(VisaReview $visaReview)
+    public function show(Review $Review)
     {
         //
     }
@@ -52,10 +53,10 @@ class VisaReviewController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\VisaReview  $visaReview
+     * @param  \App\Models\Review  $Review
      * @return \Illuminate\Http\Response
      */
-    public function edit(VisaReview $visaReview)
+    public function edit(Passenger $Review)
     {
         //
     }
@@ -64,10 +65,10 @@ class VisaReviewController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\VisaReview  $visaReview
+     * @param  \App\Models\Review  $Review
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, VisaReview $visaReview)
+    public function update(Request $request, Review $Review)
     {
         //
     }
@@ -75,10 +76,10 @@ class VisaReviewController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\VisaReview  $visaReview
+     * @param  \App\Models\Review  $Review
      * @return \Illuminate\Http\Response
      */
-    public function destroy(VisaReview $visaReview)
+    public function destroy(Review $Review)
     {
         //
     }

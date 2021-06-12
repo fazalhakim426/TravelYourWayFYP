@@ -11,13 +11,12 @@ class CreateHotelsTable extends Migration
     {
         Schema::create('hotels', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id')->nullable();
-            $table->unsignedBigInteger('agent_id')->nullable();
-            $table->unsignedBigInteger('super_agent_id')->nullable();
-            $table->string('country');
-            $table->string('images');
+            $table->string('super_agent_id');
+            $table->string('country_id');
+            $table->string('state_id');
+            $table->string('city_id');
+            $table->string('image_id')->nullable();
             $table->string('hotel_name');
-            $table->string('charges_per_day');
         });
     }
 

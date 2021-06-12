@@ -25,6 +25,10 @@ class VisaAPIController extends Controller
         'days'=>'required',    
         
     ]);
+    // if($request->visa_id)
+    // {
+    
+    // }
     $request['status']="Submitted";
     
     if ($validator->fails()) {
@@ -107,9 +111,16 @@ class VisaAPIController extends Controller
 
    public function show($id) {
     return new VisaResource(Visa::findOrFail($id));
-         }   
-
+         } 
+           
 public function getAll($id) {
-    return VisaResource::collection(Visa::where('user_id',$id)->get());
- }
+
+
+$visa=Visa::where('user_id',$id)->get();
+// $visa['agent']='fazal hakim';
+    return VisaResource::collection(
+      $visa
+    );
+  }
+
 }
