@@ -14,11 +14,11 @@ Route::middleware(['superagent'])->group(function(){
  Route::prefix('super-agent')
  ->group(function () {
 
-
      Route::get(
          '/dashboard',
          [SuperAgentController::class,'index']
         );
+
     Route::get(
         '/agents'
         ,[SuperAgentController::class,'get_agents']
@@ -29,12 +29,10 @@ Route::middleware(['superagent'])->group(function(){
         ,[SuperAgentController::class,'add_agent']
         )->name('add_agent');
        
-    
     Route::get(
         '/delete-agent/{agent}'
         ,[SuperAgentController::class,'delete_agent']
         )->name('delete-agent');
-           
                 
              //visa
              Route::get(
@@ -47,28 +45,33 @@ Route::middleware(['superagent'])->group(function(){
                 '/ummrahs',
                 [SuperAgentController::class,'getUmmrahs']
                    );
-    
             //visa
             Route::get(
                 '/hajjs',
                 [SuperAgentController::class,'getHajjs']
                    );
-    
             //visa
             Route::get(
                 '/visits',
                 [SuperAgentController::class,'getVisits']
                    );
     
-    
+            Route::resources([
+                'hotels' => HotelController::class,
+                'posts' => HotelController::class,
+            ]);
 
-                   
-    Route::resources([
-        'hotels' => HotelController::class,
-        'posts' => HotelController::class,
-    ]);
+            Route::get(
+                '/add-room/{id}'
+                ,[HotelController::class,'add_room'])
+            ->name('add-room');
+          
+            Route::post(
+                'room-store',
+                [HotelController::class,'room_store']
+                      )
+            ->name('room-store');
 
-        
  });
 
 

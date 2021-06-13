@@ -37,7 +37,7 @@ class PassengerController extends Controller
     public function store_ticket_passenger(PassengerRequest $request)
     {
         $ticket=Ticket::find($request->ticket_id);
-        $passenger=new Passenger($request->all());
+        $passenger=Passenger::create($request->all());
         $ticket->passengers()->save($passenger);
         return back();
     }

@@ -32,8 +32,47 @@
           <!-- </div> -->
                                
                                   </div>
-                                <div class="table-responsive">
-                                    <table class="table text-grey-darkest">
+
+
+
+
+                                  <div class="table-responsive">
+                              
+                                  <table class="table-fixed">
+                                    <thead>
+                                      <tr>
+                                        <th class="w-1/2 ...">Title</th>
+                                        <th class="w-1/4 ...">Author</th>
+                                        <th class="w-1/4 ...">Views</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td>Intro to CSS</td>
+                                        <td>Adam</td>
+                                        <td>858</td>
+                                      </tr>
+                                      <tr class="bg-blue-200">
+                                        <td>A Long and Winding Tour of the History of UI Frameworks and Tools and the Impact on Design</td>
+                                        <td>Adam</td>
+                                        <td>112</td>
+                                      </tr>
+                                      <tr>
+                                        <td>Intro to JavaScript</td>
+                                        <td>Chris</td>
+                                        <td>1,280</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+
+
+
+
+
+
+
+                                  
+                                     <table class="table text-grey-darkest">
                              <thead class="bg-grey-dark text-white text-normal">
                             <tr>
                               <th class="border w-1/4 px-4 py-2">Picture</th>
@@ -47,10 +86,10 @@
                           
                           @foreach($hotels as $hotel)
                          <tr>
-<td class="border px-4 py-2">                                       <img class="w-40 h-40 md:w-80  md:h-80  lg:w-100 lg:h-100  xl:w-120 lg:h-120  2xl:w-140 2xl:h-140 "  src="{{asset('storage/images/'.explode(',',$hotel->images)[0] )}}"/>
+                        <td class="border px-4 py-2">                                       <img class="w-40 h-40 md:w-80  md:h-80  lg:w-100 lg:h-100  xl:w-120 lg:h-120  2xl:w-140 2xl:h-140 "  src="{{asset('storage/images/'.explode(',',$hotel->images)[0] )}}"/>
                              </td>
                                   <td class="border px-4 py-2">{{$hotel->country}}</td>
-                                  <td class="border px-4 py-2"> {{$hotel->hotel_name}} </td>
+                                  <td class="border px-4 py-2"> {{$hotel->name}} </td>
                                   <td class="border px-4 py-2"> {{$hotel->charges_per_day}} PKR</td>
                                 
                                   
@@ -190,7 +229,7 @@
                       <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1" for="grid-last-name">
                           Hotel Name
                       </label>
-                      <input name="hotel_name" 
+                      <input name="name" 
                           class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
                           id="grid-last-name" type="text" placeholder="Doe">
                   </div>

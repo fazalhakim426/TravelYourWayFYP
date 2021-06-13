@@ -110,7 +110,7 @@ class TicketController extends Controller
     {
         $agent=Agent::find($request->agent_id);
         
-        $ticket=Ticket::where('id', $request->id)->update([
+        Ticket::where('id', $request->id)->update([
             'agent_id'=>$agent->id,
             'super_agent_id'=>$agent->super_agent->id,
             'status'=>"Submitted",

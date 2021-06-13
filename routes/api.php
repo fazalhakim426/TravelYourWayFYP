@@ -29,7 +29,7 @@ Route::apiResources([
     'post'=>TicketAPIController::class,
 ]);  
 Route::post('ticket_passenger',[TicketAPIController::class,'ticket_passenger']);
-Route::get('userTickets/{id}',[VisaAPIController::class,'getAll']);
+Route::get('userTickets/{id}',[TicketAPIController::class,'getAll']);
 
 Route::apiResources([
     'visas' => VisaAPIController::class,

@@ -50,7 +50,11 @@ Route::get('hoteledit',[HotelController::class,'destroy']);
     Route::get('/manageummrah',function(){      
         return view('admindashboard.management.ummrah');
     });
-Route::get('manage/{type}',[AdminGeneralController::class,'manage']);
+
+   Route::get(
+       'manage/{type}'
+       ,[AdminGeneralController::class,'manage']
+    );
    
 });
 });
