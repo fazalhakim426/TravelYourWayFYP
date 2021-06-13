@@ -45,8 +45,6 @@ class TicketAPIController extends Controller
     $t = Ticket::create($request->all());
 
     if ($t) {
-
-
       return response()->json([
         'success' => true,
         'message' => "Successfully Submitted",

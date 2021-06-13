@@ -12,7 +12,7 @@
                    
                     
                                             <!-- Done Card Sextion Starts Here -->
-                                            <div id="totaldone" class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
+                                            {{-- <div id="totaldone" class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2"> --}}
 
                                                 <!-- card -->
 
@@ -113,14 +113,6 @@
                        </div>
                    </div>
                    <!--/Grid done Form-->
-
-
-
-
-              
-
-                    
-
 
                 </div>
                 @stop

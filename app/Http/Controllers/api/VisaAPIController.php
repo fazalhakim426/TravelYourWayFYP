@@ -37,11 +37,7 @@ class VisaAPIController extends Controller
         'message' => $validator->errors(),
       ], 401);
     }
-
-
     if(Visa::create($request->all())!=null){
-
-    
         return response()->json([
             'success' => true,
             'message' => "Successfully Submitted",

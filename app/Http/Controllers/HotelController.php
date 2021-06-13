@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Country;
 use App\Models\Hotel;
+use App\Models\Image;
+use App\Models\Room;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class HotelController extends Controller
 {
@@ -27,7 +30,7 @@ class HotelController extends Controller
 
 
 
-        return view('super_agent.hotel.hotel')->with($data);
+        return view('super_agent.hotel.listing')->with($data);
     }
 
     /**
@@ -43,7 +46,7 @@ class HotelController extends Controller
        $data['ticket']=$ticket;
        $data['countries']=Country::get();
        $data['sub_active']="Hotel";
-        return view('super_agent.hotel.add_hotel',$data);
+        return view('super_agent.hotel.create',$data);
     
 
         echo 'create';
@@ -59,37 +62,54 @@ class HotelController extends Controller
     {
         // dd($request);
         $request->validate([
-            'hotel_name'=>'required',
+            'name'=>'required',
             'image'=>'required',
             'country_id'=>'required',
             'state_id'=>'required',
             'city_id'=>'required',
         ]);
-        $images = array();
-        if ($files = $request->file('images')) {
-            foreach ($files as $file) {
+        // $images = array();
+        // if ($files = $request->file('image')) {
+        //     foreach ($files as $file) {
+        //         $name = time() . '.' . $file->extension();
+        //         $file->move('storage/images', $name);
+        //         $images[] = $name;
+        //     }
+        // }       
+    
+        $file= $request->file('image');
                 $name = time() . '.' . $file->extension();
                 $file->move('storage/images', $name);
-                $images[] = $name;
-            }
-        }
+                
+            
+
 
         $hotel = new Hotel;
+        $hotel->name = $request->name;
+
         $hotel->country_id= $request->country_id;
         $hotel->super_agent_id = Auth::user()->userable->id;
         $hotel->state_id = $request->state_id;
         $hotel->city_id = $request->city_id;
-        $hotel->hotel_name = $request->hotel_name;
-        $hotel->charges_per_day = $request->charges_per_day;
+        
         $hotel->save();
 
-         foreach($images as $image)
-         {
-             $hotel->images()->save($image);
-         }
-        // $hotel->images = implode(",", $images);
-dd('done');
-        return redirect('hotels');
+             $hotel->images()->save(Image::create([
+                 'image'=>$name,
+             ]));
+        //  return $this->add_room($hotel);
+        return Redirect::route('add-room',$hotel->id);
+        
+        // return redirect('surper-agent/add-room/',$data);
+  }
+
+    public function add_room($id)
+    {
+       $data['user']=Auth::user();
+       $data['hotel']=Hotel::find($id);
+       $data['countries']=Country::get();
+       $data['sub_active']="Hotel";
+       return view('super_agent.hotel.room.listing',$data);
     }
 
     /**
@@ -98,9 +118,27 @@ dd('done');
      * @param  \App\Models\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function show(Hotel $hotel)
+    public function room_store(Request $request)
     {
-        //
+        $images = array();
+        if ($files = $request->file('images')) {
+            foreach ($files as $file) {
+                $name = time() . '.' . $file->extension();
+                $file->move('storage/images', $name);
+                $images[] = $name;
+            }
+        }       
+        $room=Room::create($request->all());
+        
+         $hotel=Hotel::find($request->hotel_id);
+         $hotel->rooms()->save($room);
+         foreach($images as $image)
+         {
+             $room->images()->save(Image::create(['image'=>$image]));
+         }
+         
+        return Redirect::route('add-room',$hotel->id);
+        
     }
 
     /**

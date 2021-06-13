@@ -14,6 +14,7 @@ class Ticket extends Model
           
         'user_id',
         'agent_id',
+        'super_agent_id',
         'status',
         'booking_source',
       
@@ -38,13 +39,25 @@ class Ticket extends Model
 
     ];
 
+    
+    
+    public function super_agent()
+    {
+        return $this->belongsTo(User::class, 'super_agent_id');
+
+    }
+
+    public function agent(){
+        return $this->belongsTo(Agent::class);
+    }
+
     public function passengers(){
-        return $this->hasMany(Passenger::class);
+        return $this->hasMany(Passenger::class,'passengerable_type');
     }
 
     public function payment()
     {
-        return $this->marhpOne(Payment::class,'paymentable');
+        return $this->marhpOne(Payment::class,'paymentable_type');
     }
    
     public function reviews()

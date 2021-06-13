@@ -10,13 +10,14 @@
     @include('super_agent.layout.side_nav')
 <!--Main-->
             <main class="bg-white-300 flex-1 p-3 overflow-hidden">
-              @include('super_agent.layout.top_nav')
               
-                @yield('super_agent')
-              {{-- @include('super_agent.nav') --}}
-             {{-- {{dd(33)}} --}}
+              
+                  @include('super_agent.layout.top_nav')
+                    @yield('super_agent')
+                  {{-- @include('super_agent.nav') --}}
+                {{-- {{dd(33)}} --}}
     
-    </main>
+            </main>
     <!--/Main-->
 </div>
 <!--Footer-->

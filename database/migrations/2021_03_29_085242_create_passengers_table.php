@@ -15,7 +15,6 @@ class CreatePassengersTable extends Migration
     {
         Schema::create('passengers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('ticket_id');
             $table->string('title');
             $table->string('first_name');
             $table->string('last_name');
@@ -23,8 +22,8 @@ class CreatePassengersTable extends Migration
             $table->string('passport_number');
             $table->string('nationality');
             $table->string('pax_type');//adult kid
-            $table->string('passengerable');
-            $table->string('passengerable_id');
+            $table->string('passengerable_type')->nullable();
+            $table->string('passengerable_id')->nullable();
             $table->timestamps();
         });
     }

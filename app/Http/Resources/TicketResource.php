@@ -15,7 +15,7 @@ class TicketResource extends JsonResource
     public function toArray($request)
     {
         return [
-            'user_id'=>$this->user_id,
+        'user_id'=>$this->user_id,
         'agent_id'=>$this->agent_id,
         'booking_source'=>$this->booking_source,
         'journey_type'=>$this->journey_type,  //signle round multi
@@ -27,7 +27,11 @@ class TicketResource extends JsonResource
         'class'=>$this->class,  //  business, first class ,  economy class 
           //agent field
           'total_payable'=>$this->total_payable,
-          'super_agent_id'=>$this->supre_agent_id,
+          'super_agent_id'=>$this->super_agent_id,
+          'passengers'=>$this->passengers,
+          'agent_name'=>$this->agent->user->name,//asign
+          'agent_email'=>$this->agent->user->email,//asign
+          'agent_phone'=>$this->agent->user->phone_number,//asign
         ];
     }
 }
