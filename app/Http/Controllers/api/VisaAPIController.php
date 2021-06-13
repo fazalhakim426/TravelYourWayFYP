@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Validator;
 use App\Http\Resources\VisaResource;
+use App\Models\Agent;
 use App\Models\Visa;
 
 class VisaAPIController extends Controller
@@ -20,17 +21,28 @@ class VisaAPIController extends Controller
    {
     $validator = Validator::make($request->all(), [
         'type'=>'required',     
+        'user_id'=>'required',  
+        'agent_id'=>'required',  
+        'user_id'=>'required',  
         'user_id'=>'required',     
         'visa_apply_country'=>'required',   
         'days'=>'required',    
+        //personal information
+        'title'=>'required',   
+        'passport_number'=>'required',   
+        'date_of_birth'=>'required',   
+        'first_name'=>'required',   
+        'last_name'=>'required',   
+        'gender'=>'required',   
+        'status'=>'required',   
+
         
     ]);
-    // if($request->visa_id)
-    // {
-    
-    // }
     $request['status']="Submitted";
+    $super_agent_id=Agent::find($request->agent_id)->super_agent->id;
     
+    $request->super_agent_id=$super_agent_id;
+
     if ($validator->fails()) {
       return response()->json([
         'success' => false,

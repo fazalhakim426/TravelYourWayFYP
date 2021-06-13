@@ -12,6 +12,8 @@ class Visa extends Model
     protected $fillable = [
         'user_id',
         'agent_id',
+        'super_agent_id',//asign
+
         'status',
 //visa information 
         'visa_apply_country',
@@ -32,7 +34,6 @@ class Visa extends Model
 //agent field
         'charges',
         'comments',
-        'super_agent_id',//asign
 
     ];
 
