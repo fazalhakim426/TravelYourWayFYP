@@ -7,15 +7,15 @@ use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 
 
-use App\models\Agent as AgentModel;
-class Agent extends Controller
+use App\models\Agent;
+class AgentAPIController extends Controller
 {
 
     public function getAgent()
     {
         // return UserResource::collection(User::all());
         return UserResource::collection(
-            AgentModel::all()
+            Agent::all()
                                        );
 
     }

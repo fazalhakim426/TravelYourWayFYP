@@ -6,7 +6,7 @@ use App\Http\Controllers\api\AllApplyAPIController;
 use App\Http\Controllers\api\TicketAPIController;
 use App\Http\Controllers\api\VisaAPIController;
 use App\Http\Controllers\api\Login;
-use App\Http\Controllers\api\Agent;
+use App\Http\Controllers\api\AgentAPIController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,7 +48,7 @@ Route::apiResources([
 Route::get('/AllApplies/{id}/applied',[AllApplyAPIController::class,'applied']);
 
 
-Route::get('/getAgent',[Agent::class,'getAgent']);
+Route::get('/getAgent',[AgentAPIController::class,'getAgent']);
 
 
 
