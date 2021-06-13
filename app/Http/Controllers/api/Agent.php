@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 
 
-use App\models\Agent as AgentModel;
+use App\Models\Agent as AgentModel;
 class Agent extends Controller
 {
 
