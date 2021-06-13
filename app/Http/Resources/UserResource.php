@@ -18,19 +18,17 @@ class UserResource extends JsonResource
         
         return
         [
-            
-            'id'=>$userAgent->id,
-            'name'=>$userAgent->name,
-            'profile_image'=>asset('profile_images/'.$userAgent->profile_image),
-            'email'=>$userAgent->email,
-            'phone_number'=>$userAgent->phone_number,
-            'country'=>$userAgent->country,
-            'city'=>$userAgent->city,
-            'state'=>$userAgent->state,
-            'userable_type'=>$userAgent->userable_type,
-            'userable_id'=>$userAgent->userable_id,
 
-            
+            'id'=>$this->id,
+            'name'=>$this->user->name,
+            'profile_image'=>$this->user->profile_image,
+            'email'=>$this->user->email,
+            'phone_number'=>$this->user->phone_number,
+            'country'=>$this->user->country,
+            'city'=>$this->user->city,
+            'state'=>$this->user->state,
+            'userable_type'=>$this->user->userable_type,
+            'userable_id'=>$this->user->userable_id,            
 
         ];
     }
