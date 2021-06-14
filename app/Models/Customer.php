@@ -57,7 +57,7 @@ class Customer extends Model
         return $status;
     }
 
-    public function count_status_api()
+    public function count_status_plus()
     {
         //    return $this->visas()->count;
         $cancel = $this->visas()->whereStatus('Cancel')->get();
@@ -74,11 +74,11 @@ class Customer extends Model
         $t_done = $this->ticket()->whereStatus('Done')->get();
 
 
-        $status['cancel'] = [count($cancel),count($t_cancel)];
-        $status['completed'] = [count($completed),count($t_completed)];
-        $status['payment_request'] =  [count($payment_request),count($t_payment_request)];
-        $status['paid'] =[count($paid),count($t_paid)];
-        $status['done'] = [count($done),count($t_done)];
+        $status['cancel'] = count($cancel)+count($t_cancel);
+        $status['completed'] = count($completed)+count($t_completed);
+        $status['payment_request'] =  count($payment_request)+count($t_payment_request);
+        $status['paid'] =count($paid)+count($t_paid);
+        $status['done'] = count($done)+count($t_done);
 
         return $status;
     }
