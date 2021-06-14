@@ -11,6 +11,6 @@ class CustomerAPIController extends Controller
     public function count_status($id)
     {
         $customer=Customer::find($id);
-        return $customer->count_status();
+        return $customer->count_status_api();
     }
 }
