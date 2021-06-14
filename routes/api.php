@@ -7,6 +7,7 @@ use App\Http\Controllers\api\TicketAPIController;
 use App\Http\Controllers\api\VisaAPIController;
 use App\Http\Controllers\api\Login;
 use App\Http\Controllers\api\AgentAPIController;
+use App\Http\Controllers\api\CustomerAPIController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -76,3 +77,5 @@ Route::get('/hotels/{id}/city', [CountryAPIController::class, 'get_city_hotels']
 
 
 Route::get('/rooms/{id}', [CountryAPIController::class, 'get_rooms']);
+
+Route::get('/count_status/{id}', [CustomerAPIController::class, 'count_status']);

@@ -4,9 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-
 class Customer extends Model
 {
     use HasFactory;
@@ -31,15 +28,35 @@ class Customer extends Model
     }
 
     public function count_status()
-    {  
-           return $this->visas()->get();
-            
-   
-        // $status['visa']['incomplete']
-        // $status['visa']['completed']
-        // $status['visa']['payment_request']
-        // $status['visa']['paid']
-        // $status['visa']['done']
+    {
+        //    return $this->visas()->count;
+           $incomplete = $this->visas()->whereStatus('Incomplete')->get();
+           $completed = $this->visas()->whereStatus('Completed')->get();
+           $payment_request = $this->visas()->whereStatus('payment_request')->get();
+           $paid = $this->visas()->whereStatus('Paid')->get();
+           $done = $this->visas()->whereStatus('Done')->get();
+        $status['visa']['incomplete']=count($incomplete);
+        $status['visa']['completed']=count($completed);
+        $status['visa']['payment_request']=count($payment_request);
+        $status['visa']['paid']=count($paid);
+        $status['visa']['done']=count($done);
+
+
+        
+        $incomplete = $this->ticket()->whereStatus('Incomplete')->get();
+        $completed = $this->ticket()->whereStatus('Completed')->get();
+        $payment_request = $this->ticket()->whereStatus('payment_request')->get();
+        $paid = $this->ticket()->whereStatus('Paid')->get();
+        $done = $this->ticket()->whereStatus('Done')->get();
+     $status['ticket']['incomplete']=count($incomplete);
+     $status['ticket']['completed']=count($completed);
+     $status['ticket']['payment_request']=count($payment_request);
+     $status['ticket']['paid']=count($paid);
+     $status['ticket']['done']=count($done);
+
+
+     
+        return $status;
 
       
         

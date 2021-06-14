@@ -15,11 +15,11 @@
 
 <body>
 
-    {{-- {{
+    {{
     
-    dd(Auth::user()->userable->visas)
+    dd(Auth::user()->userable->count_status)
     
-    }} --}}
+    }}
 
         @include('customer.layout.navigation')
         
