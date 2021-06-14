@@ -62,7 +62,7 @@
                                  Room Images
                              </label>
               
-                                 <input name="images[]"  type="file"
+                                 <input name="images[]" multiple  type="file"
                                  class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                  id="grid-password" type="file" >
 
@@ -81,7 +81,7 @@
                 <div class="flex flex-wrap -mx-3 mb-6">
             
                     
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
                                for="grid-state">
                             Room Type
@@ -107,21 +107,48 @@
                                <input  type='hidden' name='hotel_id' value="{{$hotel->id}}">
                             
                         </div>
+
+
+
                     </div>
             
             
     
                     
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                         <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
                                for="grid-state">
                                 Charges Per Day
                         </label>
                         <div class="relative">
-                            <Input id="state-dd" value='{{old('charges_per_day')}}' name="charges_per_day"   class="border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                            <Input id="state-dd" type="number" value='{{old('charges_per_day')}}' name="charges_per_day"   class="border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                     id="grid-state">
                          
                             @error('charges_per_day')
+                               <label class="text-red-500 text-xs italic"
+                               for="grid-first-name">
+                               {{ $message }}
+                        </label>
+                               @enderror
+            
+                    
+                        </div>
+                    </div>
+            
+                                         
+            
+    
+                    
+                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                        <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
+                               for="grid-state">
+                                Capacity
+                        </label>
+                        <div class="relative">
+                            <Input type="number" value='{{old('capacity')}}' name="capacity"   class="border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                                    id="grid-state">
+                         
+                            @error('capacity')
                                <label class="text-red-500 text-xs italic"
                                for="grid-first-name">
                                {{ $message }}
@@ -187,6 +214,7 @@
                                            <tr>
                                              <th class="border w-1/4 px-4 py-2">Banner</th>
                                              <th class="border w-1/4 px-4 py-2">Type</th>
+                                             <th class="border w-1/4 px-4 py-2">capacity</th>
                                              <th class="border w-1/6 px-4 py-2">Charges/day</th>
                                              {{-- <th class="border w-1/7 px-4 py-2">Charges</th> --}}
                                              <th class="border w-1/5 px-4 py-2">Actions</th>
@@ -204,7 +232,8 @@
                                             src="{{asset('storage/images/'.$room->images[0]->image)}}"
                                             />
                                             </td>
-                                                 <td class="border px-4 py-2">{{$room->title}}</td>
+                                            <td class="border px-4 py-2">{{$room->title}}</td>
+                                            <td class="border px-4 py-2">{{$room->capacity}}</td>
                                                  <td class="border px-4 py-2"> {{$room->charges_per_day}} </td>
                                                
                                                  {{-- <td class="border px-4 py-2"> {{$room->charges_per_day}} PKR</td>

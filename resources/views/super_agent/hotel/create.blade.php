@@ -49,30 +49,48 @@
 
                         <form id='form_id' method='POST' action="{{route('hotels.store')}}" class="w-full"  enctype="multipart/form-data" >
                             @csrf
-                         <div class="flex flex-wrap -mx-3 mb-6">
-                                 <div class="w-full px-3">
-                                     <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1" for="grid-password">
-                                         Hotel Banner
-                                     </label>
-                                     <input name="image"  type="file"
-                                         class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                                         id="grid-password" type="file" >
-                                     <p class="text-grey-dark text-xs italic">Add amazig banner. </p>
-                                     @error('image')
-                                     <label class="text-red-500 text-xs italic"
-                                     for="grid-first-name">
-                                     {{ $message }}
-                                     @enderror
-                                 </div>
-                             </div>
-                             
-                             
+                            <div class="flex flex-wrap -mx-3 mb-6">
+                                <div class="w-full px-3">
+                                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1" for="grid-password">
+                                        Hotel Banner
+                                    </label>
+                                    <input name="image"  type="file"
+                                        class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                                        id="grid-password" type="file" >
+                                    <p class="text-grey-dark text-xs italic">Add amazig banner. </p>
+                                    @error('image')
+                                    <label class="text-red-500 text-xs italic"
+                                    for="grid-first-name">
+                                    {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-wrap -mx-3 mb-6">
+                                <div class="w-full px-3">
+                                    <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1" for="grid-password">
+                                        Hotel Description
+                                    </label>
+                                    <textarea name="description" line="3"
+                                        class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                                        id="grid-password" ></textarea>
+
+
+                           @error('description')
+                                    <label class="text-red-500 text-xs italic"
+                                    for="grid-first-name">
+                                    {{ $message }}
+                                    @enderror
+                                </div>
+                            </div>
+                            
+                            
                     
                     
                         <div class="flex flex-wrap -mx-3 mb-6">
                     
                             
-                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
                                        for="grid-state">
                                     Country
@@ -108,7 +126,7 @@
                     
                     
                             
-                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
                                        for="grid-state">
                                        Select State
@@ -134,18 +152,8 @@
                             </div>
                     
                                                   
-                    
-                    
-                        </div>
-                    
-                    
-                                             
-                    
-                    
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                    
-                            
-                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                               
+                            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                                 <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
                                        for="grid-state">
                                     Selct City
@@ -168,6 +176,37 @@
                                             <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
                                         </svg>
                                     </div>
+                                </div>
+                            </div>
+                    
+
+                    
+                        </div>
+                    
+                    
+                                             
+                    
+                    
+                        <div class="flex flex-wrap -mx-3 mb-6">
+                    
+                            
+                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+                                <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
+                                       for="grid-state">
+                                    Address
+                                </label>
+                                <div class="relative">
+                                    <input name='address'  class="border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                                            id="grid-state">
+                                        
+                                    @error('address')
+                                       <label class="text-red-500 text-xs italic"
+                                       for="grid-first-name">
+                                       {{ $message }}
+                                </label>
+                                       @enderror
+                    
+                                    
                                 </div>
                             </div>
                     

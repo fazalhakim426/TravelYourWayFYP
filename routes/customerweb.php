@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AgentController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\HotelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\VisaController;
 use App\Http\Controllers\TicketController;
@@ -74,7 +75,8 @@ Route::middleware(['auth'])->group(function () {
         [CustomerController::class,'get_rooms']
     )->name('hotel-room');
        
-
+    Route::post('book-room',
+    [HotelController::class,'book_room'])->name('book-room');
 
         
 });

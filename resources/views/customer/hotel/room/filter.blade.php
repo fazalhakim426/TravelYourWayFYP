@@ -1,4 +1,4 @@
-<form method="POST"   action="{{ route('tickets.store') }}">
+<form method="POST"   action="{{ route('book-room') }}">
     @csrf
 
 
@@ -117,22 +117,17 @@
 
               
         
-
+        
 
 
     </div>
 
-
-
-
-
-
-
-
-
-                           
-
                       
- @include('customer.hotel.room.hotel_card')                
-               
+ @include('customer.hotel.room.room_card')                
+
+  
+  <button type=submit class="bg-teal-200 hover:bg-teal-500 text-teal-900 font-bold py-2 px-4 rounded-r">
+    Book
+  </button>
+
 </form>
