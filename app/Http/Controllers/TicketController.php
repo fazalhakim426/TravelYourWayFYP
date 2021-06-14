@@ -18,7 +18,7 @@ class TicketController extends Controller
      */
     public function index()
     {
-        $ticket=Ticket::where('user_id','=',Auth::user()->id)->where('status','=','Incomplete')->first();
+        $ticket=Ticket::where('customer_id','=',Auth::user()->userable_id)->where('status','=','Incomplete')->first();
        
         return view('customer.ticket.airline')->with('ticket',$ticket);
     }
@@ -39,7 +39,7 @@ class TicketController extends Controller
 
     public function ticketTripDetailIndex(){
 
-        $ticket=Ticket::where('user_id','=',Auth::user()->id)->where('status','=','Incomplete')->first();
+        $ticket=Ticket::where('customer_id','=',Auth::user()->userable_id)->where('status','=','Incomplete')->first();
 // dd($ticket);
         return view('customer.ticket.trip_detail')->with('ticket',$ticket);
     }
@@ -53,9 +53,9 @@ class TicketController extends Controller
     public function store(AirlineRequest $request)
     {
         
-        $request['user_id']=Auth::user()->id;
+        $request['customer_id']=Auth::user()->userable_id;
         $request['status']="Incomplete";
-        // $t=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('status','=','incomplete')->first();
+        // $t=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('status','=','incomplete')->first();
     //    dd($t);
         // if($t==null){
         if(Ticket::create($request->all()))
@@ -87,8 +87,8 @@ class TicketController extends Controller
 
 
     public function ticketPassengerIndex(){
-        // $ticket=Ticket::where('user_id','=',Auth::user()->id)->where('status','=','Incomplete')->first();
-        $ticket=Auth::user()->ticket()->where('status','=','Incomplete')->first();
+        $ticket=Ticket::where('customer_id','=',Auth::user()->userable_id)->where('status','=','Incomplete')->first();
+        // $ticket=Auth::user()->userable()->ticket()->where('status','=','Incomplete')->first();
         $ps=$ticket->passengers()->get();
         return view('customer.ticket.passenger')->with('ps',$ps)->with('ticket',$ticket);
     }
@@ -132,7 +132,9 @@ class TicketController extends Controller
      */
     public function show($id)
     {
-        dd($id);
+        Ticket::find($id)->update(['status'=>'Incomplete']);
+
+        return redirect('/customer/tickets');
     } 
     public function update(Request $request, Ticket $ticket)
     {

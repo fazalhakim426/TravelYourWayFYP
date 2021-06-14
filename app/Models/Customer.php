@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class Customer extends Model
 {
@@ -20,6 +22,27 @@ class Customer extends Model
 
     public function visas()
     {
-        $this->hasMany(Visa::class);
+        return $this->hasMany(Visa::class);
     }
+
+    public function ticket()
+    {
+        return $this->hasMany(Ticket::class);
+    }
+
+    public function count_status()
+    {  
+           return $this->visas()->get();
+            
+   
+        // $status['visa']['incomplete']
+        // $status['visa']['completed']
+        // $status['visa']['payment_request']
+        // $status['visa']['paid']
+        // $status['visa']['done']
+
+      
+        
+    }
+
 }

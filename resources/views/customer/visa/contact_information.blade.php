@@ -81,7 +81,7 @@
                                                    for="grid-last-name">
                                                 Country
                                             </label>
-                                            <input name="country"  value="{{old('country')==null?($visa->country=null?"Pakistan":"Pakistan"):old('country')}}"  class="appearance-none block w-full bg-gray-200 @error('country')  border-red-500 @enderror text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight border-yellow-500   leading-tight focus:outline-none focus:bg-white-500 focus:bg-white-500 focus:border-gray-600"
+                                            <input name="country"  value="{{old('country')==null?($visa->country==null?"Pakistan":$visa->country):old('country')}}"  class="appearance-none block w-full bg-gray-200 @error('country')  border-red-500 @enderror text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight border-yellow-500   leading-tight focus:outline-none focus:bg-white-500 focus:bg-white-500 focus:border-gray-600"
                                                    id="grid-last-name" type="text" placeholder="Pakistan">
                                                    @error('country')
                                                    <p class="text-red-500 text-xs italic">{{$message}}</p>

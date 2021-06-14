@@ -35,11 +35,12 @@ Route::apiResources([
     'visas' => VisaAPIController::class,
     'post'=>VisaAPIController::class,
 ]);
-Route::get('userVisas/{id}',[VisaAPIController::class,'getAll']);
 
 Route::apiResources([
-    'countries' => CountryAPIController::class,
-]);  
+    'visas' => VisaAPIController::class,
+    'post'=>VisaAPIController::class,
+]);
+Route::get('userVisas/{id}',[VisaAPIController::class,'getAll']);
 
 Route::apiResources([
     'AllApplies' => AllApplyAPIController::class,
@@ -50,9 +51,28 @@ Route::get('/AllApplies/{id}/applied',[AllApplyAPIController::class,'applied']);
 
 Route::get('/getAgent',[AgentAPIController::class,'getAgent']);
 
-
+//
 
 Route::post('/login', [Login::class, 'login']);
 
 
 Route::post('/register', [Login::class, 'register']);
+
+
+
+Route::apiResources([
+    'countries' => CountryAPIController::class,
+]);  
+
+Route::get('/state/{id}', [CountryAPIController::class, 'get_states']);//country id required
+Route::get('/city/{id}', [CountryAPIController::class, 'get_cities']);//state id required
+
+
+Route::get('/get_hotels', [CountryAPIController::class, 'get_hotels']);
+
+Route::get('/hotels/{id}/country', [CountryAPIController::class, 'get_country_hotels']);
+Route::get('/hotels/{id}/state', [CountryAPIController::class, 'get_state_hotels']);
+Route::get('/hotels/{id}/city', [CountryAPIController::class, 'get_city_hotels']);
+
+
+Route::get('/rooms/{id}', [CountryAPIController::class, 'get_rooms']);

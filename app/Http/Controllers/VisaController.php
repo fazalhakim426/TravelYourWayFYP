@@ -17,14 +17,14 @@ class VisaController extends Controller
   
     public function index()
     {
-        $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('status','=','Incomplete')->first();
+        $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('status','=','Incomplete')->first();
         $countries=Country::all();
         return view('customer.visa.trip_details')->with('visa',$visa)->with('countries',$countries)->with('type',null);
     }
 
     public function index2($type)
     {
-        $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('status','=','Incomplete')->first();
+        $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('status','=','Incomplete')->first();
        
         if($visa!=null)
         return view('customer.visa.trip_details')->with('visa',$visa)->with('type',$type);
@@ -50,7 +50,7 @@ class VisaController extends Controller
      */
     public function store(TripDetailRequest $request)
     {
-        $visaexist=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('status','=','incomplete')->first();
+        $visaexist=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('status','=','incomplete')->first();
        if($visaexist==null){
         $request["status"]="Incomplete";
         $request["name"]=Auth::user()->name;
@@ -60,7 +60,7 @@ class VisaController extends Controller
         $request["state"]=Auth::user()->state;
         $request["city"]=Auth::user()->city;
         $request["email"]=Auth::user()->email;
-        $request["user_id"]= Auth::user()->id;
+        $request["customer_id"]= Auth::user()->userable_id;
         if($request->type=='Ummrah'||$request=='Hajj')
         {
             $request["visa_apply_country"]='Saudi Arabia';
@@ -77,11 +77,14 @@ class VisaController extends Controller
         {
             $request["visa_apply_country"]='Saudi Arabia';
         }
-        Visa::where('id',$request->id)->update([
+        $visa=Visa::where('id',$request->id)->update([
             'visa_apply_country'=> $request['visa_apply_country'],
             'days'=>$request['days'],
             'type'=>$request['type'],
            ]);
+           
+        // dd($visa);
+        // dd($request->all());
         return redirect('/personalInformationIndex');//goto step 1
     }
     //step 0 ended
@@ -89,7 +92,7 @@ class VisaController extends Controller
 // step 1 started
 // public function create1()
 // {
-//     $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('status','=','incomplete')->first();
+//     $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('status','=','incomplete')->first();
 //     return view('customer.visa.immigration_visa_step_1')->with('visa',$visa);
 // }
     
@@ -126,8 +129,11 @@ class VisaController extends Controller
     //start step 2
     public function contactInformationIndex()
     {
-        $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('status','=','incomplete')->first();
-        return view('customer.visa.contact_information')->with('visa',$visa);
+        $countries=Country::all();
+        $data['countries']=$countries;
+        $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('status','=','incomplete')->first();
+        $data['visa']=$visa;
+        return view('customer.visa.contact_information',$data);
     }
     
     public function contactInformationStore(ContactInformationRequest $request)
@@ -137,6 +143,7 @@ class VisaController extends Controller
                'email'=>$request['email'],
                'phone_number'=>$request['phone_number'],
                'work_phone'=>$request['work_phone'],
+               'country'=>$request['country'],
               ]);
               
     return redirect('/agentIndex');//goto passengerIndex
@@ -146,7 +153,7 @@ class VisaController extends Controller
 
     public function personalInformationIndex()
     {
-        $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('status','=','incomplete')->first();
+        $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('status','=','incomplete')->first();
         return view('customer.visa.personal_information')->with('visa',$visa);
     }
 
@@ -168,7 +175,7 @@ class VisaController extends Controller
     {
         // $agents=User::where('membership','Agent')->get();
         $agents=Agent::all();
-        $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('status','=','incomplete')->first();
+        $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('status','=','incomplete')->first();
         
         return view('customer.visa.agent')->with('visa',$visa)->with('agents',$agents);
     }
@@ -208,11 +215,8 @@ class VisaController extends Controller
      */
     public function show(Visa $visa)
     {
-
-            //    dd($visa);
                $visa->update(['status'=>'Incomplete']);
                return redirect('/customer/visas');
-
     }
 
     /**
@@ -223,7 +227,7 @@ class VisaController extends Controller
      */
     public function edit0(Request $request)
     {
-        $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('id','=',$request->id)->first();
+        $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('id','=',$request->id)->first();
         //dd($visa);
         $countries=Country::all();
         return view('customer.visa_update.trip_details')->with('visa',$visa)->with('countries',$countries);
@@ -232,35 +236,35 @@ class VisaController extends Controller
        
     public function edit1(Request $request)
     {
-        $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('id','=',$request->id)->first();
+        $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('id','=',$request->id)->first();
         // dd($visa);
         return view('customer.visa_update.immigration_visa_step_1')->with('visa',$visa);
   
     }
     public function edit2(Request $request)
     {
-        $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('id','=',$request->id)->first();
+        $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('id','=',$request->id)->first();
         // dd($visa);
         return view('customer.visa_update.immigration_visa_step_2')->with('visa',$visa);
   
     }   
     public function edit3(Request $request)
     {
-        $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('id','=',$request->id)->first();
+        $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('id','=',$request->id)->first();
         // dd($visa);
         return view('customer.visa_update.immigration_visa_step_3')->with('visa',$visa);
   
     }   
     public function edit4(Request $request)
     {
-        $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('id','=',$request->id)->first();
+        $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('id','=',$request->id)->first();
         // dd($visa);
         return view('customer.visa_update.immigration_visa_step_4')->with('visa',$visa);
   
     } 
     public function edit5(Request $request)
     {
-        $visa=DB::table('visas')->where('user_id','=',Auth::user()->id)->where('id','=',$request->id)->first();
+        $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('id','=',$request->id)->first();
         // dd($visa);
         return view('customer.visa_update.immigration_visa_step_5')->with('visa',$visa);
   

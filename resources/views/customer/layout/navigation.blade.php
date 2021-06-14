@@ -69,8 +69,8 @@
 
                   
 
-                            <li class="border-t border-light-border w-full h-full px-2 py-3 @if(Request::url() === URL::to('/').'/customer/hotelreservations')  bg-gray-600  @endif" >
-                                <a  href="/customer/hotelreservations"
+                            <li class="border-t border-light-border w-full h-full px-2 py-3 @if(Request::url() === URL::to('/').'/customer/hotels')  bg-gray-600  @endif" >
+                                <a  href="/customer/hotels"
                                    class="mx-4   hover:font-normal text-sm text-white no-underline">
                                     Hotel Reservation
                                     <span><i class="fa fa-angle-right float-right"></i></span>

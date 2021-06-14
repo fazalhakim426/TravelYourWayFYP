@@ -26,10 +26,10 @@ class PersonalInformationRequest extends FormRequest
         return [
             'first_name'=>'required',
             'last_name'=>'required',
-            'date_of_birth'=>'required',
+            'date_of_birth'=>'required|before:today',
             'gender'=>'required',
             'title'=>'required',
-            'passport_number'=>'required',
+            'passport_number'=>'required|size:9',
         ];
     }
 }

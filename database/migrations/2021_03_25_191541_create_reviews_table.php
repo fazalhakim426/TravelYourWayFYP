@@ -19,9 +19,7 @@ class CreateReviewsTable extends Migration
             $table->string('comments');
             $table->enum('rating', [1,2,3,4,5]);
         });
-        
     }
-
     /**
      * Reverse the migrations.
      *

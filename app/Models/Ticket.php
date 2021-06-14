@@ -11,24 +11,18 @@ class Ticket extends Model
 
     public $timestamps = false;
     protected $fillable = [
-          
-        'user_id',
+        'customer_id',
         'agent_id',
         'super_agent_id',
         'status',
         'booking_source',
-      
         'issuing_airline',
-
         'journey_type',  //signle round multi
         'ticket_apply_country',
         'departure_airport',
         'arrival_airport',
         'departure_date',
         'class',
-          //  business, first class ,  economy class 
-       
-          //agent field
         
           'PNR',
           'base_fare',
