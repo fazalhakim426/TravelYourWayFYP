@@ -123,12 +123,8 @@ class VisaAPIController extends Controller
            
 public function getAll($id) {
 
-
-$visa=Visa::where('user_id',$id)->get();
-// $visa['agent']='fazal hakim';
-    return VisaResource::collection(
-      $visa
-    );
-  }
+      $visa=Visa::where('customer_id',$id)->get();
+          return VisaResource::collection($visa);
+        }
 
 }

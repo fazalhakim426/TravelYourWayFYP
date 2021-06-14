@@ -26,6 +26,7 @@ class ContactInformationRequest extends FormRequest
         return [
 
             'street'=>'required',
+            'country'=>'required',
             'email'=>'required',
             'country'=>'required',
             'phone_number'=>'required',

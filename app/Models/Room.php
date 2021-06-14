@@ -24,6 +24,6 @@ class Room extends Model
 
     public function images()
     {
-        return $this->marphMany(Image::class,'imageable');
+        return $this->morphMany(Image::class,'imageable');
     }
 }

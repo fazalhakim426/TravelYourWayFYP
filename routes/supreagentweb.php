@@ -70,7 +70,12 @@ Route::middleware(['superagent'])->group(function(){
                 'room-store',
                 [HotelController::class,'room_store']
                       )
-            ->name('room-store');
+            ->name('room-store');            
+            
+            Route::delete('room-destory/{id}',
+            [HotelController::class,'room_destroy']
+        )->name('room-destroy');
+           
 
  });
 

@@ -15,9 +15,15 @@ class CreateVisasTable extends Migration
     {
         Schema::create('visas', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('customer_id');
             $table->unsignedBigInteger('agent_id')->nullable();
             $table->string('status');
+            //Incomplete 
+            // Completed
+            // Payment Request
+            // Paid
+            // Cancel
+            // Done
             $table->string('visa_apply_country');
             $table->string('type');  //visit immigration hajj ummrah
             $table->string('days')->nullable();
@@ -28,6 +34,7 @@ class CreateVisasTable extends Migration
             $table->string('title')->nullable();
             $table->string('passport_number')->nullable();
              //contact information
+            $table->string('country')->nullable();
             $table->string('email')->nullable();
             $table->string('phone_number')->nullable();
             $table->string('work_phone')->nullable();
