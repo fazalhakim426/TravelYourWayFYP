@@ -63,7 +63,7 @@ class TicketAPIController extends Controller
 
     $validator = Validator::make($request->all(), [
       'booking_source' => 'required',
-      'user_id' => 'required',
+      'customer_id' => 'required',
       'journey_type' => 'required',
       'issuing_airline' => 'required',
       'departure_airport' => 'required',
@@ -155,6 +155,6 @@ class TicketAPIController extends Controller
 
   public function getAll($id)
   {
-    return TicketResource::collection(Ticket::where('user_id', $id)->get());
+    return TicketResource::collection(Ticket::where('customer_id', $id)->get());
   }
 }

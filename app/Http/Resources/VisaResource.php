@@ -18,7 +18,7 @@ class VisaResource extends JsonResource
         return [
             
             'id'=>$this->id,
-            'user_id'=>$this->user_id,
+            'customer_id'=>$this->customer_id,
             'agent_id'=>$this->agent_id,
             'status'=>$this->status,
     //visa information 

@@ -10,63 +10,69 @@ use App\Http\Controllers\PassengerController;
 
 Route::middleware(['auth'])->group(function () {
     Route::middleware(['verified'])->group(function () {
-  Route::middleware(['address'])->group(function(){
- Route::middleware(['customer'])->group(function(){
-Route::prefix('customer')->group(function(){
+    Route::middleware(['address'])->group(function(){
+    Route::middleware(['customer'])->group(function(){
+    Route::prefix('customer')->group(function(){
 
     Route::get('/dashboard',[CustomerController::class,'index'])->name('dashboard');
 
- Route::resources([
-            'visas' => VisaController::class,
-            'posts' => VisaController::class,
-        ]);
-           
-        Route::resources([
-            'tickets' => TicketController::class,
-            'posts' => TicketController::class,
-        ]);
-
+    Route::resources([     
+        'visas' => VisaController::class,
+        'posts' => VisaController::class,
+    ]);
         
-        Route::get('apply/{type}',[VisaController::class,'index2']);
+    Route::resources([
+        'tickets' => TicketController::class,
+        'posts' => TicketController::class,
+    ]);
 
-        Route::get('visa_payments/{charges}',[CustomerController::class,'pay_visa_charges']);
-        Route::get('done_visa/{charges}',[CustomerController::class,'done_visa']);
-
-
-        Route::get(
-            'ticket_payments/{charges}',
-            [CustomerController::class,'pay_ticket_charges']
-                  );
-
-        Route::get(
-        'done_ticket/{charges}'
-        ,[CustomerController::class,'done_ticket']
     
-        );
+    Route::get('apply/{type}',[VisaController::class,'index2']);
+
+    Route::get('visa_payments/{charges}',[CustomerController::class,'pay_visa_charges']);
+    Route::get('done_visa/{charges}',[CustomerController::class,'done_visa']);
 
 
+    Route::get(
+        'ticket_payments/{charges}',
+        [CustomerController::class,'pay_ticket_charges']
+                );
 
-             
-        Route::get(
-            'visa_cancel'
-        ,[AgentController::class,'cancel_visa']);
+    Route::get(
+    'done_ticket/{charges}'
+    ,[CustomerController::class,'done_ticket']
+
+    );
+
+    Route::get(
+        'visa_cancel'
+    ,[AgentController::class,'cancel_visa']);
+    
+    Route::get(
+        'ticket_cancel'
+    ,[AgentController::class,'cancel_visa']);
+    
+
+    Route::get(
+        'visa_revoke',
+        [AgentController::class,'revoke_visa']
+    );
+    
+    Route::get(
+        'visa_ticket',
+        [AgentController::class,'revoke_ticket']
+    );
+    
+    Route::get(
+        'hotels',
+        [CustomerController::class,'get_hotels']
+    );
        
-        Route::get(
-            'ticket_cancel'
-        ,[AgentController::class,'cancel_visa']);
-       
-
-        Route::get(
-            'visa_revoke',
-            [AgentController::class,'revoke_visa']
-        );
-       
-        Route::get(
-            'visa_ticket',
-            [AgentController::class,'revoke_ticket']
-        );
-       
-
+    
+    Route::get(
+        '/hotel/room/{id}',
+        [CustomerController::class,'get_rooms']
+    )->name('hotel-room');
        
 
 

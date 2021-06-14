@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DropdownController;
+use App\Models\Hotel;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -20,7 +21,6 @@ use Illuminate\Support\Facades\Schema;
 
 Route::get('/generate-countries',[CountryController::class,'create']);
 Route::get('/', function () {
-
        return view('welcome');
 });
 
@@ -42,9 +42,13 @@ Route::post(
     'api/fetch-states',
      [DropdownController::class, 'fetchState']
     );
+    Route::post(
+        'api/fetch-cities',
+         [DropdownController::class, 'fetchCity']
+        );
 Route::post(
-    'api/fetch-cities',
-     [DropdownController::class, 'fetchCity']
+    'api/fetch-hotels',
+        [DropdownController::class, 'fetchHotel']
     );
 
 

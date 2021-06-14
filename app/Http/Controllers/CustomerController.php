@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Country;
 use App\Models\Customer;
+use App\Models\Hotel;
+use App\Models\Room;
 use App\Models\Ticket;
 use App\Models\Visa;
 use Illuminate\Http\Request;
@@ -10,11 +13,10 @@ use DB,Auth;
 class CustomerController extends Controller
 {
     
-    public function index()
-    {
-           $visas=DB::table('visas')->where('user_id','=',Auth::user()->id)->get();
-        $tickets=DB::table('tickets')->where('user_id','=',Auth::user()->id)->get();
-        return view('customer.dashboard')->with('visas',$visas)->with('tickets',$tickets);
+    public function index(){
+            $visas=Auth::user()->userable->visas;
+            $tickets=DB::table('tickets')->where('customer_id','=',Auth::user()->userable_id)->get();
+            return view('customer.dashboard')->with('visas',$visas)->with('tickets',$tickets);
     
     }
 
@@ -28,7 +30,6 @@ class CustomerController extends Controller
             'status'=>"Paid"
         ]);
         return back();
-        //
     } 
     
     public function done_visa($id)//temparoy payment
@@ -37,7 +38,6 @@ class CustomerController extends Controller
             'status'=>"Done"
         ]);
         return back();
-        //
     }
 
 
@@ -57,5 +57,19 @@ class CustomerController extends Controller
         ]);
         return back();
         //
+    }
+
+    public function get_hotels()
+    {
+        $data['countries']=Country::all();
+        $data['hotels']=Hotel::all();
+        return view('customer.hotel.listing',$data);
+    }
+    public function get_rooms($id)
+    {
+        $data['countries']=Country::all();
+        $data['hotels']=Hotel::all();
+        $data['rooms']=Room::where('city_id',$id);
+        return view('customer.hotel.room.listing',$data);
     }
 }

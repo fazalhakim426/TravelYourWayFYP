@@ -70,8 +70,7 @@
                                          
  <div class="flex justify-center flex-wrap ">
 
-
-
+{{-- {{dd($agents)}} --}}
 
 @foreach($agents as $agent)
                        {{-- <a class=" cursor-pointer rounded p-1 mx-1 text-blue-500" href="showUser/{{$agent->id}}"> show </a> --}}

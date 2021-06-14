@@ -10,8 +10,10 @@ class Visa extends Model
     use HasApiTokens,HasFactory;
     public $timestamps = false;
     protected $fillable = [
-        'user_id',
+        'customer_id',
         'agent_id',
+        'super_agent_id',//asign
+
         'status',
 //visa information 
         'visa_apply_country',
@@ -32,14 +34,12 @@ class Visa extends Model
 //agent field
         'charges',
         'comments',
-        'super_agent_id',//asign
 
     ];
-
+    
     protected $attributes = [
         'status' => "Incomplete",
     ];
-
     public function agent(){
         return $this->belongsTo(Agent::class);
     }
@@ -47,16 +47,10 @@ class Visa extends Model
     {
         $this->attributes['type'] = ucfirst($value);
     }
-
-
-    
     public function super_agent()
     {
         return $this->belongsTo(User::class, 'super_agent_id');
-
     }
-    
-
     public function payment()
     {
         return $this->marhpOne(Payment::class,'paymentable');

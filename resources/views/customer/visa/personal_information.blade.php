@@ -36,7 +36,7 @@
          <div class="md:flex">
          <li class="mr-1">
       
-      <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold" href="/visas">Trip Details</a>
+      <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold" href="/customer/visas">Trip Details</a>
       </li>
 
   <li class="-mb-px mr-1 ">
@@ -171,7 +171,7 @@
                               
 
                                         <div class="inline-flex">
-                                             <a href="/create1">
+                                             <a href="/customer/visas">
                                     <p class="bg-teal-200 hover:bg-teal-500 text-teal-900 font-bold py-2 px-4 rounded-l">
                                         Prev
                                     </p></a>

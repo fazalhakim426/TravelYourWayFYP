@@ -107,6 +107,7 @@ class HotelController extends Controller
     {
        $data['user']=Auth::user();
        $data['hotel']=Hotel::find($id);
+       $data['rooms']=$data['hotel']->rooms;
        $data['countries']=Country::get();
        $data['sub_active']="Hotel";
        return view('super_agent.hotel.room.listing',$data);
@@ -120,17 +121,27 @@ class HotelController extends Controller
      */
     public function room_store(Request $request)
     {
+    
+         $request->validate([
+             'charges_per_day'=>'required',
+             'title'=>'required',
+             'images'=>'required',
+        ]);
+        // dd($request->file('images'));
         $images = array();
         if ($files = $request->file('images')) {
+            
             foreach ($files as $file) {
                 $name = time() . '.' . $file->extension();
                 $file->move('storage/images', $name);
                 $images[] = $name;
             }
-        }       
+        }     
+        
         $room=Room::create($request->all());
         
          $hotel=Hotel::find($request->hotel_id);
+     
          $hotel->rooms()->save($room);
          foreach($images as $image)
          {
@@ -173,6 +184,12 @@ class HotelController extends Controller
     public function destroy(Hotel $hotel)
     {
         $hotel->delete();
+        return back();
+    }
+    public function room_destroy($room_id)
+    {
+        $room=Room::where('id',$room_id);
+        $room->delete();
         return back();
     }
 }
