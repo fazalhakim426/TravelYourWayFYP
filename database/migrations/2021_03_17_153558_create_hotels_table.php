@@ -16,6 +16,8 @@ class CreateHotelsTable extends Migration
             $table->string('state_id');
             $table->string('city_id');
             $table->string('name');
+            $table->string('description');
+            $table->string('address');
         });
     }
 

@@ -14,14 +14,13 @@ class UserResource extends JsonResource
      */
     public function toArray($request)
     {
-        $userAgent=$this->user;
-        
+       
         return
         [
 
             'id'=>$this->id,
             'name'=>$this->user->name,
-            'profile_image'=>$this->user->profile_image,
+            'profile_image'=>asset('/profile_images/'.$this->user->profile_image),
             'email'=>$this->user->email,
             'phone_number'=>$this->user->phone_number,
             'country'=>$this->user->country,

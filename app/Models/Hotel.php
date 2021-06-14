@@ -9,6 +9,8 @@ class Hotel extends Model
     protected $fillable = [
         'country',
         'hotel_name',
+        'description',
+        'address',
         'state_id',
         'country_id',
         'country_id',

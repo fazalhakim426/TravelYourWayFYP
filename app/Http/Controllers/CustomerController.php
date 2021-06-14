@@ -62,14 +62,17 @@ class CustomerController extends Controller
     public function get_hotels()
     {
         $data['countries']=Country::all();
-        $data['hotels']=Hotel::all();
+        $data['hotels']=Hotel::with('rooms')->get();
         return view('customer.hotel.listing',$data);
     }
     public function get_rooms($id)
     {
         $data['countries']=Country::all();
-        $data['hotels']=Hotel::all();
-        $data['rooms']=Room::where('city_id',$id);
+        $data['hotel']=$h=Hotel::where('id',$id)->with('rooms')->first();
+       
+        // $data['rooms']=$h->rooms;
+
+        //  dd($data['rooms']);
         return view('customer.hotel.room.listing',$data);
     }
 }

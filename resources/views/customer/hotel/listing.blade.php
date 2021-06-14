@@ -15,12 +15,6 @@
 
 <body>
 
-    {{
-    
-    dd(Auth::user()->userable->count_status)
-    
-    }}
-
         @include('customer.layout.navigation')
         
             <!--Main-->
@@ -127,7 +121,7 @@ $(document).ready(function () {
                         country_id: idCountry,
                         _token: '{{csrf_token()}}'
                     },
-                    dataType: 'json',
+                    dataTyppe: 'json',
                     success: function (result) {
                         console.log(result);
                         $('#state-dd').html('<option value="">Select State</option>');

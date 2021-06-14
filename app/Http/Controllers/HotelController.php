@@ -40,16 +40,10 @@ class HotelController extends Controller
      */
     public function create()
     {
-
-        $ticket=Ticket::where('user_id','=',Auth::user()->id)->where('status','=','Incomplete')->first();
        $data['user']=Auth::user();
-       $data['ticket']=$ticket;
        $data['countries']=Country::get();
        $data['sub_active']="Hotel";
         return view('super_agent.hotel.create',$data);
-    
-
-        echo 'create';
     }
 
     /**
@@ -67,22 +61,13 @@ class HotelController extends Controller
             'country_id'=>'required',
             'state_id'=>'required',
             'city_id'=>'required',
+            'address'=>'required',
+            'description'=>'required|min:20|max:200',
         ]);
-        // $images = array();
-        // if ($files = $request->file('image')) {
-        //     foreach ($files as $file) {
-        //         $name = time() . '.' . $file->extension();
-        //         $file->move('storage/images', $name);
-        //         $images[] = $name;
-        //     }
-        // }       
-    
+
         $file= $request->file('image');
                 $name = time() . '.' . $file->extension();
                 $file->move('storage/images', $name);
-                
-            
-
 
         $hotel = new Hotel;
         $hotel->name = $request->name;
@@ -91,6 +76,8 @@ class HotelController extends Controller
         $hotel->super_agent_id = Auth::user()->userable->id;
         $hotel->state_id = $request->state_id;
         $hotel->city_id = $request->city_id;
+        $hotel->description = $request->description;
+        $hotel->address = $request->address;
         
         $hotel->save();
 
@@ -123,9 +110,10 @@ class HotelController extends Controller
     {
     
          $request->validate([
-             'charges_per_day'=>'required',
+             'charges_per_day'=>'required|integer|min:200',
              'title'=>'required',
              'images'=>'required',
+             'capacity'=>'required|integer|max:10',
         ]);
         // dd($request->file('images'));
         $images = array();
@@ -137,6 +125,7 @@ class HotelController extends Controller
                 $images[] = $name;
             }
         }     
+
         
         $room=Room::create($request->all());
         
@@ -150,6 +139,11 @@ class HotelController extends Controller
          
         return Redirect::route('add-room',$hotel->id);
         
+    }
+
+    public function book_room(Request $request)
+    {
+        dd($request->all());
     }
 
     /**

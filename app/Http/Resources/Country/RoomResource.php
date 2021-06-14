@@ -14,10 +14,21 @@ class RoomResource extends JsonResource
      */
     public function toArray($request)
     {
+        $array=$this->images()->get('image')->toArray();
+        $images=array();
+         foreach($array as $arr)
+         {
+             $images[]=asset('/storage/images/'.$arr['image']);
+         }
+
+
+
         return [
             'id'=>$this->id,
-            'name'=>$this->name,
-            'images'=>$this->images,
+            'title'=>$this->title,
+            'images'=>$images,
+            'capacity'=>$this->capacity,
+            'charges_per_day'=>$this->charges_per_day,
            ];
     }
 }

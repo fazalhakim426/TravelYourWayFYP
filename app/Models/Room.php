@@ -12,6 +12,7 @@ class Room extends Model
    
 
     protected $fillable=[
+        'capacity',
         'title',
         'charges_per_day',
     ];

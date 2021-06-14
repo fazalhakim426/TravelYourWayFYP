@@ -49,7 +49,7 @@ class CountryAPIController extends Controller
     }
     public function get_country_hotels($id)
     {
-        $hotel=Hotel::where('country_id',$id)->get();
+        $hotel=Hotel::where('country_id',$id)->get(         );
         return HotelResource::collection($hotel);
     
     } 

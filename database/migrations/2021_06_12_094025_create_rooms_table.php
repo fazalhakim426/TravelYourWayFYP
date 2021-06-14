@@ -18,6 +18,7 @@ class CreateRoomsTable extends Migration
             $table->string('hotel_id')->nullable();
             $table->string('title');
             $table->string('charges_per_day');
+            $table->string('capacity');
             $table->timestamps();
         });
     }
