@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Resources\UserResource;
 
-
 use App\models\Agent;
 class AgentAPIController extends Controller
 {
