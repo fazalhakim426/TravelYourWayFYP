@@ -19,42 +19,46 @@ use Illuminate\Support\Facades\Schema;
 |
 */
 
-Route::get('/generate-countries',[CountryController::class,'create']);
+Route::get('/generate-countries', [CountryController::class, 'create']);
 Route::get('/', function () {
-       return view('welcome');
+    return view('welcome');
 });
 
 
 Route::get('/dashboard', function () {
-    $visas=DB::table('visas')->where('user_id','=',Auth::user()->id)->get();
+    $visas = DB::table('visas')->where('user_id', '=', Auth::user()->id)->get();
 
-    return view('userdashboard.dashboard')->with('visas',$visas)->with('i',0);
-
+    return view('userdashboard.dashboard')->with('visas', $visas)->with('i', 0);
 })->middleware(['auth'])->middleware('verified')->middleware('address')->middleware('membership')->name('dashboard');
 
 
 
 Route::get(
     'dependent-dropdown',
-     [DropdownController::class, 'index']
-    );
+    [DropdownController::class, 'index']
+);
 Route::post(
     'api/fetch-states',
-     [DropdownController::class, 'fetchState']
-    );
-    Route::post(
-        'api/fetch-cities',
-         [DropdownController::class, 'fetchCity']
-        );
+    [DropdownController::class, 'fetchState']
+);
+Route::post(
+    'api/fetch-cities',
+    [DropdownController::class, 'fetchCity']
+);
 Route::post(
     'api/fetch-hotels',
-        [DropdownController::class, 'fetchHotel']
-    );
+    [DropdownController::class, 'fetchHotel']
+);
+
+Route::post(
+    'api/fetch-hotel-rooms',
+    [DropdownController::class, 'fetchHotelRooms']
+);
 
 
-require __DIR__.'/customerweb.php';
-require __DIR__.'/agentweb.php';
-require __DIR__.'/supreagentweb.php';
+require __DIR__ . '/customerweb.php';
+require __DIR__ . '/agentweb.php';
+require __DIR__ . '/supreagentweb.php';
 
-require __DIR__.'/auth.php';
-require __DIR__.'/adminweb.php';
+require __DIR__ . '/auth.php';
+require __DIR__ . '/adminweb.php';

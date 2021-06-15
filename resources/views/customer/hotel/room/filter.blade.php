@@ -8,7 +8,7 @@
     <div class="flex flex-wrap -mx-3 mb-6">
 
         
-        <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+        {{-- <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
             <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
                    for="grid-state">
                    Countries
@@ -102,8 +102,6 @@
                 <select id="hotel-dd" name='hotel_id'   class="border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
                         id="grid-state">
                    
-    
-
                 </select>
 
                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-grey-darker">
@@ -113,7 +111,75 @@
                     </svg>
                 </div>
             </div>
+        </div> --}}
+
+              
+        
+        
+
+
+    </div>
+
+    <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
+                   for="grid-state">
+                   Check In
+            </label>
+            <div class="relative">
+                <input  type="date"  required name="from"  value="{{isset($from)==null?date("Y-m-d"):$from}}"  class="dateselect border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                >
+                @error('from')
+                   <label class="text-red-500 text-xs italic"
+                   for="grid-first-name">
+                   {{ $message }}
+            </label>
+                   @enderror
+
+               
+            </div>
         </div>
+        
+        <div class="w-full md:w-1/4 px-3 mb-6 md:mb-0">
+            <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
+                   for="grid-state">
+                   Check Out
+            </label>
+            <div class="relative">
+                <input  type="date" value="{{isset($to)==null?date("Y-m-d"):$to}}" required name="to" id='to' class="dateselect border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                >
+                        
+                    
+                      
+                </select>
+                @error('to')
+                   <label class="text-red-500 text-xs italic"
+                   for="grid-first-name">
+                   {{ $message }}
+            </label>
+                   @enderror
+
+            </div>
+            
+            @error('room_id')
+            <label class="text-red-500 text-xs italic"
+            for="grid-first-name">
+            Please select atleast on Room.
+     </label>
+            @enderror
+
+        </div>
+
+
+
+
+
+  
+
+              
+
+        
+       
 
               
         

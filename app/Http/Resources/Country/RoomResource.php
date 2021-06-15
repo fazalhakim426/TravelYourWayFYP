@@ -21,14 +21,13 @@ class RoomResource extends JsonResource
              $images[]=asset('/storage/images/'.$arr['image']);
          }
 
-
-
         return [
             'id'=>$this->id,
             'title'=>$this->title,
             'images'=>$images,
             'capacity'=>$this->capacity,
             'charges_per_day'=>$this->charges_per_day,
+            'reserved'=>$this->reserved==null?'no':'yes',
            ];
     }
 }

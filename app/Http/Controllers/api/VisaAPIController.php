@@ -21,10 +21,8 @@ class VisaAPIController extends Controller
    {
     $validator = Validator::make($request->all(), [
         'type'=>'required',     
-        'user_id'=>'required',  
-        'agent_id'=>'required',  
-        'user_id'=>'required',  
-        'user_id'=>'required',     
+        'customer_id'=>'required',  
+        'agent_id'=>'required',   
         'visa_apply_country'=>'required',   
         'days'=>'required',    
         //personal information
@@ -75,7 +73,7 @@ class VisaAPIController extends Controller
    
     $validator = Validator::make($request->all(), [
         'type'=>'required',     
-        'user_id'=>'required',     
+        'customer_id'=>'required',     
         'visa_apply_country'=>'required',   
         'days'=>'required',    
         

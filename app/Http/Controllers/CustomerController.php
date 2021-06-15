@@ -48,7 +48,7 @@ class CustomerController extends Controller
         ]);
         return back();
         //
-    } 
+    }
     
     public function done_ticket($id)//temparoy payment
     {
@@ -69,6 +69,7 @@ class CustomerController extends Controller
     {
         $data['countries']=Country::all();
         $data['hotel']=$h=Hotel::where('id',$id)->with('rooms')->first();
+        $data['rooms']=[] ;
        
         // $data['rooms']=$h->rooms;
 

@@ -9,7 +9,7 @@ class Room extends Model
 {
     use HasFactory;
 
-   
+   public $timestamps=false;
 
     protected $fillable=[
         'capacity',
@@ -21,6 +21,12 @@ class Room extends Model
     public function payment()
     {
         return $this->hasOne(Payment::class,'hotel_id');
+    }
+
+
+    public function booking()
+    {
+        return $this->hasMany(Booking::class);
     }
 
     public function images()

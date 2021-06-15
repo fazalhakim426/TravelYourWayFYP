@@ -79,3 +79,5 @@ Route::get('/hotels/{id}/city', [CountryAPIController::class, 'get_city_hotels']
 Route::get('/rooms/{id}', [CountryAPIController::class, 'get_rooms']);
 
 Route::get('/count_status/{id}', [CustomerAPIController::class, 'count_status']);
+Route::post('/booking', [CustomerAPIController::class, 'booking']);
+Route::post('/available_room', [CustomerAPIController::class, 'available_room']);
