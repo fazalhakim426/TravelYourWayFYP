@@ -8,6 +8,7 @@ use App\Models\Hotel;
 use App\Models\Image;
 use App\Models\Room;
 use App\Models\Ticket;
+use DateTime;
 use Illuminate\Http\Request;
 use DB;
 use Illuminate\Support\Facades\Auth;
@@ -183,7 +184,7 @@ class HotelController extends Controller
     {
 
 
-        
+
         $request->validate([
             'from' => 'required',
             'to' => 'required',
@@ -191,8 +192,31 @@ class HotelController extends Controller
         ]);
 
         if($request->room_id){
-         return 'payment process';
-        // dd($request->all());
+
+
+            $fdate = $request->from;
+$tdate = $request->to;
+$datetime1 = new DateTime($fdate);
+$datetime2 = new DateTime($tdate);
+$interval = $datetime1->diff($datetime2);
+$days = $interval->format('%a')+1;
+   $amount=0;
+foreach($request->room_id as $room_id){
+    $room=Room::find($room_id);
+    // echo $room->charges_per_day*$days;
+    $amount+= $room->charges_per_day*$days;
+    // echo '<br>';
+}
+
+
+$data['rooms_id']=$request->room_id;
+ $data['amount']=$amount;
+         
+           
+
+           
+            return view('customer.hotel.room.payment',$data);
+         
         }
         else{
             $request->customer_id = Auth::user()->userable_id;

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DropdownController;
+use App\Http\Controllers\StripePaymentController;
 use App\Models\Hotel;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
@@ -54,6 +55,11 @@ Route::post(
     'api/fetch-hotel-rooms',
     [DropdownController::class, 'fetchHotelRooms']
 );
+
+Route::get('stripe',[StripePaymentController::class,'stripe']);
+
+
+Route::post('stripe', [StripePaymentController::class,'stripePost'])->name('stripe.post');
 
 
 require __DIR__ . '/customerweb.php';

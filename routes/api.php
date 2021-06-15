@@ -58,6 +58,7 @@ Route::post('/login', [Login::class, 'login']);
 
 
 Route::post('/register', [Login::class, 'register']);
+Route::post('/edit_profile', [Login::class, 'edit_profile']);
 
 
 

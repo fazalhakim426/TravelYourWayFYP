@@ -72,6 +72,70 @@ class Login extends Controller
     ]);
   }
 
+  public function edit_profile(Request $request)
+  {
+    
+    $validator = Validator::make($request->all(), [
+      'name' => 'required|string|min:3|max:25',
+      'phone_number' => 'required|string|min:10|max:15',
+      'city' => 'required|string|min:2|max:30',
+      'country' => 'required|string|min:2|max:30',
+      'state' => 'required|string|min:2|max:20',
+      'user_id' => 'required',
+  ]);
+  if ($validator->fails()) {
+    return response()->json([
+      'success' => false,
+      'message' => $validator->errors(),
+    ], 401);
+  }
+   
+        $user =User::find($request->user_id);
+       
+
+        if($request->profile_image){
+
+          $validator = Validator::make($request->all(), [
+                'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        if ($validator->fails()) {
+          return response()->json([
+            'success' => false,
+            'message' => $validator->errors(),
+          ], 401);
+        }
+
+     
+
+            $imageName =time().'.'.$request->profile_image->extension();  
+     
+        $request->profile_image->move(public_path('profile_images'), $imageName);
+       
+        User::where('email',$user->email)->update([
+        'profile_image'=>$imageName,
+        ]);
+      
+        }
+        
+     
+        
+        User::where('email',$user->email)->update([
+        'phone_number' => $request->phone_number,
+        'name' => $request->name,
+        'city' => $request->city,
+        'state' => $request->state,
+        'country' => $request->country,
+        ]);
+        
+        return response()->json([
+          'success' => true,
+          'user' => $user
+      ]);
+       
+
+
+  }
+
   
 
 
