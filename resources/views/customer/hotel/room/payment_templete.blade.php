@@ -33,32 +33,32 @@
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group required'>
                                 <label class='control-label'>Name on Card</label> <input
-                                    class='form-control' size='4' type='text'>
+                                    class='form-control' value='test' size='4' type='text'>
                             </div>
                         </div>
   
                         <div class='form-row row'>
                             <div class='col-xs-12 form-group card required'>
                                 <label class='control-label'>Card Number</label> <input
-                                    autocomplete='off' class='form-control card-number' size='20'
+                                    autocomplete='off' value='4242424242424242' class='form-control card-number' size='20'
                                     type='text'>
                             </div>
                         </div>
   
                         <div class='form-row row'>
                             <div class='col-xs-12 col-md-4 form-group cvc required'>
-                                <label class='control-label'>CVC</label> <input autocomplete='off'
+                                <label class='control-label'>CVC</label> <input value='123' autocomplete='off'
                                     class='form-control card-cvc' placeholder='ex. 311' size='4'
                                     type='text'>
                             </div>
                             <div class='col-xs-12 col-md-4 form-group expiration required'>
                                 <label class='control-label'>Expiration Month</label> <input
-                                    class='form-control card-expiry-month' placeholder='MM' size='2'
+                                    class='form-control card-expiry-month' placeholder='MM' value="12" size='2'
                                     type='text'>
                             </div>
                             <div class='col-xs-12 col-md-4 form-group expiration required'>
                                 <label class='control-label'>Expiration Year</label> <input
-                                    class='form-control card-expiry-year' placeholder='YYYY' size='4'
+                                    class='form-control card-expiry-year' placeholder='YYYY' value='2024'size='4'
                                     type='text'>
                             </div>
                         </div>
@@ -76,11 +76,7 @@
                         <input type="date" name='to' value='{{$from}}'>
                         <input type="date" name='from' value='{{$to}}'>
                         <input  name='hotel_id' value='{{$hotel_id}}'>
-                        {{-- {{dd($booking_request->name)}} --}}
-                        {{-- <input type="hidden" name='booking_request[]' value='{{$booking_request[0]->room_id}}'> --}}
-                        {{-- <input type="hidden" name='booking_request' value='{{$booking_request}}'>
-                        <input type="hidden" name='booking_request' value='{{$booking_request}}'>
-                        <input type="hidden" name='booking_request' value='{{$booking_request}}'> --}}
+                      
                         <div class="row">
                             <div class="col-xs-12">
                                 <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ({{$total_charges}})</button>
@@ -90,7 +86,8 @@
                     </form>
 <br>
                   
-                    <form action="{{route('/room/payment/byhand')}}">
+                    <form method="POST" action="{{route('/room/payment/byhand')}}">
+                        @csrf
                         @foreach($room_ids as $id)
                         <input name='room_id[]' value='{{$id}}'>
                         @endforeach

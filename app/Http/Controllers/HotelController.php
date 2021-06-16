@@ -182,11 +182,8 @@ class HotelController extends Controller
 
     public function book_room(Request $request)
     {
-
-
-
         $request->validate([
-            'from' => 'required',
+            'from' => 'required:',
             'to' => 'required',
             'hotel_id' => 'required',
         ]);
@@ -254,15 +251,6 @@ class HotelController extends Controller
         }
 
 
-        // $data['user'] = Auth::user();
-        // $data['hotel'] = Hotel::find($request->hotel_id);
-        // $data['rooms'] =$all_rooms;
-        // //  $data['hotel']->rooms;
-        // $data['countries'] = Country::get();
-        // $data['sub_active'] = "Hotel";
-        // return view('super_agent.hotel.room.listing', $data);
-
-        // return redirect()->back();
     }
 
     /**
@@ -271,9 +259,29 @@ class HotelController extends Controller
      * @param  \App\Models\Hotel  $hotel
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $hotel)
+    public function payment_by_hand(Request $request)
     {
-        dd($hotel);
+
+        $request->validate([
+            'from' => 'required',
+            'to' => 'required',
+            'room_id' => 'required',
+        ]);
+        $request->customer_id = Auth::user()->userable_id;
+        // dd($request->customer_id);
+        foreach ($request->room_id as $room_id) {
+            Booking::create([
+                "room_id" => $room_id,
+                "from" => $request->from,
+                "to" => $request->to,
+                "customer_id" => $request->customer_id,
+                "hotel_id" => $request->hotel_id,
+            ]);
+        }
+        return redirect('customer/dashboard');
+
+
+        
     }
 
     /**

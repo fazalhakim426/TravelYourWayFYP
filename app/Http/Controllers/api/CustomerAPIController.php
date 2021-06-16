@@ -7,6 +7,7 @@ use App\Http\Resources\Country\RoomResource;
 use App\Models\Booking;
 use App\Models\Customer;
 use App\Models\Hotel;
+use App\Models\Payment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Validator;
@@ -19,9 +20,116 @@ class CustomerAPIController extends Controller
         return $customer->count_status_plus();
     }
 
-    public function booking(Request $request)
+    public function booking_payment(Request $request)
     {
-        # code...
+
+        $validator = Validator::make($request->all(), [
+            'from' => 'required',
+            'to' => 'required',
+            'hotel_id' => 'required',
+            'customer_id' => 'required',
+            'room_id' => 'required',
+
+            'total_charges' => 'required',
+
+ 
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+              'success' => false,
+              'message' => $validator->errors(),
+            ], 401);
+          }
+
+
+
+                    //   'from',
+                    //   'to',
+                    //   'room_id',
+                    //   'customer_id',
+                    //   'hotel_id',
+            
+            
+            // STRIPE_KEY
+            //   name
+            //   card_number
+            //   CVC
+            //   expiration_month
+            //   expiration_year
+            //   total_charges
+
+
+
+                    // Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+                // Stripe\Charge::create ([
+                //         "amount" => $request->total_charges,
+                //         "currency" => "usd",
+                //         "source" => $request->stripeToken,
+                //         "description" => "Hotel Payment" 
+                // ]);
+        
+
+        foreach($request->room_id as $room_id) {
+            $booking=Booking::create([
+                "customer_id" => $request->customer_id,
+                "room_id" => $room_id,
+                "from" => $request->from,
+                "to" => $request->to,
+                "hotel_id" => $request->hotel_id,
+            ]);
+
+        Payment::create([
+                'charges'=>$request->total_charges,
+                'paymentable_id'=>$booking->id,
+                'paymentable_type'=>"App\Models\Booking",
+            ]);
+            // $booking->payment;
+        }
+
+        return response([
+            'status'=>true,
+            'message'=>'Successfully Book',
+        ]);
+
+
+    }
+
+
+
+
+
+
+    public function booking_payment_by_hand(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'from' => 'required',
+            'to' => 'required',
+            'hotel_id' => 'required',
+            'customer_id' => 'required',
+            'room_id' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+              'success' => false,
+              'message' => $validator->errors(),
+            ], 401);
+          }
+  
+        foreach ($request->room_id as $room_id) {
+            Booking::create([
+                "room_id" => $room_id,
+                "from" => $request->from,
+                "to" => $request->to,
+                "customer_id" => $request->customer_id,
+                "hotel_id" => $request->hotel_id,
+            ]);
+        }
+        return response([
+            'status'=>true,
+            'message'=>'Successfully Book',
+        ]);
     }
 
 

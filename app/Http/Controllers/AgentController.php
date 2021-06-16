@@ -15,13 +15,15 @@ class AgentController extends Controller
 
 
     public function applycharges(Request $request){
-        User::find($request->user_id)->notify(new SendPaymentNotification);
+
+        
         $request->validate(
             [
                 'charges'=>'required|numeric|gt:1000',
             ]
             );
-       
+       User::find($request->customer_id)->notify(new SendPaymentNotification);
+        
         Visa::where('id',$request->id)->update([
             'status'=>"Payment Request",
             'charges'=>$request->charges,
@@ -30,7 +32,8 @@ class AgentController extends Controller
     }
 
     public function ticket_applay_charges(Request $request){
-        User::find($request->user_id)->notify(new SendPaymentNotification);
+
+        User::find($request->customer_id)->notify(new SendPaymentNotification);
         $request->validate(
             [
                 'total_payable'=>'required|numeric|gt:1000',

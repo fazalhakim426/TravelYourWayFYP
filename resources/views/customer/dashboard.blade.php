@@ -113,13 +113,13 @@
                                              <table class="table text-grey-darkest">
                                       <thead class="bg-grey-dark text-white text-normal">
                                      <tr>
-                                       <th class="border w-1/8 px-4 py-2">Name</th>
-                                       <th class="border w-1/8 px-4 py-2">Address</th>
-                                       <th class="border w-1/8 px-4 py-2">Visa Country</th>
-                                       <th class="border w-1/6 px-4 py-2">passport#</th>
-                                       <th class="border w-1/7 px-4 py-2">Payment</th>
+                                       <th class="border w-1/5 px-4 py-2">Name</th>
+                                       <th class="border w-1/5 px-4 py-2">Address</th>
+                                       <th class="border w-1/5 px-4 py-2">Visa Country</th>
+                                       <th class="border w-1/5 px-4 py-2">passport#</th>
+                                       <th class="border w-1/5 px-4 py-2">Payment</th>
                                        <th class="border w-1/7 px-4 py-2">Order Status</th>
-                                       <th class="border w-1/5 px-4 py-2">Actions</th>
+                                       <th class="border w-1/7 px-4 py-2">Actions</th>
                                      </tr>
                                    </thead>
                                    <tbody>
@@ -148,22 +148,27 @@
 
                                         </td>
                                          
-                                           <td class="border px-4 py-2">{{$visa->charges==null?'Pending':$visa->charges}}
-                                               @if($visa->charges&&$visa->status=='Payment Request')
-                                               <a href='visa_payments/{{$visa->id}}' class="bg-green-500 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
-                                                   Pay
-                                               </a>
-                                               @elseif($visa->charges&&$visa->status=='Paid')
-                                               <a href='done_visa/{{$visa->id}}' class="bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
-                                                  Done
-                                               </a> @elseif($visa->charges&&$visa->status=='Done')
-                                               <a href='done_visa/{{$visa->id}}' class="bg-blue-700 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
-                                                  Review
-                                               </a>
-                                               @endif
+                                           <td class="border px-4 py-2">{{$visa->charges==null?'Agent Reviewing':""}}
+
+                                            @if($visa->charges&&$visa->status=='Payment Request')
+                                            <a href='visa_payments/{{$visa->id}}' class="bg-green-500 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                                Pay Now {{$visa->charges}}
+                                            </a>
+
+                                            @elseif($visa->charges&&$visa->status=='Paid')
+                                            <a href='done_visa/{{$visa->id}}' class="bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                              Paid {{ $visa->charges }} pkr
+                                            </a> @elseif($visa->charges&&$visa->status=='Done')
+                                            <a href='done_visa/{{$visa->id}}' class="bg-blue-700 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                               Review
+                                            </a>
+                                            @endif
+
+
+                                            
                                                </td>
                                            <td class="border px-4 py-2">
-                                               @if($visa->status=="Paid")
+                                               {{-- @if($visa->status=="Paid")
                                            <button class="bg-green-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg    ">
                                                 
                                                @elseif($visa->status=="Cancel")
@@ -176,9 +181,9 @@
                                                <button class="bg-blue-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg    ">
                                                  
                                                @endif
-                                          {{ $visa->status}}
-                                           </button>
+                                           </button> --}}
                                           
+                                           {{ $visa->status}}
 
                                        
 
@@ -187,6 +192,11 @@
                                            <td class="border px-4 py-2">
                                         <a  href="visas/{{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                                             <i class="fas fa-expand"></i></a>
+
+
+
+                      
+
 
                                            </td>
 
@@ -236,13 +246,13 @@
                                              <table class="table text-grey-darkest">
                                       <thead class="bg-grey-dark text-white text-normal">
                                      <tr>
-                                       <th class="border w-1/8 px-4 py-2">journey type</th>
-                                       <th class="border w-1/8 px-4 py-2">class</th>
-                                       <th class="border w-1/8 px-4 py-2">Visa Country</th>
-                                       <th class="border w-1/6 px-4 py-2">Route#</th>
-                                       <th class="border w-1/7 px-4 py-2">Payment</th>
-                                       <th class="border w-1/7 px-4 py-2">Order Status</th>
-                                       <th class="border w-1/5 px-4 py-2">Actions</th>
+                                       <th class="border w-1/7 px-4 py-2">journey type</th>
+                                       <th class="border w-1/7 px-4 py-2">class</th>
+                                       <th class="border w-1/2 px-4 py-2">Visa Country</th>
+                                       <th class="border w-1/2 px-4 py-2">Route#</th>
+                                       <th class="border w-1/6 px-4 py-2">Payment</th>
+                                       <th class="border w-1/10 px-4 py-2">Order Status</th>
+                                       <th class="border w-1/10 px-4 py-2">Actions</th>
                                      </tr>
                                    </thead>
                                    <tbody>
@@ -261,8 +271,8 @@
                                      </td>
                                        <td class="border px-4 py-2 center">
                                        
-                                        {{$visa->issuing_airline}}
-                                        {{$visa->booking_source}}
+                                        issue airline : {{$visa->issuing_airline}} <br>
+                                        Booking Source : {{$visa->booking_source}}
                                    </td>
                                         <td class="border">
                                             From: {{$visa->departure_airport}}<br>
@@ -289,41 +299,20 @@
                                                
                                                </td>
                                            <td class="border px-4 py-2">
-                                               @if($visa->status=="Paid")
-                                           <button class="bg-green-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg    ">
-                                                
-                                               @elseif($visa->status=="Cancel")
-                                               <button class="bg-red-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg    ">
-                                                    
-                                                   @elseif($visa->status=="Paid")
-                                                   <button class="bg-green-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg    ">
-                                                        
-                                                           
-                                               <button class="bg-blue-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg    ">
-                                                 
-                                               @endif
                                           {{ $visa->status}}
-                                           </button>
-                                          
 
                                            </td>
                                            
                                            <td class="border px-4 py-2">
-                                               <a  href="tickets/{{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
-                                                       <i class="fas fa-eye"></i></a>
+                                               {{-- <a  href="tickets/{{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                                       <i class="fas fa-eye"></i></a> --}}
                                                       
 
                                                <a  href="tickets/{{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
-                                                       <i class="fas fa-edit"></i></a>
+                                                       <i class="fas fa-expand"></i></a>
                                                      
 
-                                                       <form method="POST" action="{{route('tickets.destroy', $visa->id) }}"  >
-                                                       @method('DELETE')
-                                                     @csrf
-                                               <button  type="submit" onclick="return confirm('Are you sure?')" class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
-                                                       <i class="fas fa-trash"></i>
-                                                       </form>
-                                               </a>
+                                               {{-- </a> --}}
                                            </td>
 
                                            
@@ -378,13 +367,13 @@
                                              <table class="table text-grey-darkest">
                                       <thead class="bg-grey-dark text-white text-normal">
                                      <tr>
-                                       <th class="border w-1/8 px-4 py-2">Hotel</th>
-                                       <th class="border w-1/8 px-4 py-2">Addrees</th>
-                                       <th class="border w-1/8 px-4 py-2">Room</th>
-                                       <th class="border w-1/7 px-4 py-2">Members</th>
-                                       <th class="border w-1/7 px-4 py-2">Duration</th>
-                                       <th class="border w-1/7 px-4 py-2">Payment</th>
-                                       <th class="border w-1/5 px-4 py-2">Actions</th>
+                                       <th class="border w-1/4 px-4 py-2">Hotel</th>
+                                       <th class="border w-1/4 px-4 py-2">Addrees</th>
+                                       <th class="border w-1/6 px-4 py-2">Room</th>
+                                       <th class="border w-1/8 px-4 py-2">Members</th>
+                                       <th class="border w-1/5 px-4 py-2">Duration</th>
+                                       <th class="border w-1/5 px-4 py-2">Payment</th>
+                                       <th class="border w-1/7 px-4 py-2">Actions</th>
                                      </tr>
                                    </thead>
                                    <tbody>
@@ -394,14 +383,15 @@
                                      <tr>
 
                                      <td class="border px-4 py-2">
-                                    {{$booking->hotel->name   }}
+                                    Name : {{$booking->hotel->name   }}<br>
+                                    Address: {{$booking->hotel->address   }}
                                     </td>
 
                                      <td class="border px-4 py-2 center">
-                                        {{$booking->hotel->country->name   }}// <br>
-                                        {{$booking->hotel->state->name   }}// <br>
-                                        {{$booking->hotel->city->name   }}// <br>
-                                        {{$booking->hotel->address   }}
+                                        Country: {{$booking->hotel->country->name   }}<br>
+                                        State: {{$booking->hotel->state->name   }} <br>
+                                        City :{{$booking->hotel->city->name   }}<br>
+                                        Address: {{$booking->hotel->address   }}
                                   
                                      </td>
                                      <td class="border px-4 py-2 center">
@@ -423,13 +413,10 @@
                                                
                                                @if($booking->payment==null)
                                                           Pending
-                                                        <a href='ticket_payments/{{$visa->id}}' class="bg-green-500 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
-                                                            Pay
-                                                        </a>
+                                                        
                                                @else
-                                                                <a href='done_ticket/{{$visa->id}}' class="bg-blue-700 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
-                                                                    Paid
-                                                                </a>
+                                                 Paid
+                                                              
                                                @endif
 
                                                

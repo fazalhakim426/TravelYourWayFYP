@@ -80,3 +80,11 @@
 
 
                             
+                            <form method="POST" action="{{route('tickets.destroy', $ticket->id) }}"  >
+                                @method('DELETE')
+                              @csrf
+                        <button  type="submit" onclick="return confirm('Are you sure?')" class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
+                                <i class="fas fa-trash"></i>
+                                </form>
+
+                            

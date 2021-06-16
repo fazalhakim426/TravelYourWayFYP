@@ -91,7 +91,7 @@
 
                                     @error('days')
                                     <p class="text-red-500 text-xs italic">{{$message}}</p>
-                                    @enderro    r
+                                    @enderror
                                 </div>
                             </div>
                              
@@ -110,14 +110,7 @@
 
 
 
-                            <a  href="visas/{{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
-                                <i class="fas fa-eye"></i></a>
-                               
-
-                        <a  href="visas/{{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
-                                <i class="fas fa-edit"></i></a>
-                              
-
+            
                                 <form method="POST" action="{{route('visas.destroy', $visa->id) }}"  >
                                 @method('DELETE')
                               @csrf

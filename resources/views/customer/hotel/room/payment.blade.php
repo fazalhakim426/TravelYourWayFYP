@@ -89,7 +89,7 @@
                                     <div class="p-3">
 
 
-                                            @include('customer.hotel.room.payment_tamplete')    
+                                            @include('customer.hotel.room.payment_templete')    
              
 
                                 </div>
