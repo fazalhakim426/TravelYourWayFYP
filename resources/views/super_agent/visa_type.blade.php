@@ -18,7 +18,7 @@
   </div>
 <div class="table-responsive">
     <table class="table text-grey-darkest">
-<thead class="bg-gray-400  text-white text-normal">
+<thead class="bg-gray-600  text-white text-normal">
 <tr>
 <th class="border w-1/8 px-4 py-2">Name</th>
 <th class="border w-1/8 px-4 py-2">Address</th>
@@ -109,7 +109,7 @@ type="number" placeholder="Charges PKR">
  </div>
 <div class="table-responsive">
    <table class="table text-grey-darkest">
-<thead class="bg-gray-400  text-white text-normal">
+<thead class="bg-gray-600  text-white text-normal">
 <tr>
 <th class="border w-1/8 px-4 py-2">index</th>
 <th class="border w-1/8 px-4 py-2">Name</th>
@@ -218,7 +218,7 @@ type="number" placeholder="Charges PKR">
  </div>
 <div class="table-responsive">
    <table class="table text-grey-darkest">
-<thead class="bg-gray-400  text-white text-normal">
+<thead class="bg-gray-600  text-white text-normal">
 <tr>
 <th class="border w-1/8 px-4 py-2">index</th>
 <th class="border w-1/8 px-4 py-2">Name</th>
@@ -303,7 +303,7 @@ type="number" placeholder="Charges PKR">
  </div>
 <div class="table-responsive">
    <table class="table text-grey-darkest">
-<thead class="bg-gray-400  text-white text-normal">
+<thead class="bg-gray-600  text-white text-normal">
 <tr>
 <th class="border w-1/8 px-4 py-2">index</th>
 <th class="border w-1/8 px-4 py-2">Name</th>
@@ -419,7 +419,7 @@ type="number" placeholder="Charges PKR">
  </div>
 <div class="table-responsive">
    <table class="table text-grey-darkest">
-<thead class="bg-gray-400  text-white text-normal">
+<thead class="bg-gray-600  text-white text-normal">
 <tr>
 <th class="border w-1/8 px-4 py-2">index</th>
 <th class="border w-1/8 px-4 py-2">Name</th>

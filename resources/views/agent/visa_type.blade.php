@@ -60,7 +60,7 @@
   <form action="{{route('applycharges')}}" method="post">
   @csrf
   <input name='id' value="{{$visa->id}}" type=hidden>
-  <input name='user_id' value="{{$visa->user_id}}" type=hidden>
+  <input name='customer_id' value="{{$visa->customer_id}}" type=hidden>
   <input name='charges'  value="{{$visa->charges}}"
 class="appearance-none @error('charges') border-red-500 @enderror block w-full bg-gray-200 text-gray-700 border  rounded py-3 px-4 mb-3 border-yellow-500   leading-tight focus:outline-none focus:bg-white-500"
 id="charges" value="{{old('charges')}}"
@@ -71,19 +71,19 @@ type="number" placeholder="Charges PKR">
 
   </td>
   
-  <td class="border px-4 py-2">
-      <a  href="/adminvisaedit0?id={{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+  {{-- <td class="border px-4 py-2"> --}}
+      {{-- <a  href="/adminvisaedit0?id={{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
               <i class="fas fa-eye"></i></a>
              
 
       <a  href="/adminvisaedit0?id={{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
               <i class="fas fa-edit"></i></a>
               <a  href="/visa_cancel?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
-                  <i class="fas fa-times bg-red-700"></i></a>
+                  <i class="fas fa-times bg-red-700"></i></a> --}}
             
 
             
-  </td>
+  {{-- </td> --}}
 
   
 </tr>
@@ -159,25 +159,25 @@ type="number" placeholder="Charges PKR">
 
  
  <td class="border px-4 py-2">
-     <a  href="/adminvisaedit0?id={{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+     {{-- <a  href="/adminvisaedit0?id={{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
              <i class="fas fa-eye"></i></a>
             
 
              <a  href="/adminvisaedit0?id={{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
-             <i class="fas fa-edit"></i></a>
+             <i class="fas fa-edit"></i></a> --}}
 
              <a  href="/visa_cancel?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
              <i class="fas fa-times bg-red-700"></i></a>
            
 
-             <form method="POST" action="{{route('adminvisadestroy') }}"  >
+             {{-- <form method="POST" action="{{route('adminvisadestroy') }}"  >
              @method('DELETE')
            @csrf
            <input type=hidden name='id' value='{{$visa->id}}'>
      <button  type="submit" onclick="return confirm('Are you sure?')" class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
              <i class="fas fa-trash"></i>
 
-             </form>
+             </form> --}}
      
  </td>
 
@@ -369,25 +369,25 @@ type="number" placeholder="Charges PKR">
  </td>
  
  <td class="border px-4 py-2">
-     <a  href="/adminvisaedit0?id={{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+     {{-- <a  href="/adminvisaedit0?id={{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
              <i class="fas fa-eye"></i></a>
             
 
              <a  href="/adminvisaedit0?id={{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
-             <i class="fas fa-edit"></i></a>
+             <i class="fas fa-edit"></i></a> --}}
 
              <a  href="/visa_revoke?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
              <i class="fas fa-undo bg-red-700"></i></a>
            
 
-             <form method="POST" action="{{route('adminvisadestroy') }}"  >
+             {{-- <form method="POST" action="{{route('adminvisadestroy') }}"  >
              @method('DELETE')
            @csrf
            <input type=hidden name='id' value='{{$visa->id}}'>
      <button  type="submit" onclick="return confirm('Are you sure?')" class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
              <i class="fas fa-trash"></i>
 
-             </form>
+             </form> --}}
      
  </td>
 

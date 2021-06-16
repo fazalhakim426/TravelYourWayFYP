@@ -28,7 +28,7 @@ class TicketTripDetailRequest extends FormRequest
         'ticket_apply_country'=>'required',
         'departure_airport'=>'required',
         'arrival_airport'=>'required',
-        'departure_date'=>'required',
+        'departure_date'=>'required|after:today',
         'class'=>'required',  //  business, first class ,  economy class 
        
         ];

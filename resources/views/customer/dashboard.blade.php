@@ -16,6 +16,7 @@
 <body>
 @include('customer.layout.navigation')
             <!--Main-->
+            
             <main class="bg-white-300 flex-1 p-3 overflow-hidden">
 
                 <div class="flex flex-col">
@@ -90,7 +91,13 @@
 
 
 
-
+ 
+                    @if (Session::has('success'))
+                        <div class="alert alert-success text-center">
+                            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
+                            <p>{{ Session::get('success') }}</p>
+                        </div>
+                    @endif
 
 
 
@@ -148,20 +155,20 @@
 
                                         </td>
                                          
-                                           <td class="border px-4 py-2">{{$visa->charges==null?'Agent Reviewing':""}}
+                                           <td class="border px-4 py-2">{{$visa->charges==null?'Pending':""}}
 
-                                            @if($visa->charges&&$visa->status=='Payment Request')
-                                            <a href='visa_payments/{{$visa->id}}' class="bg-green-500 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
-                                                Pay Now {{$visa->charges}}
+                                            @if($visa->charges&&$visa->payment==null)
+                                            <a href='visa/payments/{{encrypt($visa->id)}}' class="bg-blue-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-full">
+                                                Pay Now {{$visa->charges}} pkr
                                             </a>
 
-                                            @elseif($visa->charges&&$visa->status=='Paid')
+                                            @elseif($visa->payment!=null&&$visa->charges)
                                             <a href='done_visa/{{$visa->id}}' class="bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
                                               Paid {{ $visa->charges }} pkr
                                             </a> @elseif($visa->charges&&$visa->status=='Done')
-                                            <a href='done_visa/{{$visa->id}}' class="bg-blue-700 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                            {{-- <a href='done_visa/{{$visa->id}}' class="bg-blue-700 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
                                                Review
-                                            </a>
+                                            </a> --}}
                                             @endif
 
 
@@ -248,67 +255,74 @@
                                      <tr>
                                        <th class="border w-1/7 px-4 py-2">journey type</th>
                                        <th class="border w-1/7 px-4 py-2">class</th>
-                                       <th class="border w-1/2 px-4 py-2">Visa Country</th>
-                                       <th class="border w-1/2 px-4 py-2">Route#</th>
+                                       <th class="border w-1/5 px-4 py-2">Visa Country</th>
+                                       <th class="border w-1/5 px-4 py-2">Route#</th>
                                        <th class="border w-1/6 px-4 py-2">Payment</th>
-                                       <th class="border w-1/10 px-4 py-2">Order Status</th>
-                                       <th class="border w-1/10 px-4 py-2">Actions</th>
+                                       <th class="border w-1/8 px-4 py-2">Order Status</th>
+                                       <th class="border w-1/8 px-4 py-2">Actions</th>
                                      </tr>
                                    </thead>
                                    <tbody>
         
-                                   @foreach($tickets as $visa)
-                                   @if($visa->status!=null)     
+                                   @foreach($tickets as $ticket)
+
+                                   {{-- {{dd($ticket)}} --}}
+
+                                   @if($ticket->status!=null)     
                                      <tr>
 
                                      <td class="border px-4 py-2">
-                                    {{$visa->journey_type   }}
+                                    {{$ticket->journey_type   }}
                                     </td>
 
                                      <td class="border px-4 py-2 center">
-                                       {{$visa->class   }}
+                                       {{$ticket->class   }}
                                   
                                      </td>
                                        <td class="border px-4 py-2 center">
                                        
-                                        issue airline : {{$visa->issuing_airline}} <br>
-                                        Booking Source : {{$visa->booking_source}}
+                                        issue airline : {{$ticket->issuing_airline}} <br>
+                                        Booking Source : {{$ticket->booking_source}}
                                    </td>
                                         <td class="border">
-                                            From: {{$visa->departure_airport}}<br>
-                                            To: {{$visa->arrival_airport}} <br>
-                                            on: {{$visa->departure_date}}
+                                            From: {{$ticket->departure_airport}}<br>
+                                            To: {{$ticket->arrival_airport}} <br>
+                                            on: {{$ticket->departure_date}}
 
                                         </td>
                                          
-                                           <td class="border px-4 py-2">{{$visa->total_payable==null?'Pending':$visa->total_payable}}
-                                               @if($visa->total_payable&&$visa->status=='Payment Request')
-                                               <a href='ticket_payments/{{$visa->id}}' class="bg-green-500 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
-                                                   Pay
+                                           <td class="border px-4 py-2">
+                                               
+                                            {{$ticket->total_payable==null?'pending':""}}
+
+
+                                               @if($ticket->total_payable&&$ticket->payment==null)
+                                               <a href='ticket/payments/{{encrypt($ticket->id)}}' class="bg-blue-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-full">
+                                                   Pay Now  {{$ticket->total_payable}} pkr
                                                </a>
-                                               @elseif($visa->total_payable&&$visa->status=='Paid')
-                                               <a href='done_ticket/{{$visa->id}}' class="bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
-                                                  Done
+                                               @elseif($ticket->total_payable&&$ticket->payment!=null)
+                                               <a href='done_ticket/{{$ticket->id}}' class="bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                                  Paid {{ $ticket->total_payable }} pkr
                                                </a>
-                                                @elseif($visa->total_payable&&$visa->status=='Done')
-                                               <a href='done_ticket/{{$visa->id}}' class="bg-blue-700 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                                @elseif($ticket->total_payable&&$ticket->status=='Done')
+                                               {{-- <a href='done_ticket/{{$ticket->id}}' class="bg-blue-700 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
                                                   Review
-                                               </a>
+                                               </a> --}}
                                                @endif
 
                                                
                                                </td>
                                            <td class="border px-4 py-2">
-                                          {{ $visa->status}}
+                                          {{ $ticket->status}}
 
                                            </td>
                                            
                                            <td class="border px-4 py-2">
-                                               {{-- <a  href="tickets/{{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                               {{-- <a  href="tickets/{{$ticket->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                                                        <i class="fas fa-eye"></i></a> --}}
                                                       
 
-                                               <a  href="tickets/{{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                               <a  href="tickets/{{$ticket->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                                                        <i class="fas fa-expand"></i></a>
                                                      
 

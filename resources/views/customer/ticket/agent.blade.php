@@ -37,17 +37,17 @@
   
         <li class="mr-1">
           
-            <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold" href="/tickets">Airline</a>
+            <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold" href="/customer/tickets">Airline</a>
             </li>
       
         <li class="-mb-px mr-1 ">
-             <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold"  href="/personalInformationIndex">Trip Detail</a>
+             <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold"  href="/ticketTripDetailIndex">Trip Detail</a>
           
         </li>
       
         <li class="mr-1 ">
           <!-- <a class="bg-white inline-block py-2 px-4 text-grey-light font-semibold" href="#">Tab</a> -->
-          <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold"  href="#">Passenger Details</a>
+          <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold"  href="/ticketPassengerIndex">Passenger Details</a>
           
           
         </li>

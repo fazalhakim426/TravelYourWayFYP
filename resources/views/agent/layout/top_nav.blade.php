@@ -89,7 +89,7 @@
      </a>
 
 
-     <a href="/agent/hotels">
+     {{-- <a href="/agent/hotels">
              
       <div class="relative w-40 h-40">
          @if ($sub_active=='Hotel')
@@ -103,7 +103,7 @@
        
          
       </div>
-   </a>          
+   </a>           --}}
    <a href="/agent/tickets">
       
      <div class="relative w-40 h-40">

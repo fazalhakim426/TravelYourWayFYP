@@ -18,21 +18,37 @@ class CustomerController extends Controller
 
 
             $visas=Auth::user()->userable->visas;
-            $tickets=DB::table('tickets')
-            ->where('customer_id','=',Auth::user()
-            ->userable_id)->get();
-            $tickets=DB::table('tickets')
-            ->where('customer_id','=',Auth::user()->userable_id)->get();
+            // $tickets=DB::table('tickets')
+            // ->where('customer_id','=',Auth::user()
+            // ->userable_id)->get();
 
+            // $tickets=DB::table('tickets')
+            // ->where('customer_id','=',Auth::user()->userable_id)->get();
+           
+           
+            $data['tickets']=$customer->ticket;
+            // dd($data['tickets']);
             $data['count']=$customer->count_status_plus();
             $data['bookings']=$customer->booking;
             // dd($data['bookings']);
-            return view('customer.dashboard',$data)->with('visas',$visas)->with('tickets',$tickets);
+            return view('customer.dashboard',$data)->with('visas',$visas);
     
     }
 
  
 
+
+    public function show_visa_payment($id)
+    {
+        $data['visa']=Visa::find(decrypt($id));
+        return view('customer.visa.payment',$data);
+    }
+
+    public function show_ticket_payment($id)
+    {
+        $data['ticket']=Ticket::find(decrypt($id));
+        return view('customer.ticket.payment',$data);
+    }
 
 
     public function pay_visa_charges($id)//temparoy payment

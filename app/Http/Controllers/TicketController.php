@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\AirlineRequest;
 use App\Http\Requests\TicketTripDetailRequest;
 use App\Models\Agent;
+use App\Models\Country;
 use App\Notifications\TicketNotification;
 use Auth;
 class TicketController extends Controller
@@ -39,9 +40,10 @@ class TicketController extends Controller
 
     public function ticketTripDetailIndex(){
 
-        $ticket=Ticket::where('customer_id','=',Auth::user()->userable_id)->where('status','=','Incomplete')->first();
-// dd($ticket);
-        return view('customer.ticket.trip_detail')->with('ticket',$ticket);
+        $data['ticket']=Ticket::where('customer_id','=',Auth::user()->userable_id)->where('status','=','Incomplete')->first();
+        // dd($ticket);
+       $data['countries']=Country::get();
+        return view('customer.ticket.trip_detail',$data);
     }
 
     /**
@@ -101,6 +103,7 @@ class TicketController extends Controller
      */
     public function ticketSelectAgent(Request $request)
     {
+        
         $t= Ticket::where('id', $request->id)->first();
         $agent=Agent::get();
         return view('customer.ticket.agent')->with('ticket',$t)->with('agents',$agent);

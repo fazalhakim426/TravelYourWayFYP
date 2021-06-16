@@ -69,7 +69,7 @@
              
           </div>
        </a>
-             <a href="/super-agent/hotels">
+             <a href="/super-agent/hotels-dashboard">
              
              <div class="relative w-40 h-40 ">
                 @if ($sub_active=='Hotel')
@@ -87,7 +87,7 @@
           <a href="/super-agent/tickets">
              
             <div class="relative w-40 h-40 ">
-               @if ($sub_active=='Ticket')
+               @if ($sub_active=='Tickets')
                  <img class="w-24 h-24 mx-auto" src="{{URL::asset('/icon/active/ticket.png')}}" />
                  <p class="mx-2 py-2 text-center text-indigo-600 font-semibold uppercase " >Tickets</p>
                 

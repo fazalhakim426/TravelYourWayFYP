@@ -21,6 +21,19 @@ class SuperAgent extends Model
         return $this->morphOne(User::class, 'userable');
     }
 
+
+    public function bookings()
+    {
+        return $this->hasManyThrough(
+            Booking::class,
+            Hotel::class,
+            'super_agent_id', // Foreign key on the environments table...
+            'hotel_id', // Foreign key on the deployments table...
+            'id', // Local key on the projects table...
+            'id' // Local key on the environments table...
+        );
+    }
+
     public function paid_visas()
     {
 
@@ -30,6 +43,12 @@ class SuperAgent extends Model
     {
 
         return $this->hasMany(Visa::class, 'super_agent_id', 'id');
+    }
+
+    public function Tickets()
+    {
+
+        return $this->hasMany(Ticket::class, 'super_agent_id', 'id');
     }
 
     public function agents()

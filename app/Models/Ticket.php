@@ -49,10 +49,13 @@ class Ticket extends Model
         return $this->hasMany(Passenger::class,'passengerable_type');
     }
 
+    
+    
     public function payment()
     {
-        return $this->marhpOne(Payment::class,'paymentable_type');
+        return $this->morphOne(Payment::class,'paymentable');
     }
+
    
     public function reviews()
     {

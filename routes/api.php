@@ -86,10 +86,15 @@ Route::get('/rooms/{id}', [CountryAPIController::class, 'get_rooms']);
 Route::get('/count_status/{id}', [CustomerAPIController::class, 'count_status']);
 Route::post('/room/booking/payment', [CustomerAPIController::class, 'booking_payment']);
 Route::post('/room/booking/payment/byhand', [CustomerAPIController::class, 'booking_payment_by_hand']);
+
 Route::post('/available_room', [CustomerAPIController::class, 'available_room']);
 
 
 
-Route::group(['prefix' => 'api', 'middleware' => 'throttle:3,10'], function () {
+Route::post('/visa/payment', [CustomerAPIController::class, 'visa_payment']);
+Route::post('/ticket/payment', [CustomerAPIController::class, 'ticket_payment']);
+
+
+// Route::group(['prefix' => 'api', 'middleware' => 'throttle:3,10'], function () {
  
-    });
+//     });

@@ -27,7 +27,7 @@ class PassengerRequest extends FormRequest
             'title'=>'required',
             'first_name'=>'required',
             'last_name'=>'required',
-            'date_of_birth'=>'required',
+            'date_of_birth'=>'required|before:today',
             'passport_number'=>'required',
             'nationality'=>'required',
         ];

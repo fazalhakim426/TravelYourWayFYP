@@ -22,12 +22,16 @@ class AgentController extends Controller
                 'charges'=>'required|numeric|gt:1000',
             ]
             );
-       User::find($request->customer_id)->notify(new SendPaymentNotification);
+    //         dd($request->all());
+    //    User::find($request->customer_id)->notify(new SendPaymentNotification);
         
         Visa::where('id',$request->id)->update([
             'status'=>"Payment Request",
             'charges'=>$request->charges,
         ]);
+        $visa=Visa::find($request->id);
+        $user=$visa->customer->user;
+        $user->notify(new SendPaymentNotification);
         return back();
     }
 
@@ -46,6 +50,8 @@ class AgentController extends Controller
         ]);
         return back();
     }
+
+    
     public function addSuperAgents(Request $r)
     {
 

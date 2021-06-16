@@ -62,6 +62,12 @@ Route::middleware(['superagent'])->group(function(){
             ]);
 
             Route::get(
+                '/hotels-dashboard'
+                ,[HotelController::class,'hotel_dashboard'])
+            ->name('/hotels-dashboard');
+
+
+            Route::get(
                 '/add-room/{id}'
                 ,[HotelController::class,'add_room'])
             ->name('add-room');
@@ -77,11 +83,12 @@ Route::middleware(['superagent'])->group(function(){
         )->name('room-destroy');
            
 
- });
+            });        
 
 
-    
-   
+    Route::get('/super-agent/tickets',[SuperAgentController::class,'get_tickets'])->name('/super-agent/tickets');   
+
+
     Route::resources([
         'ticketrequests' => TicketRequestController::class,
         'posts' => TicketRequestController::class,

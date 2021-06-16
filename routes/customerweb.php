@@ -30,7 +30,11 @@ Route::middleware(['auth'])->group(function () {
     
     Route::get('apply/{type}',[VisaController::class,'index2']);
 
+    Route::get('visa/payments/{charges}',[CustomerController::class,'show_visa_payment']);
+    Route::get('ticket/payments/{charges}',[CustomerController::class,'show_ticket_payment']);
+    
     Route::get('visa_payments/{charges}',[CustomerController::class,'pay_visa_charges']);
+    
     Route::get('done_visa/{charges}',[CustomerController::class,'done_visa']);
 
 

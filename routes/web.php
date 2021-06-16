@@ -62,6 +62,14 @@ Route::get('stripe',[StripePaymentController::class,'stripe']);
 Route::post('stripe', [StripePaymentController::class,'stripePost'])->name('stripe.post');
 
 
+Route::post('stripe.visa', [StripePaymentController::class,'stripeVisaPost'])->name('stripe.visa.post');
+
+
+Route::post('stripe.ticket', [StripePaymentController::class,'stripeTicketPost'])->name('stripe.ticket.post');
+
+
+
+
 require __DIR__ . '/customerweb.php';
 require __DIR__ . '/agentweb.php';
 require __DIR__ . '/supreagentweb.php';

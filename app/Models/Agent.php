@@ -33,6 +33,8 @@ class Agent extends Model
     {
         return $this->hasMany(Ticket::class);
     }
+    
+
 
 
     public function super_agent(){

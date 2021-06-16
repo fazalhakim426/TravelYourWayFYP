@@ -24,7 +24,7 @@
                         </div>
                     @endif
   
-                    <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"
+                    <form role="form" action="{{ route('stripe.visa.post') }}" method="post" class="require-validation"
                                                      data-cc-on-file="false"
                                                     data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
                                                     id="payment-form">
@@ -69,37 +69,17 @@
                                     again.</div>
                             </div>
                         </div>
-                        @foreach($room_ids as $id)
-                        <input  name='room_id[]' type="hidden" value='{{$id}}'>
-                        @endforeach
-                        <input type="hidden" name='total_charges' value='{{$total_charges}}'>
-                        <input type="hidden" name='to' value='{{$from}}'>
-                        <input type="hidden" name='from' value='{{$to}}'>
-                        <input  name='hotel_id' type="hidden" value='{{$hotel_id}}'>
+                        {{-- <input type="number" name='total_charges' value='{{$total_charges}}'>
+                        <input type="date" name='to' value='{{$from}}'>
+                        <input type="date" name='from' value='{{$to}}'> --}}
+                        <input  name='visa_id' type='hidden' value='{{$visa->id}}'>
                       
                         <div class="row">
                             <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ({{$total_charges}})</button>
+                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ({{$visa->charges}})</button>
                             </div>
                         </div>
                           
-                    </form>
-<br>
-                  
-                    <form method="POST" action="{{route('/room/payment/byhand')}}">
-                        @csrf
-                        @foreach($room_ids as $id)
-                        <input type='hidden' name='room_id[]' value='{{$id}}'>
-                        @endforeach
-                        <input type="hidden" name='total_charges' value='{{$total_charges}}'>
-                        <input type="hidden" name='to' value='{{$from}}'>
-                        <input type="hidden" name='from' value='{{$to}}'>
-                        <input  type="hidden" name='hotel_id' value='{{$hotel_id}}'>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <button class="btn btn-primary btn-lg btn-block" type="submit">Payment By Hand ({{$total_charges}})</button>
-                                </div>
-                            </div>
                     </form>
                 </div>
             </div>        

@@ -25,6 +25,14 @@ class SuperAgentController extends Controller
         return view('super_agent.dashboard')->with($data);
     }
 
+    public function get_tickets()
+    {
+     
+        $data['sub_active']='Tickets';
+        $data['user']=Auth::user();
+        return view('super_agent.ticket')->with($data);
+    }
+
 
     public function get_agents()
     {

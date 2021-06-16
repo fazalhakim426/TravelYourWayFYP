@@ -49,13 +49,18 @@ class Visa extends Model
     }
     public function super_agent()
     {
-        return $this->belongsTo(User::class, 'super_agent_id');
+        return $this->hasOne(User::class, 'super_agent_id');
     }
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class, 'customer_id');
+    }
+ 
     public function payment()
     {
-        return $this->marhpOne(Payment::class,'paymentable');
+        return $this->morphOne(Payment::class,'paymentable');
     }
-   
+
     public function reviews()
     {
         return $this->marhpMany(Review::class,'reviewable');

@@ -29,10 +29,10 @@
 <tr>
 <th class="border w-1/8 px-4 py-2">journey type</th>
 <th class="border w-1/8 px-4 py-2">class</th>
-<th class="border w-1/8 px-4 py-2">Visa Country</th>
-<th class="border w-1/6 px-4 py-2">Route#</th>
-<th class="border w-1/3 px-4 py-2" colspan="2">Request Payment</th>
-<th class="border w-1/5 px-4 py-2">Actions</th>
+<th class="border w-1/4 px-4 py-2">Visa Country</th>
+<th class="border w-1/4 px-4 py-2">Route#</th>
+<th class="border w-1/4 px-4 py-2" colspan="2">Request Payment</th>
+<th class="border w-1/8 px-4 py-2">Actions</th>
 
 </tr>
 </thead>
@@ -118,23 +118,24 @@
 
 
      <td class="border px-4 py-2">
-         <a  href="tickets/{{$ticket->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+         {{-- <a  href="tickets/{{$ticket->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                  <i class="fas fa-eye"></i></a>
                 
 
          <a  href="tickets/{{$ticket->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
-                 <i class="fas fa-edit"></i></a>
+                 <i class="fas fa-edit"></i></a> --}}
+
                  <a  href="/agent/ticket_cancel?id={{$ticket->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
                   <i class="fas fa-times bg-red-700"></i></a>
 
 
-                 <form method="POST" action="{{route('tickets.destroy', $ticket->id) }}"  >
+                 {{-- <form method="POST" action="{{route('tickets.destroy', $ticket->id) }}"  >
                  @method('DELETE')
                @csrf
          <button  type="submit" onclick="return confirm('Are you sure?')" class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
                  <i class="fas fa-trash"></i>
                  </form>
-         </a>
+         </a> --}}
      </td>
 
      
@@ -178,7 +179,7 @@
  <th class="border w-1/8 px-4 py-2">Visa Country</th>
  <th class="border w-1/6 px-4 py-2">Route#</th>
  <th class="border w-1/3 px-4 py-2" colspan="2" >Request Payment</th>
- <th class="border w-1/5 px-4 py-2">Actions</th>
+ <th class="border w-1/3 px-4 py-2">Actions</th>
 
 </tr>
 </thead>
@@ -329,7 +330,7 @@
 
 <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
 <div class="px-6 py-2 border-b border-light-grey">
-<div class="font-bold text-xl">Paid and Progress
+<div class="font-bold text-xl">Waiting for SuperAgent
 @error('total_payable')
 <p class="text-red-700 italic ">{{$message}}</p>
 @enderror
@@ -343,8 +344,8 @@
  <th class="border w-1/8 px-4 py-2">class</th>
  <th class="border w-1/8 px-4 py-2">Visa Country</th>
  <th class="border w-1/6 px-4 py-2">Route#</th>
- <th class="border w-1/3 px-4 py-2" >Status</th>
- <th class="border w-1/5 px-4 py-2">Actions</th>
+ {{-- <th class="border w-1/3 px-4 py-2" >Status</th>
+ <th class="border w-1/3 px-4 py-2">Actions</th> --}}
 
 </tr>
 </thead>
@@ -377,7 +378,7 @@
     </td>
      
   
-
+{{-- 
        <td class="border px-4 py-2">
            @if($ticket->status=="Paid")
        <button class="bg-green-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg    ">
@@ -396,9 +397,9 @@
        </button>
       
 
-       </td>
+       </td> --}}
 
-       <td class="border px-4 py-2">
+       {{-- <td class="border px-4 py-2">
            <a  href="tickets/{{$ticket->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                    <i class="fas fa-eye"></i></a>
                   
@@ -414,7 +415,7 @@
                    <i class="fas fa-trash"></i>
                    </form>
            </a>
-       </td>
+       </td> --}}
 
        
    </tr>
@@ -459,8 +460,6 @@
  <th class="border w-1/8 px-4 py-2">class</th>
  <th class="border w-1/8 px-4 py-2">Visa Country</th>
  <th class="border w-1/6 px-4 py-2">Route#</th>
- <th class="border w-1/3 px-4 py-2" >Status</th>
- <th class="border w-1/5 px-4 py-2">Actions</th>
 
 </tr>
 </thead>
@@ -493,7 +492,7 @@
      
   
 
-       <td class="border px-4 py-2">
+       {{-- <td class="border px-4 py-2">
            @if($ticket->status=="Paid")
        <button class="bg-green-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg    ">
             
@@ -505,14 +504,14 @@
 
                 <button class="bg-red-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg">
                   Cancel
- </button>
+     </button>
              
        @endif
       
 
-       </td>
+       </td> --}}
 
-       <td class="border px-4 py-2">
+       {{-- <td class="border px-4 py-2">
            <a  href="tickets/{{$ticket->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                    <i class="fas fa-eye"></i></a>
                   
@@ -532,7 +531,7 @@
            <a  href="/ticket_revoke?id={{$ticket->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
             <i class="fas fa-undo bg-red-700"></i></a>
 
-       </td>
+       </td> --}}
 
        
    </tr>
@@ -586,7 +585,7 @@
  <th class="border w-1/8 px-4 py-2">Visa Country</th>
  <th class="border w-1/6 px-4 py-2">Route#</th>
  <th class="border w-1/3 px-4 py-2" >Status</th>
- <th class="border w-1/5 px-4 py-2">Actions</th>
+ {{-- <th class="border w-1/3 px-4 py-2">Actions</th> --}}
 
 </tr>
 </thead>
@@ -619,16 +618,16 @@
      
   
 
-    <td class="border px-4 py-2">
+    {{-- <td class="border px-4 py-2">
       <button class="bg-green-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg">
      {{ $ticket->status}}
       </button>
      
      
-      </td>  
+      </td>   --}}
 
 
-       <td class="border px-4 py-2">
+       {{-- <td class="border px-4 py-2">
            <a  href="tickets/{{$ticket->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                    <i class="fas fa-eye"></i></a>
                   
@@ -644,7 +643,7 @@
                    <i class="fas fa-trash"></i>
                    </form>
            </a>
-       </td>
+       </td> --}}
 
        
    </tr>

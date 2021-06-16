@@ -35,11 +35,11 @@
              <div class="md:flex">
              <li class="mr-1">
           
-          <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold" href="/tickets">Airline</a>
+          <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold" href="/customer/tickets">Airline</a>
           </li>
     
       <li class="-mb-px mr-1 ">
-           <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold"  href="/personalInformationIndex">Trip Detail</a>
+           <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold"  href="/ticketTripDetailIndex">Trip Detail</a>
         
       </li>
     
@@ -135,9 +135,15 @@
 <form action="{{route('ticketSelectAgent')}}" method='post'>
     @csrf
     <input type='hidden' value='{{$ticket->id}}' name='id'>
+@if(count($ticket->passengers)>0)
+    
 <button type=submit class="bg-teal-200 hover:bg-teal-500 text-teal-900 font-bold py-2 px-4 rounded-r">
   Next
 </button>
+@else
+    
+Atlease add  one passenger to countinue.
+@endif
 </form>
 
 </div>
@@ -201,7 +207,7 @@
                 <label class="block uppercase tracking-wide  text-xs mb-2" for="grid-city">
                     DOB 
                 </label>
-                <input  name="date_of_birth" 
+                <input  name="date_of_birth" value='{{old('date_of_birth')}}'
                 class="block w-full  text-blue-400 border  rounded py-3 px-4 "
                 id="grid-city" type="date" placeholder="33/33/1987">
                 
@@ -226,7 +232,7 @@
                     <label class="block uppercase tracking-wide  text-xs mb-2" for="grid-city">
                         First Name 
                     </label>
-                    <input  name="first_name" 
+                    <input  name="first_name" value='{{old('first_name')}}'
                         class="appearance-none block w-full   border border-grey-200 rounded py-3 px-4 leading-tight "
                         id="grid-city" type="text" placeholder="fazal">
                 </div>
@@ -234,7 +240,7 @@
                     <label class="block uppercase tracking-wide  text-xs mb-2" for="grid-city">
                         Last Name 
                     </label>
-                    <input  name="last_name" 
+                    <input  name="last_name" value='{{old('last_name')}}'
                         class="appearance-none block w-full   border border-grey-200 rounded py-3 px-4 leading-tight "
                         id="grid-city" type="text" placeholder="hakim">
                 </div>
@@ -250,7 +256,7 @@
                     <label class="block uppercase tracking-wide  text-xs mb-2" for="grid-city">
                         Passport Numer
                     </label>
-                    <input  name="passport_number" 
+                    <input  name="passport_number"  value='{{old('passport_number')}}'
                         class="appearance-none block w-full   border border-grey-200 rounded py-3 px-4 leading-tight "
                         id="grid-city" type="text" placeholder="333-3322DDD">
                 </div>
@@ -258,10 +264,13 @@
                     <label class="block uppercase tracking-wide  text-xs mb-2" for="grid-city">
                         Nationality 
                     </label>
-                    <input  name="nationality" 
+                    <input  name="nationality"  value='{{old('nationality')}}'
                         class="appearance-none block w-full   border border-grey-200 rounded py-3 px-4 leading-tight "
                         id="grid-city" type="text" placeholder="Pakistan">
-                </div>
+                         
+             
+             
+                    </div>
             
             </div>
 

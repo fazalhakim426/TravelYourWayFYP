@@ -35,6 +35,17 @@ class HotelController extends Controller
         return view('super_agent.hotel.listing')->with($data);
     }
 
+    public function hotel_dashboard()
+    {
+        
+        $data['sub_active'] = 'Hotel';
+
+        $data['user']=$user = Auth::user();
+         $agent=$user->userable;
+        $data['bookings']= $agent->bookings;
+        return view('super_agent.hotel.dashboard')->with($data);
+
+    }
     /**
      * Show the form for creating a new resource.
      *

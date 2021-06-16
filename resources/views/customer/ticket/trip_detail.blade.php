@@ -35,7 +35,7 @@
          <div class="md:flex">
          <li class="mr-1">
       
-      <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold" href="/tickets">Airline</a>
+      <a class="bg-white inline-block py-2 px-4 text-blue hover:text-blue-darker font-semibold" href="/customer/tickets">Airline</a>
       </li>
 
   <li class="-mb-px mr-1 ">
@@ -131,9 +131,10 @@
                                                         @if(old('ticket_apply_country')==null? $ticket->ticket_apply_country:old('ticket_apply_country'))
                                                         <option>{{ old('ticket_apply_country')==null? $ticket->ticket_apply_country:old('ticket_apply_country') }}</option>
                                                         @endif
-                                                    <option>afghanistan</option>
-                                                    <option>china</option>
-                                                    <option>pakistan</option>
+                                                        @foreach ($countries as $country)
+                                                            
+                                                    <option>{{$country->name}}</option>
+                                                        @endforeach
                                                 </select>
                                                 <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-grey-darker">
                                                     <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
