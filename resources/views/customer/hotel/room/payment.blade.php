@@ -1,7 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-	<title>TYW</title>
+
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="tailwind,tailwindcss,tailwind css,css,starter template,free template,admin templates, admin template, admin dashboard, free tailwind templates, tailwind example">
+    <!-- Css --> 
+       <title>TYW</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <style type="text/css">
@@ -21,95 +31,252 @@
             width: 61%;
         }
     </style>
+    <link rel="stylesheet" href="{{URL::asset('/admin-master/dist/styles.css')}}">
+
+    <link rel="stylesheet" href="{{URL::asset('/admin-master/dist/all.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i" rel="stylesheet">
+    <title>{{ Auth::user()->name }} </title>
 </head>
+
 <body>
+
+
+        @include('customer.layout.navigation')
+        
+            <!--Main-->
+            <main class="bg-white-300 flex-1 p-3 ">
+
+                    <!-- Stats Row Starts Here -->
+                   
+
+
+                @include('customer.layout.tab')
+
+
+
+                    <!--Grid Form-->
+
+                    <div class="flex flex-1  flex-col md:flex-row lg:flex-row mx-2">
+                        <div class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full">
+                            <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b items-center " style="background: #edf2f7">
+                               Select Rooms  to reserved.
+                           </div>
+                            <div class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b">
   
-<div class="container">
   
-    <h1>Laravel 5 - Stripe Payment Gateway Integration Example <br/> ItSolutionStuff.com</h1>
-  
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default credit-card-box">
-                <div class="panel-heading display-table" >
-                    <div class="row display-tr" >
-                        <h3 class="panel-title display-td" >Payment Details</h3>
-                        <div class="display-td" >                            
-                            <img class="img-responsive pull-right" src="http://i76.imgup.net/accepted_c22e0.png">
-                        </div>
-                    </div>                    
-                </div>
-                <div class="panel-body">
-  
-                    @if (Session::has('success'))
-                        <div class="alert alert-success text-center">
-                            <a href="#" class="close" data-dismiss="alert" aria-label="close">×</a>
-                            <p>{{ Session::get('success') }}</p>
-                        </div>
-                    @endif
-  
-                    <form role="form" action="{{ route('stripe.post') }}" method="post" class="require-validation"
-                                                     data-cc-on-file="false"
-                                                    data-stripe-publishable-key="{{ env('STRIPE_KEY') }}"
-                                                    id="payment-form">
-                        @csrf
-  
-                        <div class='form-row row'>
-                            <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Name on Card</label> <input
-                                    class='form-control' size='4' type='text'>
-                            </div>
-                        </div>
-  
-                        <div class='form-row row'>
-                            <div class='col-xs-12 form-group card required'>
-                                <label class='control-label'>Card Number</label> <input
-                                    autocomplete='off' class='form-control card-number' size='20'
-                                    type='text'>
-                            </div>
-                        </div>
-  
-                        <div class='form-row row'>
-                            <div class='col-xs-12 col-md-4 form-group cvc required'>
-                                <label class='control-label'>CVC</label> <input autocomplete='off'
-                                    class='form-control card-cvc' placeholder='ex. 311' size='4'
-                                    type='text'>
-                            </div>
-                            <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                <label class='control-label'>Expiration Month</label> <input
-                                    class='form-control card-expiry-month' placeholder='MM' size='2'
-                                    type='text'>
-                            </div>
-                            <div class='col-xs-12 col-md-4 form-group expiration required'>
-                                <label class='control-label'>Expiration Year</label> <input
-                                    class='form-control card-expiry-year' placeholder='YYYY' size='4'
-                                    type='text'>
-                            </div>
-                        </div>
-  
-                        <div class='form-row row'>
-                            <div class='col-md-12 error form-group hide'>
-                                <div class='alert-danger alert'>Please correct the errors and try
-                                    again.</div>
-                            </div>
-                        </div>
-  
-                        <input type="hidden" name='amount' >
-                        <div class="row">
-                            <div class="col-xs-12">
-                                <button class="btn btn-primary btn-lg btn-block" type="submit">Pay Now ({{$amount}})</button>
-                            </div>
-                        </div>
-                          
-                    </form>
-                </div>
-            </div>        
-        </div>
-    </div>
-      
+          
+                            <ul class="list-reset flex border-b">
+         <div class="md:flex">
+         <li class="mr-1">
+      <a class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-dark font-semibold" href="/customer/hotels">Back to Hotels</a>
+   
+      </li>
+
+  <li class="-mb-px mr-1 ">
+    
+      <a class="bg-white inline-block border-l border-t border-r rounded-t py-2 px-4 text-blue-dark font-semibold" >Room</a>
+  </li>
+  <li class="mr-1 ">
+    <!-- <a class="bg-white inline-block py-2 px-4 text-grey-light font-semibold" href="#">Tab</a> -->
+  </li>
+  <li class="mr-1">
+    
+  </li>
+ 
 </div>
-  
-</body>
+</ul>
+                            </div>
+                                    <div class="p-3">
+
+
+                                            @include('customer.hotel.room.payment_tamplete')    
+             
+
+                                </div>
+
+                            </div>
+                        </div>
+                    <!--/Grid Form-->
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </main>
+            <!--/Main-->
+        </div>
+        <!--Footer-->
+        <footer class="bg-grey-darkest text-white p-2">
+            <div class="flex flex-1 mx-auto">&copy; My Design</div>
+        </footer>
+        <!--/footer-->
+
+    </div>
+
+</div>
+
+<script src="{{URL::asset('admin-master/main.js')}}"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+
+// var form = document.getElementById("form-id");
+
+// document.getElementById("your-id").addEventListener("click", function () {
+//   form.submit();
+// });
+
+// $(document).ready(function () {
+//     var dateToday = new Date(); 
+// $(function() {
+//     $( "#to" ).datepicker({
+//         numberOfMonths: 3,
+//         showButtonPanel: true,
+//         minDate: dateToday
+//     });
+// });
+
+
+            // $('.dateselect').on('change', function () {
+            //     var idHotel = $('#hotel_id').val();
+            //     var from = $('#from').val();
+            //     var to = $('#to').val();
+            //     if(from&&to&&idHotel)
+            //     {
+                    
+            //     $("#room-cards").html('');
+                
+                
+
+            //     $.ajax({
+            //         url: "{{url('api/fetch-hotel-rooms')}}",
+            //         type: "POST",
+            //         data: {
+            //             from: from,
+            //             to: to,
+            //             hotel_id: idHotel,
+            //             _token: '{{csrf_token()}}'
+            //         },
+            //         dataType: 'json',
+            //         success: function (result) {
+            //             console.log(result.output);
+
+            //             $("#room-cards").html(result.output);
+                
+
+            //             // $('#room-cards').html('<option value="">Select State</option>');
+            //             $.each(result.output, function (key, value) {
+            //                 $("#room-cards").append(
+            //                     value
+            //                     );
+            //             });
+
+            //             // $('#city-dd').html('<option value="">Select City</option>');
+            //         }
+            //     });
+
+
+
+            //     }
+
+
+            // });
+
+
+            // $('#country-dd').on('change', function () {
+            //     var idCountry = this.value;
+            //     $("#state-dd").html('');
+            //     $.ajax({
+            //         url: "{{url('api/fetch-states')}}",
+            //         type: "POST",
+            //         data: {
+            //             country_id: idCountry,
+            //             _token: '{{csrf_token()}}'
+            //         },
+            //         dataType: 'json',
+            //         success: function (result) {
+            //             console.log(result);
+            //             $('#state-dd').html('<option value="">Select State</option>');
+            //             $.each(result.states, function (key, value) {
+            //                 $("#state-dd").append('<option value="' + value
+            //                     .id + '">' + value.name + '</option>');
+            //             });
+            //             $('#city-dd').html('<option value="">Select City</option>');
+            //         }
+            //     });
+            // });
+
+
+
+
+
+
+            // $('#state-dd').on('change', function () {
+            //     var idState = this.value;
+            //     $("#city-dd").html('');
+            //     $.ajax({
+            //         url: "{{url('api/fetch-cities')}}",
+            //         type: "POST",
+            //         data: {
+            //             state_id: idState,
+            //             _token: '{{csrf_token()}}'
+            //         },
+            //         dataType: 'json',
+            //         success: function (res) {
+                        
+            //             console.log(res);
+            //             $('#city-dd').html('<option value="">Select City</option>');
+            //             $.each(res.cities, function (key, value) {
+            //                 $("#city-dd").append('<option value="' + value
+            //                     .id + '">' + value.name + '</option>');
+            //             });
+            //         }
+            //     });
+            // });
+
+
+
+
+            
+            // $('#city-dd').on('change', function () {
+            //     var idHotel= this.value;
+            //     $("#hotel-dd").html('');
+            //     $.ajax({
+            //         url: "{{url('api/fetch-hotels')}}",
+            //         type: "POST",
+            //         data: {
+            //             city_id: idHotel,
+            //             _token: '{{csrf_token()}}'
+            //         },
+            //         dataType: 'json',
+            //         success: function (res) {
+                        
+            //             // console.log(res);
+            //             $('#hotel-dd').html('<option value="">Select Hotel</option>');
+            //             $.each(res.hotels, function (key, value) {
+            //                 $("#hotel-dd").append('<option value="' + value
+            //                     .id + '">' + value.name + '</option>');
+            //             });
+            //         }
+            //     });
+            // });
+
+
+
+
+
+
+
+ 
+    </script>
+
   
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
   
@@ -167,4 +334,9 @@ $(function() {
   
 });
 </script>
+
+
+
+</body>
+
 </html>

@@ -77,6 +77,12 @@ Route::middleware(['auth'])->group(function () {
        
     Route::post('book-room',
     [HotelController::class,'book_room'])->name('book-room');
+       
+    Route::post('/room/payment/byhand',
+    [HotelController::class,'payment_by_hand'])->name('/room/payment/byhand');
+       
+    Route::delete('booking/destroy',
+    [HotelController::class,'booking_destroy'])->name('booking.destroy');
 
         
 });

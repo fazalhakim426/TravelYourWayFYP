@@ -23,6 +23,11 @@ class Customer extends Model
         return $this->hasMany(Visa::class);
     }
 
+    public function booking()
+    {
+        return $this->hasMany(Booking::class);
+    }
+
     public function ticket()
     {
         return $this->hasMany(Ticket::class);
@@ -60,20 +65,23 @@ class Customer extends Model
     public function count_status_plus()
     {
         //    return $this->visas()->count;
+        $incompleted = $this->visas()->whereStatus('Incomplete')->get();
         $cancel = $this->visas()->whereStatus('Cancel')->get();
-        $completed = $this->visas()->whereStatus('Completed')->get();
-        $payment_request = $this->visas()->whereStatus('payment_request')->get();
+        $completed = $this->visas()->whereStatus('Submitted')->get();
+        $payment_request = $this->visas()->whereStatus('Payment Request')->get();
         $paid = $this->visas()->whereStatus('Paid')->get();
         $done = $this->visas()->whereStatus('Done')->get();
 
 
+        $t_incompleted= $this->ticket()->whereStatus('Incomplete')->get();
         $t_cancel = $this->ticket()->whereStatus('Cancel')->get();
-        $t_completed = $this->ticket()->whereStatus('Completed')->get();
-        $t_payment_request = $this->ticket()->whereStatus('payment_request')->get();
+        $t_completed = $this->ticket()->whereStatus('Submitted')->get();
+        $t_payment_request = $this->ticket()->whereStatus('Payment Request')->get();
         $t_paid = $this->ticket()->whereStatus('Paid')->get();
         $t_done = $this->ticket()->whereStatus('Done')->get();
 
 
+        $status['incomplete'] = count($incompleted)+count($t_incompleted);
         $status['cancel'] = count($cancel)+count($t_cancel);
         $status['completed'] = count($completed)+count($t_completed);
         $status['payment_request'] =  count($payment_request)+count($t_payment_request);

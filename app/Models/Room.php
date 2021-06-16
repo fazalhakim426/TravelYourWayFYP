@@ -18,10 +18,6 @@ class Room extends Model
     ];
 
 
-    public function payment()
-    {
-        return $this->hasOne(Payment::class,'hotel_id');
-    }
 
 
     public function booking()

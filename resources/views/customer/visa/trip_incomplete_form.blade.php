@@ -91,14 +91,14 @@
 
                                     @error('days')
                                     <p class="text-red-500 text-xs italic">{{$message}}</p>
-                                    @enderror
+                                    @enderro    r
                                 </div>
                             </div>
                              
 
 
                                 <div class="inline-flex">
-                                     <a href="/dashboard">
+                                     <a href="/da   shboard">
                             <p class="bg-teal-200 hover:bg-teal-500 text-teal-900 font-bold py-2 px-4 rounded-l">
                                 Close
                             </p></a>
@@ -107,3 +107,22 @@
                                 Save & Next
                             </button>
                             </form>
+
+
+
+                            <a  href="visas/{{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                <i class="fas fa-eye"></i></a>
+                               
+
+                        <a  href="visas/{{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                <i class="fas fa-edit"></i></a>
+                              
+
+                                <form method="POST" action="{{route('visas.destroy', $visa->id) }}"  >
+                                @method('DELETE')
+                              @csrf
+                        <button  type="submit" onclick="return confirm('Are you sure?')" class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
+                                <i class="fas fa-trash"></i>
+                                </form>
+                        </a>
+

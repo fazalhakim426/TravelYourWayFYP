@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Payment;
 class Booking extends Model
 {
     use HasFactory;
@@ -20,9 +20,21 @@ class Booking extends Model
         return $this->belongsTo(Room::class);
     }
 
+    public function hotel()
+    {
+        return $this->belongsTo(Hotel::class);
+    }
+    
     public function customer()
     {
         return $this->belongsTo(Customer::class);
     }
+    public function payment()
+    {
+        return $this->morphOne(Payment::class,'paymentable');
+    }
+
+
+
 
 }
