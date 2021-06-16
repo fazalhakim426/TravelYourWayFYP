@@ -24,8 +24,7 @@
                     <div class="shadow-lg bg-red-vibrant border-l-8 hover:bg-red-vibrant-dark border-red-vibrant-dark mb-2 p-2 md:w-1/4 mx-2">
                             <div class="p-4 flex flex-col">
                                 <a href="#" class="no-underline text-white text-2xl">
-                                    {{count($visas->where('status','Incompleted'))}}
-                                    
+                                    {{$count['incomplete']}}
                                 </a>
                                 <a href="#" class="no-underline text-white text-lg">
                                     Incomplete
@@ -37,8 +36,7 @@
                         <div class="shadow-lg bg-red-vibrant border-l-8 hover:bg-red-vibrant-dark border-red-vibrant-dark mb-2 p-2 md:w-1/4 mx-2">
                             <div class="p-4 flex flex-col">
                                 <a href="#" class="no-underline text-white text-2xl">
-                                    {{count($visas->where('status','Cancelled'))}}
-                                    
+                                    {{$count['cancel']}}
                                 </a>
                                 <a href="#" class="no-underline text-white text-lg">
                                     Total Cancelled 
@@ -53,7 +51,7 @@
                         <div class="shadow bg-info   border-l-8 hover:bg-info-dark border-info-dark mb-2 p-2 md:w-1/4 mx-2">
                             <div class="p-4 flex flex-col">
                                 <a href="#" class="no-underline text-white text-2xl">
-                                    {{count($visas->where('status','Submitted'))}}
+                                    {{$count['completed']}}
                                     
                                 </a>
                                 <a href="#" class="no-underline text-white text-lg">
@@ -65,7 +63,7 @@
                         <div class="shadow bg-warning border-l-8 hover:bg-warning-dark border-warning-dark mb-2 p-2 md:w-1/4 mx-2">
                             <div class="p-4 flex flex-col">
                                 <a href="#" class="no-underline text-white text-2xl">
-                                    {{count($visas->where('status','Inprogress'))}}
+                                    {{$count['payment_request']}}
                                     
                                 </a>
                                 <a href="#" class="no-underline text-white text-lg">
@@ -77,7 +75,7 @@
                         <div class="shadow bg-success border-l-8 hover:bg-success-dark border-success-dark mb-2 p-2 md:w-1/4 mx-2">
                             <div class="p-4 flex flex-col">
                                 <a href="#" class="no-underline text-white text-2xl">
-                                    {{count($visas->where('status','Done'))}}
+                                    {{$count['done']}}
                                     
                                 </a>
                                 <a href="#" class="no-underline text-white text-lg">
@@ -133,6 +131,7 @@
 
                                      <td class="border px-4 py-2">
                                     {{$visa->title." ".$visa->first_name." ".$visa->last_name}}
+                                    
                                     </td>
 
                                      <td class="border px-4 py-2 center">
@@ -181,24 +180,14 @@
                                            </button>
                                           
 
+                                       
+
                                            </td>
                                            
                                            <td class="border px-4 py-2">
-                                               <a  href="visas/{{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
-                                                       <i class="fas fa-eye"></i></a>
-                                                      
+                                        <a  href="visas/{{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                            <i class="fas fa-expand"></i></a>
 
-                                               <a  href="visas/{{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
-                                                       <i class="fas fa-edit"></i></a>
-                                                     
-
-                                                       <form method="POST" action="{{route('visas.destroy', $visa->id) }}"  >
-                                                       @method('DELETE')
-                                                     @csrf
-                                               <button  type="submit" onclick="return confirm('Are you sure?')" class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
-                                                       <i class="fas fa-trash"></i>
-                                                       </form>
-                                               </a>
                                            </td>
 
                                            
@@ -330,6 +319,131 @@
 
                                                        <form method="POST" action="{{route('tickets.destroy', $visa->id) }}"  >
                                                        @method('DELETE')
+                                                     @csrf
+                                               <button  type="submit" onclick="return confirm('Are you sure?')" class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
+                                                       <i class="fas fa-trash"></i>
+                                                       </form>
+                                               </a>
+                                           </td>
+
+                                           
+                                       </tr>
+
+
+
+
+                                       @endif 
+                                       @endforeach
+
+                                      
+                                   </tbody>
+                               </table>
+                           </div>
+                       </div>
+                   </div>
+                   <!--/Grid Form-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   
+                    
+                                            <!-- Card Sextion Starts Here -->
+                                            <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
+
+                                                <!-- card -->
+
+                                       <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
+                                     <div class="px-6 py-2 border-b border-light-grey">
+                                        <div class="font-bold text-xl">Booked Room</div>
+                                           </div>
+                                         <div class="table-responsive">
+                                             <table class="table text-grey-darkest">
+                                      <thead class="bg-grey-dark text-white text-normal">
+                                     <tr>
+                                       <th class="border w-1/8 px-4 py-2">Hotel</th>
+                                       <th class="border w-1/8 px-4 py-2">Addrees</th>
+                                       <th class="border w-1/8 px-4 py-2">Room</th>
+                                       <th class="border w-1/7 px-4 py-2">Members</th>
+                                       <th class="border w-1/7 px-4 py-2">Duration</th>
+                                       <th class="border w-1/7 px-4 py-2">Payment</th>
+                                       <th class="border w-1/5 px-4 py-2">Actions</th>
+                                     </tr>
+                                   </thead>
+                                   <tbody>
+        
+                                   @foreach($bookings as $booking)
+                                   @if($booking->room!=null)     
+                                     <tr>
+
+                                     <td class="border px-4 py-2">
+                                    {{$booking->hotel->name   }}
+                                    </td>
+
+                                     <td class="border px-4 py-2 center">
+                                        {{$booking->hotel->country->name   }}// <br>
+                                        {{$booking->hotel->state->name   }}// <br>
+                                        {{$booking->hotel->city->name   }}// <br>
+                                        {{$booking->hotel->address   }}
+                                  
+                                     </td>
+                                     <td class="border px-4 py-2 center">
+                                       
+                                        {{$booking->room->title}}<br>
+                                        {{$booking->room->charges_per_day}} pkr/day
+
+                                   </td> <td class="border px-4 py-2 center">
+                                       
+                                    {{$booking->room->capacity}}
+                               </td>
+                                        <td class="border">
+                                            From: {{$booking->from}}<br>
+                                            To: {{$booking->to}} <br>
+
+                                        </td>
+                                         
+                                           <td class="border px-4 py-2">
+                                               
+                                               @if($booking->payment==null)
+                                                          Pending
+                                                        <a href='ticket_payments/{{$visa->id}}' class="bg-green-500 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                                            Pay
+                                                        </a>
+                                               @else
+                                                                <a href='done_ticket/{{$visa->id}}' class="bg-blue-700 hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                                                    Paid
+                                                                </a>
+                                               @endif
+
+                                               
+                                               </td>
+                          
+                                           
+                                           <td class="border px-4 py-2">
+                   
+                                                     
+
+                                                       <form method="POST" action="{{route('booking.destroy') }}"  >
+                                                       @method('DELETE')
+
+                                                       <input type="hidden" name='id' value='{{$booking->id}}'>
                                                      @csrf
                                                <button  type="submit" onclick="return confirm('Are you sure?')" class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
                                                        <i class="fas fa-trash"></i>

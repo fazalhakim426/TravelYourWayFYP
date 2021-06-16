@@ -136,6 +136,22 @@ class Login extends Controller
 
   }
 
+  public function get_user_detail($id)
+  {
+    $user=User::find($id);
+    if($user)
+    return response()->json([
+      'success' => true,
+      'user' => $user
+  ]);
+  else
+  return response()->json([
+    'success' => false,
+    'user' => null
+]);
+   
+  }
+
   
 
 

@@ -14,9 +14,20 @@ class CustomerController extends Controller
 {
     
     public function index(){
+        $customer=Auth::user()->userable;
+
+
             $visas=Auth::user()->userable->visas;
-            $tickets=DB::table('tickets')->where('customer_id','=',Auth::user()->userable_id)->get();
-            return view('customer.dashboard')->with('visas',$visas)->with('tickets',$tickets);
+            $tickets=DB::table('tickets')
+            ->where('customer_id','=',Auth::user()
+            ->userable_id)->get();
+            $tickets=DB::table('tickets')
+            ->where('customer_id','=',Auth::user()->userable_id)->get();
+
+            $data['count']=$customer->count_status_plus();
+            $data['bookings']=$customer->booking;
+            // dd($data['bookings']);
+            return view('customer.dashboard',$data)->with('visas',$visas)->with('tickets',$tickets);
     
     }
 

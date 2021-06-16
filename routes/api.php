@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+Rout:
 
 Route::apiResources([
     'tickets' => TicketAPIController::class,
@@ -55,6 +56,9 @@ Route::get('/getAgent',[AgentAPIController::class,'getAgent']);
 //
 
 Route::post('/login', [Login::class, 'login']);
+
+
+Route::get('/login/user/{id}', [Login::class, 'get_user_detail']);
 
 
 Route::post('/register', [Login::class, 'register']);
