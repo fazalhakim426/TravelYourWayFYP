@@ -95,15 +95,15 @@ class Login extends Controller
 
         if($request->profile_image){
 
-          $validator = Validator::make($request->all(), [
-                'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ]);
-        if ($validator->fails()) {
-          return response()->json([
-            'success' => false,
-            'message' => $validator->errors(),
-          ], 401);
-        }
+        //   $validator = Validator::make($request->all(), [
+        //         // 'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
+        // if ($validator->fails()) {
+        //   return response()->json([
+        //     'success' => false,
+        //     'message' => $validator->errors(),
+        //   ], 401);
+        // }
 
      
 
