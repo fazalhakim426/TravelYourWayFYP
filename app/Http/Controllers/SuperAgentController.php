@@ -7,7 +7,6 @@ use App\Models\SuperAgent;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Auth,DB;
-use Illuminate\Support\Facades\Auth as FacadesAuth;
 use Illuminate\Support\Facades\Hash;
 
 class SuperAgentController extends Controller
@@ -84,7 +83,6 @@ class SuperAgentController extends Controller
     {
         $agent->user->delete();
         $agent->delete();
-       
         return redirect('super-agent/agents');
     }
 

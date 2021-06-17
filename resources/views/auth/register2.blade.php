@@ -109,7 +109,7 @@
                     @enderror
                 </div>
               
-               @if(Auth::user()->userable==null)
+               {{-- @if(Auth::user()->userable==null)
                 <div class="mt-2">
                     <x-label for="membership" :value="__('Membership')" />
                      <select id="membership"   class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"  name="membership"  >
@@ -124,7 +124,7 @@
                
                 </div>
                
-                @endif
+                @endif --}}
 
             <div class="flex items-center justify-end mt-4">
                 <!-- <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">

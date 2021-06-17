@@ -10,6 +10,7 @@ class Visa extends Model
     use HasApiTokens,HasFactory;
     public $timestamps = false;
     protected $fillable = [
+        'id',
         'customer_id',
         'agent_id',
         'super_agent_id',//asign

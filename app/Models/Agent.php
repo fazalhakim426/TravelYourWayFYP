@@ -42,20 +42,5 @@ class Agent extends Model
         return $this->belongsTo(SuperAgent::class,'super_agent_id','id');
     }
     
-    // public function super_agents()
-    // {
-    //     return $this->belongsToMany(SuperAgent::class,'agent_super_agents');
-    // }
-
-    //     public function pending_super_agent()
-    //     {
-    //         return $this->belongsToMany(SuperAgent::class,'agent_super_agents')
-    //         ->wherePivot('status',1);
-    //     }
-
-    //     public function my_super_agent()
-    //     {
-    //         return $this->belongsToMany(SuperAgent::class,'agent_super_agents')
-    //         ->wherePivot('status',2);;
-    //    }
+  
 }

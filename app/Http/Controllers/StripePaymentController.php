@@ -33,19 +33,20 @@ class StripePaymentController extends Controller
     {
         $visa=Visa::find($request->visa_id);
        
-                // Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        // Stripe\Charge::create ([
-        //         "amount" => $request->total_charges,
-        //         "currency" => "usd",
-        //         "source" => $request->stripeToken,
-        //         "description" => "Hotel Payment" 
-        // ]);
 
        $visa->update([
            'status'=>'Paid',
         ]);
 
      
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Charge::create ([
+                "amount" => $visa->charges,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Visa Payment" 
+        ]);
+
         Payment::create([
                 'charges'=>$visa->charges,
                 'paymentable_id'=>$visa->id,
@@ -65,13 +66,7 @@ class StripePaymentController extends Controller
     {
             $ticket=Ticket::find($request->ticket_id);
        
-                // Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        // Stripe\Charge::create ([
-        //         "amount" => $request->total_charges,
-        //         "currency" => "usd",
-        //         "source" => $request->stripeToken,
-        //         "description" => "Hotel Payment" 
-        // ]);
+    
 
        $ticket->update([
            'status'=>'Paid',
@@ -85,7 +80,13 @@ class StripePaymentController extends Controller
             ]);
             
             
-
+            Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Charge::create ([
+                "amount" => $ticket->total_payable,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Ticket Payment" 
+        ]);
 
 
         return redirect('customer/dashboard');
@@ -96,13 +97,13 @@ class StripePaymentController extends Controller
     public function stripePost(Request $request)
     {
         
-        // Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        // Stripe\Charge::create ([
-        //         "amount" => $request->total_charges,
-        //         "currency" => "usd",
-        //         "source" => $request->stripeToken,
-        //         "description" => "Hotel Payment" 
-        // ]);
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        Stripe\Charge::create ([
+                "amount" => $request->total_charges,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Hotel Payment" 
+        ]);
   
         foreach($request->room_id as $room_id) {
             $booking=Booking::create([
@@ -113,16 +114,14 @@ class StripePaymentController extends Controller
                 "hotel_id" => $request->hotel_id,
             ]);
 
-            $payment=Payment::create([
+            Payment::create([
                 'charges'=>$request->total_charges,
                 'paymentable_id'=>$booking->id,
                 'paymentable_type'=>"App\Models\Booking",
             ]);
             // $booking->payment;
         }
-
-
-
+        
         return redirect('customer/dashboard');
     }
 }
