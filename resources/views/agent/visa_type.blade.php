@@ -25,7 +25,7 @@
 <th class="border w-1/8 px-4 py-2">Country</th>
 <th class="border w-1/6 px-4 py-2">passport#</th>
 <th class="border w-1/3 px-4 py-2">Request Payment</th>
-<th class="border w-1/5 px-4 py-2">Actions</th>
+{{-- <th class="border w-1/5 px-4 py-2">Actions</th> --}}
 </tr>
 </thead>
 <tbody>
@@ -166,7 +166,7 @@ type="number" placeholder="Charges PKR">
              <a  href="/adminvisaedit0?id={{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
              <i class="fas fa-edit"></i></a> --}}
 
-             <a  href="/visa_cancel?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
+             <a  href="/agent/visa_cancel?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
              <i class="fas fa-times bg-red-700"></i></a>
            
 
@@ -222,7 +222,7 @@ type="number" placeholder="Charges PKR">
 <th class="border w-1/8 px-4 py-2">Country</th>
 <th class="border w-1/6 px-4 py-2">passport#</th>
 <th class="border w-1/7 px-4 py-2">Paid</th>
-<th class="border w-1/7 px-4 py-2">Mail</th>
+{{-- <th class="border w-1/7 px-4 py-2">Mail</th> --}}
 </tr>
 </thead>
 <tbody>
@@ -259,13 +259,13 @@ type="number" placeholder="Charges PKR">
 <br>
 @can('super_agent')
 <a href='done/{{$visa->id}}' class="m-55  bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
- Mark Done
+ 
 </a>
 @endif
 @endif
 
 </td>
- <td class="border px-4 py-2">
+ {{-- <td class="border px-4 py-2">
 
 
 
@@ -282,7 +282,7 @@ type="number" placeholder="Charges PKR">
 
             @endif 
      
- </td>
+ </td> --}}
 
  
 </tr>
@@ -324,10 +324,10 @@ type="number" placeholder="Charges PKR">
 <th class="border w-1/8 px-4 py-2">Name</th>
 <th class="border w-1/8 px-4 py-2">Address</th>
 <th class="border w-1/8 px-4 py-2">Country</th>
-<th class="border w-1/6 px-4 py-2">passport#</th>
-<th class="border w-1/3 px-4 py-2">Request Payment</th>
-<th class="border w-1/7 px-4 py-2">Order Status</th>
-<th class="border w-1/5 px-4 py-2">Actions</th>
+<th class="border w-1/8 px-4 py-2">passport#</th>
+<th class="border w-1/8 px-4 py-2">Request Payment</th>
+{{-- <th class="border w-1/7 px-4 py-2">Order Status</th> --}}
+<th class="border w-1/8 px-4 py-2">Actions</th>
 </tr>
 </thead>
 <tbody>
@@ -360,13 +360,13 @@ type="number" placeholder="Charges PKR">
   <i class="fas fa-times text-red-500 mx-2">{{ $visa->charges}} PKR</i>
 
 </td>
- <td class="border px-4 py-2">
+ {{-- <td class="border px-4 py-2">
  <button class="bg-red-500 hover:bg-blue-800 text-white font-light py-1 px-2 rounded-lg">
 {{ $visa->status}} 
  </button>
 
 
- </td>
+ </td> --}}
  
  <td class="border px-4 py-2">
      {{-- <a  href="/adminvisaedit0?id={{$visa->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
@@ -376,7 +376,7 @@ type="number" placeholder="Charges PKR">
              <a  href="/adminvisaedit0?id={{$visa->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
              <i class="fas fa-edit"></i></a> --}}
 
-             <a  href="/visa_revoke?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
+             <a  href="/agent/visa_revoke?id={{$visa->id}}"  class="bg-red-700 cursor-pointer rounded p-1 mx-1 text-white">
              <i class="fas fa-undo bg-red-700"></i></a>
            
 

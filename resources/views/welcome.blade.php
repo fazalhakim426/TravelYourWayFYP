@@ -64,7 +64,7 @@
  <div class="p-2 text-center text-lg text-gray-700">Best Travel Agency All Over Pakistan.</div>
  <div class="flex justify-center flex-wrap p-30">
 
- <a href="visas">
+ <a href="/dashboard">
  <div class="relative w-40 h-40 m-5 ">
        <!-- <i class="fas fa-bezier-curve fa-3x mx-auto text-white"></i> -->
        <img class="w-24 h-24 mx-auto" src="{{URL::asset('/admin-master/dist/images/direction/immigration.png')}}" />

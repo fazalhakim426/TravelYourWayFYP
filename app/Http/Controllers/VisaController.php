@@ -19,6 +19,7 @@ class VisaController extends Controller
     {
         $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('status','=','Incomplete')->first();
         $countries=Country::all();
+        
         return view('customer.visa.trip_details')->with('visa',$visa)->with('countries',$countries)->with('type',null);
     }
 

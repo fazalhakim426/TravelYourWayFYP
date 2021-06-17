@@ -32,7 +32,7 @@
                                              <th class="border w-1/5 px-4 py-2">Route#</th>
                                              <th class="border w-1/3 px-4 py-2">Payment</th>
                                              <th class="border w-1/8 px-4 py-2">Order Status</th>
-                                             <th class="border w-1/8 px-4 py-2">Actions</th>
+                                             {{-- <th class="border w-1/8 px-4 py-2">Actions</th> --}}
                                            </tr>
                                          </thead>
                                          <tbody>
@@ -89,17 +89,17 @@
       
                                                  </td>
                                                  
-                                                 <td class="border px-4 py-2">
+                                                 {{-- <td class="border px-4 py-2"> --}}
                                                      {{-- <a  href="tickets/{{$ticket->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                                                              <i class="fas fa-eye"></i></a> --}}
                                                             
       
-                                                     <a  href="tickets/{{$ticket->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
+                                                     {{-- <a  href="tickets/{{$ticket->id}}"  class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                                                              <i class="fas fa-expand"></i></a>
-                                                           
+                                                            --}}
       
                                                      {{-- </a> --}}
-                                                 </td>
+                                                 {{-- </td> --}}
       
                                                  
                                              </tr>
