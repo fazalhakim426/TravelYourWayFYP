@@ -84,50 +84,22 @@
                 </div>
             </div>
             <div class="row">
+                @foreach($super_agents as $super_agent)
                 <div class="col-lg-3 col-md-6">
                     <div class="team-item">
                         <div class="team-image">
                             <img src="{{asset('resources/images/testemonial1.jpg')}}" alt="Image">
                         </div>
                         <div class="team-content">
-                            <h3>Peter Parker</h3>
-                            <p>Tour Advisor</p>
+                            <h3>{{$super_agent->user->name}} </h3>
+                            <p>Super Agent</p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-item">
-                        <div class="team-image">
-                            <img src="{{asset('resources/images/testemonial2.jpg')}}" alt="Image">
-                        </div>
-                        <div class="team-content">
-                            <h3>Peter Parker</h3>
-                            <p>Tour Advisor</p>
-                        </div>
-                    </div>
+                @endforeach
+               
                 </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-item">
-                        <div class="team-image">
-                            <img src="{{asset('resources/images/testemonial3.jpg')}}" alt="Image">
-                        </div>
-                        <div class="team-content">
-                            <h3>Peter Parker</h3>
-                            <p>Tour Advisor</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <div class="team-item">
-                        <div class="team-image">
-                            <img src="{{asset('resources/images/testemonial1.jpg')}}" alt="Image">
-                        </div>
-                        <div class="team-content">
-                            <h3>Peter Parker</h3>
-                            <p>Tour Advisor</p>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </section>
@@ -147,31 +119,39 @@
 
             <!-- Indicators -->
             <ol class="carousel-indicators">
-                <li data-target="#testimonial_094" data-slide-to="0" class="active">
-                    <img src="{{asset('resources/images/testemonial1.jpg')}}" alt="testimonial_094_01"> <!-- 1st Image -->
-                </li>
-                <li data-target="#testimonial_094" data-slide-to="1">
-                    <img src="{{asset('resources/images/testemonial2.jpg')}}" alt="testimonial_094_02"> <!-- 2nd Image -->
-                </li>
-                <li data-target="#testimonial_094" data-slide-to="2">
-                    <img src="{{asset('resources/images/testemonial3.jpg')}}" alt="testimonial_094_03"> <!-- 3rd Image -->
-                </li>
-                <li data-target="#testimonial_094" data-slide-to="3">
-                    <img src="{{asset('resources/images/testemonial4.jpg')}}" alt="testimonial_094_04"> <!-- 4th Image -->
-                </li>
-                <li data-target="#testimonial_094" data-slide-to="4">
-                    <img src="{{asset('resources/images/testemonial5.jpg')}}" alt="testimonial_094_05"> <!-- 5th Image -->
-                </li>
+                @foreach($agents as $index=>$agent)
+                {{-- {{dd($agent)}} --}}
+                                  @if($index==0)
+                                <li data-target="#testimonial_094" data-slide-to="{{$index}}" class="active">
+                                 
+                                   @else
+                                   <li data-target="#testimonial_094" data-slide-to="{{$index}}">
+                                 
+                                   @endif
+                                    <img src="{{ ('profile_images/'.$agent->profile_image.'')}}" alt="testimonial_094_01"> <!-- 1st Image -->
+                                </li>
+                                @endforeach
             </ol>
 
             <!-- Wrapper For Slides -->
             <div class="carousel-inner" role="listbox">
 
-                <!-- First Slide -->
+                
+                @foreach($agents as $index=>$agent)
+
+                @if($index==0)
                 <div class="carousel-item active">
+                    @else
+                    <div class="carousel-item">
+                  
+                    @endif
                     <!-- Text Layer -->
                     <div class="testimonial_094_slide">
-                        <p>Lorem ipsum dolor sit amet consectetuer adipiscing elit am nibh unc varius facilisis eros ed erat in in velit quis arcu ornare laoreet urabitur adipiscing luctus massa nteger ut purus ac augue commodo commodo unc nec mi eu justo tempor consectetuer tiam.</p>
+                        <p>
+                            The people who work in travel agencies are called 
+                            travel agents. These travel agents work for sending 
+                            people authentically from one country to the other.
+                        </p>
                         <div class="deal-rating">
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
@@ -179,9 +159,10 @@
                             <span class="fa fa-star-o"></span>
                             <span class="fa fa-star-o"></span>
                         </div>
-                        <h5><a href="#">Susan Doe, Houston</a></h5>
+                        <h5><a href="#">{{$agent->name}}</a></h5>
                     </div> <!-- /Text Layer -->
                 </div> <!-- /item -->
+                @endforeach
                 <!-- End of First Slide -->
 
                 <!-- Second Slide -->

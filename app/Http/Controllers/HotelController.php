@@ -37,7 +37,9 @@ class HotelController extends Controller
 
     public function hotel()
     {
-        return view('hotel');
+        $data['rooms']=Room::with(['hotel','images'])->limit(6)->get();
+        $data['countries']=Country::all();
+        return view('hotel',$data);
     }
 
     public function hotel_dashboard()

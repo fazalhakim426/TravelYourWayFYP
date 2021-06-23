@@ -46,7 +46,7 @@
             </label>
             <div class="relative">
                 <select id="state-dd"  name="state_id"    class="border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                        id="grid-state">
+                >
                       
                 </select>
                 @error('issuing_airline')

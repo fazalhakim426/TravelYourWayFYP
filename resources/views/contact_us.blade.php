@@ -24,24 +24,44 @@
                 <div id="contact-form" class="contact-form">
 
                     <div id="contactform-error-msg"></div>
+                    @if(Session::has('success'))
+                    <div class="alert alert-success">
+                        {{Session::get('success')}}
+                    </div>
+                @endif
+                        <form  method="post"  id="contactform" action="{{ route('contact.store') }}">
 
-                    <form method="post" action="#" name="contactform" id="contactform">
-                        <div class="row">
-                            <div class="form-group col-lg-12">
-                                <label>Name:</label>
-                                <input type="text" name="full_name" class="form-control" id="Name" placeholder="Enter full name" required>
-                            </div>
+                            <!-- CROSS Site Request Forgery Protection -->
+                            @csrf
+                              <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label>Name:</label>
+                                    <input type="text" name="name" value='{{old('name')}}' class="form-control {{ $errors->has('name') ? 'error' : '' }}" id="Name" placeholder="Enter full name" required>
+                                </div>                            <div class="form-group col-lg-12">
+                                    <label>Subject:</label>
+                                    <input type="text" name="subject" value='{{old('subject')}}' class="form-control" id="Name" placeholder="Enter full name" >
+                                    {{-- {{ $errors->has('subject') ? "": $message  }} --}}
+                                    @error('subject')
+                                    <p style="color:red">{{ $message }}</p>
+                                @enderror
+                                </div>
                             <div class="form-group col-lg-6">
                                 <label>Email:</label>
-                                <input type="email" name="email" class="form-control" id="email" placeholder="abc@xyz.com" required>
+                                <input type="email" name="email"  value='{{old('email')}}'  class="form-control" id="email" {{ $errors->has('email') ? 'error' : '' }} placeholder="abc@xyz.com" required>
                             </div>
                             <div class="form-group col-lg-6 col-left-padding">
                                 <label>Phone Number:</label>
-                                <input type="text" name="phone" class="form-control" id="phnumber" placeholder="XXXX-XXXXXX" required>
+                                <input type="text" name="phone" class="form-control"  value='{{old('phone')}}'  id="phnumber" {{ $errors->has('phone') ? 'error' : '' }} placeholder="XXXX-XXXXXX" required>
+                                @error('phone')
+                                <p style="color:red">{{ $message }}</p>
+                            @enderror
                             </div>
                             <div class="textarea col-lg-12">
                                 <label>Message:</label>
-                                <textarea name="comments" placeholder="Enter a message" required></textarea>
+                                <textarea name="message" placeholder="Enter a message"   class="{{ $errors->has('message') ? 'error' : '' }}" required >
+                                
+                                    {{old('message')}}
+                                </textarea>
                             </div>
                             <div class="col-lg-12">
                                 <div class="comment-btn">

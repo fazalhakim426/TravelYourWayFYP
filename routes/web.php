@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\HotelController;
 use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\TicketController;
 use App\Http\Controllers\VisaController;
+use App\Models\SuperAgent;
 use App\Models\Agent;
 use App\Models\Room;
 use Illuminate\Database\Schema\Blueprint;
@@ -27,8 +29,9 @@ use App\Models\User;
 Route::get('/generate-countries', [CountryController::class, 'create']);
 Route::get('/', function () {
     // return view('livewire');
-    $data['agents']=User::where('userable_type','App\Models\Agent')->limit(5)->get();
-    $data['room']=Room::limit(5)->get();
+    $data['agents']=User::where('userable_type','App\Models\Agent')->limit(3)->get();
+    $data['rooms']=Room::with('hotel')->limit(4)->get();
+    // dd($data['room']);
  
    $data['sub_active']="home";
 
@@ -38,7 +41,9 @@ Route::get('/', function () {
 Route::get('hotel',[HotelController::class,'index']);
 
 Route::get('about_us',function(){
-    return view('about_us');
+    $data['super_agents']=SuperAgent::limit(3)->get();
+    $data['agents']=User::where('userable_type','App\Models\Agent')->limit(3)->get();
+    return view('about_us',$data);
 });
 Route::get('contact_us',function(){
     return view('contact_us');
@@ -123,6 +128,11 @@ Route::post(
     [VisaController::class, 'visaUploadDocuments']
 )->name('visa-upload-documents');
 
+
+Route::get('/contact',
+ [ContactController::class, 'createForm']);
+
+Route::post('/contact', [ContactController::class, 'ContactUsForm'])->name('contact.store');
 
 require __DIR__ . '/customerweb.php';
 require __DIR__ . '/agentweb.php';
