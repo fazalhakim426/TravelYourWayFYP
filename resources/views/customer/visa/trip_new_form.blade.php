@@ -9,14 +9,16 @@
                                     </label>
                                     <div class="relative">
                                         <select name='visa_apply_country' class="border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                                                id="grid-state">
+                                                id="grid-state">  <option>pakistan</option>
                                                 @if(old('visa_apply_country')!=null)
                                                 <option>{{ old('visa_apply_country') }}</option>
+                                              
                                                 @endif
                                                 
-                                            <option>India</option>
-                                            <option>pakisatan</option>
-                                            <option>america</option>
+                                                @foreach ($countries as $country)
+                                                    
+                                            <option>{{$country->name}}</option>
+                                                @endforeach
                                         </select>
                                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-grey-darker">
                                             <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -42,13 +44,14 @@
                                         Type
                                     </label>
                                     <div class="relative">
+                                        {{-- {{dd($type)}} --}}
                                         <select id=type name='type' onchange="myFunction(this.value)" class="border-yellow-500 block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                                 id="grid-state">
                                                 @if(old('type'))
                                                 <option>{{ old('type')}}</option>
                                                 @endif
-                                                @if((Request::url()==URL::to('/').'/apply/Ummrah')||(Request::url()==URL::to('/').'/apply/Hajj'))
-                                             
+                                               
+                                                @if(isset($type))
                                                 <option>{{$type}}</option>
                                                 @endif
                                            

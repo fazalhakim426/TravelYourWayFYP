@@ -4,12 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Passport\HasApiTokens;
 class Ticket extends Model
 {
     use HasFactory,HasApiTokens;
 
-    public $timestamps = false;
     protected $fillable = [
         'customer_id',
         'agent_id',
@@ -23,7 +23,8 @@ class Ticket extends Model
         'arrival_airport',
         'departure_date',
         'class',
-        
+        'instructions',
+        'documents',
           'PNR',
           'base_fare',
           'discount',
@@ -38,6 +39,11 @@ class Ticket extends Model
     public function super_agent()
     {
         return $this->belongsTo(User::class, 'super_agent_id');
+
+    }
+    public function customer()
+    {
+        return $this->belongsTo(Customer::class);
 
     }
 

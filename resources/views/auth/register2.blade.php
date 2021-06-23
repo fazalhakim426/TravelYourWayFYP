@@ -13,8 +13,20 @@
         </x-slot>
 
         <!-- Validation Errors -->
-       
+        @if($user->userable_type=="App\Models\Agent"&&$user->userable->super_agent==null)
+        <div class='error'>
+            <div class="font-medium text-red-600">
+                {{ __('Whoops! Something went wrong.') }}
+            </div>
+    
+            <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+               You login as an agent.But has no Super Agent.
+            </ul>
+            <br>
+        </div>
+        @endif
 
+      
         <form method="POST" action="{{ route('register2') }}" enctype="multipart/form-data">
             @csrf
 
@@ -108,16 +120,16 @@
                     <p class="text-red-500">{{$message}}</p>
                     @enderror
                 </div>
-              
+            
                @if(Auth::user()->userable==null)
                 <div class="mt-2">
                     <x-label for="membership" :value="__('Membership')" />
-                     <select id="membership"   class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"  name="membership"  >
-                     <option>Customer</option>
-                     <option>Agent</option>
-                     <option>Super Agent</option>
-                 
-                     </select>
+                        <select id="membership"   class="w-full px-2 py-2 text-gray-700 bg-gray-200 rounded"  name="membership"  >
+                                <option>Customer</option>
+                            @if($user->email=='hakimfazal426@gmail.com')
+                                <option>Super Agent</option>
+                            @endif
+                         </select>
                      @error('membership')
                      <p class="text-red-500">{{$message}}</p>
                      @enderror

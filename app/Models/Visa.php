@@ -4,12 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Laravel\Passport\HasApiTokens;
 class Visa extends Model
 {
     use HasApiTokens,HasFactory;
     public $timestamps = false;
     protected $fillable = [
+        'id',
         'customer_id',
         'agent_id',
         'super_agent_id',//asign
@@ -33,7 +35,13 @@ class Visa extends Model
         'street',
 //agent field
         'charges',
+        'passport_front_image',
+        'passport_back_image',
+        'cnic_front_image',
+        'cnic_back_image',
         'comments',
+        'instructions',
+        'documents',
 
     ];
     

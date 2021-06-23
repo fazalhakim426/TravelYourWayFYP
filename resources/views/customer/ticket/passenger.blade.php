@@ -142,7 +142,6 @@
 </button>
 @else
     
-Atlease add  one passenger to countinue.
 @endif
 </form>
 

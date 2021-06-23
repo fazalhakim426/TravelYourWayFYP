@@ -1,42 +1,66 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
+
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <!-- Favicon -->
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset('resources/images/logo.png')}}">
+        <!-- Bootstrap core CSS -->
+        <link href="{{ asset('resources/css/bootstrap.min.css')}}" rel="stylesheet" >
+        <!--Custom CSS-->
+        <link href="{{ asset('resources/css/style.css')}}" rel="stylesheet" >
+        <!--Flaticons CSS-->
+        <link href="{{ asset('resources/font/flaticon.css')}}" rel="stylesheet" >
+        <!--Plugin CSS-->
+        <link href="{{ asset('resources/css/plugin.css')}}" rel="stylesheet" >
+        <!--Font Awesome-->
+        <link href="{{ asset('resources/css/font-awesome.min.css')}}" rel="stylesheet" >
+      
 
         <title>{{ config('app.name', 'Travel Your Way') }}</title>
-
-        <!-- Fonts -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
-
+        {{-- @livewireStyles --}}
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-        <link rel="stylesheet" href="{{URL::asset('/admin-master/dist/styles.css')}}">
-        <link rel="stylesheet" href="{{URL::asset('/admin-master/dist/all.css')}}">
-
-        <!-- Scripts -->
-        <style>
-  .register{
-    background: url('{{ asset("/admin-master/dist/images/login-new.jpeg")}}')
-  }
-  </style>  
-
-        
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">        
         <script src="{{ asset('js/app.js') }}" defer></script>
+         <!-- Preloader -->
+
+         
+    <div id="preloader">
+        <div id="status"></div>
+    </div>
+
+
+    <!-- Preloader Ends -->
     </head>
-    <body class="register">
-        <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
+    <body >
+        
+        @include('layouts.navigation')
 
-            <!-- Page Heading -->
-           
-
-            <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
-        </div>
+
+
+        {{-- @livewireScripts --}}
+
+        @include('layouts.footer')
+
+
+        <script src="{{URL::asset('admin-master/main.js')}}"></script>
+            <!-- *Scripts* -->
+    <script src="{{asset('resources/js/jquery-3.2.1.min.js')}}"></script>
+    <script src="{{asset('resources/js/bootstrap.min.js')}}"></script>
+    {{-- <script src="{{asset('resources/js/plugin.js')}}"></script> --}}
+    <script src="{{asset('resources/js/main.js')}}"></script>
+    <script src="{{asset('resources/js/main-1.js')}}"></script>    
+    <script src="{{asset('resources/js/preloader.js')}}"></script>
+    <script src="{{asset('resources/js/custom-swiper2.js')}}"></script>
+    <script src="{{asset('resources/js/custom-countdown.js')}}"></script>
+
+    
     </body>
 </html>

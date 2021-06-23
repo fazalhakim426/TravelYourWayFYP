@@ -5,11 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Agent;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class SuperAgent extends Model
 {
-    use HasFactory;
+    use SoftDeletes, HasFactory;
     public $table = 'super_agents';
+    public $timestamps=false;
 
     protected $fillable = [
         'id',

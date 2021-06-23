@@ -17,9 +17,19 @@ class CreateBookingsTable extends Migration
             $table->id();
             $table->date('from');
             $table->date('to');
-            $table->string('room_id');
+            $table->unsignedBigInteger('room_id');
             $table->string('hotel_id');
             $table->string('customer_id');
+
+            $table->softDeletes();
+            $table->foreign('room_id')
+                   ->references('id')
+                   ->on('rooms')
+                   ->onDelete('cascade');
+
+
+
+
             $table->timestamps();
         });
     }

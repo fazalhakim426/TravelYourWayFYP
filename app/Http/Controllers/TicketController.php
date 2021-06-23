@@ -6,10 +6,14 @@ use App\Models\Ticket;
 use Illuminate\Http\Request;
 use App\Http\Requests\AirlineRequest;
 use App\Http\Requests\TicketTripDetailRequest;
+use App\Jobs\SendTicketApplyJob;
 use App\Models\Agent;
 use App\Models\Country;
 use App\Notifications\TicketNotification;
 use Auth;
+use Response;
+use Carbon\Carbon;
+
 class TicketController extends Controller
 {
     /**
@@ -22,6 +26,65 @@ class TicketController extends Controller
         $ticket=Ticket::where('customer_id','=',Auth::user()->userable_id)->where('status','=','Incomplete')->first();
        
         return view('customer.ticket.airline')->with('ticket',$ticket);
+    }
+
+
+    public function applyTicketCharges(Request $request){
+        // dd($request);
+        // User::find($request->customer_id)->notify(new SendPaymentNotification);
+        $request->validate([
+                'total_payable'=>'required|numeric|gt:1000',
+                'instructions'=>'required',
+            ]);
+       
+        $ticket=Ticket::find($request->id);
+
+        $ticket->update([
+            'status'=>"Payment Request",
+            'total_payable'=>$request->total_payable,
+            'instructions'=>$request->instructions,
+            
+        ]);
+
+        $job = (new SendTicketApplyJob($ticket))->delay(Carbon::now()->addSeconds(3));
+      
+        dispatch($job);
+
+        return back()->with('success','Ticket payment notification send!');
+    }
+
+    public function ticketUploadDocuments(Request $request)
+    {
+        $request->validate([
+            'documents' => 'required|mimes:jpeg,png,pdf,jpg,gif,svg|max:2048',
+            
+         ]);
+
+        $ticket=Ticket::find($request->id);
+        $documents=time().'.'.$request->documents->extension();
+    //   dd($docu);
+        $request->documents->move(public_path('/storage/visa_ticket/documents/'),$documents);
+          $ticket->update([
+           'documents'=>$documents,
+           'status'=>'Done'
+          ]);
+        //  dd($visa);
+        return redirect()->back()->with('success','Document Uploaded!');
+
+    }
+
+    public function downloadVisaDocument($id){
+
+    $id=decrypt($id);
+    $ticket=Ticket::find($id);
+    $file = public_path()."/storage/visa_ticket/documents/".$ticket->documents;
+  
+    $headers = array('Content-Type: application/pdf',);
+    return Response::download($file, $ticket->documents,$headers);
+
+    
+
+
     }
     /**
      * Show the form for creating a new resource.

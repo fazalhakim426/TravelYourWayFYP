@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '658dd8feaceb4a104dd0677998a3f51772eddce3',
+        'reference' => '1f0f3e04d8729d9af85a60447f1cd7215d46d348',
         'name' => 'laravel/laravel',
         'dev' => true,
     ),
@@ -436,7 +436,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '658dd8feaceb4a104dd0677998a3f51772eddce3',
+            'reference' => '1f0f3e04d8729d9af85a60447f1cd7215d46d348',
             'dev_requirement' => false,
         ),
         'laravel/passport' => array(
@@ -561,6 +561,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'livewire/livewire' => array(
+            'pretty_version' => 'v2.5.1',
+            'version' => '2.5.1.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../livewire/livewire',
+            'aliases' => array(),
+            'reference' => 'a4ffb135693e7982e5b982ca203f5dc7a7ae1126',
+            'dev_requirement' => false,
         ),
         'lncd/oauth2' => array(
             'dev_requirement' => false,

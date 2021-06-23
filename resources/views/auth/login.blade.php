@@ -71,7 +71,7 @@
                  <i class="fa fa-facebook mr-2"></i>Facebook</button>
             </a>
             <a href="/auth/redirect">
-         <button class="uppercase h-12 mt-3 text-white w-full rounded bg-red-800 hover:bg-red-900">
+         <button class="uppercase h-12 mt-3 text-black w-full rounded bg-red-800 hover:bg-red-900">
              <i class="fa fa-google mr-2"></i>Google</button>
             </a>
 

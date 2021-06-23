@@ -22,7 +22,7 @@ class SuperAgent
             return $next($request);
         }
         else{
-            return redirect('/superagent/dashboard');
+            return redirect('/');
         }
     }
 }

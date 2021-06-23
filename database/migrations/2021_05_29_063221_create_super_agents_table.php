@@ -15,8 +15,13 @@ class CreateSuperAgentsTable extends Migration
     {
         Schema::create('super_agents', function (Blueprint $table) {
             $table->id();
-            $table->string('user_id');
-            $table->timestamps();
+            $table->unsignedBigInteger('user_id');
+            
+            $table->softDeletes();
+            $table->foreign('user_id')
+                  ->references('id')
+                  ->on('users')
+                  ->onDelete('cascade');
         });
     }
 

@@ -13,7 +13,6 @@ class Hotel extends Model
         'address',
         'state_id',
         'country_id',
-        'country_id',
     ];
     public function images()
     {

@@ -33,13 +33,18 @@ class VisaAPIController extends Controller
         'last_name'=>'required',   
         'gender'=>'required',   
         'status'=>'required',   
+        
+        'passport_front_image'=>'required',
+        'passport_back_image'=>'required',
+        'cnic_front_image'=>'required',
+        'cnic_back_image'=>'required',
+        
 
         
     ]);
+    // dd($request->all());
     $request['status']="Submitted";
-    $super_agent_id=Agent::find($request->agent_id)->super_agent->id;
-    
-    $request->super_agent_id=$super_agent_id;
+   
 
     if ($validator->fails()) {
       return response()->json([
@@ -47,7 +52,69 @@ class VisaAPIController extends Controller
         'message' => $validator->errors(),
       ], 401);
     }
-    if(Visa::create($request->all())!=null){
+    $super_agent_id=Agent::find($request->agent_id)->super_agent->id;
+
+    $request->super_agent_id=$super_agent_id;
+    $visa=new Visa();
+    
+    if($request->cnic_back_image!=null){
+      $cnic_back_image =time().'.'.$request->cnic_back_image->extension();  
+
+      $request->cnic_back_image->move(
+        public_path('/storage/visa_ticket/images/'), $cnic_back_image
+      );
+
+      $visa->cnic_back_image=$cnic_back_image;
+   }
+
+  //  dd($request->cnic_front_image);
+   if($request->cnic_front_image!=null){
+   
+      $cnic_front_image =time().'.'.$request->cnic_front_image->extension();  
+
+      $request->cnic_front_image->move(public_path('/storage/visa_ticket/images/'), $cnic_front_image);
+     
+   
+      $visa->cnic_front_image=$cnic_front_image;
+   }
+
+
+
+
+    
+   if($request->passport_back_image!=null){
+      $passport_back_image=time().'.'.$request->passport_back_image->extension();  
+
+      $request->passport_back_image->move(
+        public_path('/storage/visa_ticket/images/'),
+         $passport_back_image);
+
+      $visa->passport_back_image=$passport_back_image;
+   }
+
+   
+   if($visa->passport_front_image==null||$request->passport_front_image){
+     
+      $passport_front_image =time().'.'.$request->passport_front_image->extension();  
+
+      $request->passport_front_image->move(
+        public_path('/storage/visa_ticket/images/'), 
+        $passport_front_image);
+     
+        $visa->passport_front_image=$passport_front_image;
+   }
+
+
+    $visa_id=Visa::create($request->all())->id;
+   $updated= Visa::find($visa_id)->update([
+    'super_agent_id'=>$super_agent_id,
+    'cnic_back_image'=>$visa->cnic_front_image,
+    'cnic_front_image'=>$visa->passport_front_image,
+    'passport_back_image'=>$visa->passport_back_image,
+    'passport_front_image'=>$visa->passport_front_image,
+   ]);
+  //  dd(Visa::find($visa_id)->get());
+    if($updated!=null){
         return response()->json([
             'success' => true,
             'message' => "Successfully Submitted",

@@ -13,7 +13,7 @@ Route::middleware(['auth'])->group(function () {
     Route::middleware(['verified'])->group(function () {
     Route::middleware(['address'])->group(function(){
     Route::middleware(['customer'])->group(function(){
-    Route::prefix('customer')->group(function(){
+    Route::prefix('customer')->group(function(){    
 
     Route::get('/dashboard',[CustomerController::class,'index'])->name('dashboard');
 
@@ -28,6 +28,19 @@ Route::middleware(['auth'])->group(function () {
     ]);
 
     
+
+    
+    Route::get(
+        'view-visa/{id}',
+        [CustomerController::class, 'view_visa']
+    );
+ 
+    Route::get('visas_apply/{type}',[VisaController::class,'index2'])->name('visas_apply');
+    Route::get(
+        'view-ticket/{id}',
+        [CustomerController::class, 'view_ticket']
+    );
+
     Route::get('apply/{type}',[VisaController::class,'index2']);
 
     Route::get('visa/payments/{charges}',[CustomerController::class,'show_visa_payment']);

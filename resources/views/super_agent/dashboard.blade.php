@@ -28,7 +28,7 @@
                                         <th class="border w-1/2 px-4 py-2">Agent</th>
                                         <th class="border w-1/2 px-4 py-2">Name</th>
                                         <th class="border w-1/2 px-4 py-2">Address</th>
-                                        <th class="border w-1/2 px-4 py-2">Visa Country</th>
+                                        <th class="border w-1/2 px-4 py-2">Visa toba Country</th>
                                         <th class="border w-1/2 px-4 py-2">Type</th>
                                         <th class="border w-1/4 px-4 py-2">passport#</th>
                                         <th class="border w-1/1 px-4 py-2">Order Status</th>
@@ -78,9 +78,9 @@
                                      <td class="border px-4 py-2"> <i class="fas fa-check text-green-500 mx-2"></i> {{ $visa->charges}} PKR
                                       
                                         @if($visa->charges&&$visa->status=='Paid')
-                                        <a href='done/{{$visa->id}}' class="m-55  bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
+                                        {{-- <a href='done/{{$visa->id}}' class="m-55  bg-success hover:bg-green-800 text-white font-light py-1 px-2 rounded-full">
                                            Mark Done
-                                        </a>
+                                        </a> --}}
                                         @endif
 
                                     </td>
