@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
 
 
@@ -17,9 +17,15 @@
         <!--Plugin CSS-->
         <link href="{{ asset('resources/css/plugin.css')}}" rel="stylesheet" >
         <!--Font Awesome-->
+        <link href="http://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" rel="Stylesheet"
+  type="text/css" />
         <link href="{{ asset('resources/css/font-awesome.min.css')}}" rel="stylesheet" >
+        <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+
       
-      
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 
         <title>{{ config('app.name', 'Travel Your Way') }}</title>
         {{-- @livewireStyles --}}
@@ -141,7 +147,28 @@ $(document).ready(function () {
 
 
         });
-
+       
+//         var dateToday = new Date();
+// var dates = $("#from, #to").datepicker({
+//     defaultDate: "+1w",
+//     changeMonth: true,
+//     numberOfMonths: 3,
+//     minDate: dateToday,
+//     onSelect: function(selectedDate) {
+//         var option = this.id == "from" ? "minDate" : "maxDate",
+//             instance = $(this).data("datepicker"),
+//             date = $.datepicker.parseDate(instance.settings.dateFormat || $.datepicker._defaults.dateFormat, selectedDate, instance.settings);
+//         dates.not(this).datepicker("option", option, date);
+//     }
+// });
+    </script>
+    
+     <script language="javascript">
+        $(document).ready(function () {
+            $("#txtdate").datepicker({
+                minDate: 0
+            });
+        });
     </script>
   @livewireScripts
     </body>

@@ -1,12 +1,5 @@
 <x-app-layout>  
-{{-- @push('css')
-    
-<link href="{{asset('resources/css/hotel.css')}}" rel="stylesheet" type="text/css">
 
-
-@endpush --}}
-{{-- {{dd($)}} --}}
-{{-- @@livewire('component', ['user' => $user], key($user->id)) --}}
-@livewire('dashboard.hotel.show', ['countries' => $countries])
+@livewire('dashboard.hotel.show', ['check_in'=>isset($check_in)?$check_in:null,'check_out'=>isset($check_out)?$check_out:null,'from'=>$from,'to'=>$to,'countries' => $countries,'rooms'=>$rooms])
 
 </x-app-layout>

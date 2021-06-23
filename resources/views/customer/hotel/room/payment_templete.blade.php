@@ -69,12 +69,11 @@
                                     again.</div>
                             </div>
                         </div>
-                        @foreach($room_ids as $id)
-                        <input  name='room_id[]' type="hidden" value='{{$id}}'>
-                        @endforeach
+                        <input  name='room_id' type="hidden" value='{{$room_id}}'>
+                     
                         <input type="hidden" name='total_charges' value='{{$total_charges}}'>
-                        <input type="hidden" name='to' value='{{$from}}'>
-                        <input type="hidden" name='from' value='{{$to}}'>
+                        <input type="hidden" name='from' value='{{$from}}'>
+                        <input type="hidden" name='to' value='{{$to}}'>
                         <input  name='hotel_id' type="hidden" value='{{$hotel_id}}'>
                       
                         <div class="row">
@@ -88,9 +87,8 @@
                   
                     <form method="POST" action="{{route('/room/payment/byhand')}}">
                         @csrf
-                        @foreach($room_ids as $id)
-                        <input type='hidden' name='room_id[]' value='{{$id}}'>
-                        @endforeach
+                        <input type='hidden' name='room_id' value='{{$room_id}}'>
+                       
                         <input type="hidden" name='total_charges' value='{{$total_charges}}'>
                         <input type="hidden" name='to' value='{{$from}}'>
                         <input type="hidden" name='from' value='{{$to}}'>

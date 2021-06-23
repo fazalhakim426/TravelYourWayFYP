@@ -26,6 +26,7 @@ class Agent extends Model
     }
 
     
+    
     public function visas()
     {
         return $this->hasMany(Visa::class);

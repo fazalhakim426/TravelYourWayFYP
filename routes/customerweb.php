@@ -94,7 +94,8 @@ Route::middleware(['auth'])->group(function () {
        
     Route::post('book-room',
     [HotelController::class,'book_room'])->name('book-room');
-       
+             
+
     Route::post('/room/payment/byhand',
     [HotelController::class,'payment_by_hand'])->name('/room/payment/byhand');
        
@@ -112,7 +113,11 @@ Route::middleware(['customer'])->group(function(){
         //Contact Information 
             Route::get('/contactInformationIndex',[VisaController::class,'contactInformationIndex']);
             Route::post('/contactInformationStore',[VisaController::class,'contactInformationStore'])->name('contactInformationStore');
-
+            
+            
+            Route::post('book-now',[HotelController::class,'bookNow'])
+            ->name('book-now');
+          
 //Contact Information 
 Route::get('/personalInformationIndex',[VisaController::class,'personalInformationIndex']);
 Route::post('/personalInformationStore',[VisaController::class,'personalInformationStore'])->name('personalInformationStore');

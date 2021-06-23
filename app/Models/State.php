@@ -12,4 +12,16 @@ class State extends Model
     {
         return $this->hasMany(Hotel::class);
     }
+
+    public function rooms()
+    {
+        return $this->hasManyThrough(
+            Room::class,
+            Hotel::class,
+            'state_id', // Foreign key on the environments table...
+            'hotel_id', // Foreign key on the deployments table...
+            'id', // Local key on the projects table...
+            'id' // Local key on the environments table...
+        );
+    }
 }

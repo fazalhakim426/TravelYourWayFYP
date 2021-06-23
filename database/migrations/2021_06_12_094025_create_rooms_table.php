@@ -20,10 +20,8 @@ class CreateRoomsTable extends Migration
             $table->string('charges_per_day');
             $table->string('capacity');
 
-
             $table->timestamps();
-
-
+            
             $table->softDeletes();
             $table->foreign('hotel_id')
                   ->references('id')

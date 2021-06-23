@@ -18,6 +18,21 @@ class Country extends Model
         return $this->hasMany(State::class);
     }
 
+ 
+
+
+    public function rooms()
+    {
+        return $this->hasManyThrough(
+            Room::class,
+            Hotel::class,
+            'country_id', // Foreign key on the environments table...
+            'hotel_id', // Foreign key on the deployments table...
+            'id', // Local key on the projects table...
+            'id' // Local key on the environments table...
+        );
+    }
+
     public function setCountryAttribute($value)
     {
         $this->attributes['country'] = ucfirst($value);
