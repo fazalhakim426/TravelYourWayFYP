@@ -26,7 +26,6 @@ class CustomerAPIController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'visa_id' => 'required',
-
         ]);
 
         if ($validator->fails()) {
@@ -117,7 +116,6 @@ class CustomerAPIController extends Controller
             'hotel_id' => 'required',
             'customer_id' => 'required',
             'room_id' => 'required',
-
             'total_charges' => 'required',
 
 
@@ -158,7 +156,10 @@ class CustomerAPIController extends Controller
         // ]);
 
 
-        foreach ($request->room_id as $room_id) {
+        $room_ids=explode(",",$request->room_id);
+
+
+        foreach ($room_ids as $room_id) {
             $booking = Booking::create([
                 "customer_id" => $request->customer_id,
                 "room_id" => $room_id,

@@ -96,19 +96,19 @@ class StripePaymentController extends Controller
 
     public function stripePost(Request $request)
     {
-        
-        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
-        Stripe\Charge::create ([
-                "amount" => $request->total_charges,
-                "currency" => "usd",
-                "source" => $request->stripeToken,
-                "description" => "Hotel Payment" 
-        ]);
+        // dd($request);
+        // Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        // Stripe\Charge::create ([
+        //         "amount" => $request->total_charges,
+        //         "currency" => "usd",
+        //         "source" => $request->stripeToken,
+        //         "description" => "Hotel Payment" 
+        // ]);
   
-        foreach($request->room_id as $room_id) {
+        // foreach($request->room_id as $room_id) {
             $booking=Booking::create([
                 "customer_id" => Auth::user()->userable_id,
-                "room_id" => $room_id,
+                "room_id" => $request->room_id,
                 "from" => $request->from,
                 "to" => $request->to,
                 "hotel_id" => $request->hotel_id,
@@ -120,8 +120,8 @@ class StripePaymentController extends Controller
                 'paymentable_type'=>"App\Models\Booking",
             ]);
             // $booking->payment;
-        }
+        // }
         
-        return redirect('customer/dashboard');
+        return redirect('/hotelIndex')->with('Room Book Successfully!');
     }
 }

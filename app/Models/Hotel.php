@@ -8,11 +8,12 @@ class Hotel extends Model
     public $timestamps=false;
     protected $fillable = [
         'country',
+        'state_id',
+        'country_id',
+        
         'hotel_name',
         'description',
         'address',
-        'state_id',
-        'country_id',
     ];
     public function images()
     {
