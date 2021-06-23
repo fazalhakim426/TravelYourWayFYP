@@ -167,42 +167,35 @@ class VisaController extends Controller
 
     public function personalInformationStore(PersonalInformationRequest $request)
     {
+
          $visa=Visa::find($request->id);
         //  dd($visa);  
         // passport front image
-         if($visa->passport_back_image==null||$request->passport_back_image){
-            $request->validate([
-               'passport_back_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-               
-            ]);
-            $image1=time().'.'.$request->passport_back_image->extension();  
-     
-            $request->passport_back_image->move(public_path('/storage/visa_ticket/images/'), $image1);
-           
-            $visa->update([
-               'passport_back_image'=>$image1,
-              ]);
-         }
+      
 
 
          //
 
-         if($visa->cnic_back_image==null||$request->cnic_back_image){
-         
+         if($visa->cnic_back_image==null||$request->cnic_back_image!=null){
+            $visa2=Visa::find($request->id);
+
             $request->validate([
                'cnic_back_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                
             ]);
-            $image =time().'.'.$request->cnic_back_image->extension();  
-     
-            $request->cnic_back_image->move(public_path('/storage/visa_ticket/images/'), $image);
+            $cnic_back_image =time().'.'.$request->cnic_back_image->extension();  
+  
+            $request->cnic_back_image->move(public_path('/storage/visa_ticket/images/'), $cnic_back_image);
            
-            $visa->update([
-               'cnic_back_image'=>$image,
-              ]);
+            $visa2->update([
+               'cnic_back_image'=>$cnic_back_image,
+              ]); 
+              
+            //   dd($image);
+            //   dd($visa2);
          }
 
-
+        //  dd($request->cnic_front_image);
          if($visa->cnic_front_image==null||$request->cnic_front_image){
             $request->validate([
                'cnic_front_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -218,6 +211,26 @@ class VisaController extends Controller
          }
 
 
+
+
+          
+         if($visa->passport_back_image==null||$request->passport_back_image!=null){
+            $visa1=Visa::find($request->id);
+            $request->validate([
+               'passport_back_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+               
+            ]);
+            $image1=time().'.'.$request->passport_back_image->extension();  
+    
+            $request->passport_back_image->move(public_path('/storage/visa_ticket/images/'), $image1);
+           
+            $visa1->update([
+               'passport_back_image'=>$image1,
+              ]);
+            
+         }
+
+         
          if($visa->passport_front_image==null||$request->passport_front_image){
             $request->validate([
                'passport_front_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',

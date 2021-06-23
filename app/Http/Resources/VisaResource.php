@@ -39,7 +39,14 @@ class VisaResource extends JsonResource
             'work_phone'=>$this->work_phone,
             'street'=>$this->street,
     //agent field
+    
+    'passport_front_image'=>asset('/storage/visa_ticket/images/'.$this->passport_front_image),
+    'passport_back_image'=>asset('/storage/visa_ticket/images/'.$this->passport_back_image),
+    'cnic_front_image'=>asset('/storage/visa_ticket/images/'.$this->cnic_front_image),
+    'cnic_back_image'=>asset('/storage/visa_ticket/images/'.$this->cnic_back_image),
             'charges'=>$this->charges,
+            'instructions'=>$this->instructions,
+            'documents'=>asset('/storage/visa_ticket/documents/'.$this->documents),
             'comments'=>$this->comments,
             'agent_name'=>$this->agent->user->name,//asign
             'agent_email'=>$this->agent->user->email,//asign
