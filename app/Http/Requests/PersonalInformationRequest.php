@@ -30,6 +30,7 @@ class PersonalInformationRequest extends FormRequest
             'gender'=>'required',
             'title'=>'required',
             'passport_number'=>'required|size:9',
+           
         ];
     }
 }

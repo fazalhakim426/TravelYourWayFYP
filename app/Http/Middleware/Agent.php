@@ -18,12 +18,19 @@ class Agent
     public function handle(Request $request, Closure $next)
     {
         $user=Auth::user()->userable;
+      
         if(get_class($user)=="App\Models\Agent")
         {
-            return $next($request);
+                       
+                        if($user->super_agent==null){
+                            return redirect('register2');
+                        }
+                        else
+                            return $next($request);
+
         }
         else{
-            return redirect('/agentdashboard');
+            return redirect('/');
         }
     }
 }

@@ -10,7 +10,7 @@
 
                                         <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
                                       <div class="px-6 py-2 border-b border-light-grey">
-                                         <div class="font-bold text-xl">New Order List
+                                         <div class="font-bold text-xl">Agent List
                                          @error('charges')
                                        <p class="text-red-700 italic ">{{$message}}</p>
 
@@ -22,8 +22,8 @@
 
                                        <div style="float: right">
                                              <button data-modal='centeredFormModal' value='{{Auth::user()->userable->id}}' onclick="function1(this)"
-                                        class=" modal-trigger bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
-                                        Add New
+                                        class=" modal-trigger bg-gray-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded">
+                                        Add Agent
                                       </button>
                                        </div>
                                      
@@ -34,12 +34,8 @@
                                        <thead class="bg-grey-dark text-white text-normal">
                                       <tr>
 
-                                        <th class="border w-1/8 px-4 py-2">Profile</th>
-                                        <th class="border w-1/8 px-4 py-2">Name</th>
-                                        <th class="border w-1/8 px-4 py-2">Phone#</th>
-                                        <th class="border w-1/6 px-4 py-2">Country</th>
-                                        <th class="border w-1/7 px-4 py-2">City</th>
-                                        <th class="border w-1/7 px-4 py-2">state</th>
+                                        <th class="border w-1/6 px-4 py-2">Profile</th>
+                                        <th class="border w-1/5 px-4 py-2">Name</th>
                                         <th class="border w-1/5 px-4 py-2">Action</th>
                                       </tr>
                                     </thead>
@@ -59,22 +55,7 @@
                                            {{$agent->user->name}}
                                       
                                          </td>
-                                           <td class="border px-4 py-2 center">
-                                         
-                                           {{$agent->user->phone_number}}
-                                       </td>
-                                       <td class="border">
-                                       {{$agent->user->country}}
-
-                                       </td>
-                                       <td class="border">
-                                       {{$agent->user->city}}
-
-                                       </td>
-                                       <td class="border">
-                                       {{$agent->user->state}}
-
-                                       </td>
+                                       
 
                                        <td>
                                            <a href="{{route('delete-agent',['agent'=>$agent])}}">

@@ -35,7 +35,27 @@ class CustomerController extends Controller
     
     }
 
- 
+
+    public function view_visa($id)
+    {
+        
+    $data['user'] =Auth::user();
+    $data['visa'] =Visa::find($id);
+    $data['sub_active'] =$data['visa']->type;
+
+    return view('customer.visa.detail',$data); 
+    }
+
+    public function view_ticket($id)
+    {
+        
+    $data['user'] =Auth::user();
+    $data['ticket'] =Ticket::find($id);
+    $data['sub_active'] ='Ticket';
+    
+    return view('customer.ticket.detail',$data); 
+    }
+
 
 
     public function show_visa_payment($id)

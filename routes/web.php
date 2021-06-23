@@ -2,13 +2,16 @@
 
 use App\Http\Controllers\CountryController;
 use App\Http\Controllers\DropdownController;
+use App\Http\Controllers\HotelController;
 use App\Http\Controllers\StripePaymentController;
-use App\Models\Hotel;
+use App\Http\Controllers\TicketController;
+use App\Http\Controllers\VisaController;
+use App\Models\Agent;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
-
+use App\Models\User;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,9 +25,23 @@ use Illuminate\Support\Facades\Schema;
 
 Route::get('/generate-countries', [CountryController::class, 'create']);
 Route::get('/', function () {
-    return view('welcome');
+    // return view('livewire');
+    $data['agents']=User::where('userable_type','App\Models\Agent')->limit(5)->get();
+ 
+   $data['sub_active']="home";
+
+    return view('welcome',$data);
 });
 
+Route::get('hotel',[HotelController::class,'index']);
+
+Route::get('about_us',function(){
+    return view('about_us');
+});
+Route::get('contact_us',function(){
+    return view('contact_us');
+});
+Route::get('hotelIndex',[HotelController::class,'hotel']);
 
 Route::get('/dashboard', function () {
     $visas = DB::table('visas')->where('user_id', '=', Auth::user()->id)->get();
@@ -68,6 +85,41 @@ Route::post('stripe.visa', [StripePaymentController::class,'stripeVisaPost'])->n
 Route::post('stripe.ticket', [StripePaymentController::class,'stripeTicketPost'])->name('stripe.ticket.post');
 
 
+
+
+        
+Route::post(
+    'ticket-apply-charges',
+    [TicketController::class, 'applyTicketCharges']
+)->name('ticket-apply-charges');
+
+Route::get('download-visa-document/{id}',
+      [VisaController::class,'downloadVisaDocument'])
+      ->name('download-visa-document');
+
+      Route::get('download-ticket-document/{id}',
+      [TicketController::class,'downloadVisaDocument'])
+      ->name('download-ticket-document');
+
+Route::post(
+    'visa-apply-charges',
+    [VisaController::class, 'applyVisacharges']
+)->name('visa-apply-charges');
+
+
+
+
+
+
+Route::post(
+    'ticket-upload-documents',
+    [TicketController::class, 'ticketUploadDocuments']
+)->name('ticket-upload-documents');
+
+Route::post(
+    'visa-upload-documents',
+    [VisaController::class, 'visaUploadDocuments']
+)->name('visa-upload-documents');
 
 
 require __DIR__ . '/customerweb.php';

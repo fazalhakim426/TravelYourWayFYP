@@ -17,7 +17,12 @@ class CreatePaymentsTable extends Migration
             $table->id();
             $table->string('paymentable_type')->nullable();
             $table->string('paymentable_id')->nullable();
+            $table->string('refunded')->nullable();
             $table->double('charges', 8, 2);
+
+
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

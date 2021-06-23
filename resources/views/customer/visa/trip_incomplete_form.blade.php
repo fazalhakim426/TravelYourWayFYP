@@ -12,7 +12,7 @@
                                                 id="grid-state"
                                                 
                                                 >
-                                                
+                                                <option>pakistan</option>
                                                 <option>{{ old('visa_apply_country')==null? $visa->visa_apply_country:old('visa_apply_country') }}</option>
                                          
                                                 @foreach ($countries as $country)

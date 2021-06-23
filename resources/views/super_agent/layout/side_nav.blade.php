@@ -42,85 +42,105 @@
 
 
 
-        <div class="flex flex-1">
+        {{-- <div class="flex flex-1">
 
         <div class="container mx-auto my-5 p-5">
             <div class="md:flex no-wrap md:-mx-2 ">
-                <!-- Left Side -->
-                <div class="w-full md:w-3/12 md:mx-2">
-                    <!-- Profile Card -->
-                    <div class="bg-white p-3 border-t-4 border-gray-800">
-                        <div class="image overflow-hidden">
-                            <img class="h-auto w-full mx-auto"
-                            src="{{asset('profile_images/'.$user->profile_image)}}"
-                            alt="">
-                        </div>
-                        <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{$user->name}} </h1>
-                        <h3 class="text-gray-900 font-lg text-semibold leading-6">{{$user->phone_number}} </h3>
-                        <p class="text-sm text-gray-800 hover:text-gray-800 leading-6">From{{$user->city}} , {{$user->state}} , {{$user->country}}</p>
-                        <ul
-                            class="bg-gray-100 text-gray-800 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-                          
-                            <li class="flex items-center py-3">
-                                <span>Member since</span>
-                                <span class="ml-auto">{{$user->created_at}}</span>
-                            </li>                          
-                            <li class="flex items-center py-3">
-                                <span>Profile <br> Update at:</span>
-                                <span class="ml-auto">{{$user->updated_at}}</span>
-                            </li>
-                            <a href="/register2">
-                                <li class="flex items-center py-3">
-                                       <span></span>
-                                       <span class="ml-auto"><span
-                                               class="bg-gray-800 py-1 px-2 rounded text-white text-sm">Edit Profile</span></span>
-                                   </li>
-                         
+               
+     --}}
+
+
+
+
+                <div class="flex flex-1">
+                    <!--Sidebar-->
+                    <aside id="sidebar"
+                        class="bg-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block">
+        
+                        <ul class="list-reset flex flex-col">
+                            <a href="/super-agent/dashboard" class=" w-full h-full py-3 px-2 border-b border-light-border @if ($sub_active=='Dashboard' ) bg-gray-600 @endif">
+        
+                                <li class="hover:font-normal text-sm text-white no-underline">
+                                    <i class="fas fa-tachometer-alt float-left mx-2"></i>
+                                    Dashboard
+                                    <span><i class="fas fa-angle-right float-right"></i></span>
+        
+                                </li>
                             </a>
-                                       
+                      
+        
+                            <a href="/super-agent/agents" class="border-t  border-black-border w-full h-full px-2 py-3 @if ($sub_active=='Agents' ) bg-gray-600 @endif ">
+                                <li 
+                                    class=" mx-4 hover:font-normal text-sm text-white no-underline">
+                                          Agents
+                                         <span><i class="fa fa-angle-right float-right"></i></span>
+                 
+                                         </li>
+                                     </a><a href="/super-agent/hotels-dashboard" class="border-t  border-black-border w-full h-full px-2 py-3 @if ($sub_active=='Hotel' ) bg-gray-600 @endif ">
+                                        <li 
+                                            class=" mx-4 hover:font-normal text-sm text-white no-underline">
+                                                 Hotels
+                                                 <span><i class="fa fa-angle-right float-right"></i></span>
+                         
+                                                 </li>
+                                             </a>
+                 
+
+                                             <a href="/super-agent/visits" class="border-t  border-black-border w-full h-full px-2 py-3 @if ($sub_active=='Visit' ) bg-gray-600 @endif ">
+                                                <li 
+                                                    class=" mx-4 hover:font-normal text-sm text-white no-underline">
+                                                         Visits
+                                                         <span><i class="fa fa-angle-right float-right"></i></span>
+                                 
+                                                         </li>
+                                                     </a>
+
+
+                            <a href="/super-agent/immigrations"
+                                class="border-t  border-black-border w-full h-full px-2 py-3 @if ($sub_active=='Immigration' ) bg-gray-600 @endif ">
+                       <li  
+                           class=" mx-4 hover:font-normal text-sm text-white no-underline">
+                                Immigrations
+                                <span><i class="fa fa-angle-right float-right"></i></span>
+        
+                                </li> </a>
+        
+        
+                            <a href="/super-agent/ummrahs" class="border-t  border-black-border w-full h-full px-2 py-3 @if ($sub_active=='Ummrah' ) bg-gray-600 @endif ">
+                        <li
+                           class=" mx-4 hover:font-normal text-sm text-white no-underline">
+                                Ummrah
+                                <span><i class="fa fa-angle-right float-right"></i></span>
+        
+                                </li>
+                            </a>
+        
+        
+                            <a href="/super-agent/hajjs" class="border-t  border-black-border w-full h-full px-2 py-3 @if ($sub_active=='Hajj' ) bg-gray-600 @endif ">
+                         <li
+                           class=" mx-4 hover:font-normal text-sm text-white no-underline">
+                                Hajj
+                                <span><i class="fa fa-angle-right float-right"></i></span>
+        
+                                </li> </a>
+        
+        
+                            <a href="/super-agent/tickets" class="border-t  border-light-border w-full h-full px-2 py-3 @if ($sub_active=='Tickets' ) bg-gray-600 @endif ">
+                         
+                    <li class=" mx-4 hover:font-normal text-sm text-white no-underline ">
+                      
+                            Tickets
+                            <span><i class=" fa fa-angle-right float-right"></i></span>
+        
+                                </li>
+                            </a>
+        
                         </ul>
-                    </div>
-                    <!-- End of profile card -->
-                    <div class="my-4"></div>
-                    <!-- Friends card -->
-                    <div class="bg-white p-3 shadow">
-                        <div class="flex items-center space-x-3 font-semibold text-gray-900 text-xl leading-8">
-                            <span class="text-gray-800">
-                                <svg class="h-5 fill-current" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                                </svg>
-                            </span>
-                            <span>My Agent</span>
-                        </div>
-                        <div class="grid grid-cols-3">
-                        @foreach (Auth::user()->userable->agents as $agent)
-                            <div class="text-center my-2">
-                                <img class="h-16 w-16 rounded-full mx-auto"
-                                    src="{{asset('/profile_images/'.$agent->user->profile_image)}}"
-                                    alt="">
-                                <a href="#" class="text-main-color">{{$agent->user->name}}</a>
-                            </div>
-                        @endforeach
-                       
-                            
-                          
-                           
-                        </div>
-                    </div>
-                    <!-- End of friends card -->
-                </div>
-                <!-- Right Side -->
-    
-    
-    
-    
-    
-    
-    
-    
-    
+        
+                    </aside>
+                    <!--/Sidebar-->
+
+
     
     
     

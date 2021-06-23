@@ -10,8 +10,10 @@ use App\Http\Requests\PersonalInformationRequest;
 use App\Models\Agent;
 use App\Models\Country;
 use App\Models\Visa;
-use App\Models\User;
+use Response;
 use App\Notifications\ApplyNotification;
+use App\Notifications\SendPaymentNotification;
+
 class VisaController extends Controller
 {
   
@@ -20,35 +22,78 @@ class VisaController extends Controller
         $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('status','=','Incomplete')->first();
         $countries=Country::all();
         
-        return view('customer.visa.trip_details')->with('visa',$visa)->with('countries',$countries)->with('type',null);
+        return view('customer.visa.trip_details')
+                ->with('visa',$visa)
+                ->with('countries',$countries)
+                ->with('type',null);
+    }
+
+    public function visaUploadDocuments(Request $request)
+    {
+        $request->validate([
+            'documents' => 'required|mimes:jpeg,png,pdf,jpg,gif,svg|max:2048',
+            
+         ]);
+
+       $visa=Visa::find($request->id);
+        $documents=time().'.'.$request->documents->extension();
+    //   dd($docu);
+        $request->documents->move(public_path('/storage/visa_ticket/documents/'),$documents);
+          $visa->update([
+           'documents'=>$documents,
+           'status'=>'Done'
+          ]);
+        //  dd($visa);
+        return redirect()->back()->with('success','Document Uploaded!');
+    }
+
+    public function downloadVisaDocument($id){
+         $id=decrypt($id);
+        $visa=Visa::find($id);
+        $file = public_path()."/storage/visa_ticket/documents/".$visa->documents;
+      
+        $headers = array('Content-Type: application/pdf',);
+        return Response::download($file, $visa->documents,$headers);
+
+        
     }
 
     public function index2($type)
     {
-        $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('status','=','Incomplete')->first();
-       
-        if($visa!=null)
-        return view('customer.visa.trip_details')->with('visa',$visa)->with('type',$type);
+      
+        $data['visa']=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('status','=','Incomplete')->first();
+         $data['type']=$type;
+         $data['countries']=Country::all();
+        if($data['visa']!=null)
+        return view('customer.visa.trip_details',$data);
         else
-        return view('customer.visa.trip_details')->with('visa',$visa)->with('type',$type);
+        return view('customer.visa.trip_details',$data);
     }
     
 
  
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-  
+    public function applyVisaCharges(Request $request){
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+        // dd($request);
+        $request->validate(
+            [
+                'charges'=>'required|numeric|gt:1000',
+            ]
+            );
+        Visa::where('id',$request->id)->update([
+            'status'=>"Payment Request",
+            'charges'=>$request->charges,
+            'instructions'=>$request->instructions,
+        ]);
+        $visa=Visa::find($request->id);
+        $user=$visa->customer->user;
+        $user->notify(new SendPaymentNotification);
+        return back()->with('success','Payment notification successfully send to user!');
+    }
+ 
+    
+
     public function store(TripDetailRequest $request)
     {
         $visaexist=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('status','=','incomplete')->first();
@@ -78,6 +123,7 @@ class VisaController extends Controller
         {
             $request["visa_apply_country"]='Saudi Arabia';
         }
+
         $visa=Visa::where('id',$request->id)->update([
             'visa_apply_country'=> $request['visa_apply_country'],
             'days'=>$request['days'],
@@ -88,46 +134,7 @@ class VisaController extends Controller
         // dd($request->all());
         return redirect('/personalInformationIndex');//goto step 1
     }
-    //step 0 ended
-
-// step 1 started
-// public function create1()
-// {
-//     $visa=DB::table('visas')->where('customer_id','=',Auth::user()->userable_id)->where('status','=','incomplete')->first();
-//     return view('customer.visa.immigration_visa_step_1')->with('visa',$visa);
-// }
-    
-    // public function store1(Request $request)
-    // {
-         
-    //    Visa::where('id',$request->id)->update([
-    //     'email'=> $request['email'],
-    //     'name'=>$request['name'],
-    //     'date_of_birth'=>$request['date_of_birth'],
-    //     'marital_status'=>$request['marital_status'],
-    //     'gender'=>$request['gender'],
-    //     'country_of_birth'=>$request['country_of_birth'],
-    //     'number_of_people'=>$request['number_of_people'],
-    //    ]);
-     
-    //     $request->validate([
-    //         'name'=>'required',
-    //         'email'=>'required',
-    //         'country_of_birth'=>'required',
-    //         'date_of_birth'=>'required',
-    //         'marital_status'=>'required',
-    //         'gender'=>'required',
-    //         'number_of_people'=>'required',
-    //     ]);
-     
-     
-    // return redirect('/create2');//goto step 2
-
-
-    // } 
-    //end step 1
-
-    //start step 2
+ 
     public function contactInformationIndex()
     {
         $countries=Country::all();
@@ -160,9 +167,76 @@ class VisaController extends Controller
 
     public function personalInformationStore(PersonalInformationRequest $request)
     {
-           Visa::where('id',$request->id)->update([
+         $visa=Visa::find($request->id);
+        //  dd($visa);  
+        // passport front image
+         if($visa->passport_back_image==null||$request->passport_back_image){
+            $request->validate([
+               'passport_back_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+               
+            ]);
+            $image1=time().'.'.$request->passport_back_image->extension();  
+     
+            $request->passport_back_image->move(public_path('/storage/visa_ticket/images/'), $image1);
+           
+            $visa->update([
+               'passport_back_image'=>$image1,
+              ]);
+         }
+
+
+         //
+
+         if($visa->cnic_back_image==null||$request->cnic_back_image){
+         
+            $request->validate([
+               'cnic_back_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+               
+            ]);
+            $image =time().'.'.$request->cnic_back_image->extension();  
+     
+            $request->cnic_back_image->move(public_path('/storage/visa_ticket/images/'), $image);
+           
+            $visa->update([
+               'cnic_back_image'=>$image,
+              ]);
+         }
+
+
+         if($visa->cnic_front_image==null||$request->cnic_front_image){
+            $request->validate([
+               'cnic_front_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+               
+            ]);
+            $image =time().'.'.$request->cnic_front_image->extension();  
+     
+            $request->cnic_front_image->move(public_path('/storage/visa_ticket/images/'), $image);
+           
+            $visa->update([
+               'cnic_front_image'=>$image,
+              ]);
+         }
+
+
+         if($visa->passport_front_image==null||$request->passport_front_image){
+            $request->validate([
+               'passport_front_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+               
+            ]);
+            $image4 =time().'.'.$request->passport_front_image->extension();  
+     
+            $request->passport_front_image->move(public_path('/storage/visa_ticket/images/'), $image4);
+           
+            $visa->update([
+               'passport_front_image'=>$image4,
+              ]);
+         }
+
+
+           $visa->update([
                 'title'=> $request['title'],
                   'passport_number'=> $request['passport_number'],
+               'first_name'=>$request['first_name'],
                'last_name'=>$request['last_name'],
                'gender'=>$request['gender'],
                'date_of_birth'=>$request['date_of_birth'],
@@ -190,10 +264,11 @@ class VisaController extends Controller
         // dd($agent->user);
         // User::where('membership','Agent')->where('id',$request->agent_id)->first();
         
-        $visa=Visa::where('id',$request->id)->update([
+        Visa::where('id',$request->id)->update([
             'agent_id'=>$agent->id,
             'super_agent_id'=>$super_agent->id,
             'status'=>'Submitted',
+            'charges'=>'',
         ]);
         
         $agent->user->notify(new ApplyNotification(Visa::find($request->id)));
@@ -435,6 +510,17 @@ class VisaController extends Controller
         return redirect('dashboard');
     }
 
+
+
+
+
+
+
+
+    
+    
+ 
+    
 
     /**
      * Remove the specified resource from storage.

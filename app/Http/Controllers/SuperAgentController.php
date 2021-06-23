@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Agent;
 use App\Models\SuperAgent;
+use App\Models\Ticket;
 use App\Models\User;
+use App\Models\Visa;
 use Illuminate\Http\Request;
-use Auth,DB;
+use Auth;
 use Illuminate\Support\Facades\Hash;
 
 class SuperAgentController extends Controller
@@ -35,17 +37,11 @@ class SuperAgentController extends Controller
 
     public function get_agents()
     {
-
-        
         $data['user']=Auth::user();
-
         $data['sub_active']='Agents';
-       
         $data['agents'] =Auth::user()->userable->agents;
-        // dd($data);
+
         return view('super_agent.agents.list',$data);
-
-
     }
 
     /**
@@ -108,17 +104,25 @@ class SuperAgentController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\SuperAgent  $superAgent
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(SuperAgent $superAgent)
+    public function view_visa($id)
     {
-        //
+        
+    $data['user'] =Auth::user();
+    $data['visa'] =Visa::find($id);
+    $data['sub_active'] =$data['visa']->type;
+
+    return view('super_agent.visa_type_detail',$data); 
     }
 
+    public function view_ticket($id)
+    {
+        
+    $data['user'] =Auth::user();
+    $data['ticket'] =Ticket::find($id);
+    $data['sub_active'] ='Ticket';
+
+    return view('super_agent.ticket_detail',$data); 
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -150,16 +154,14 @@ class SuperAgentController extends Controller
     // dd($data);
     $data['user'] =Auth::user();
     $data['sub_active'] ='Immigration';
-    $data['i'] =0;
+    
     return view('super_agent.visa_type',$data); 
     }
     public function getHajjs()
     {
-    // $data['visas']=Visa::where('agent_id','=',Auth::user()->userable_id)->orderBy('status')->get(); 
-    // dd($data);
     $data['user'] =Auth::user();
     $data['sub_active'] ='Hajj';
-    $data['i'] =0;
+    
     return view('super_agent.visa_type',$data); 
     }
     public function getUmmrahs()
@@ -168,7 +170,7 @@ class SuperAgentController extends Controller
     // dd($data);
     $data['user'] =Auth::user();
     $data['sub_active'] ='Ummrah';
-    $data['i'] =0;
+    
     return view('super_agent.visa_type',$data); 
     }
     public function getVisits()
@@ -176,7 +178,7 @@ class SuperAgentController extends Controller
   
     $data['user'] =Auth::user();
     $data['sub_active'] ='Visit';
-    $data['i'] =0;
+    
     return view('super_agent.visa_type',$data); 
     }
 }

@@ -5,10 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\SuperAgent;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Agent extends Model
 {
-    use HasFactory;
-
+    use SoftDeletes,HasFactory;
+    public $timestamps=false;
+    
     public $table='agents';
 
     protected $fillable = [
@@ -17,9 +20,9 @@ class Agent extends Model
         'super_agent_id'
     ];
 
-        public function user()
+    public function user()
     {
-        return $this->morphOne(User::class, 'userable');
+        return $this->morphOne(User::class,'userable');
     }
 
     

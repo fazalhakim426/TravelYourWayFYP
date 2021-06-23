@@ -64,8 +64,9 @@ class RegisteredUserController extends Controller
 
 
 
-    public function store2(Request $request     )
+    public function store2(Request $request)
     {
+        
         $user = Auth::user();
        
         if($request->profile_image){

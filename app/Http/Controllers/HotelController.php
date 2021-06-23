@@ -35,6 +35,11 @@ class HotelController extends Controller
         return view('super_agent.hotel.listing')->with($data);
     }
 
+    public function hotel()
+    {
+        return view('hotel');
+    }
+
     public function hotel_dashboard()
     {
         

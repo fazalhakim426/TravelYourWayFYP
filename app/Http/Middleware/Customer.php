@@ -22,7 +22,7 @@ class Customer
             return $next($request);
         }
         else{
-            return redirect('/customer/dashboard');
+            return redirect('/login');
         }
     }
 }

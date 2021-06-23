@@ -1,403 +1,642 @@
 <x-app-layout>  
-
-
-
-
-
 <!-- This example requires Tailwind CSS v2.0+ -->
-<div class="relative bg-white w-full h-77 ">
-  <div class="max-w-7xl mx-auto">
-    <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
-      <svg class="hidden z-9 lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
-        <polygon points="50,0 100,0 50,100 0,100" />
-      </svg>
 
-      <div class="relative pt-6 px-4 sm:px-6 lg:px-8">
-      
-      </div>
-
-    
-
-      <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
-        <div class="sm:text-center lg:text-left">
-          <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
-            <span class="block xl:inline">Travel Your Way</span><br>
-            <span class="block text-indigo-600 xl:inline"> 100% online Process</span>
-          </h1>
-          <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-          an agency engaged in selling and arranging transportation, accommodations, tours, and trips for travelers. </p>
-          <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
-            <div class="rounded-md shadow">
-
-
-              <a href="#" data-modal='centeredFormModal' class=" modal-trigger w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10">
-                 Contact
-              </a>
+    <!-- Banner start -->
+    <section class="swiper-banner">
+        <div class="slider">
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide" style="background-image:url({{asset('/resources/images/slider/slider7.jpg')}})">
+                        <div class="swiper-content" data-animation="animated fadeInDown">
+                            <h2>Book a ticket , visa and many more</h2>
+                            <h1>we are here to help you 24/7</h1>
+                            <a href="" class="btn-blue btn-red">Book Air Ticket Now</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" style="background-image:url({{asset('/resources/images/slider/slider8.jpg')}})">
+                        <div class="swiper-content" data-animation="animated fadeInRight">
+                            <h2>Enjoy Tour Across The Word</h2>
+                            <h1>We offer you better deals</h1>
+                            <a href="#" class="btn-blue btn-red">Book Visit Visa Now</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide" style="background-image:url({{asset('/resources/images/slider/slider10.jpg')}})">
+                        <div class="swiper-content" data-animation="animated fadeInUp">
+                            <h2>Book Hotel Acroos The Word</h2>
+                            <h1>We Are Offering best Deails </h1>
+                            <a href="" class="btn-blue btn-red">Book Hotel Now </a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mt-3 sm:mt-0 sm:ml-3">
-              <a href="#aboutus" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
-                About Us
-              </a>
-            </div>
-          </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <div class="overlay"></div>
         </div>
-      </main>
+    </section>
+    <!-- Banner Ends -->
+
+
+    <!-- Search Box -->
+    <div class="search-box clearfix">
+        <div class="container">
+            <div class="search-outer">
+                <div class="search-content">
+                    <form>
+                        <div class="row">
+                            <div class="col-lg-3 col-md-12">
+                                <div class="search-title d-flex align-items-center justify-content-between">
+                                    <p>Find Your <span>Holiday</span></p>
+                                    <i class="flaticon-sun-umbrella "></i>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="table_item">
+                                    <div class="form-group">
+                                        <select id="custom-select-1" class="selectpicker form-control">
+                                          <option value="0">Destination</option>
+                                          <option value="1">pakistan</option>
+                                          <option value="2">Dubai</option>
+                                          <option value="3">Uk</option>
+                                        
+                                        </select>
+
+                                        <i class="flaticon-maps-and-flags"></i>
+                                    </div>
+                                    <div class="form-group  form-icon">
+                                        <select name="custom-select-2" class="selectpicker form-control" tabindex="1">
+                                            <option value="0">Country</option>
+                                            <option value="1">pakistan</option>
+                                            <option value="2">Dubai</option>
+                                            <option value="3">Uk</option>
+                                         
+                                        </select>
+                                        <i class="flaticon-box"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-6">
+                                <div class="table_item">
+                                    <div class="form-group">
+                                        <div class='input-group date' id='datetimepicker1'>
+                                            <input type='text' class="form-control" value="Check-In" />
+                                            <i class="flaticon-calendar"></i>
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group form-icon">
+                                        <div class='input-group date' id='datetimepicker2'>
+                                            <input type='text' class="form-control" value="Check-Out" />
+                                            <i class="flaticon-calendar"></i>
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-12">
+                                <div class="table_item table-item-slider">
+                                    <div class="range-slider">
+                                        <div data-min="0" data-max="2000" data-unit="$" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" aria-disabled="false">
+                                            <span class="min-value">0 $</span> 
+                                            <span class="max-value">2000 $</span>
+                                            <div class="ui-slider-range ui-widget-header ui-corner-all" style="left: 0%; width: 100%;"></div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="search">
+                                        <a href="#" class="btn-blue btn-red">SEARCH</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-    <img class="h-56 w-full z-8 object-cover sm:h-72 md:h-96 lg:w-full lg:h-full" src="{{URL::asset('/admin-master/dist/images/login.jpeg')}}" alt="">
-  </div>
-</div>
+    <!-- Search Box Ends -->
 
+    <!-- Popular Packages --> 
+    <section class="popular-packages">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Our Services</h2>
+                <div class="section-icon">
+                    <i class="flaticon-diamond"></i>
+                </div>
+                <p>we are offering air ticket, visas (visit visa, umrah, hajj and immitgration visa ) & hotel bboking in a very affective cost and time we are glade to see you here </p>
+            </div>
+            <div class="row package-slider slider-button">
+                <div class="col-lg-4">
+                    <div class="package-item">
+                        <div class="package-image">
+                            <img src="{{asset('resources/images/alarab.jpg')}}" alt="Image" width="400" height="300">
+                            <div class="package-price">
+                                <div class="deal-rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star-o"></span>
+                                    <span class="fa fa-star-o"></span>
+                                </div>
+                                <p><span>$659</span> / Average  </p>
+                            </div>
+                        </div>
+                        <div class="package-content">
+                            <h3>Hotel Booking </h3>
+                            <p class="package-days"><i class="flaticon-maps-and-flags"></i>Dubai</p>
+                            <p>takes hotel design to a new level of modern luxury, and has also redefined the meaning of exceptional hospitality</p>
+                            <div class="package-info">
+                                <a href="#" class="btn-blue btn-red">BOOK NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="package-item">
+                        <div class="package-image">
+                            <img src="{{asset('resources/images/slider/slider10.jpg')}}" alt="Image" width="400" height="300">
+                            <div class="package-price">
+                                <div class="deal-rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star-o"></span>
+                                    <span class="fa fa-star-o"></span>
+                                </div>
+                                <p><span>$659</span> / Average </p>
+                            </div>
+                        </div>
+                        <div class="package-content">
+                            <h3>Air Ticket</h3>
+                            <p class="package-days"><i class="flaticon-time"></i></p>
+                            <p> Search One and Done! Book the Best Flights for Your Next Destination. we will find best flight for you </p>
+                            <div class="package-info">
+                                <a href="#" class="btn-blue btn-red">BOOK NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="package-item">
+                        <div class="package-image">
+                            <img src="{{asset('resources/images/package3.jpg')}}" alt="Image" width="400" height="300">
+                            <div class="package-price">
+                                <div class="deal-rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star-o"></span>
+                                    <span class="fa fa-star-o"></span>
+                                </div>
+                                <p><span>$659</span> / Average </p>
+                            </div>
+                        </div>
+                        <div class="package-content">
+                            <h3>Visit Visa</h3>
+                            <p class="package-days"><i class="flaticon-maps-and-flags"></i> Dubai</p>
+                            <p>Visitor visas are nonimmigrant visas for persons who want to enter the Dubai temporarily</p>
+                            <div class="package-info">
+                                <a href="#" class="btn-blue btn-red">BOOK NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="package-item">
+                        <div class="package-image">
+                            <img src="{{asset('resources/images/hajj.jpg')}}" alt="Image" width="400" height="300">
+                            <div class="package-price">
+                                <div class="deal-rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star-o"></span>
+                                    <span class="fa fa-star-o"></span>
+                                </div>
+                                <p><span>$659</span> / Average </p>
+                            </div>
+                        </div>
+                        <div class="package-content">
+                            <h3>Hajj Visa</h3>
+                            <p class="package-days"><i class="flaticon-maps-and-flags"></i>saudi arabia</p>
+                            <p>Hajj, annual pilgrimage to Mecca that is mandatory for all Muslims to make at least once in their lives</p>
+                            <div class="package-info">
+                                <a href="#" class="btn-blue btn-red">BOOK NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="package-item">
+                        <div class="package-image">
+                            <img src="{{asset('resources/images/umrah.jpg')}}" alt="Image" width="400" height="300">
+                            <div class="package-price">
+                                <div class="deal-rating">
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star checked"></span>
+                                    <span class="fa fa-star-o"></span>
+                                    <span class="fa fa-star-o"></span>
+                                </div>
+                                <p><span>$659</span> / Average </p>
+                            </div>
+                        </div>
+                        <div class="package-content">
+                            <h3>Umrah Visa</h3>
+                            <p class="package-days"><i class="flaticon-maps-and-flags"></i>saudi arabia</p>
+                            <p>SAUDIA guests holding Umrah visas and planning to travel to Saudi Arabia to perform Umrah, can book</p>
+                            <div class="package-info">
+                                <a href="#" class="btn-blue btn-red">BOOK NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            
+            </div>
+        </div>
+    </section>
+    <!-- Popular Packages Ends -->
 
-
-
-
-
-
-
-
-
-
-<div class="w-full p-6 bg-grey-400">
-  <div id="ourservices" class="w-48 mx-auto pt-6 border-b-2 border-orange-500 text-center text-2xl text-gray-700">OUR SERVICES</div>
- <div class="p-2 text-center text-lg text-gray-700">Best Travel Agency All Over Pakistan.</div>
- <div class="flex justify-center flex-wrap p-30">
-
- <a href="/dashboard">
- <div class="relative w-40 h-40 m-5 ">
-       <!-- <i class="fas fa-bezier-curve fa-3x mx-auto text-white"></i> -->
-       <img class="w-24 h-24 mx-auto" src="{{URL::asset('/admin-master/dist/images/direction/immigration.png')}}" />
-    
-     <!-- </div> -->
-     <p class="mx-2 py-2 border-b-2 text-center text-gray-700 font-semibold uppercase">Immigration Visa</p>
-   
-   </div>
-</a>
-
-<a href="/dashboard">
-   
-   <div class="relative w-40 h-40 m-5 ">
-       <img class="w-24 h-24 mx-auto" src="{{URL::asset('/admin-master/dist/images/direction/hajj.png')}}" />
-    
-     <p class="mx-2 py-2 border-b-2 text-center text-gray-700 font-semibold uppercase">Hajj Registration</p>
-   
-   </div>
-</a>
-
-
-
-
-
-<a href="/dashboard">
-   <div class="relative w-40 h-40 m-5 ">
-    
-       <!-- <i class="fas fa-bezier-curve fa-3x mx-auto text-white"></i> -->
-
-       <img class="w-24 h-24 mx-auto" src="{{URL::asset('/admin-master/dist/images/direction/hotel.png')}}" />
-    
-     <!-- </div> -->
-     <p class="mx-2 py-2 border-b-2 text-center text-gray-700 font-semibold uppercase">Hotel Reservation</p>
-   
-   </div></a>
-   
-   <a href="/dashboard">
-   <div class="relative w-40 h-40 m-5 ">
+    <!-- Deals -->
+    <section class="deals">
+        <div class="container">
+            <div class="section-title section-title-white text-center">
+                <h2>Last Minute Deals</h2>
+                <div class="section-icon">
+                    <i class="flaticon-diamond"></i>
+                </div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Duis aute irure dolor in reprehenderit..</p>
+            </div>
+            <div class="deals-outer">
+                <div class="row deals-slider slider-button">
+                    <div class="col-md-3">
+                        <div class="deals-item">
+                            <div class="deals-item-outer">
+                                <div class="deals-image">
+                                    <img src="{{asset('resources/images/deal1.jpg')}}" alt="Image">
+                                    <span class="deal-price">$8600</span>
+                                </div>
+                                <div class="deal-content">
+                                    <div class="deal-rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star-o"></span>
+                                        <span class="fa fa-star-o"></span>
+                                    </div>
+                                    <h3>Paris and Bordeaus</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                                    <a href="#" class="btn-blue btn-red">More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="deals-item">
+                            <div class="deals-item-outer">
+                                <div class="deals-image">
+                                    <img src="{{asset('resources/images/deal2.jpg')}}" alt="Image">
+                                    <span class="deal-price">$8600</span>
+                                </div>
+                                <div class="deal-content">
+                                    <div class="deal-rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star-o"></span>
+                                        <span class="fa fa-star-o"></span>
+                                    </div>
+                                    <h3>Paris and Bordeaus</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                                    <a href="#" class="btn-blue btn-red">More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="deals-item">
+                            <div class="deals-item-outer">
+                                <div class="deals-image">
+                                    <img src="{{asset('resources/images/deal3.jpg')}}" alt="Image">
+                                    <span class="deal-price">$8600</span>
+                                </div>
+                                <div class="deal-content">
+                                    <div class="deal-rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star-o"></span>
+                                        <span class="fa fa-star-o"></span>
+                                    </div>
+                                    <h3>Paris and Bordeaus</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                                    <a href="#" class="btn-blue btn-red">More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="deals-item">
+                            <div class="deals-item-outer">
+                                <div class="deals-image">
+                                    <img src="{{asset('resources/images/deal4.jpg')}}" alt="Image">
+                                    <span class="deal-price">$8600</span>
+                                </div>
+                                <div class="deal-content">
+                                    <div class="deal-rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star-o"></span>
+                                        <span class="fa fa-star-o"></span>
+                                    </div>
+                                    <h3>Paris and Bordeaus</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                                    <a href="#" class="btn-blue btn-red">More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="deals-item">
+                            <div class="deals-item-outer">
+                                <div class="deals-image">
+                                    <img src="{{asset('resources/images/deal2.jpg')}}" alt="Image">
+                                    <span class="deal-price">$8600</span>
+                                </div>
+                                <div class="deal-content">
+                                    <div class="deal-rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star-o"></span>
+                                        <span class="fa fa-star-o"></span>
+                                    </div>
+                                    <h3>Paris and Bordeaus</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                                    <a href="#" class="btn-blue btn-red">More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="deals-item">
+                            <div class="deals-item-outer">
+                                <div class="deals-image">
+                                    <img src="{{asset('resources/images/deal1.jpg')}}" alt="Image">
+                                    <span class="deal-price">$8600</span>
+                                </div>
+                                <div class="deal-content">
+                                    <div class="deal-rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star-o"></span>
+                                        <span class="fa fa-star-o"></span>
+                                    </div>
+                                    <h3>Paris and Bordeaus</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                                    <a href="#" class="btn-blue btn-red">More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="deals-item">
+                            <div class="deals-item-outer">
+                                <div class="deals-image">
+                                    <img src="{{asset('resources/images/deal4.jpg')}}" alt="Image">
+                                    <span class="deal-price">$8600</span>
+                                </div>
+                                <div class="deal-content">
+                                    <div class="deal-rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star-o"></span>
+                                        <span class="fa fa-star-o"></span>
+                                    </div>
+                                    <h3>Paris and Bordeaus</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                                    <a href="#" class="btn-blue btn-red">More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="deals-item">
+                            <div class="deals-item-outer">
+                                <div class="deals-image">
+                                    <img src="{{asset('resources/images/deal3.jpg')}}" alt="Image">
+                                    <span class="deal-price">$8600</span>
+                                </div>
+                                <div class="deal-content">
+                                    <div class="deal-rating">
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star checked"></span>
+                                        <span class="fa fa-star-o"></span>
+                                        <span class="fa fa-star-o"></span>
+                                    </div>
+                                    <h3>Paris and Bordeaus</h3>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                                    <a href="#" class="btn-blue btn-red">More Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-overlay"></div>
+    </section>
+    <!-- Deals Ends -->
  
-       <!-- <i class="fas fa-bezier-curve fa-3x mx-auto text-white"></i> -->
-       <img class="w-24 h-24 mx-auto" src="{{URL::asset('/admin-master/dist/images/direction/tickets.png')}}" />
-    
-     <!-- </div> -->
-     <p class="mx-2 py-2 border-b-2 text-center text-gray-700 font-semibold uppercase">Book<br> Ticket</p>
-   
-   </div>
-
-<a href="/dashboard">
-   <div class="relative w-40 h-40 m-5 ">
-       <img class="w-24 h-24 mx-auto" src="{{URL::asset('/admin-master/dist/images/direction/hajj.png')}}" />
-     <p class="mx-2 py-2 border-b-2 text-center text-gray-700 font-semibold uppercase">Ummrah<br>Registration</p>
-   
-   </div></a>
-   <a href="/dashboard">
-   <div class="relative w-40 h-40 m-5 ">
-  
-       <!-- <i class="fas fa-bezier-curve fa-3x mx-auto text-white"></i> -->
-       <img class="w-24 h-24 mx-auto" src="{{URL::asset('/admin-master/dist/images/direction/visit.png')}}" />
-    
-     <!-- </div> -->
-     <p class="mx-2 py-2 border-b-2 text-center text-gray-700 font-semibold uppercase">Visit<br>Apply</p>
-   
-   </div></a>
 
 
-
- </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- Centered With a Form Modal -->
-<div id='centeredFormModal' class="modal-wrapper">
-
-
-
-    <div class="overlay close-modal"></div>
-    <div class="modal modal-centered">
-        <div class="modal-content shadow-lg p-5">
-            <div class="border-b p-2 pb-3 pt-0 mb-4">
-               <div class="flex justify-between items-center text-b text-indigo-600">
-                    Feel Free To Contact
-                    <span class='close-modal cursor-pointer px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200'>
-                        <i class="fas fa-times text-gray-700"></i>
-                    </span>
-               </div>
+    <!-- Top Destinations -->
+    <section class="top-destinations">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Top Destinations</h2>
+                <div class="section-icon">
+                    <i class="flaticon-diamond"></i>
+                </div>
+                <p>the top distination for tourist to enjoy the moment with  partners</p>
             </div>
-            <!-- Modal content -->
-            <form  id="my-form" class="w-full" action="https://formspree.io/f/xyybnwrn" method="POST">
-                <div class="flex flex-wrap -mx-3 mb-6">
-                    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1" for="grid-first-name">
-                            Your Name
-                        </label>
-                        <input
-                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500"
-                            id="grid-first-name" type="text" placeholder="Ahmad" name="name">
-                        <p class="text-red-500 text-xs italic ">Please fill out this field.</p>
+            <div class="row">
+                <div class="col-lg-4 col-md-4">
+                    <div class="top-destination-item">
+                        <img class="img-responsive" src="{{asset('resources/images/deal1.jpg')}}" alt="Image">
+                        <div class="overlay">
+                            <h2><a href="#">Bahamas</a></h2>
+                            <p>Plan Your Tour to Bahamas With Us.</p>
+                        </div>
                     </div>
-                    <div class="w-full md:w-1/2 px-3">
-                        <label class="block uppercase tracking-wide text-gray-700 text-xs font-light mb-1" for="grid-last-name">
-                            Email
-                        </label>
-                        <input
-                            class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
-                            id="grid-last-name" type="email" name="email" placeholder="admin@azeezar.com">
+                    <div class="top-destination-item">
+                        <img class="img-responsive" src="{{asset('resources/images/deal2.jpg')}}" alt="Image">
+                        <div class="overlay">
+                            <h2><a href="#">Italy</a></h2>
+                            <p>Plan Your Tour to Bahamas With Us.</p>
+                        </div>
                     </div>
                 </div>
-                <div class="flex flex-wrap -mx-3 mb-6">
-                    <div class="w-full px-3">
-                        <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1" for="grid-password">
-                            Subject
-                        </label>
-                        <input
-                            class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                           type="text" name="Subject" placeholder="Subject" required="required">
-                        <p class="text-grey-dark text-xs italic">Make it as long and as crazy as
-                            you'd like</p>
+                <div class="col-lg-4 col-md-4">
+                    <div class="top-destination-item destination-margin">
+                        <img class="img-responsive" src="{{asset('resources/images/deal5.jpg')}}" alt="Image">
+                        <div class="overlay overlay-full">
+                            <h2><a href="#">Egypt</a></h2>
+                            <p>Plan Your Tour to Bahamas With Us.</p>
+                        </div>
                     </div>
                 </div>
-
-
-                <div class="flex flex-wrap -mx-3 mb-6">
-                    <div class="w-full px-3">
-                        <label class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1" for="grid-password">
-                            Your message
-                        </label>
-                        <textarea
-                            class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                            name="message" placeholder="Your Message" required="required"></textarea>
-                        <p class="text-grey-dark text-xs italic">Make it as long and as crazy as
-                            you'd like</p>
+                <div class="col-lg-4 col-md-4">
+                    <div class="top-destination-item">
+                        <img class="img-responsive" src="{{asset('resources/images/deal3.jpg')}}" alt="Image">
+                        <div class="overlay">
+                            <h2><a href="#">Nepal</a></h2>
+                            <p>Plan Your Tour to Bahamas With Us.</p>
+                        </div>
+                    </div>
+                    <div class="top-destination-item">
+                        <img class="img-responsive" src="{{asset('resources/images/deal4.jpg')}}" alt="Image">
+                        <div class="overlay">
+                            <h2><a href="#">Thailand</a></h2>
+                            <p>Plan Your Tour to Bahamas With Us.</p>
+                        </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+    <!-- Top Destination Ends -->
 
+    <!-- Trip Ad -->
+    <section class="trip-ad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
                     
-                   
-                <div class="mt-5">
-                    <button class='bg-indigo-600 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded'> Submit </button>
-                    <span class='close-modal cursor-pointer bg-red-200 hover:bg-red-500 text-red-900 font-bold py-2 px-4 rounded'>
-                        Close
-                    </span>
+                    <div class="trip-ad-content">
+                        <div class="ad-title">
+                            <h2>Explore The <span>Word Trip</span></h2>
+                        </div>
+                        <p>Apply For VIsit Visa And Explore the word right now </p>
+                        <p>we are offering greate deails for the people who like to travel from one place to other</p>
+                        <div class="trip-ad-btn">
+                            <a href="#" class="btn-blue btn-red">BOOK NOW</a>
+                        </div>
+                    </div>
                 </div>
-            </form>
+                <div class="col-lg-6">
+                    <div class="ad-price">
+                        <div class="ad-price-inner">
+                            <span>Starting at <span class="rate">$3000</span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+    </section>
+    <!-- Trip Ad Ends -->
 
+    <!-- Deals On Sale -->
 
+    <!-- Deals On Sale Ends -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div id="aboutus" class="max-w-4xl flex items-center h-auto lg:h-screen flex-wrap mx-auto my-32 lg:my-0">
-
-<!--Main Col-->
-<div id="profile" class="w-full lg:w-3/5 rounded-lg lg:rounded-l-lg lg:rounded-r-none shadow-2xl bg-white opacity-75 mx-6 lg:mx-0">
-
-
-    <div class="p-4 md:p-12 text-center lg:text-left">
-        <!-- Image for mobile view-->
-        <div class="block lg:hidden rounded-full shadow-xl mx-auto -mt-16 h-48 w-48 bg-cover bg-center" style="background-image: url('https://source.unsplash.com/MP0IUfwrn0A')"></div>
-
-        <h1 class="text-3xl font-bold pt-8 lg:pt-0" >Arina Azmat</h1>
-        <div class="mx-auto lg:mx-0 w-4/5 pt-3 border-b-2 border-green-500 opacity-25"></div>
-        <p class="pt-4 text-base font-bold flex items-center justify-center lg:justify-start"><svg class="h-4 fill-current text-indigo-600 pr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M9 12H1v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6h-8v2H9v-2zm0-1H0V5c0-1.1.9-2 2-2h4V2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1h4a2 2 0 0 1 2 2v6h-9V9H9v2zm3-8V2H8v1h4z" /></svg> I will be your travel agent.</p>
-        <p class="pt-2 text-gray-600 text-xs lg:text-sm flex items-center justify-center lg:justify-start"><svg class="h-4 fill-current text-indigo-600 pr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
-                <path d="M10 20a10 10 0 1 1 0-20 10 10 0 0 1 0 20zm7.75-8a8.01 8.01 0 0 0 0-4h-3.82a28.81 28.81 0 0 1 0 4h3.82zm-.82 2h-3.22a14.44 14.44 0 0 1-.95 3.51A8.03 8.03 0 0 0 16.93 14zm-8.85-2h3.84a24.61 24.61 0 0 0 0-4H8.08a24.61 24.61 0 0 0 0 4zm.25 2c.41 2.4 1.13 4 1.67 4s1.26-1.6 1.67-4H8.33zm-6.08-2h3.82a28.81 28.81 0 0 1 0-4H2.25a8.01 8.01 0 0 0 0 4zm.82 2a8.03 8.03 0 0 0 4.17 3.51c-.42-.96-.74-2.16-.95-3.51H3.07zm13.86-8a8.03 8.03 0 0 0-4.17-3.51c.42.96.74 2.16.95 3.51h3.22zm-8.6 0h3.34c-.41-2.4-1.13-4-1.67-4S8.74 3.6 8.33 6zM3.07 6h3.22c.2-1.35.53-2.55.95-3.51A8.03 8.03 0 0 0 3.07 6z" /></svg> Your Location - 25.0000° N, 71.0000° W</p>
-        <p class="pt-8 text-sm">a person engaged in selling and arranging transportation, accommodations, tours, or trips for travelers..</p>
-
-        <div class="pt-12 pb-8">
-            <button class="bg-indigo-600 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full">
-                +92-0312-6104979
-            </button>
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="section-title text-center">
+            <h2>Best Rated Travel Agent</h2>
+            <div class="section-icon section-icon-white">
+                <i class="flaticon-diamond"></i>
+            </div>       
         </div>
+        <!-- Paradise Slider -->
+        <div id="testimonial_094" class="carousel slide testimonial_094_indicators thumb_scroll_x swipe_x ps_easeOutSine" data-ride="carousel" data-pause="hover" data-interval="3000" data-duration="1000">
 
-        <div class="mt-6 pb-16 lg:pb-0 w-4/5 lg:w-full mx-auto flex flex-wrap items-center justify-between">
-            <a class="link" href="#" data-tippy-content="@facebook_handle"><svg class="h-6 fill-current text-gray-600 hover:text-indigo-600" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <title>Facebook</title>
-                    <path d="M22.676 0H1.324C.593 0 0 .593 0 1.324v21.352C0 23.408.593 24 1.324 24h11.494v-9.294H9.689v-3.621h3.129V8.41c0-3.099 1.894-4.785 4.659-4.785 1.325 0 2.464.097 2.796.141v3.24h-1.921c-1.5 0-1.792.721-1.792 1.771v2.311h3.584l-.465 3.63H16.56V24h6.115c.733 0 1.325-.592 1.325-1.324V1.324C24 .593 23.408 0 22.676 0" />
-                </svg></a>
-            <a class="link" href="#" data-tippy-content="@twitter_handle"><svg class="h-6 fill-current text-gray-600 hover:text-indigo-600" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <title>Twitter</title>
-                    <path d="M23.954 4.569c-.885.389-1.83.654-2.825.775 1.014-.611 1.794-1.574 2.163-2.723-.951.555-2.005.959-3.127 1.184-.896-.959-2.173-1.559-3.591-1.559-2.717 0-4.92 2.203-4.92 4.917 0 .39.045.765.127 1.124C7.691 8.094 4.066 6.13 1.64 3.161c-.427.722-.666 1.561-.666 2.475 0 1.71.87 3.213 2.188 4.096-.807-.026-1.566-.248-2.228-.616v.061c0 2.385 1.693 4.374 3.946 4.827-.413.111-.849.171-1.296.171-.314 0-.615-.03-.916-.086.631 1.953 2.445 3.377 4.604 3.417-1.68 1.319-3.809 2.105-6.102 2.105-.39 0-.779-.023-1.17-.067 2.189 1.394 4.768 2.209 7.557 2.209 9.054 0 13.999-7.496 13.999-13.986 0-.209 0-.42-.015-.63.961-.689 1.8-1.56 2.46-2.548l-.047-.02z" />
-                </svg></a>
-            <a class="link" href="#" data-tippy-content="@github_handle"><svg class="h-6 fill-current text-gray-600 hover:text-indigo-600" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <title>GitHub</title>
-                    <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
-                </svg></a>
-            <a class="link" href="#" data-tippy-content="@unsplash_handle"><svg class="h-6 fill-current text-gray-600 hover:text-indigo-600" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <title>Unsplash</title>
-                    <path d="M7.5 6.75V0h9v6.75h-9zm9 3.75H24V24H0V10.5h7.5v6.75h9V10.5z" />
-                </svg></a>
-            <a class="link" href="#" data-tippy-content="@dribble_handle"><svg class="h-6 fill-current text-gray-600 hover:text-indigo-600" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <title>Dribbble</title>
-                    <path d="M12 24C5.385 24 0 18.615 0 12S5.385 0 12 0s12 5.385 12 12-5.385 12-12 12zm10.12-10.358c-.35-.11-3.17-.953-6.384-.438 1.34 3.684 1.887 6.684 1.992 7.308 2.3-1.555 3.936-4.02 4.395-6.87zm-6.115 7.808c-.153-.9-.75-4.032-2.19-7.77l-.066.02c-5.79 2.015-7.86 6.025-8.04 6.4 1.73 1.358 3.92 2.166 6.29 2.166 1.42 0 2.77-.29 4-.814zm-11.62-2.58c.232-.4 3.045-5.055 8.332-6.765.135-.045.27-.084.405-.12-.26-.585-.54-1.167-.832-1.74C7.17 11.775 2.206 11.71 1.756 11.7l-.004.312c0 2.633.998 5.037 2.634 6.855zm-2.42-8.955c.46.008 4.683.026 9.477-1.248-1.698-3.018-3.53-5.558-3.8-5.928-2.868 1.35-5.01 3.99-5.676 7.17zM9.6 2.052c.282.38 2.145 2.914 3.822 6 3.645-1.365 5.19-3.44 5.373-3.702-1.81-1.61-4.19-2.586-6.795-2.586-.825 0-1.63.1-2.4.285zm10.335 3.483c-.218.29-1.935 2.493-5.724 4.04.24.49.47.985.68 1.486.08.18.15.36.22.53 3.41-.43 6.8.26 7.14.33-.02-2.42-.88-4.64-2.31-6.38z" />
-                </svg></a>
-            <a class="link" href="#" data-tippy-content="@instagram_handle"><svg class="h-6 fill-current text-gray-600 hover:text-indigo-600" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <title>Instagram</title>
-                    <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z" />
-                </svg></a>
-            <a class="link" href="#" data-tippy-content="@youtube_handle"><svg class="h-6 fill-current text-gray-600 hover:text-indigo-600" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                    <title>YouTube</title>
-                    <path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z" />
-                </svg></a>
+
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                {{-- {{dd($agents[)}} --}}
+                @foreach($agents as $index=>$agent)
+{{-- {{dd($agent)}} --}}
+                  @if($index==0)
+                <li data-target="#testimonial_094" data-slide-to="{{$index}}" class="active">
+                 
+                   @else
+                   <li data-target="#testimonial_094" data-slide-to="{{$index}}">
+                 
+                   @endif
+                    <img src="{{ ('profile_images/'.$agent->profile_image.'')}}" alt="testimonial_094_01"> <!-- 1st Image -->
+                </li>
+                @endforeach
+              
+            </ol>
+
+            <!-- Wrapper For Slides -->
+            <div class="carousel-inner" role="listbox">
+
+                <!-- First Slide -->
+              
+                @foreach($agents as $index=>$agent)
+
+                @if($index==0)
+                <div class="carousel-item active">
+                    @else
+                    <div class="carousel-item">
+                  
+                    @endif
+                    <!-- Text Layer -->
+                    <div class="testimonial_094_slide">
+                        <p>Lorem ipsum dolor sit amet consectetuer adipiscing
+                             elit am nibh unc varius facilisis eros ed erat
+                              in in velit quis arcu ornare laoreet urabitur
+                               adipiscing luctus massa nteger ut purus ac
+                                augue commodo commodo unc nec mi eu justo tempor consectetuer tiam.</p>
+                        <div class="deal-rating">
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star checked"></span>
+                            <span class="fa fa-star-o"></span>
+                            <span class="fa fa-star-o"></span>
+                        </div>
+                        <h5><a href="#">{{$agent->name}}</a></h5>
+                    </div> <!-- /Text Layer -->
+                </div> <!-- /item -->
+                @endforeach
+                <!-- End of First Slide -->
+
+
+             
+
+            </div> <!-- End of Wrapper For Slides -->
+        </div> <!-- End Paradise Slider -->
+    </section>
+    <!-- Testimonials -->
+
+    <!-- Countdown -->
+    <section class="countdown-section">
+        <div class="container">
+            <div class="countdown-title">
+                <h2>Special Tour in May, Discover <span>Thailand</span> for 50 Customers with <span>Discount 30%</span></h2>
+                <p>It’s limited seating! Hurry up</p>
+            </div>
+            <div class="countdown countdown-container">
+                <p id="demo"></p>
+            </div><!-- /.countdown-wrapper -->
         </div>
-
-        <!-- Use https://simpleicons.org/ to find the svg for your preferred product -->
-
-    </div>
-
-</div>
-
-<!--Img Col-->
-<div class="w-full lg:w-2/5">
-    <!-- Big profile image for side bar (desktop) -->
-    
-    <!-- <img src="{{URL::asset('/admin-master/dist/images/twobrother.png')}}" class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block"> -->
-    <img src="https://source.unsplash.com/MP0IUfwrn0A" class="rounded-none lg:rounded-lg shadow-2xl hidden lg:block">
-    <!-- Image from: http://unsplash.com/photos/MP0IUfwrn0A -->
-
-</div>
-
-
-<!-- Pin to top right corner -->
-<div class="relative top-0 right-0 h-12 w-18 p-4">
-    <button class="js-change-theme focus:outline-none">🌙</button>
-</div>
-
-</div>
-
-<script src="https://unpkg.com/popper.js@1/dist/umd/popper.min.js"></script>
-<script src="https://unpkg.com/tippy.js@4"></script>
-<script>
-//Init tooltips
-tippy('.link', {
-    placement: 'bottom'
-})
-
-//Toggle mode
-const toggle = document.querySelector('.js-change-theme');
-const body = document.querySelector('body');
-const profile = document.getElementById('profile');
-
-body.classList.remove('text-gray-900');
-        body.classList.add('text-gray-100');
-        profile.classList.remove('bg-white');
-        profile.classList.add('bg-gray-900');
-
-
-toggle.addEventListener('click', () => {
-
-    if (body.classList.contains('text-gray-900')) {
-        toggle.innerHTML = "☀️";
-        body.classList.remove('text-gray-900');
-        body.classList.add('text-gray-100');
-        profile.classList.remove('bg-white');
-        profile.classList.add('bg-gray-900');
-    } else {
-        toggle.innerHTML = "🌙";
-        body.classList.remove('text-gray-100');
-        body.classList.add('text-gray-900');
-        profile.classList.remove('bg-gray-900');
-        profile.classList.add('bg-white');
-
-    }
-});
-</script>
+        <div class="testimonial-overlay"></div>
+    </section>
+    <!-- Countdown Ends -->
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-<script src="{{URL::asset('admin-master/main.js')}}"></script>
 </x-app-layout>

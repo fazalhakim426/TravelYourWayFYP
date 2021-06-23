@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendTicketApplyJob;
 use App\Models\Ticket;
-use App\Models\User;
 use App\Models\Visa;
 use App\Notifications\SendPaymentNotification;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,53 +15,7 @@ class AgentController extends Controller
 
 
 
-    public function applycharges(Request $request){
-
-        
-        $request->validate(
-            [
-                'charges'=>'required|numeric|gt:1000',
-            ]
-            );
-    //         dd($request->all());
-    //    User::find($request->customer_id)->notify(new SendPaymentNotification);
-        
-        Visa::where('id',$request->id)->update([
-            'status'=>"Payment Request",
-            'charges'=>$request->charges,
-        ]);
-        $visa=Visa::find($request->id);
-        $user=$visa->customer->user;
-        $user->notify(new SendPaymentNotification);
-        return back();
-    }
-
-    public function ticket_applay_charges(Request $request){
-
-        User::find($request->customer_id)->notify(new SendPaymentNotification);
-        $request->validate(
-            [
-                'total_payable'=>'required|numeric|gt:1000',
-            ]
-            );
-       
-        Ticket::where('id',$request->id)->update([
-            'status'=>"Payment Request",
-            'total_payable'=>$request->total_payable,
-        ]);
-        return back();
-    }
-
-    
-    public function addSuperAgents(Request $r)
-    {
-
-
-        $agent=Auth::user()->userable;
-        $agent->super_agents()->attach($r->super_agent_id, ['status'=>1,'a' => $r->a,'b' => $r->b,'c' => $r->c,'d' => $r->d,'e' => $r->e]);
-        return redirect('/agent/all_super_agents');
-        // $user
-    }
+ 
     public function index()
     {
     $data['visas']=Visa::where('agent_id','=',Auth::user()->userable_id)->orderBy('status')->get(); 
@@ -76,6 +31,25 @@ class AgentController extends Controller
     $data['sub_active'] ='Immigration';
 
     return view('agent.visa_type',$data); 
+    }
+    public function view_visa($id)
+    {
+        
+    $data['user'] =Auth::user();
+    $data['visa'] =Visa::find($id);
+    $data['sub_active'] =$data['visa']->type;
+
+    return view('agent.visa_type_detail',$data); 
+    }
+
+    public function view_ticket($id)
+    {
+        
+    $data['user'] =Auth::user();
+    $data['ticket'] =Ticket::find($id);
+    $data['sub_active'] ='Ticket';
+
+    return view('agent.ticket_detail',$data); 
     }
     public function getHajjs()
     {
@@ -110,7 +84,7 @@ class AgentController extends Controller
     $data['user'] =Auth::user();
     $data['sub_active'] ='Ticket';
    
-    return view('agent.ticket_type',$data); 
+    return view('agent.tickets',$data); 
     }
 
 
@@ -119,19 +93,17 @@ class AgentController extends Controller
     {
         $visa=Visa::where('id',$request->id)->update([
               'status'=>"Cancel",
-              'charges'=>""
         ]);
         
-        return back();
+        return back()->with('success','Visa Cancel Successfully');
     }
     public function revoke_visa(Request $request)
     {
         $visa=Visa::where('id',$request->id)->update([
             'status'=>"Submitted",
-            'charges'=>""
         ]);
         
-        return back();
+        return back()->with('success','Visa Revoke Successfully!');
     }
 
 
@@ -139,19 +111,17 @@ class AgentController extends Controller
     {
         Ticket::where('id',$request->id)->update([
               'status'=>"Cancel",
-              'total_payable'=>""
         ]);
         
-        return back();
+        return back()->with('success','Ticket Cancel Successfully');
     }
     public function revoke_ticket(Request $request)
     {
         Ticket::where('id',$request->id)->update([
             'status'=>"Submitted",
-            'total_payable'=>""
         ]);
         
-        return back();
+        return back()->with('success','Ticket revoke!');
     }
 
 }
