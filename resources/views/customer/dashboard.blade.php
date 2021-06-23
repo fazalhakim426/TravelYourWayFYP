@@ -200,15 +200,17 @@
                                             </a> --}}
 
                                             <div class='display: table'>
-                                                <a href="visas/{{ $visa->id }}"
-                                                    class="bg-gray-600 cursor-pointer rounded p-1 mx-1 text-white">
-                                                    <i class="fas fa-expand"></i></a>
-
-                                                    @if(!$visa->payment!=null)
+                                           
                                                 <a href="view-visa/{{ $visa->id }}"
                                                     class="bg-gray-600 cursor-pointer rounded p-1 mx-1 text-white">
                                                     <i class="fas fa-eye"></i></a>
-                                                                @endif
+                                                        
+                                                    @if($visa->status=='Submitted'||$visa->status=='Incomplete')
+                                                    <a href="visas/{{ $visa->id }}"
+                                               class="bg-gray-600 cursor-pointer rounded p-1 mx-1 text-white">
+                                               <i class="fas fa-edit"></i></a>
+
+                                               @endif      
                                             </div>
 
 
@@ -322,17 +324,17 @@
                                         <td class="border px-4 py-2">
                                             {{-- <a  href="tickets/{{$ticket->id}}"   class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-white">
                                        <i class="fas fa-eye"></i></a> --}}
-
-                                              @if($ticket->total_payable&&$ticket->payment!=null)
-                                            <a href="tickets/{{ $ticket->id }}"
-                                                class="bg-gray-600 cursor-pointer rounded p-1 mx-1 text-white">
-                                                <i class="fas fa-expand"></i></a>
-                                                @endif
+{{-- {{dd($ticket->status)}} --}}
                                                   
                                             <a href="view-ticket/{{ $ticket->id }}"
                                                 class="bg-gray-600 cursor-pointer rounded p-1 mx-1 text-white">
                                                 <i class="fas fa-eye"></i></a>
 
+                                              @if($ticket->status=='Submitted'||$ticket->status=='Incomplete')
+                                            <a href="tickets/{{ $ticket->id }}"
+                                                class="bg-gray-600 cursor-pointer rounded p-1 mx-1 text-white">
+                                                <i class="fas fa-edit"></i></a>
+                                                @endif
 
 
 

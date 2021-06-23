@@ -3,7 +3,7 @@
     <footer>
         <div class="footer-upper">
             <div class="container">
-                <div class="newsletter text-center">
+                {{-- <div class="newsletter text-center">
                     <div class="section-title section-title-white text-center">
                         <h2>News Subscribe</h2>
                         <div class="section-icon section-icon-white">
@@ -17,7 +17,7 @@
                             <a href="#"><span class="search_btn"><i class="fa fa-paper-plane" aria-hidden="true"></i>Subscribe Now</span></a>
                         </div>
                     </form>
-                </div>
+                </div> --}}
                 <div class="footer-links">
                     <div class="row">
                         <div class="col-lg-3">
@@ -48,12 +48,12 @@
                             <div class="footer-links-list footer-margin">
                                 <h3>Browse </h3>
                                 <ul>
-                                    <li><a href="#">Flight Booking <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                                    <li><a href="#">Hotel Booking <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                                    <li><a href="#">Visit Visa Booking <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                                    <li><a href="#">Immigration Visa  Booking <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                                    <li><a href="#">Umrah  Booking <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
-                                    <li><a href="#">Hajj Booking <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                                    <li><a href="customer/tickets">Ticket <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                                    <li><a href="customer/hotels">Hotel Booking <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                                    <li><a href="customer/visas_apply/Visit">Visit Visa Booking <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                                    <li><a href="customer/visa_apply/Immigration">Immigration Visa  Booking <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                                    <li><a href="customer/visas_apply/Ummrah">Umrah  Booking <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
+                                    <li><a href="customer/visas_apply/Hajj">Hajj Booking <i class="fa fa-angle-right" aria-hidden="true"></i></a></li>
                                 </ul>
                             </div>
                         </div>

@@ -19,19 +19,20 @@
         <!--Font Awesome-->
         <link href="{{ asset('resources/css/font-awesome.min.css')}}" rel="stylesheet" >
       
+      
 
         <title>{{ config('app.name', 'Travel Your Way') }}</title>
         {{-- @livewireStyles --}}
         <!-- Styles -->
-
+        
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">        
         <script src="{{ asset('js/app.js') }}" defer></script>
          <!-- Preloader -->
 
          
-    <div id="preloader">
+    {{-- <div id="preloader">
         <div id="status"></div>
-    </div>
+    </div> --}}
 
 
     <!-- Preloader Ends -->
@@ -59,8 +60,89 @@
     <script src="{{asset('resources/js/main-1.js')}}"></script>    
     <script src="{{asset('resources/js/preloader.js')}}"></script>
     <script src="{{asset('resources/js/custom-swiper2.js')}}"></script>
-    <script src="{{asset('resources/js/custom-countdown.js')}}"></script>
+    {{-- <script src="{{asset('resources/js/custom-countdown.js')}}"></script> --}}
+    @livewireStyles
+    <script>
+$(document).ready(function () {
+            $('#country-dd').on('change', function () {
+                var idCountry = this.value;
+                $("#state-dd").html('');
+                $.ajax({
+                    url: "{{url('api/fetch-states')}}",
+                    type: "POST",
+                    data: {
+                        country_id: idCountry,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataTyppe: 'json',
+                    success: function (result) {
+                        console.log(result);
+                        $('#state-dd').html('<option value="">Select State</option>');
+                        $.each(result.states, function (key, value) {
+                            $("#state-dd").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                        $('#city-dd').html('<option value="">Select City</option>');
+                    }
+                });
+            });
 
-    
+
+            $('#state-dd').on('change', function () {
+                var idState = this.value;
+                $("#city-dd").html('');
+                $.ajax({
+                    url: "{{url('api/fetch-cities')}}",
+                    type: "POST",
+                    data: {
+                        state_id: idState,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (res) {
+                        
+                        console.log(res);
+                        $('#city-dd').html('<option value="">Select City</option>');
+                        $.each(res.cities, function (key, value) {
+                            $("#city-dd").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+
+
+
+
+            
+            $('#city-dd').on('change', function () {
+                var idHotel= this.value;
+                $("#hotel-dd").html('');
+                $.ajax({
+                    url: "{{url('api/fetch-hotels')}}",
+                    type: "POST",
+                    data: {
+                        city_id: idHotel,
+                        _token: '{{csrf_token()}}'
+                    },
+                    dataType: 'json',
+                    success: function (res) {
+                        
+                        // console.log(res);
+                        $('#hotel-dd').html('<option value="">Select Hotel</option>');
+                        $.each(res.hotels, function (key, value) {
+                            $("#hotel-dd").append('<option value="' + value
+                                .id + '">' + value.name + '</option>');
+                        });
+                    }
+                });
+            });
+
+
+
+        });
+
+    </script>
+  @livewireScripts
     </body>
 </html>

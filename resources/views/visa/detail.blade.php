@@ -16,10 +16,11 @@
         </div>
       </div>
 <div class='float-center'>
-
+    @if($visa->documents)  
 <a href="/download-visa-document/{{ encrypt($visa->id) }}" 
         class="bg-indigo-600  float-right cursor-pointer rounded p-1 md:w-1/5 mx-1 text-white">
         <i class="fas fa-download"></i> Download {{$visa->type}}.</a>
+        @endif
  
 </div>
          @endcan

@@ -37,7 +37,7 @@
     </section>
     <!-- Banner Ends -->
 
-
+{{-- 
     <!-- Search Box -->
     <div class="search-box clearfix">
         <div class="container">
@@ -119,12 +119,13 @@
             </div>
         </div>
     </div>
-    <!-- Search Box Ends -->
+    <!-- Search Box Ends --> --}}
 
     <!-- Popular Packages --> 
     <section class="popular-packages">
         <div class="container">
             <div class="section-title text-center">
+                <br>
                 <h2>Our Services</h2>
                 <div class="section-icon">
                     <i class="flaticon-diamond"></i>
@@ -135,7 +136,7 @@
                 <div class="col-lg-4">
                     <div class="package-item">
                         <div class="package-image">
-                            <img src="{{asset('resources/images/alarab.jpg')}}" alt="Image" width="400" height="300">
+                            <img src="{{asset('resources/images/alarab.jpg')}}" alt="Image" style=" width: 200px; height: 300px;object-fit:cover;">
                             <div class="package-price">
                                 <div class="deal-rating">
                                     <span class="fa fa-star checked"></span>
@@ -160,7 +161,7 @@
                 <div class="col-lg-4">
                     <div class="package-item">
                         <div class="package-image">
-                            <img src="{{asset('resources/images/slider/slider10.jpg')}}" alt="Image" width="400" height="300">
+                            <img src="{{asset('resources/images/slider/slider10.jpg')}}" alt="Image" style=" width: 200px; height: 300px;object-fit:cover;">
                             <div class="package-price">
                                 <div class="deal-rating">
                                     <span class="fa fa-star checked"></span>
@@ -185,7 +186,7 @@
                 <div class="col-lg-4">
                     <div class="package-item">
                         <div class="package-image">
-                            <img src="{{asset('resources/images/package3.jpg')}}" alt="Image" width="400" height="300">
+                            <img src="{{asset('resources/images/package3.jpg')}}" alt="Image" style=" width: 200px; height: 300px;object-fit:cover;">
                             <div class="package-price">
                                 <div class="deal-rating">
                                     <span class="fa fa-star checked"></span>
@@ -210,7 +211,7 @@
                 <div class="col-lg-4">
                     <div class="package-item">
                         <div class="package-image">
-                            <img src="{{asset('resources/images/hajj.jpg')}}" alt="Image" width="400" height="300">
+                            <img src="{{asset('resources/images/hajj.jpg')}}" alt="Image" style=" width: 200px; height: 300px;object-fit:cover;">
                             <div class="package-price">
                                 <div class="deal-rating">
                                     <span class="fa fa-star checked"></span>
@@ -219,7 +220,7 @@
                                     <span class="fa fa-star-o"></span>
                                     <span class="fa fa-star-o"></span>
                                 </div>
-                                <p><span>$659</span> / Average </p>
+                                <p><span>$659</span> / Average  </p>
                             </div>
                         </div>
                         <div class="package-content">
@@ -235,7 +236,7 @@
                 <div class="col-lg-4">
                     <div class="package-item">
                         <div class="package-image">
-                            <img src="{{asset('resources/images/umrah.jpg')}}" alt="Image" width="400" height="300">
+                            <img src="{{asset('resources/images/umrah.jpg')}}" alt="Image" style=" width: 200px; height: 300px;object-fit:cover;">
                             <div class="package-price">
                                 <div class="deal-rating">
                                     <span class="fa fa-star checked"></span>
@@ -268,200 +269,52 @@
     <section class="deals">
         <div class="container">
             <div class="section-title section-title-white text-center">
-                <h2>Last Minute Deals</h2>
+                <h2>Rooms</h2>
                 <div class="section-icon">
                     <i class="flaticon-diamond"></i>
                 </div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Duis aute irure dolor in reprehenderit..</p>
+                <p>.Our research into hotel guests' 
+                    online behaviour shows
+                     that alarmingly often they have 
+                     problems deciding which room to choose.</p>
             </div>
             <div class="deals-outer">
                 <div class="row deals-slider slider-button">
-                    {{-- @foreach ($rooms as $item)
-                        
-                    @endforeach --}}
+                    @foreach ($rooms as $room)
+                        {{-- {{dd($room)}} --}}
+                  
                     <div class="col-md-3">
                         <div class="deals-item">
                             <div class="deals-item-outer">
                                 <div class="deals-image">
-                                    <img src="{{asset('resources/images/deal1.jpg')}}" alt="Image">
-                                    <span class="deal-price">$8600</span>
+                                    <img src="{{asset('storage/images/'.$room->images[0]->image)}}" alt="Image">
+                                    <span class="deal-price">{{$room->charges_per_day}}</span>
                                 </div>
                                 <div class="deal-content">
                                     <div class="deal-rating">
-                                        <span class="fa fa-star checked"></span>
+                                        {{-- <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star checked"></span>
                                         <span class="fa fa-star-o"></span>
-                                        <span class="fa fa-star-o"></span>
+                                        <span class="fa fa-star-o"></span> --}}
+                                        {{$room->title}} Seater
+
                                     </div>
-                                    <h3>Paris and Bordeaus</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
+                                    <h3>{{$room->hotel->name}}</h3>
+                                    <p>{{$room->hotel->description}}</p>
                                     <a href="#" class="btn-blue btn-red">More Details</a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3">
-                        <div class="deals-item">
-                            <div class="deals-item-outer">
-                                <div class="deals-image">
-                                    <img src="{{asset('resources/images/deal2.jpg')}}" alt="Image">
-                                    <span class="deal-price">$8600</span>
-                                </div>
-                                <div class="deal-content">
-                                    <div class="deal-rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star-o"></span>
-                                        <span class="fa fa-star-o"></span>
-                                    </div>
-                                    <h3>Paris and Bordeaus</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-                                    <a href="#" class="btn-blue btn-red">More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="deals-item">
-                            <div class="deals-item-outer">
-                                <div class="deals-image">
-                                    <img src="{{asset('resources/images/deal3.jpg')}}" alt="Image">
-                                    <span class="deal-price">$8600</span>
-                                </div>
-                                <div class="deal-content">
-                                    <div class="deal-rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star-o"></span>
-                                        <span class="fa fa-star-o"></span>
-                                    </div>
-                                    <h3>Paris and Bordeaus</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-                                    <a href="#" class="btn-blue btn-red">More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="deals-item">
-                            <div class="deals-item-outer">
-                                <div class="deals-image">
-                                    <img src="{{asset('resources/images/deal4.jpg')}}" alt="Image">
-                                    <span class="deal-price">$8600</span>
-                                </div>
-                                <div class="deal-content">
-                                    <div class="deal-rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star-o"></span>
-                                        <span class="fa fa-star-o"></span>
-                                    </div>
-                                    <h3>Paris and Bordeaus</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-                                    <a href="#" class="btn-blue btn-red">More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="deals-item">
-                            <div class="deals-item-outer">
-                                <div class="deals-image">
-                                    <img src="{{asset('resources/images/deal2.jpg')}}" alt="Image">
-                                    <span class="deal-price">$8600</span>
-                                </div>
-                                <div class="deal-content">
-                                    <div class="deal-rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star-o"></span>
-                                        <span class="fa fa-star-o"></span>
-                                    </div>
-                                    <h3>Paris and Bordeaus</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-                                    <a href="#" class="btn-blue btn-red">More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="deals-item">
-                            <div class="deals-item-outer">
-                                <div class="deals-image">
-                                    <img src="{{asset('resources/images/deal1.jpg')}}" alt="Image">
-                                    <span class="deal-price">$8600</span>
-                                </div>
-                                <div class="deal-content">
-                                    <div class="deal-rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star-o"></span>
-                                        <span class="fa fa-star-o"></span>
-                                    </div>
-                                    <h3>Paris and Bordeaus</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-                                    <a href="#" class="btn-blue btn-red">More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="deals-item">
-                            <div class="deals-item-outer">
-                                <div class="deals-image">
-                                    <img src="{{asset('resources/images/deal4.jpg')}}" alt="Image">
-                                    <span class="deal-price">$8600</span>
-                                </div>
-                                <div class="deal-content">
-                                    <div class="deal-rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star-o"></span>
-                                        <span class="fa fa-star-o"></span>
-                                    </div>
-                                    <h3>Paris and Bordeaus</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-                                    <a href="#" class="btn-blue btn-red">More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="deals-item">
-                            <div class="deals-item-outer">
-                                <div class="deals-image">
-                                    <img src="{{asset('resources/images/deal3.jpg')}}" alt="Image">
-                                    <span class="deal-price">$8600</span>
-                                </div>
-                                <div class="deal-content">
-                                    <div class="deal-rating">
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star checked"></span>
-                                        <span class="fa fa-star-o"></span>
-                                        <span class="fa fa-star-o"></span>
-                                    </div>
-                                    <h3>Paris and Bordeaus</h3>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
-                                    <a href="#" class="btn-blue btn-red">More Details</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>
         <div class="section-overlay"></div>
     </section>
     <!-- Deals Ends -->
- 
+{{--  
 
 
     <!-- Top Destinations -->
@@ -519,10 +372,10 @@
             </div>
         </div>
     </section>
-    <!-- Top Destination Ends -->
+    <!-- Top Destination Ends --> --}}
 
     <!-- Trip Ad -->
-    <section class="trip-ad">
+    {{-- <section class="trip-ad">
         <div class="container">
             <div class="row">
                 <div class="col-lg-6">
@@ -534,7 +387,7 @@
                         <p>Apply For VIsit Visa And Explore the word right now </p>
                         <p>we are offering greate deails for the people who like to travel from one place to other</p>
                         <div class="trip-ad-btn">
-                            <a href="#" class="btn-blue btn-red">BOOK NOW</a>
+                            <a href="customer/visas_apply/Visit" class="btn-blue btn-red">BOOK NOW</a>
                         </div>
                     </div>
                 </div>
@@ -547,7 +400,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     <!-- Trip Ad Ends -->
 
     <!-- Deals On Sale -->
@@ -599,11 +452,11 @@
                     @endif
                     <!-- Text Layer -->
                     <div class="testimonial_094_slide">
-                        <p>Lorem ipsum dolor sit amet consectetuer adipiscing
-                             elit am nibh unc varius facilisis eros ed erat
-                              in in velit quis arcu ornare laoreet urabitur
-                               adipiscing luctus massa nteger ut purus ac
-                                augue commodo commodo unc nec mi eu justo tempor consectetuer tiam.</p>
+                        <p>
+                            The people who work in travel agencies are called 
+                            travel agents. These travel agents work for sending 
+                            people authentically from one country to the other.
+                        </p>
                         <div class="deal-rating">
                             <span class="fa fa-star checked"></span>
                             <span class="fa fa-star checked"></span>
@@ -626,7 +479,7 @@
     <!-- Testimonials -->
 
     <!-- Countdown -->
-    <section class="countdown-section">
+    {{-- <section class="countdown-section">
         <div class="container">
             <div class="countdown-title">
                 <h2>Special Tour in May, Discover <span>Thailand</span> for 50 Customers with <span>Discount 30%</span></h2>
@@ -637,7 +490,7 @@
             </div><!-- /.countdown-wrapper -->
         </div>
         <div class="testimonial-overlay"></div>
-    </section>
+    </section> --}}
     <!-- Countdown Ends -->
 
 

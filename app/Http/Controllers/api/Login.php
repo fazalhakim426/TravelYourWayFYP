@@ -93,18 +93,27 @@ class Login extends Controller
         $user =User::find($request->user_id);
        
 
-        if($request->profile_image){
+        if ($request->hasFile('profile_image')) {
+            
+          $path = $request->file('profile_image')->store('profile_image');
+          // $image->url = $path;
 
+          User::where('email',$user->email)->update([
+            'profile_image'=>$path,
+            ]);
 
-            $imageName =time().'.'.$request->profile_image->extension();  
+         }
+
+        // if($request->profile_image){
+        //     $imageName =time().'.'.$request->profile_image->extension();  
      
-        $request->profile_image->move(public_path('profile_images'), $imageName);
+        // $request->profile_image->move(public_path('profile_images'), $imageName);
        
-        User::where('email',$user->email)->update([
-        'profile_image'=>$imageName,
-        ]);
+        // User::where('email',$user->email)->update([
+        // 'profile_image'=>$imageName,
+        // ]);
       
-        }
+        // }
         
      
         
