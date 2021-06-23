@@ -1,24 +1,25 @@
 <x-app-layout>  
+
 <!-- This example requires Tailwind CSS v2.0+ -->
 <section class="swiper-banner">
     <div class="slider">
         <div class="swiper-container">
             <div class="swiper-wrapper">
-                <div class="swiper-slide" style="background-image:url({{asset('public/resources/hotel/slider1.jpg')}})">
+                <div class="swiper-slide" style="background-image:url({{asset('resources/images/hotel/slider1.jpg')}})">
                     <div class="swiper-content" data-animation="animated fadeInDown">
                         <h2>Welcome To Yatra Hotel</h2>
                         <h1>Dream your Wonderful Hotel</h1>
                         <a href="tour-detail.html" class="btn-red btn-red">Explore Room</a>
                     </div>
                 </div>
-                <div class="swiper-slide" style="background-image:url( {{asset('public/resources/hotel/slider2.jpg')}})">
+                <div class="swiper-slide" style="background-image:url( {{asset('resources/images/hotel/slider2.jpg')}})">
                     <div class="swiper-content" data-animation="animated fadeInRight">
                         <h2>exciting schemes just a click away</h2>
                         <h1>Quality Holidays With Us</h1>
                         <a href="tour-detail.html" class="btn-red btn-red">View More</a>
                     </div>
                 </div>
-                <div class="swiper-slide" style="background-image:url({{asset('public/resources/hotel/slider3.jpg')}})">
+                <div class="swiper-slide" style="background-image:url({{asset('resources/images/hotel/slider3.jpg')}})">
                     <div class="swiper-content" data-animation="animated fadeInUp">
                         <h2>Cost friendly packages on your way</h2>
                         <h1>Everything is here right For u</h1>
@@ -295,6 +296,8 @@
 <!-- Blog Ends -->
 
 
+@push('script')
 
-<script src="{{URL::asset('admin-master/main.js')}}"></script>
+@endpush
+{{-- <script src="{{URL::asset('admin-master/main.js')}}"></script> --}}
 </x-app-layout>

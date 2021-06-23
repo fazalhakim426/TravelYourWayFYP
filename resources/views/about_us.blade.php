@@ -87,7 +87,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="team-item">
                         <div class="team-image">
-                            <img src="images/testemonial1.jpg" alt="Image">
+                            <img src="{{asset('resources/images/testemonial1.jpg')}}" alt="Image">
                         </div>
                         <div class="team-content">
                             <h3>Peter Parker</h3>
@@ -98,7 +98,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="team-item">
                         <div class="team-image">
-                            <img src="images/testemonial2.jpg" alt="Image">
+                            <img src="{{asset('resources/images/testemonial2.jpg')}}" alt="Image">
                         </div>
                         <div class="team-content">
                             <h3>Peter Parker</h3>
@@ -109,7 +109,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="team-item">
                         <div class="team-image">
-                            <img src="images/testemonial3.jpg" alt="Image">
+                            <img src="{{asset('resources/images/testemonial3.jpg')}}" alt="Image">
                         </div>
                         <div class="team-content">
                             <h3>Peter Parker</h3>
@@ -120,7 +120,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="team-item">
                         <div class="team-image">
-                            <img src="images/testemonial1.jpg" alt="Image">
+                            <img src="{{asset('resources/images/testemonial1.jpg')}}" alt="Image">
                         </div>
                         <div class="team-content">
                             <h3>Peter Parker</h3>
@@ -148,19 +148,19 @@
             <!-- Indicators -->
             <ol class="carousel-indicators">
                 <li data-target="#testimonial_094" data-slide-to="0" class="active">
-                    <img src="images/testemonial1.jpg" alt="testimonial_094_01"> <!-- 1st Image -->
+                    <img src="{{asset('resources/images/testemonial1.jpg')}}" alt="testimonial_094_01"> <!-- 1st Image -->
                 </li>
                 <li data-target="#testimonial_094" data-slide-to="1">
-                    <img src="images/testemonial2.jpg" alt="testimonial_094_02"> <!-- 2nd Image -->
+                    <img src="{{asset('resources/images/testemonial2.jpg')}}" alt="testimonial_094_02"> <!-- 2nd Image -->
                 </li>
                 <li data-target="#testimonial_094" data-slide-to="2">
-                    <img src="images/testemonial3.jpg" alt="testimonial_094_03"> <!-- 3rd Image -->
+                    <img src="{{asset('resources/images/testemonial3.jpg')}}" alt="testimonial_094_03"> <!-- 3rd Image -->
                 </li>
                 <li data-target="#testimonial_094" data-slide-to="3">
-                    <img src="images/testemonial4.jpg" alt="testimonial_094_04"> <!-- 4th Image -->
+                    <img src="{{asset('resources/images/testemonial4.jpg')}}" alt="testimonial_094_04"> <!-- 4th Image -->
                 </li>
                 <li data-target="#testimonial_094" data-slide-to="4">
-                    <img src="images/testemonial5.jpg" alt="testimonial_094_05"> <!-- 5th Image -->
+                    <img src="{{asset('resources/images/testemonial5.jpg')}}" alt="testimonial_094_05"> <!-- 5th Image -->
                 </li>
             </ol>
 

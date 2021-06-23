@@ -56,6 +56,7 @@ class VisaAPIController extends Controller
 
     $request->super_agent_id=$super_agent_id;
     $visa=new Visa();
+    
     if($request->cnic_back_image!=null){
       $cnic_back_image =time().'.'.$request->cnic_back_image->extension();  
 

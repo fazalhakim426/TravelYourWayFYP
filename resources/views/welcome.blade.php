@@ -10,7 +10,7 @@
                         <div class="swiper-content" data-animation="animated fadeInDown">
                             <h2>Book a ticket , visa and many more</h2>
                             <h1>we are here to help you 24/7</h1>
-                            <a href="" class="btn-blue btn-red">Book Air Ticket Now</a>
+                            <a href="customer/tickets" class="btn-blue btn-red">Book Air Ticket Now</a>
                         </div>
                     </div>
                     <div class="swiper-slide" style="background-image:url({{asset('/resources/images/slider/slider8.jpg')}})">
@@ -152,7 +152,7 @@
                             <p class="package-days"><i class="flaticon-maps-and-flags"></i>Dubai</p>
                             <p>takes hotel design to a new level of modern luxury, and has also redefined the meaning of exceptional hospitality</p>
                             <div class="package-info">
-                                <a href="#" class="btn-blue btn-red">BOOK NOW</a>
+                                <a href="/customer/hotels" class="btn-blue btn-red">BOOK NOW</a>
                             </div>
                         </div>
                     </div>
@@ -177,7 +177,7 @@
                             <p class="package-days"><i class="flaticon-time"></i></p>
                             <p> Search One and Done! Book the Best Flights for Your Next Destination. we will find best flight for you </p>
                             <div class="package-info">
-                                <a href="#" class="btn-blue btn-red">BOOK NOW</a>
+                                <a href="/customer/tickets" class="btn-blue btn-red">BOOK NOW</a>
                             </div>
                         </div>
                     </div>
@@ -202,7 +202,7 @@
                             <p class="package-days"><i class="flaticon-maps-and-flags"></i> Dubai</p>
                             <p>Visitor visas are nonimmigrant visas for persons who want to enter the Dubai temporarily</p>
                             <div class="package-info">
-                                <a href="#" class="btn-blue btn-red">BOOK NOW</a>
+                                <a href="/customer/visas" class="btn-blue btn-red">BOOK NOW</a>
                             </div>
                         </div>
                     </div>
@@ -227,7 +227,7 @@
                             <p class="package-days"><i class="flaticon-maps-and-flags"></i>saudi arabia</p>
                             <p>Hajj, annual pilgrimage to Mecca that is mandatory for all Muslims to make at least once in their lives</p>
                             <div class="package-info">
-                                <a href="#" class="btn-blue btn-red">BOOK NOW</a>
+                                <a href="/customer/visas_apply/Hajj" class="btn-blue btn-red">BOOK NOW</a>
                             </div>
                         </div>
                     </div>
@@ -252,7 +252,7 @@
                             <p class="package-days"><i class="flaticon-maps-and-flags"></i>saudi arabia</p>
                             <p>SAUDIA guests holding Umrah visas and planning to travel to Saudi Arabia to perform Umrah, can book</p>
                             <div class="package-info">
-                                <a href="#" class="btn-blue btn-red">BOOK NOW</a>
+                                <a href="/customer/visas_apply/Ummrah" class="btn-blue btn-red">BOOK NOW</a>
                             </div>
                         </div>
                     </div>
@@ -276,6 +276,9 @@
             </div>
             <div class="deals-outer">
                 <div class="row deals-slider slider-button">
+                    {{-- @foreach ($rooms as $item)
+                        
+                    @endforeach --}}
                     <div class="col-md-3">
                         <div class="deals-item">
                             <div class="deals-item-outer">

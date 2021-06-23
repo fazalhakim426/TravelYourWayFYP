@@ -55,7 +55,7 @@
             <div class="col-lg-4">
                 <div class="contact-about footer-margin">
                     <div class="about-logo">
-                        <img src="images/logo.png" alt="Image">
+                        <img src="{{asset('/resources/images/logo.png')}}" alt="Image">
                     </div>
                     <h4>Travel With Us</h4>
                     <p>We Are offering best deail on all type of booking be with us </p>
