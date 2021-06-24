@@ -17,9 +17,9 @@ class CustomerController extends Controller
         $customer=Auth::user()->userable;
 
 
-            $visas=Auth::user()->userable->visas()->paginate(5);
+            $visas=Auth::user()->userable->visas()->orderBy('id', 'desc')->paginate(4);
             // dd($visas);
-            $data['tickets']=$customer->ticket;
+            $data['tickets']=$customer->ticket()->orderBy('id', 'desc')->paginate(4);
             // dd($data['tickets']);
             $data['count']=$customer->count_status_plus();
             return view('customer.dashboard',$data)->with('visas',$visas);
@@ -107,7 +107,7 @@ class CustomerController extends Controller
         $customer=Auth::user()->userable;
 
 
-            $visas=Auth::user()->userable->visas()->paginate(5);
+            // $visas=Auth::user()->userable->visas()->paginate(5);
             // dd($visas);
             $data['tickets']=$customer->ticket;
             // dd($data['tickets']);

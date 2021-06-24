@@ -15,7 +15,8 @@ class TicketResource extends JsonResource
     public function toArray($request)
     {
         return [
-        'customer_id'=>$this->customer_id,
+          'id'=>$this->id,
+          'customer_id'=>$this->customer_id,
         'agent_id'=>$this->agent_id,
         'booking_source'=>$this->booking_source,
         'journey_type'=>$this->journey_type,  //signle round multi
