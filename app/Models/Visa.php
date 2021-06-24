@@ -9,7 +9,6 @@ use Laravel\Passport\HasApiTokens;
 class Visa extends Model
 {
     use HasApiTokens,HasFactory;
-    public $timestamps = false;
     protected $fillable = [
         'id',
         'customer_id',

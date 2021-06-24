@@ -50,8 +50,8 @@
     <!-- BreadCrumb Ends -->
 
 
-    <section class="contact">
-        <div class="container " style='background-color:red'>
+    <section  style='background-color:#D3D3D3' >
+        <div class="container " >
             <div class="row">
                 <div class="col-lg-12">
                     <div id="contact-form" class="contact-form">
@@ -192,29 +192,34 @@
 
 
     <!-- Popular Packages -->
-    <section class="popular-packages">
+    <section class="popular-packages" style='background-color:#D3D3D3'>
         <div class="container">
-            <div class="section-title">
+            {{-- <div class="section-title">
                 <h2>Book <span>Room</span></h2>
                 <p> the safe and easy housing platform to find and book rooms, apartments, flats and residences..</p>
-            </div>
+            </div> --}}
             <div class="row room-slider slider-button">
             
                 @forelse ($rooms as $room)
                     <div class="col-lg-4">
-                        <div class="package-item">
+                        <div class="package-item align-items-center" >
                             <img src="{{ asset('storage/images/' . $room->images[0]->image) }}" alt="Image">
-                            <div class="package-content">
+                            <div class="package-content " style=" text-align: center;">
 
-
-                                <h5>Starting: <span>{{ $room->charges_per_day }}</span>
+                              @if($room->hotel!=null)
+                                    <h3>Hotel {{ $room->hotel->name }}</h3><br>
+                                 @endif  
+                                    <hr>
+                                <h5>Charges <span>{{ $room->charges_per_day }}</span>
                                     PKR/ PER Day </h5>
-                                <h3><a href="hotel-detail.html">{{ $room->title }}</a></h3>
+                                    
+                                    <h3>{{ $room->title }}</h3>
                                 <p>{{ $room->hotel->description }}.</p>
 
                                 <div class="package-info align-items-center">
                                     
-                                        @if (isset($room->reserved))
+                                    @if(isset($room->reserved))
+                                    @if(isset($room->reserved))
                                             <Button class="btn-blue btn-red align-items-center bg-danger">Not
                                                 Available</Button>
 
@@ -231,7 +236,8 @@
                                                 NOW</a>  
                                             
                                             </form>
-                                        @endif
+                                            @endif
+                                            @endif
 
                             </div>
 

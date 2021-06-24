@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Booking\BookingResource;
 use App\Http\Resources\Country\RoomResource;
 use App\Models\Booking;
 use App\Models\Customer;
@@ -21,6 +22,7 @@ class CustomerAPIController extends Controller
         $customer = Customer::find($id);
         return $customer->count_status_plus();
     }
+
 
     public function visa_payment(Request $request)
     {
@@ -156,13 +158,13 @@ class CustomerAPIController extends Controller
         // ]);
 
 
-        $room_ids=explode(",",$request->room_id);
+        // $room_ids=explode(",",$request->room_id);
 
 
-        foreach ($room_ids as $room_id) {
+        // foreach ($room_ids as $room_id) {
             $booking = Booking::create([
                 "customer_id" => $request->customer_id,
-                "room_id" => $room_id,
+                "room_id" => $request->room_id,
                 "from" => $request->from,
                 "to" => $request->to,
                 "hotel_id" => $request->hotel_id,
@@ -174,7 +176,7 @@ class CustomerAPIController extends Controller
                 'paymentable_type' => "App\Models\Booking",
             ]);
             // $booking->payment;
-        }
+        // }
 
         return response([
             'status' => true,
@@ -288,4 +290,10 @@ class CustomerAPIController extends Controller
         //   dd($hotel->rooms)
         return RoomResource::collection($all_rooms);
     }
+    public function getCustomerBooking($id)
+    {
+        $c=Customer::find($id);
+          $all_booking=$c->booking;
+        return BookingResource::collection($all_booking);
+    } 
 }

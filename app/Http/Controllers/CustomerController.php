@@ -17,20 +17,11 @@ class CustomerController extends Controller
         $customer=Auth::user()->userable;
 
 
-            $visas=Auth::user()->userable->visas;
-            // $tickets=DB::table('tickets')
-            // ->where('customer_id','=',Auth::user()
-            // ->userable_id)->get();
-
-            // $tickets=DB::table('tickets')
-            // ->where('customer_id','=',Auth::user()->userable_id)->get();
-           
-           
+            $visas=Auth::user()->userable->visas()->paginate(5);
+            // dd($visas);
             $data['tickets']=$customer->ticket;
             // dd($data['tickets']);
             $data['count']=$customer->count_status_plus();
-            $data['bookings']=$customer->booking;
-            // dd($data['bookings']);
             return view('customer.dashboard',$data)->with('visas',$visas);
     
     }
@@ -110,6 +101,21 @@ class CustomerController extends Controller
     {
         $data['countries']=Country::all();
         $data['hotels']=Hotel::with('rooms')->get();
+
+
+        
+        $customer=Auth::user()->userable;
+
+
+            $visas=Auth::user()->userable->visas()->paginate(5);
+            // dd($visas);
+            $data['tickets']=$customer->ticket;
+            // dd($data['tickets']);
+            $data['count']=$customer->count_status_plus();
+            $data['bookings']=$customer->booking;
+
+
+            
         return view('customer.hotel.listing',$data);
     }
     public function get_rooms($id)

@@ -27,6 +27,7 @@ class CountryAPIController extends Controller
     $state=State::where('country_id',$id)->get();
         return StateResource::collection($state);
     }
+    
     public function get_cities($id){
     
         return CityResource::collection(City::where('state_id',$id)->get());

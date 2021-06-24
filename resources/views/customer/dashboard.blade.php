@@ -114,11 +114,11 @@
                     <table class="table text-grey-darkest">
                         <thead class="bg-grey-dark text-white text-normal">
                             <tr>
+                                <th class="border w-1/5 px-4 py-2"> Create At </th>
                                 <th class="border w-1/5 px-4 py-2">Type</th>
-                                <th class="border w-1/5 px-4 py-2">country</th>
                                 <th class="border w-1/5 px-4 py-2">Payment</th>
                                 <th class="border w-1/5 px-4 py-2">Order Status</th>
-                                <th class="border w-1/5 px-4 py-2">Actions</th>
+                                <th class="border w-1/3 px-4 py-2">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -126,16 +126,23 @@
                             @foreach ($visas as $visa)
                                 @if ($visa->status != null)
                                     <tr>
+@if($visa->created_at)
+<td>
 
+    {{ $visa->created_at->diffForHumans() }} <br>
+</td>
+                                         
+   
+@else
+<td>  Last Version</td>
+  
+@endif
 
                                         <td class="border px-4 py-2 center">
                                            
                                             {{ $visa->type }}
                                         </td>
-                                        <td class="border">
-                                            {{ $visa->type == 'Hajj' || $visa->type == 'Ummrah' ? 'Saudi Arab' : $visa->visa_apply_country }}<br>
-
-                                        </td>
+           
 
                                         <td class="border px-4 py-2">{{ $visa->charges == null ? 'Pending' : '' }}
                                             @if($visa->status=='Cancel')
@@ -263,9 +270,9 @@
                     <table class="table text-grey-darkest">
                         <thead class="bg-grey-dark text-white text-normal">
                             <tr>
+                                <th class="border w-1/5 px-4 py-2">  Create At </th>
                                 <th class="border w-1/5 px-4 py-2">journey type</th>
-                                <th class="border w-1/5 px-4 py-2">Country</th>
-                                <th class="border w-1/5 px-4 py-2">Payment</th>
+                                 <th class="border w-1/5 px-4 py-2">Payment</th>
                                 <th class="border w-1/5 px-4 py-2">Order Status</th>
                                 <th class="border w-1/5 px-4 py-2">Actions</th>
                             </tr>
@@ -280,13 +287,15 @@
                                     <tr>
 
                                         <td class="border px-4 py-2">
+                                         {{ $ticket->created_at->diffForHumans() }} <br>
+                        
+                                        </td>
+
+                                        <td class="border px-4 py-2">
                                             {{ $ticket->journey_type }}
                                         </td>
 
-                                        <td class="border px-4 py-2 center">
-                                            {{ $ticket->ticket_apply_country }}
-
-                                        </td>
+                                      
 
                                         <td class="border px-4 py-2">
 
@@ -340,97 +349,6 @@
 
 
                                             {{-- </a> --}}
-                                        </td>
-
-
-                                    </tr>
-
-
-
-
-                                @endif
-                            @endforeach
-
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <!--/Grid Form-->
-
-        <!-- Card Sextion Starts Here -->
-        <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
-
-            <!-- card -->
-
-            <div class="rounded overflow-hidden shadow bg-white mx-2 w-full">
-                <div class="px-6 py-2 border-b border-light-grey">
-                    <div class="font-bold text-xl">Booked Room</div>
-                </div>
-                <div class="table-responsive">
-                    <table class="table text-grey-darkest">
-                        <thead class="bg-grey-dark text-white text-normal">
-                            <tr>
-                                <th class="border w-1/4 px-4 py-2">Hotel</th>
-                                <th class="border w-1/4 px-4 py-2">Addrees</th>
-                                <th class="border w-1/6 px-4 py-2">Room</th>
-                                <th class="border w-1/8 px-4 py-2">Members</th>
-                                <th class="border w-1/5 px-4 py-2">Duration</th>
-                                <th class="border w-1/5 px-4 py-2">Payment</th>
-                                <th class="border w-1/7 px-4 py-2">Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            @foreach ($bookings as $booking)
-                                @if ($booking->room != null)
-                                    <tr>
-
-                                        <td class="border px-4 py-2">
-                                            Name : {{ $booking->hotel->name }}<br>
-                                            Address: {{ $booking->hotel->address }}
-                                        </td>
-
-                                        <td class="border px-4 py-2 center">
-                                            Country: {{ $booking->hotel->country->name }}<br>
-                                            State: {{ $booking->hotel->state->name }} <br>
-                                            City :{{ $booking->hotel->city->name }}<br>
-                                            Address: {{ $booking->hotel->address }}
-                                        </td>
-                                        <td class="border px-4 py-2 center">
-
-                                            {{ $booking->room->title }}<br>
-                                            {{ $booking->room->charges_per_day }} pkr/day
-
-                                        </td>
-                                        <td class="border px-4 py-2 center">
-
-                                            {{ $booking->room->capacity }}
-                                        </td>
-                                        <td class="border">
-                                            From: {{ $booking->from }}<br>
-                                            To: {{ $booking->to }} <br>
-
-                                        </td>
-                                        <td class="border px-4 py-2">
-                                            @if ($booking->payment == null)
-                                                Pending
-                                            @else
-                                                Paid
-                                            @endif
-                                        </td>
-                                        <td class="border px-4 py-2">
-                                            <form method="POST" action="{{ route('booking.destroy') }}">
-                                                @method('DELETE')
-
-                                                <input type="hidden" name='id' value='{{ $booking->id }}'>
-                                                @csrf
-                                                <button type="submit" onclick="return confirm('Are you sure?')"
-                                                    class="bg-teal-300 cursor-pointer rounded p-1 mx-1 text-red-500">
-                                                    <i class="fas fa-trash"></i>
-                                            </form>
-                                            </a>
                                         </td>
 
 

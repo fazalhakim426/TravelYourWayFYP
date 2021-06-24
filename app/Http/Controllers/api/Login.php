@@ -13,6 +13,8 @@ use App\models\User;
 
 use Validator;
 use Illuminate\Support\Facades\Auth;
+use DateTime;
+use Illuminate\Support\Facades\Hash;
 class Login extends Controller
 {
     
@@ -90,19 +92,39 @@ class Login extends Controller
    
         $user =User::find($request->user_id);
        
+        if ($request->hasFile('profile_image')) {
+            
+          $path = $request->file('profile_image')->store('images');
 
-        
+          // storage_path()
 
-        if($request->profile_image){
-            $imageName =time().'.'.$request->profile_image->extension();  
-     
-        $request->profile_image->move(public_path('profile_images'), $imageName);
-       
+          // $image->url = $path;
+           
         User::where('email',$user->email)->update([
-        'profile_image'=>$imageName,
-        ]);
+          'profile_image'=>$path,
+          ]);
+        
+         }
+
+
+
+        // if($request->profile_image){
+
+        //   $validator = Validator::make($request->all(), [
+        //         // 'profile_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
+        // if ($validator->fails()) {
+        //   return response()->json([
+        //     'success' => false,
+        //     'message' => $validator->errors(),
+        //   ], 401);
+        // }
+
+        //     $imageName =time().'.'.$request->profile_image->extension();  
+     
+        // $request->profile_image->move(public_path('profile_images'), $imageName);
       
-        }
+        // }
         
      
         

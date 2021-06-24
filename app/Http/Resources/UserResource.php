@@ -21,6 +21,7 @@ class UserResource extends JsonResource
             'id'=>$this->id,
             'name'=>$this->user->name,
             'profile_image'=>asset('/profile_images/'.$this->user->profile_image),
+            'profile_image2'=>asset('/profile_images/'.$this->profile_image),
             'email'=>$this->user->email,
             'phone_number'=>$this->user->phone_number,
             'country'=>$this->user->country,

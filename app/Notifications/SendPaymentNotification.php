@@ -42,9 +42,9 @@ class SendPaymentNotification extends Notification
     {
         return (new MailMessage)
                     ->line('Please pay the charges.')
-                    ->action('Pay Now', url('/payment'))
+                    ->action('Pay Now', url('/dashboard'))
                     ->subject('TYW Payment Request')
-                    ->line('Thank you for using Travel YYour Way!');
+                    ->line('Thank you for using Travel Your Way!');
     }
 
     /**

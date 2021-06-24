@@ -10,8 +10,9 @@ class Hotel extends Model
         'country',
         'state_id',
         'country_id',
-        
+
         'hotel_name',
+        'name',
         'description',
         'address',
     ];

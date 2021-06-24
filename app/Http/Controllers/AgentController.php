@@ -18,10 +18,11 @@ class AgentController extends Controller
  
     public function index()
     {
-    $data['visas']=Visa::where('agent_id','=',Auth::user()->userable_id)->orderBy('status')->get(); 
-    $data['user'] =Auth::user();
-    $data['sub_active'] ='Dashboard';
-    return view('agent.dashboard',$data); 
+return redirect('agent/immigrations');
+    // $data['visas']=Visa::where('agent_id','=',Auth::user()->userable_id)->orderBy('status')->get(); 
+    // $data['user'] =Auth::user();
+    // $data['sub_active'] ='Dashboard';
+    // return view('agent.dashboard',$data); 
     }
 
     public function getImmigration()

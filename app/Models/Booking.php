@@ -5,9 +5,10 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Payment;
+use Laravel\Passport\HasApiTokens;
 class Booking extends Model
 {
-    use HasFactory;
+    use HasApiTokens,HasFactory;
     protected $fillable=[
         'from',
         'to',

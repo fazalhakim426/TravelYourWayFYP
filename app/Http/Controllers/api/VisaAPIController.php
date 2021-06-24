@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Http\Resources\VisaResource;
 use App\Models\Agent;
+use App\Models\User;
 use App\Models\Visa;
 
 class VisaAPIController extends Controller
@@ -69,39 +70,63 @@ class VisaAPIController extends Controller
 
   //  dd($request->cnic_front_image);
    if($request->cnic_front_image!=null){
-   
       $cnic_front_image =time().'.'.$request->cnic_front_image->extension();  
-
-      $request->cnic_front_image->move(public_path('/storage/visa_ticket/images/'), $cnic_front_image);
-     
-   
+      $request->cnic_front_image->move(public_path('/storage/visa_ticket/images/'), $cnic_front_image); 
       $visa->cnic_front_image=$cnic_front_image;
    }
 
 
 
 
-    
-   if($request->passport_back_image!=null){
-      $passport_back_image=time().'.'.$request->passport_back_image->extension();  
-
-      $request->passport_back_image->move(
-        public_path('/storage/visa_ticket/images/'),
-         $passport_back_image);
-
-      $visa->passport_back_image=$passport_back_image;
+   if ($request->hasFile('passport_back_image')) {
+    $path = $request->file('passport_back_image')->store('images');
+    $visa->passport_back_image=$path;
    }
+
+   if ($request->hasFile('passport_back_image')) {
+    $path = $request->file('passport_back_image')->store('images');
+    $visa->passport_back_image=$path;
+   }
+
+   if ($request->hasFile('passport_back_image')) {
+    $path = $request->file('passport_back_image')->store('images');
+    $visa->passport_back_image=$path;
+   }
+
+   if ($request->hasFile('passport_back_image')) {
+    $path = $request->file('passport_back_image')->store('images');
+    $visa->passport_back_image=$path;
+   }
+
+
+
+  //  if($request->passport_back_image!=null){
+  //     $passport_back_image=time().'.'.$request->passport_back_image->extension();  
+
+  //     $request->passport_back_image->move(
+  //       public_path('/storage/visa_ticket/images/'),
+  //        $passport_back_image);
+
+  //  }
 
    
    if($visa->passport_front_image==null||$request->passport_front_image){
-     
-      $passport_front_image =time().'.'.$request->passport_front_image->extension();  
 
-      $request->passport_front_image->move(
-        public_path('/storage/visa_ticket/images/'), 
-        $passport_front_image);
+    if ($request->hasFile('passport_front_image')) {
+      $path = $request->file('passport_front_image')->store('images');
+      $visa->passport_front_image=$path;
+     }
+
+      // $passport_front_image =time().'.'.$request->passport_front_image->extension();  
+
+      // $request->passport_front_image->move(
+      //   public_path('/storage/visa_ticket/images/'), 
+      //   $passport_front_image);
      
-        $visa->passport_front_image=$passport_front_image;
+      //   $visa->passport_front_image=$passport_front_image;
+
+
+
    }
 
 

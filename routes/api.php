@@ -89,6 +89,8 @@ Route::post('/room/booking/payment/byhand', [CustomerAPIController::class, 'book
 
 Route::post('/available_room', [CustomerAPIController::class, 'available_room']);
 
+Route::get('/booking/{id}', [CustomerAPIController::class, 'getCustomerBooking']);
+
 
 
 Route::post('/visa/payment', [CustomerAPIController::class, 'visa_payment']);
