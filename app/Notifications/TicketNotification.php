@@ -42,7 +42,7 @@ class TicketNotification extends Notification
     {
         return (new MailMessage)
                     ->line('You have new ticket apply .')
-                    ->action('Dashboard', url('/agent/dashboard'))
+                    ->action('Dashboard', url('/dashboard'))
                     ->line('Thank you for using our application!');
     }
 

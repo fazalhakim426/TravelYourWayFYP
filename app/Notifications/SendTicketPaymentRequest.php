@@ -49,7 +49,7 @@ class SendTicketPaymentRequest extends Notification
         ->line('Hi '.$this->user->first_name.' '.$this->user->last_name)
         ->line('Please submit the charges.')
                     ->line('ticket charges: '.$this->ticket->total_payable)
-                    ->action('Pay now', url('customer/tickets#ticket'));
+                    ->action('Pay now', url('customer/dashboard'));
 
                     
     }

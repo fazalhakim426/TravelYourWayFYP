@@ -298,8 +298,11 @@ class HotelController extends Controller
             // $hotel = Hotel::find($request->hotel_id);
             // $all_rooms = $hotel->rooms;
             $all_rooms=null;
-            if($request->city_id)
-            {
+            $hotel_name=$request->hotel_name;
+
+                if($request->city_id)
+             {
+
                 $city=City::find($request->city_id);
                 $all_rooms=$city->rooms;
             }
@@ -309,10 +312,21 @@ class HotelController extends Controller
 
             }
             else{
+                       if($hotel_name){
+                                $all_rooms=Hotel::
+                                 where('country_id',$request->country_id) 
+                                ->orWhere('name', 'LIKE', $request->hotel_name) 
+                                ->get();
+                       }
+                       else{
+                           
             $country=Country::find($request->country_id);
-            $all_rooms=$country->rooms()->where();
-            dd($all_rooms);
+            $all_rooms=$country->rooms();
+                       }
+                
+            // dd($all_rooms);
             }
+
          
 // dd($all_rooms);
             $from = $request->check_in;
