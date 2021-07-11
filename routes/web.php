@@ -33,7 +33,7 @@ Route::get('/', function () {
     $data['rooms']=Room::with('hotel')->limit(4)->get();
     // dd($data['room']);
  
-   $data['sub_active']="home";
+//    $data['sub_active']="home";
 
     return view('welcome',$data);
 });

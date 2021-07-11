@@ -20,15 +20,15 @@
               <table class="table text-grey-darkest">
                   <thead class="bg-gray-800  text-white ">
                       <tr>
-                          <th colspan='5' class='text-center text-indigo-400' >New {{ $sub_active }}s</th>
+                          <th colspan='6' class='text-center text-indigo-400' >New {{ $sub_active }}s</th>
                       </tr>
                       <tr>
                         <th class="border w-1/6 px-4 py-2">Time</th>
-                        <th class="border w-1/6 px-4 py-2">Name</th>
-                          <th class="border w-1/6 px-4 py-2">Country</th>
-                          <th class="border w-1/6 px-4 py-2">Passport No</th>
-                          <th class="border w-1/6 px-4 py-2">Request Payment</th>
-                          <th class="border w-1/6 px-4 py-2">Actions</th>
+                        <th class="border w-1/8 px-4 py-2">Name</th>
+                          <th class="border w-1/8 px-4 py-2">Country</th>
+                          <th class="border w-1/8 px-4 py-2">Passport No</th>
+                          <th class="border w-1/4 px-4 py-2">Request Payment</th>
+                          <th class="border w-1/4 px-4 py-2">Actions</th>
                       </tr>
                   </thead>
                   <tbody>

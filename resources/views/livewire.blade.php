@@ -1,6 +1,6 @@
 
 <x-app-layout>  
 
-{{-- <livewire:counter :model /> --}}
+<livewire:counter />
 
 </x-app-layout>
