@@ -58,39 +58,61 @@ class VisaAPIController extends Controller
     $request->super_agent_id=$super_agent_id;
     $visa=new Visa();
     
-    if($request->cnic_back_image!=null){
-      $cnic_back_image =time().'.'.$request->cnic_back_image->extension();  
+  //   if($request->cnic_back_image!=null){
+  //     $cnic_back_image =time().'.'.$request->cnic_back_image->extension();  
 
-      $request->cnic_back_image->move(
-        public_path('/storage/visa_ticket/images/'), $cnic_back_image
-      );
+  //     $request->cnic_back_image->move(
+  //       public_path('/storage/visa_ticket/images/'), $cnic_back_image
+  //     );
 
-      $visa->cnic_back_image=$cnic_back_image;
+  //     $visa->cnic_back_image=$cnic_back_image;
+  //  }
+
+  
+
+  //  if($request->cnic_front_image!=null){
+  //     $cnic_front_image =time().'.'.$request->cnic_front_image->extension();  
+
+  //     $request->cnic_front_image->move(
+  //       public_path('/storage/visa_ticket/images/'), $cnic_front_image
+  //     ); 
+  //     $visa->cnic_front_image=$cnic_front_image;
+  //  }
+   
+
+
+
+
+
+  if ($request->hasFile('passport_back_image')) {
+    $path = $request->file('passport_back_image')->store('images');
+    $visa->passport_back_image=$path;
+    // dd($path);
+   }
+  //  dd($visa->cnic_front_image);
+
+   if ($request->hasFile('passport_front_image')) {
+    $path = $request->file('passport_front_image')->store('images');
+    $visa->passport_front_image=$path;
    }
 
-  //  dd($request->cnic_front_image);
-   if($request->cnic_front_image!=null){
-      $cnic_front_image =time().'.'.$request->cnic_front_image->extension();  
-      $request->cnic_front_image->move(public_path('/storage/visa_ticket/images/'), $cnic_front_image); 
-      $visa->cnic_front_image=$cnic_front_image;
+   if ($request->hasFile('cnic_back_image')) {
+    $path = $request->file('cnic_back_image')->store('images');
+    $visa->cnic_back_image=$path;
+    // dd($path);
    }
+  //  dd($visa->cnic_front_image);
 
+   if ($request->hasFile('cnic_front_image')) {
+    $path = $request->file('cnic_front_image')->store('images');
+    $visa->cnic_front_image=$path;
+   }
 
 
 
    if ($request->hasFile('passport_back_image')) {
     $path = $request->file('passport_back_image')->store('images');
-    $visa->passport_back_image=$path;
-   }
-
-   if ($request->hasFile('passport_back_image')) {
-    $path = $request->file('passport_back_image')->store('images');
-    $visa->passport_back_image=$path;
-   }
-
-   if ($request->hasFile('passport_back_image')) {
-    $path = $request->file('passport_back_image')->store('images');
-    $visa->passport_back_image=$path;
+    $visa->passport__image=$path;
    }
 
    if ($request->hasFile('passport_back_image')) {
