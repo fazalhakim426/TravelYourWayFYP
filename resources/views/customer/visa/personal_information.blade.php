@@ -156,7 +156,8 @@
                                     @enderror
 
                                     {{-- @if ($visa->passport_front_image != null) --}}
-                                    <img src="{{ asset('/storage/visa_ticket' . $visa->passport_front_image) }}" alt="">
+                                    {{-- {{dd( $visa->passport_front_image)}} --}}
+                                    {{-- <img src="{{ asset('storage/' . $visa->passport_front_image) }}" alt=""> --}}
                                     {{-- @endif --}}
 
                                 </div>
@@ -182,7 +183,7 @@
 
 
                                         <img class="w-full md:w-1/2 px-3 pt-5"
-                                            src="{{ asset('storage/visa_ticket/images/' . $visa->passport_front_image) }}"
+                                            src="{{ url('storage/' . $visa->passport_front_image) }}"
                                             alt="image">
 
 
@@ -196,11 +197,15 @@
                                             for="grid-last-name">
                                             Passport back Image
                                         </label>
+{{-- {{dd($visa->passport_back_image)}} --}}
 
-
-                                        <img class="w-full md:w-1/2 px-3 pt-5"
-                                            src="{{ asset('storage/visa_ticket/images/' . $visa->passport_back_image) }}"
-                                            alt="image">
+                                        {{-- <img class="w-full md:w-1/2 px-3 pt-5"
+                                            src="{{ url('storage/' . $visa->passport_back_image) }}"
+                                            alt="image"> --}}
+                                            <img class="w-full md:w-1/2 px-3 pt-5"
+                                            src="{{ url('storage/' . $visa->passport_back_image) }}" alt="image">
+                    
+                    
 
 
                                     </div>
@@ -255,7 +260,7 @@
 
 
                                        <img class="w-full md:w-1/2 px-3 pt-5"
-                                           src="{{ asset('storage/visa_ticket/images/' . $visa->cnic_front_image) }}"
+                                           src="{{ asset('storage/' . $visa->cnic_front_image) }}"
                                            alt="image">
 
 
@@ -272,7 +277,7 @@
 
 
                                        <img class="w-full md:w-1/2 px-3 pt-5"
-                                           src="{{ asset('storage/visa_ticket/images/' . $visa->cnic_back_image) }}"
+                                           src="{{ asset('storage/' . $visa->cnic_back_image) }}"
                                            alt="image">
 
 

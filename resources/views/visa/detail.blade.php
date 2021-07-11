@@ -3,7 +3,7 @@
         <div class="my-4 block text-gray-700 text-center bg-gray-500 px-4 py-2">
             {{ $visa->type }} To
             {{ $visa->visa_apply_country }}
-
+{{-- {{dd($visa)}} --}}
         </div>
       </div>
 
@@ -218,7 +218,7 @@
 
 
                     <img class="w-full md:w-1/2 px-3 pt-5"
-                        src="{{ asset('storage/visa_ticket/images/' . $visa->cnic_back_image) }}" alt="image">
+                        src="{{ url('storage/' . $visa->cnic_back_image) }}" alt="image">
 
                 </td>
                 <td>
@@ -227,9 +227,8 @@
                         CNIC Front Image
                     </label>
 
-
                     <img class="w-full md:w-1/2 px-3 pt-5"
-                        src="{{ asset('storage/visa_ticket/images/' . $visa->cnic_front_image) }}" alt="image">
+                        src="{{ url('storage/' . $visa->cnic_front_image) }}" alt="image">
 
 
 
@@ -244,7 +243,7 @@
 
 
                     <img class="w-full md:w-1/2 px-3 pt-5"
-                        src="{{ asset('storage/visa_ticket/images/' . $visa->passport_back_image) }}" alt="image">
+                        src="{{ url('storage/' . $visa->passport_back_image) }}" alt="image">
 
                 </td>
                 <td>
@@ -255,7 +254,7 @@
 
 
                     <img class="w-full md:w-1/2 px-3 pt-5"
-                        src="{{ asset('storage/visa_ticket/images/' . $visa->passport_front_image) }}" alt="image">
+                        src="{{ url('storage/' . $visa->passport_front_image) }}" alt="image">
 
 
 
