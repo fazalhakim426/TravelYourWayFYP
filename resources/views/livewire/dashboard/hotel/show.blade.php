@@ -199,8 +199,9 @@
                 <p> the safe and easy housing platform to find and book rooms, apartments, flats and residences..</p>
             </div> --}}
             <div class="row room-slider slider-button">
-            
+            {{-- {{dd($rooms)}} --}}
                 @forelse ($rooms as $room)
+
                     <div class="col-lg-4">
                         <div class="package-item align-items-center" >
                             <img src="{{ asset('storage/images/' . $room->images[0]->image) }}" alt="Image">
@@ -218,7 +219,7 @@
 
                                 <div class="package-info align-items-center">
                                     
-                                    @if(isset($room->reserved))
+                                    {{-- @if(isset($room->reserved)) --}}
                                     @if(isset($room->reserved))
                                             <Button class="btn-blue btn-red align-items-center bg-danger">Not
                                                 Available</Button>
@@ -237,7 +238,7 @@
                                             
                                             </form>
                                             @endif
-                                            @endif
+                                            {{-- @endif --}}
 
                             </div>
 

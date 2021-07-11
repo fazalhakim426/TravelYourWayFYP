@@ -151,12 +151,13 @@
                         <div class="package-content">
                             <h3>Hotel Booking </h3>
                             <p class="package-days"><i class="flaticon-maps-and-flags"></i>Dubai</p>
-                            <p>takes hotel design to a new level of modern luxury, and has also redefined the meaning of exceptional hospitality</p>
+                            <p>takes hotel design to a new level of modern luxury.</p>
                             <div class="package-info">
                                 <a href="/customer/hotels" class="btn-blue btn-red">BOOK NOW</a>
                             </div>
                         </div>
-                    </div>
+                    </div
+                    >
                 </div>
                 <div class="col-lg-4">
                     <div class="package-item">
@@ -302,7 +303,7 @@
                                     </div>
                                     <h3>{{$room->hotel->name}}</h3>
                                     <p>{{$room->hotel->description}}</p>
-                                    <a href="#" class="btn-blue btn-red">More Details</a>
+                                    {{-- <a href="#" class="btn-blue btn-red">More Details</a> --}}
                                 </div>
                             </div>
                         </div>

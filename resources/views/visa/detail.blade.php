@@ -129,9 +129,9 @@
       
         </thead>
         <tbody>
-            <tr>
+            <tr class=''>
 
-                <td class="bg-gray-600  w-1/2 text-white text-normal">Agent Name</td>
+                <td class="  w-1/2  text-normal">Agent Name</td>
                 <td>{{ $visa->agent->user->name }}</td>
             </tr>
             <tr>

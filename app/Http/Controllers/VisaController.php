@@ -171,7 +171,7 @@ class VisaController extends Controller
          $visa=Visa::find($request->id);
         //  dd($visa);  
         // passport front image
-      
+      $flag=1;
 
 
          //
@@ -183,7 +183,7 @@ class VisaController extends Controller
                'cnic_back_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                
             ]);
-            $cnic_back_image =time().'.'.$request->cnic_back_image->extension();  
+            $cnic_back_image =time().$flag++.'.'.$request->cnic_back_image->extension();  
   
             $request->cnic_back_image->move(public_path('/storage/visa_ticket/images/'), $cnic_back_image);
            
@@ -201,7 +201,7 @@ class VisaController extends Controller
                'cnic_front_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                
             ]);
-            $image =time().'.'.$request->cnic_front_image->extension();  
+            $image =time().$flag++.'.'.$request->cnic_front_image->extension();  
      
             $request->cnic_front_image->move(public_path('/storage/visa_ticket/images/'), $image);
            
@@ -220,7 +220,7 @@ class VisaController extends Controller
                'passport_back_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                
             ]);
-            $image1=time().'.'.$request->passport_back_image->extension();  
+            $image1=time().$flag++.'.'.$request->passport_back_image->extension();  
     
             $request->passport_back_image->move(public_path('/storage/visa_ticket/images/'), $image1);
            
@@ -230,13 +230,13 @@ class VisaController extends Controller
             
          }
 
-         
+
          if($visa->passport_front_image==null||$request->passport_front_image){
             $request->validate([
                'passport_front_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
                
             ]);
-            $image4 =time().'.'.$request->passport_front_image->extension();  
+            $image4 =time().$flag++.'.'.$request->passport_front_image->extension();  
      
             $request->passport_front_image->move(public_path('/storage/visa_ticket/images/'), $image4);
            

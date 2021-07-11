@@ -19,8 +19,8 @@ use Illuminate\Support\Facades\Redirect;
 
 class HotelController extends Controller
 {
-
-
+    
+   
     public function index()
     {
         $data['sub_active'] = 'Hotel';
@@ -30,42 +30,43 @@ class HotelController extends Controller
         $data['hotels'] = Hotel::get();
         $data['countries'] = DB::table('countries')->get();
 
-
+      
 
         return view('super_agent.hotel.listing')->with($data);
     }
 
     public function hotelCredentials()
     {
-        $data['from'] = Carbon::now()->format('Y-m-d');
-
-        $data['to'] = Carbon::now()->addMonths(1)->format('Y-m-d');
+        $data['from']=Carbon::now()->format('Y-m-d');
+        
+        $data['to']=Carbon::now()->addMonths(1)->format('Y-m-d');
         // dd()
-        $data['countries'] = Country::all();
+        $data['countries']=Country::all();
         return $data;
     }
     public function hotel()
     {
         // $data=$this->hotelCredentials();
-        $data['from'] = Carbon::now()->format('Y-m-d');
-
-        $data['to'] = Carbon::now()->addMonths(1)->format('Y-m-d');
+        $data['from']=Carbon::now()->format('Y-m-d');
+        
+        $data['to']=Carbon::now()->addMonths(1)->format('Y-m-d');
         // dd()
-        $data['countries'] = Country::all();
-        $data['rooms'] = Room::with(['hotel', 'images'])->limit(6)->get();
-
-        return view('hotel', $data);
+        $data['countries']=Country::all();
+        $data['rooms']=Room::with(['hotel','images'])->limit(6)->get();
+        
+        return view('hotel',$data);
     }
 
     public function hotel_dashboard()
     {
-
+        
         $data['sub_active'] = 'Hotel';
 
-        $data['user'] = $user = Auth::user();
-        $agent = $user->userable;
-        $data['bookings'] = $agent->bookings;
+        $data['user']=$user = Auth::user();
+         $agent=$user->userable;
+        $data['bookings']= $agent->bookings;
         return view('super_agent.hotel.dashboard')->with($data);
+
     }
     /**
      * Show the form for creating a new resource.
@@ -212,170 +213,174 @@ class HotelController extends Controller
 
 
 
-    //     public function book_room(Request $request)
-    //     {
+//     public function book_room(Request $request)
+//     {
+
+     
+
+//         $request->validate([
+//             'check_in' => 'required|min:today',
+//             'check_out' => 'required|after:check_in',
+//             // 'hotel_id' => 'required',
+//         ]);
+
+//         if ($request->room_id) {
+
+
+//             $fdate = $request->from;
+//             $tdate = $request->to;
+//             $datetime1 = new DateTime($fdate);
+//             $datetime2 = new DateTime($tdate);
+//             $interval = $datetime1->diff($datetime2);
+//             $days = $interval->format('%a') + 1;
+//             $amount = 0;
+//             foreach ($request->room_id as $room_id) {
+//                 $room = Room::find($room_id);
+//                 // echo $room->charges_per_day*$days;
+//                 $amount += $room->charges_per_day * $days;
+//                 // echo '<br>';
+//             }
+
+
+//             $data['from'] = $request->from;
+//             $data['to'] = $request->to;
+
+
+//             $data['hotel_id']=$request->hotel_id;            
+//             $data['room_ids'] = $request->room_id;
+//             $data['total_charges'] = $amount;
 
 
 
-    //         $request->validate([
-    //             'check_in' => 'required|min:today',
-    //             'check_out' => 'required|after:check_in',
-    //             // 'hotel_id' => 'required',
-    //         ]);
 
-    //         if ($request->room_id) {
+//             return view('customer.hotel.room.payment', $data);
+//         } else {
+//             $request->customer_id = Auth::user()->userable_id;
 
+//             $hotel = Hotel::find($request->hotel_id);
+//             $all_rooms = $hotel->rooms;
+//             $from = $request->from;
+//             $to = $request->to;
 
-    //             $fdate = $request->from;
-    //             $tdate = $request->to;
-    //             $datetime1 = new DateTime($fdate);
-    //             $datetime2 = new DateTime($tdate);
-    //             $interval = $datetime1->diff($datetime2);
-    //             $days = $interval->format('%a') + 1;
-    //             $amount = 0;
-    //             foreach ($request->room_id as $room_id) {
-    //                 $room = Room::find($room_id);
-    //                 // echo $room->charges_per_day*$days;
-    //                 $amount += $room->charges_per_day * $days;
-    //                 // echo '<br>';
-    //             }
+//             $reserved = Booking::whereBetween('from', [$from, $to])
+//                 ->whereBetween('to', [$from, $to])->get();
 
 
-    //             $data['from'] = $request->from;
-    //             $data['to'] = $request->to;
+//             foreach ($all_rooms as $all_room) {
+//                 foreach ($reserved as $res) {
+//                     //    dd($all_room);
+//                     if ($res->room != null)
+//                         if ($res->room->id == $all_room->id) {
+//                             // echo dd(3);
+//                             $all_room->reserved = 'reserved';
+//                             break;
+//                         }
+//                 }
+//             }
+//             $data['countries'] = Country::all();
+//             $data['hotel'] = $hotel;
+//             $data['rooms'] = $hotel->rooms;
+//             return view('customer.hotel.room.listing', $data);
+//         }
 
 
-    //             $data['hotel_id']=$request->hotel_id;            
-    //             $data['room_ids'] = $request->room_id;
-    //             $data['total_charges'] = $amount;
-
-
-
-
-    //             return view('customer.hotel.room.payment', $data);
-    //         } else {
-    //             $request->customer_id = Auth::user()->userable_id;
-
-    //             $hotel = Hotel::find($request->hotel_id);
-    //             $all_rooms = $hotel->rooms;
-    //             $from = $request->from;
-    //             $to = $request->to;
-
-    //             $reserved = Booking::whereBetween('from', [$from, $to])
-    //                 ->whereBetween('to', [$from, $to])->get();
-
-
-    //             foreach ($all_rooms as $all_room) {
-    //                 foreach ($reserved as $res) {
-    //                     //    dd($all_room);
-    //                     if ($res->room != null)
-    //                         if ($res->room->id == $all_room->id) {
-    //                             // echo dd(3);
-    //                             $all_room->reserved = 'reserved';
-    //                             break;
-    //                         }
-    //                 }
-    //             }
-    //             $data['countries'] = Country::all();
-    //             $data['hotel'] = $hotel;
-    //             $data['rooms'] = $hotel->rooms;
-    //             return view('customer.hotel.room.listing', $data);
-    //         }
-
-
-    //     }
+//     }
 
 
     public function book_room(Request $request)
     {
 
-
+     
 
         $request->validate([
             'check_in' => 'required|min:today',
             'check_out' => 'required|after:check_in',
             // 'hotel_id' => 'required',
         ]);
-        // dd($request);
+// dd($request);
 
-        $request->customer_id = Auth::user()->userable_id;
+            $request->customer_id = Auth::user()->userable_id;
 
-        // $hotel = Hotel::find($request->hotel_id);
-        // $all_rooms = $hotel->rooms;
-        $all_rooms = null;
+            // $hotel = Hotel::find($request->hotel_id);
+            // $all_rooms = $hotel->rooms;
+            $all_rooms=null;
+            // $hotel_name=$request->hotel_name;
 
-        $hotel_name = $request->hotel_name;
-        // dd($hotel_name);
-        // if($request->hotel_name){
-        //     $hotel=Hotel::where('name','LIKE',$hotel_name)->first();
-        //     // dd($hotel);
-        //     if($hotel->size>0)
-        //     $all_rooms=$hotel->rooms;
+                if($request->city_id)
+             {
 
-        // }
-
-        if ($request->city_id) {
-
-            $city = City::find($request->city_id);
-            $all_rooms = $city->rooms;
-        } elseif ($request->state_id) {
-            $state = State::find($request->state_id);
-            $all_rooms = $state->rooms;
-        } else {
-            //    if($hotel_name){
-            // $all_rooms=Hotel::
-            //  where('country_id',$request->country_id) 
-            // ->orWhere('name', 'LIKE', $request->hotel_name) 
-            // ->get();
-            //    }
-            //    else{
-
-            $country = Country::find($request->country_id);
-            $all_rooms = $country->rooms;
-
-
-            //    }
-
-            // dd($all_rooms);
-        }
-
-
-        // dd($all_rooms);
-        $from = $request->check_in;
-        $to = $request->check_out;
-
-        $reserved = Booking::whereBetween('from', [$from, $to])
-            ->whereBetween('to', [$from, $to])->get();
-
-        foreach ($all_rooms as $all_room) {
-            foreach ($reserved as $res) {
-                if ($res->room != null)
-                    if ($res->room->id == $all_room->id) {
-                        $all_room->reserved = 'yes';
-                        break;
-                    }
+                $city=City::find($request->city_id);
+                $all_rooms=$city->rooms;
             }
-        }
+            elseif($request->state_id){
+                $state=State::find($request->state_id);
+                $all_rooms=$state->rooms;
+
+            }
+            else{
+                    //    if($hotel_name){
+                                // $all_rooms=Hotel::
+                                //  where('country_id',$request->country_id) 
+                                // ->orWhere('name', 'LIKE', $request->hotel_name) 
+                                // ->get();
+                    //    }
+                    //    else{
+                           
+            $country=Country::find($request->country_id);
+            $all_rooms=$country->rooms;
+
+            
+                    //    }
+                
+            // dd($all_rooms);
+            }
+
+         
+// dd($all_rooms);
+            $from = $request->check_in;
+            $to = $request->check_out;
+
+            $reserved = Booking::whereBetween('from', [$from, $to])
+                ->whereBetween('to', [$from, $to])->get();
+
+//    dd($reserved);
+
+            foreach ($all_rooms as $all_room) {
+                foreach ($reserved as $res) 
+                {
+                    if ($res->room != null)
+                        if ($res->room->id == $all_room->id)
+                            {
+                            $all_room->reserved = 'yes';
+                            break;
+                            }
+                }
+            }
+           
+            
+            $data['from']=Carbon::now()->format('Y-m-d');
+        
+            $data['to']=Carbon::now()->addMonths(1)->format('Y-m-d');
+            // dd()
+            $data['countries']=Country::all();
 
 
-        $data['from'] = Carbon::now()->format('Y-m-d');
+           $data['check_in']=$request->check_in;
+           $data['check_out']=$request->check_out;
+           $data['rooms']=$all_rooms;
+// dd($all_rooms);
+            return view('hotel', $data);
+        
 
-        $data['to'] = Carbon::now()->addMonths(1)->format('Y-m-d');
-        // dd()
-        $data['countries'] = Country::all();
+     
 
 
-        $data['check_in'] = $request->check_in;
-        $data['check_out'] = $request->check_out;
-        $data['rooms'] = $all_rooms;
-        // dd($all_rooms);
-        return view('hotel', $data);
     }
 
     public function bookNow(Request $request)
     {
 
-
+        
         $fdate = $request->check_in;
         $tdate = $request->check_out;
         $datetime1 = new DateTime($fdate);
@@ -384,10 +389,10 @@ class HotelController extends Controller
         $days = $interval->format('%a') + 1;
         $amount = 0;
         // foreach ($request->room_id as $room_id) {
-        $room = Room::find($request->room_id);
-        // echo $room->charges_per_day*$days;
-        $amount = $room->charges_per_day * $days;
-        // echo '<br>';
+            $room = Room::find($request->room_id);
+            // echo $room->charges_per_day*$days;
+            $amount = $room->charges_per_day * $days;
+            // echo '<br>';
         // }
 
 
@@ -395,7 +400,7 @@ class HotelController extends Controller
         $data['to'] = $request->check_out;
 
 
-        $data['hotel_id'] = $room->hotel->id;
+        $data['hotel_id']=$room->hotel->id;            
         $data['room_id'] = $request->room_id;
         $data['total_charges'] = $amount;
 
@@ -403,8 +408,9 @@ class HotelController extends Controller
 
 
         return view('customer.hotel.room.payment', $data);
+        
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      *
@@ -422,15 +428,18 @@ class HotelController extends Controller
         $request->customer_id = Auth::user()->userable_id;
         // dd($request->customer_id);
         // foreach ($request->room_id as $room_id) {
-        Booking::create([
-            "room_id" => $request->room_id,
-            "from" => $request->from,
-            "to" => $request->to,
-            "customer_id" => $request->customer_id,
-            "hotel_id" => $request->hotel_id,
-        ]);
+            Booking::create([
+                "room_id" => $request->room_id,
+                "from" => $request->from,
+                "to" => $request->to,
+                "customer_id" => $request->customer_id,
+                "hotel_id" => $request->hotel_id,
+            ]);
         // }
         return redirect('customer/dashboard');
+
+
+        
     }
 
     /**
@@ -458,7 +467,7 @@ class HotelController extends Controller
     }
     public function booking_destroy(Request $r)
     {
-        $booking = booking::find($r->id);
+        $booking=booking::find($r->id);
         $booking->delete();
         return back();
     }

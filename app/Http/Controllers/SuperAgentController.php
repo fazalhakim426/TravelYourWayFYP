@@ -20,10 +20,10 @@ class SuperAgentController extends Controller
      */
     public function index()
     {
-     
-        $data['sub_active']='Dashboard';
-        $data['user']=Auth::user();
-        return view('super_agent.dashboard')->with($data);
+     return redirect('/super-agent/immigrations');
+        // $data['sub_active']='Dashboard';
+        // $data['user']=Auth::user();
+        // return view('super_agent.dashboard')->with($data);
     }
 
     public function get_tickets()
